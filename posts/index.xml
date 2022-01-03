@@ -9,7 +9,18 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Dec 2021 23:11:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 23:11:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This Week In Moeif 28</title>
+      <link>https://blog.moeif.com/posts/this-week-in-moeif-28/</link>
+      <pubDate>Sun, 02 Jan 2022 23:11:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/this-week-in-moeif-28/</guid>
+      <description>现在已经 2022 年了，本来想跨年夜去外滩，看了一下新闻，好像也没什么活动，就在家里待着了。这个周又开始运动了，跑步加跳绳，保持健康。这周是单调的一周。这周还把博客使用 Cloudflare 加速了，能明显感觉也访问速度的提升。
+项目进度   游戏码农：那些打工的日子 这周完成了外卖和自己做饭界面的UI及逻辑，下周开始添加学习内容的模块。这周的内容比较单调，好像也没做什么特别的事情。软件著作权还没有下来，这次真是好慢。
+  本周电影  寂静之海 고요의 바다 (2021)  本周书籍  《愿你迷路到我身旁》（阅读中）  下周初步计划  继续逻辑编写  </description>
+    </item>
+    
     <item>
       <title>This Week In Moeif 27</title>
       <link>https://blog.moeif.com/posts/this-week-in-moeif-27/</link>
