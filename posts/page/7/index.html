@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Apk 上架前的签名操作
+</h2>
+</header>
+<section class=entry-content>
+<p>在 APK 包上传到一些应用市场时，通常要求开发者对 APK 进行签名，下面记录一下签名步骤。
+...</p>
+</section>
+<footer class=entry-footer><span title="2020-11-05 14:09:29 +0800 CST">November 5, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Apk 上架前的签名操作" href=https://blog.moeif.com/posts/apk-signature/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity 接入友盟SDK
 </h2>
 </header>
@@ -224,20 +236,6 @@ nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到�
 </section>
 <footer class=entry-footer><span title="2020-04-02 17:26:15 +0800 CST">April 2, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Rust 基础 | 结构体" href=https://blog.moeif.com/posts/rust-syntax-summary-04/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Rust 基础 | 引用、切片
-</h2>
-</header>
-<section class=entry-content>
-<p>在阅读Rust官方教程时，会看到两个词，引用和借用，也就是 References and Borrowing。这里很容易让人混乱，如果了解C/C++这类有指针的语言，则引用很容易理解，但是 Rust 中的借用这个词是什么意思呢？我觉得，在初学 Rust 时，可以忽略这个词，或者就简单理解为，它所涉及到的东西，就是引用，就是一个指针，就可以了，避免陷入进去。所以，接下来我就就聊一聊引用。
-什么是引用 简单来说，引用就是一个指针，这个指针指向了某个内存地址。在说所有权时，我们知道，当把一个 String 当作参数传到函数时，它的所有权也就会被移动到函数的参数上，如果在调用完函数时，我们依旧想使用这个 String，则需要将所有权再返回，这样就很麻烦，所以用引用，会方便很多，因为引用，并不会获得这个 String 的所有权。看下面的代码
-fn main() { let s1 = String::from("Hello"); print_name(s1); // 下面这一句再访问 s1 就会编译出错，因为 s1 的所有权已经没了 //println!("s1 again: {}", s1); } fn print_string(s: String) { println!("{}", s); } 下面是用引用作为参数
-fn main() { let s1 = String::from("Hello"); print_name(s1); println!("s1 again: {}", s1); } fn print_name(s: &String) { println!("{}", s); } 在上面的代码中，我们将参数从 String 改为 &String，这样函数的参数需要的就不是 String 的所有权，而是 String 的引用，所以在函数 print_name 结束时，main 函数中依然可以使用 name。下图是使用引用时的数据状态。...</p>
-</section>
-<footer class=entry-footer><span title="2020-04-01 12:13:24 +0800 CST">April 1, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Rust 基础 | 引用、切片" href=https://blog.moeif.com/posts/rust-syntax-summary-03/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
