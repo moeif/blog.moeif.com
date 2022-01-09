@@ -77,6 +77,21 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>SVN Cleanup错误 Faild to run the wc db work queue associated with
+</h2>
+</header>
+<section class=entry-content>
+<p>今天svn更新时，因为一个文件问题，导致了 Faild to run the wc db work queue associated with.... 的错误，无法 Cleanup，也无法 Update，无法 Revert，现在记录一下解决方法，很简单，只需要三个 sqlite 命令即可。
+这个过程要用到 sqlite3 的命令行工具，可以在官网下载。找到 Precompiled Binaries for WIndows 中的 sqlite-tools-win32-x86-xxxxxx.zip，点击下载即可，xxxxxx 是指版本号，下载官网上的最新版本即可。
+要在 cmd 中运行，还要将下载并解压后的 sqlite 目录加到环境变量的 Path 中，这样就可以直接在 cmd 中使用 sqlite 命令了。
+下面是解决问题的流程
+在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db "select * from work_queue" 查看有哪些文件报错 执行命令 sqlite3 wc.db "delete from work_queue" 执行命令 sqlite3 wc.db "delete from wc_lock" 好了，现在工程已经恢复正常。</p>
+</section>
+<footer class=entry-footer><span title="2020-02-13 14:51:31 +0800 CST">February 13, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to SVN Cleanup错误 Faild to run the wc db work queue associated with" href=https://blog.moeif.com/posts/solve-svn-clean-up-error/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>使用 Python 去掉 Kindle PC 复制时自动添加的内容
 </h2>
 </header>
@@ -216,22 +231,6 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
 </section>
 <footer class=entry-footer><span title="2019-12-30 18:01:45 +0800 CST">December 30, 2019</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 二叉堆" href=https://blog.moeif.com/posts/data-structure-07-binary-heap/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>一个公平的洗牌算法 | Knuth-Shuffle
-</h2>
-</header>
-<section class=entry-content>
-<p>洗牌(随机)算法有很多应用，例如我们平时用的音乐播放器随机播放，棋牌游戏中的洗牌，扫雷游戏中雷的位置随机等等，都会用到洗牌算法。
-今天来介绍一个简单，公平，时间复杂度为O(n)的洗牌算法。什么是洗牌算法呢？其实就是将一些数据以公平随机的方式打乱顺序。这个算法，是由Knuth(高纳德)，也就是计算机程序设计艺术的作者发明的。下面我们直接进入正题。
-假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
-例如上面的数组，第一次循环，当前数字为10，我们从1~10之间，随机选择一个数，与10交换，这样第9个索引位就算洗完了，接下来就是第8个索引位，也就是数字为9，我们从第1个索引位与第8个索引位之间，选择一个数，第9交换，这样第8个索引位也就洗完了…。这个算法之所以公平，是因为保证了每一个元素出现在每一个位置上的概率，都是一样的。
-代码实现
-using System; using System.Collections.Generic; class Program { static void Main(string[] args) { List&lt;int> songList = new List&lt;int>(); songList.Add(1); songList.Add(2); songList.Add(3); songList.Add(4); songList.Add(5); songList.Add(6); songList.Add(7); songList.Add(8); songList.Add(9); songList.Add(10); Random rand = new Random(); // 开始洗牌算法 int last = songList.Count - 1; for (int i = last; i >= 0; --i) { // 从当0~当前索引位之间，选择一个数 int selection = rand....</p>
-</section>
-<footer class=entry-footer><span title="2019-12-30 11:59:15 +0800 CST">December 30, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 一个公平的洗牌算法 | Knuth-Shuffle" href=https://blog.moeif.com/posts/algo-knuth-shuffle/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

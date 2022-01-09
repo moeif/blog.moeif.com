@@ -77,6 +77,21 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>This Week In Moeif 2
+</h2>
+</header>
+<section class=entry-content>
+<p>这是 The Week In Moeif 的第二周。对于 Moeif 未来的规划还是有点迷茫，到底做什么，目前来看，对于学习App开发是没有太大的兴趣，这一点可以确定。对于游戏开发，兴趣度挺好的，另外，对于Web，还没有一个明确的方向，做什么，但是相对于App开发来说，兴趣度高一点，有一些小想法想做成Web产品，例如 This Week In X。而对于后端，一方面是写一些纯后端的东西，例如程序化交易，或者后面的量化交易，再就是服务于游戏或App产品，这一块目前可以确定的是一定是用Rust来写。
+所以目前看来的方向有下面四个
+游戏 Web 服务器 程序化/量化交易 项目进度 pinmaker pinmaker这周已经跑起来了，从6.30开始，到今天的7.4号晚上，一共收益了8 USDT了，中间调整了一次网格，由15个网格调整为了10个，交易数量每网格2个DOT调整为了3个DOT。这个项目先跑跑看，目前看来是能赚点小钱。计划再阅读或者学习一点自动化交易相关的东西，然后再加来看这个项目。
+彩票玩家 彩票玩家这个项目已经完了，上不了线，只能算是学习项目了，著作权也申请不下来，还是因为一些版权问题。这个项目就这样了吧。
+下周初步计划 准备古诗数据 对古诗游戏进行整体策划 开始阅读KK三部曲 写完网络营销课程的作业 </p>
+</section>
+<footer class=entry-footer><span title="2021-07-03 20:56:47 +0800 CST">July 3, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to This Week In Moeif 2" href=https://blog.moeif.com/posts/this-week-in-moeif-2/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>从万亿美元的市场赚点小钱
 </h2>
 </header>
@@ -219,23 +234,6 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
 </section>
 <footer class=entry-footer><span title="2020-11-30 18:01:00 +0800 CST">November 30, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 理解 Boids" href=https://blog.moeif.com/posts/understanding-boids/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>使用 frp 的远程桌面方案
-</h2>
-</header>
-<section class=entry-content>
-<p>当我们想使用 Windows 自带的 mstsc 远程桌面连接远程电脑时，常见的情况由于远程电脑没有公网IP而连接失败，这时就需要一个拥有公网 IP 的 VPS 来做代理，实现内网穿透，也就是相当于一个桥梁，将目标内网的机器与我们当前机器连起来。像花生壳，Teamviewer 等这类软件都可以实现，远程桌面，但是要么费用比较高，要么免费版体验很差，所以这里我们购买一台廉价的 VPS，使用 frp 来做这个代理功能，更方便，更好用。
-1. 在VPS和目标机器上分别下载 frp frp Github: https://github.com/fatedier/frp，通常下载最新的 Release 版本就可以。
-2. 在VPS上配置服务器端 在服务器端，用的是 frps.exe，配置文件是 frps.ini，配置内容如下即可。
-[common] bind_port = 7000 dashboard_user = jack dashboard_pwd = jack'svps dashboard_port = 8888 上面的配置中， bind_port = 7000 就是配置对外开放的端口，客户端都会连接服务器的这个端口。下面三行的配置是网页的管理页面，可以通过网页查看当前有多少设备连接。
-配置完成后，打开 CMD 或 PowerShell，执行 frps.exe -c frps.ini 就启动了服务器端，注意这个窗口不要关闭。
-3. 在目标机器上配置客户端 客户端使用的是 frpc.exe，配置文件是 frpc.ini，配置内容如下
-[common] server_addr = 110.112.110.112 server_port = 7000 [RDP] type = tcp local_ip = 127....</p>
-</section>
-<footer class=entry-footer><span title="2020-11-14 13:50:25 +0800 CST">November 14, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 使用 frp 的远程桌面方案" href=https://blog.moeif.com/posts/frp-for-remote-desktop/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

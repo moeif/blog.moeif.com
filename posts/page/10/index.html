@@ -77,6 +77,22 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>一个公平的洗牌算法 | Knuth-Shuffle
+</h2>
+</header>
+<section class=entry-content>
+<p>洗牌(随机)算法有很多应用，例如我们平时用的音乐播放器随机播放，棋牌游戏中的洗牌，扫雷游戏中雷的位置随机等等，都会用到洗牌算法。
+今天来介绍一个简单，公平，时间复杂度为O(n)的洗牌算法。什么是洗牌算法呢？其实就是将一些数据以公平随机的方式打乱顺序。这个算法，是由Knuth(高纳德)，也就是计算机程序设计艺术的作者发明的。下面我们直接进入正题。
+假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
+例如上面的数组，第一次循环，当前数字为10，我们从1~10之间，随机选择一个数，与10交换，这样第9个索引位就算洗完了，接下来就是第8个索引位，也就是数字为9，我们从第1个索引位与第8个索引位之间，选择一个数，第9交换，这样第8个索引位也就洗完了…。这个算法之所以公平，是因为保证了每一个元素出现在每一个位置上的概率，都是一样的。
+代码实现
+using System; using System.Collections.Generic; class Program { static void Main(string[] args) { List&lt;int> songList = new List&lt;int>(); songList.Add(1); songList.Add(2); songList.Add(3); songList.Add(4); songList.Add(5); songList.Add(6); songList.Add(7); songList.Add(8); songList.Add(9); songList.Add(10); Random rand = new Random(); // 开始洗牌算法 int last = songList.Count - 1; for (int i = last; i >= 0; --i) { // 从当0~当前索引位之间，选择一个数 int selection = rand....</p>
+</section>
+<footer class=entry-footer><span title="2019-12-30 11:59:15 +0800 CST">December 30, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 一个公平的洗牌算法 | Knuth-Shuffle" href=https://blog.moeif.com/posts/algo-knuth-shuffle/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>二叉查找树
 </h2>
 </header>
@@ -287,26 +303,6 @@ class Node { public int data; public Node next; public Node(int data){ this.data
 </section>
 <footer class=entry-footer><span title="2019-12-10 11:06:57 +0800 CST">December 10, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 数组" href=https://blog.moeif.com/posts/data-structure-01-array/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>梦开始的地方
-</h2>
-</header>
-<section class=entry-content>
-<p>经历过很多项目，遇到和解决过很多问题，但是没有没有以文字的形式总结过。所以这个系列，我打算从客户端的视角，去总结一个游戏项目从开始到上线，整个过程中的一些事情，人员之间的配合，客户端一些重要模块的实现，开发过程中遇到的问题等等。
-一个项目的开始，可能始于某一个人的某一个微小的想法，经过一段时间的构思，然后到达公司层面，在经过很多人的会议讨论，市场调研，等等，觉得方案可行，然后就是立项，准备进入开发阶段。这个过程不是一两天完成的，可能经历了很长时间。这个阶段，也会大概预计项目周期，项目成本，什么时候上线，盈利情况预估等等。
-一旦确认了项目开发，策划方面会先行，进行项目的具体设计，开会讨论，确定方案等等。
-然后美术也会根据项目的方向，做一些可以看的东西，可能这些东西最终不会进到版本中，但是现阶段是需要的。
-至于程序呢？这个阶段可能就开始搭框架了，做一些与具体游戏逻辑没有太大关联的，框架层面的模块，例如资源管理啦，网络通信啦，等等。
-这个阶段可能会持续一段时间，然后就会逐渐进入更加规范和流程化的游戏逻辑开发。不同的程序写不同的游戏模块。
-在前期开发过程中，可能会有很多东西做出来了，然后效果不太好，就被砍掉了，或者整个设计变化很大，基本上等于这个模块推到重来，这都是很正常的情况。不管是美术，策划，和程序，都会有这种情况发生，不过随着游戏的开发进度，这种情况会越来越少。
-从开发到上线，游戏会经历很多测试版本，可能有公司内部测试版本，外部小规模测试版本，外部大规模测试版本，付费测试版本等等。每一次版本测试，都会得到很多信息，用于调整和改善游戏内容。经过几轮测试以及测试后的版本打磨，整个项目会越来越接近上线版本。
-当然，在一切顺利的情况下，游戏最终会提交上线。然后就是后期的运营，以及上线后的版本迭代，内容更新，Bug 修复等等。
-这大概就是一个游戏项目的完整生命周期。</p>
-</section>
-<footer class=entry-footer><span title="2019-12-08 14:44:42 +0800 CST">December 8, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 梦开始的地方" href=https://blog.moeif.com/posts/a-game-project-0-start/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

@@ -74,6 +74,24 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Rust 基础 | 结构体
+</h2>
+</header>
+<section class=entry-content>
+<p>在有类的编程语言中，组织数据的方式可以定义一个类，而在 Rust 中，组织数据的方式，使用 struct。struct 可以定义三种不同的类型，一种是带有字段名字的结构体，一种是没有字段名字的元组结构体，一种是没有任何字段的单元结构体。
+定义 struct 带有字段名字的结构体
+#[derive(Debug)] struct User { username: String, email: String, active: bool, } fn main() { let user1 = User { username: String::from("fred"), email: String::from("fred@outlook.com"), active: false, }; println!("{:?}", user1); } 注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
+上面的代码中定义了一个 User 结构体，里面的每一个字段，前面是字段名，后面是字段的数据类型。在 main 函数中的代码，是创建一个 User 实例。
+元组结构体
+#[derive(Debug)] struct Color(u8, u8, u8, u8); fn main() { let color = Color(255,255,255,255); println!("{:?}", color); } 上面的代码中，定义了一个元组结构体，用来存储颜色值。
+单元结构体
+#[derive(Debug)] struct Unit; fn main() { let unit = Unit; println!...</p>
+</section>
+<footer class=entry-footer><span title="2020-04-02 17:26:15 +0800 CST">April 2, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Rust 基础 | 结构体" href=https://blog.moeif.com/posts/rust-syntax-summary-04/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Rust 基础 | 引用、切片
 </h2>
 </header>
@@ -215,21 +233,6 @@ Unity Shader 结构 Shader "iMoeGirl/MyShader" { // Shader 名字 Properties { /
 </section>
 <footer class=entry-footer><span title="2020-02-24 22:14:04 +0800 CST">February 24, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Unity Shader | 基础" href=https://blog.moeif.com/posts/unity-shader-basis-01/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>SVN Cleanup错误 Faild to run the wc db work queue associated with
-</h2>
-</header>
-<section class=entry-content>
-<p>今天svn更新时，因为一个文件问题，导致了 Faild to run the wc db work queue associated with.... 的错误，无法 Cleanup，也无法 Update，无法 Revert，现在记录一下解决方法，很简单，只需要三个 sqlite 命令即可。
-这个过程要用到 sqlite3 的命令行工具，可以在官网下载。找到 Precompiled Binaries for WIndows 中的 sqlite-tools-win32-x86-xxxxxx.zip，点击下载即可，xxxxxx 是指版本号，下载官网上的最新版本即可。
-要在 cmd 中运行，还要将下载并解压后的 sqlite 目录加到环境变量的 Path 中，这样就可以直接在 cmd 中使用 sqlite 命令了。
-下面是解决问题的流程
-在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db "select * from work_queue" 查看有哪些文件报错 执行命令 sqlite3 wc.db "delete from work_queue" 执行命令 sqlite3 wc.db "delete from wc_lock" 好了，现在工程已经恢复正常。</p>
-</section>
-<footer class=entry-footer><span title="2020-02-13 14:51:31 +0800 CST">February 13, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to SVN Cleanup错误 Faild to run the wc db work queue associated with" href=https://blog.moeif.com/posts/solve-svn-clean-up-error/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
