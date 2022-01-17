@@ -77,6 +77,21 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>This Week In Moeif 3
+</h2>
+</header>
+<section class=entry-content>
+<p>项目进度 pinmaker 目前 pinmaker 已经赚了37.9 USDT，在写这篇总结的此刻，没有待成交的交易对，现在正处于纯粹盈利 37.9 的状态。这周好像调整过一次上涨部分的网格大小。
+诗词项目 这个项目的名字已经确定了，还是用了之前想的那个名字，诗仙与诗魔。这周完成了界面的设计，这次使用了 Figma，总体来说还挺好用的。今天打印邮寄了著作权申请的资料。
+音乐游戏 音乐游戏暂时先放一下，从工作量已经实现上来说，有一些点工作量有点大，先做诗词项目。
+彩票玩家 此项目暂时不考虑了，个人根本上不了线，基本死透。以这个产品为主题写了一篇公众号。
+下周初步计划 诗词数据确定好 诗词数据格式化 客户端的部分代码可以开始写，顺便整理一下以前的框架 学习 Microservice in Rust，考虑一下服务器部分怎么写。 诗词项目开发模块和计划拆分 </p>
+</section>
+<footer class=entry-footer><span title="2021-07-11 20:56:56 +0800 CST">July 11, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to This Week In Moeif 3" href=https://blog.moeif.com/posts/this-week-in-moeif-3/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 2
 </h2>
 </header>
@@ -214,26 +229,6 @@
 </section>
 <footer class=entry-footer><span title="2021-01-06 22:03:56 +0800 CST">January 6, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Unity 接入 Sigmob SDK" href=https://blog.moeif.com/posts/sigmob-sdk-for-unity/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>理解 Boids
-</h2>
-</header>
-<section class=entry-content>
-<p>Boids 可以理解为类似鸟群的东西，就是多个个体之间的相互作用。在游戏开发中经常会用到。例如 RTS 游戏，控制一个坦克战队，如何保持行进方向的一致性，以及坦克之间互相有一定有间隔，又不会间隔太大，这里就可以使用 Boids 相关的理论来实现。
-在众多这方面的文章中，基本上会涉及到三个方面，跟随、分离、聚合。跟随，就是说整个群体有一个行进的大方向。分离，则是个体与个体之间有一定的间隔，不至于发生碰撞。而聚合，就是个体不能离群体太远，不能脱离群体。
-对于上面提到的三个方面，简单来说，就是一个力的叠加。
-跟随 一个鸟群往哪个方向飞，可以假设有一只领头的鸟，其他的鸟跟随这只鸟的方向。知道领头的鸟的方向，知道自己当前的飞行方向，就可以计算出应该向中个方向施加一个力，可以使自己的方向，偏向于领头的鸟的方向。
-分离 分离，是要保证个体之间不要离的太近，不要发生碰撞。先考虑两个物体的情况，假设要使物体 A 远离物体 B，只要从 B，向 A 施加一个推力，就可以将 A 推离 B。那如果 A 要同时和 B 与 C 保持距离呢？一样的，只需要从 B 和 C 分别向 A 施加一个推力，这两个的合力，就是 A 远离 B 和 C 的方向。同理，不管 A 要与多少个物体保持距离，只需要从每个物体出发，向 A 的方向施加一个力，就可以将 A 推开。
-上面只考虑了 A 远离其他物体的情况，如果每一个物体都要与其他物体保持距离呢？一样的，只需要从每一个其他物体，向自己的方向施加一个力，这个合力，就是自己运动的方向。
-聚合 为了保证个体不脱离群体，还需要一个聚合力。就是将个体自身，推向群体中心的力。
-分离的力和聚合的力一定程度上抵消，从而达到个体之间即保持了距离，又保证了每一个体不脱离群体。
-下面的代码是我的一个小游戏项目中的，其中只用到了分离和聚合。只要懂了原理，就可以根据具体的情况灵活变通，达到自己想要的效果即可。
-using UnityEngine; using System.Collections.Generic; using System.Collections; public class GamePlayFlock : MonoBehaviour { public static List&lt;GamePlayFlock> flockList = new List&lt;GamePlayFlock>(); public static void StartAllFlock() { for(int i = 0; i &lt; flockList....</p>
-</section>
-<footer class=entry-footer><span title="2020-11-30 18:01:00 +0800 CST">November 30, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 理解 Boids" href=https://blog.moeif.com/posts/understanding-boids/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
