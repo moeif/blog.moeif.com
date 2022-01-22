@@ -9,7 +9,25 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 16 Jan 2022 23:11:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gameplay</title>
+      <link>https://blog.moeif.com/tags/gameplay/</link>
+      <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/tags/gameplay/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏开发</title>
+      <link>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>This Week In Moeif</title>
       <link>https://blog.moeif.com/tags/this-week-in-moeif/</link>
@@ -25,15 +43,6 @@
       <pubDate>Sat, 11 Dec 2021 20:40:15 +0800</pubDate>
       
       <guid>https://blog.moeif.com/tags/rust%E5%AE%9E%E7%8E%B0%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>游戏开发</title>
-      <link>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
-      <pubDate>Wed, 01 Dec 2021 21:12:47 +0800</pubDate>
-      
-      <guid>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     

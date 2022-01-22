@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Unity Shader | 属性、顶点与片元函数
+</h2>
+</header>
+<section class=entry-content>
+<p>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
+Shader "iMoeGirl/MyShader" { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名("Inspector面板上显示出来的属性名", 属性类型) = 默认值 _Color("颜色类型", Color) = (1,1,1,1) _Vector("向量类型", Vector) = (1, 2, 3, 4) _Int("整型", Int) = 11111 _Float("浮点型", Float) = 12.11 _Range("范围类型", Range(100, 1000)) = 128 _Tex2D("贴图类型", 2D) = "white"{} _Cube("立方体贴图类型", Cube) = "white"{} _Tex3D("3D纹理", 3D) = "white"{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback "VertexLit" } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码...</p>
+</section>
+<footer class=entry-footer><span title="2020-03-02 22:46:56 +0800 CST">March 2, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Unity Shader |  属性、顶点与片元函数" href=https://blog.moeif.com/posts/unity-shader-basis-02/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity Shader | 基础
 </h2>
 </header>
@@ -210,25 +222,6 @@ void Update () { for (int i = 0; i &lt; points....</p>
 </section>
 <footer class=entry-footer><span title="2020-01-06 13:05:08 +0800 CST">January 6, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 使用Unity3D展示Sin函数动画" href=https://blog.moeif.com/posts/unity-sine-visualization/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>制作一个会动的时钟
-</h2>
-</header>
-<section class=entry-content>
-<p>这是 Unity 基础系列教程的第一篇博客。我们将由浅入深，一步一步学习Unity及游戏开发相关的东西。整个系列教程所使用的Unity版本为 2018.4 及以上就可以，如果要使用特殊版本，则会在文中指出。
-今天要做的是一个能够实时显示当前时间的时钟，就是下面这个东东。
-1 首先建立一个新工程 首先打开Unity，创建一个新工程，名字自己定，例如 Clock 就可以。默认打开后，Unity 默认布局是下面图的样子。
-你也可以更新布局，例如换成同时显示View和Game视图的布局，只需要点击编辑器最右上角的那个按钮，然后选择 2 by 3 即可成为下面图的样子。
-下面是分辨率的设置，一般游戏开发中，会使用一个基准分辨率，很多游戏采用的是 16:9 的模式。这个在 Game 视图中设置，看下面的图，选择 16:9 即可
-1.1 创建一个 GameObject 默认的场景中，会包含两个 GameObject，一个是主相机 MainCamera， 一个是灯光 Directional Light。这两个东西保持默认就好，现在我们创建一个新的物体，在 Hierarchy 面板右键，然后 Create Empty，或者通过菜单栏 GameObject/Create Empty都可以，这样就会在Hierarchy 面板上看到我们新建的物体，然后对这个物体重命名为 Clock，并且把它的位置置为 (0,0,0)。看下面的图
-1.2 创建时钟的表盘 创建表盘，我们使用 Unity 默认的物体 Cylinder，然后改变它的大小，使其成为我们的表盘。首先，通过右键 Hierarchy 空白处，或者通过菜单栏 GameObject 中的 3D Object/Cylinder 选项，来创建一个 Cylinder，就是一个圆柱体。
-Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshRenderer。默认我们不需要物理模拟方面的东西，所以我们先把 Capsule Collider 这个碰撞器给删掉，通过右键这个组件，Remove Component 即可。
-然后我们改变园柱体的大小，因为表盘是一个圆盘形状的东西，所以我们把圆柱体压平，也就是改变y轴的大小始可。把圆柱体 Scale 设置为 (10, 0.1, 10)，如下图。...</p>
-</section>
-<footer class=entry-footer><span title="2020-01-06 11:02:32 +0800 CST">January 6, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 制作一个会动的时钟" href=https://blog.moeif.com/posts/unity-basis-01-clock/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

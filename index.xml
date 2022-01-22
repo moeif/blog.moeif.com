@@ -9,7 +9,23 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 16 Jan 2022 23:11:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gameplay 02 游戏中的跳跃</title>
+      <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
+      <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/gameplay-02-jump/</guid>
+      <description>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
+自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
+我们的目标是求出跳跃的速度。
+首先，假设我们以一个初始速度 $j$ 来跳跃，这个是一个向上的速度，但是因为重力的存在，所以我们的跳跃速度会因为重力的向下抵消，而逐渐趋向于 0。当 $j$ 慢慢被抵消到 0 时，我们也就达到了以 $j$ 这个速度来跳跃所能到达的最大高度。
+对于任意时刻 $t$，速度 $v = j - gt$，当 $j - gt = 0$ 时，也就是我们所能到达的最大高度。所以，到达最大高度的时间为 $t = \frac{j}{g}$。
+根据上面的公式，我们可以知道，在以 $j$ 来跳跃的整个过程中，任意时刻的高度为 $h = jt - \frac{gt^2}{2}$。
+由于我们上面已经知道了，在 $t = \frac{j}{g}$ 时，我们将达到最大跳跃高度。将 $\frac{j}{g}$ 带入到任意时刻的高度公式中 $h = jt - \frac{gt^2}{2}$。我们可以得到 $h = j(\frac{j}{g}) - \frac{g(\frac{j}{g})^2}{2}$。
+化简上面的公式将得到 $h = \frac{j^2}{g} - \frac{\frac{j^2}{g}}{2} = \frac{j^2}{g} - \frac{j^2}{2g} = \frac{j^2}{2g}$。</description>
+    </item>
+    
     <item>
       <title>This Week In Moeif 30</title>
       <link>https://blog.moeif.com/posts/this-week-in-moeif-30/</link>
@@ -35,7 +51,7 @@
     </item>
     
     <item>
-      <title>游戏开发中的平滑移动</title>
+      <title>Gameplay 01 游戏开发中的平滑移动</title>
       <link>https://blog.moeif.com/posts/gamedev-smooth-move/</link>
       <pubDate>Thu, 06 Jan 2022 20:11:49 +0800</pubDate>
       

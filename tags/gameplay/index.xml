@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Gameplay on 萌一小栈</title>
+    <link>https://blog.moeif.com/tags/gameplay/</link>
+    <description>Recent content in Gameplay on 萌一小栈</description>
+    <image>
+      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/gameplay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gameplay 02 游戏中的跳跃</title>
+      <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
+      <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/gameplay-02-jump/</guid>
+      <description>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
+自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
+我们的目标是求出跳跃的速度。
+首先，假设我们以一个初始速度 $j$ 来跳跃，这个是一个向上的速度，但是因为重力的存在，所以我们的跳跃速度会因为重力的向下抵消，而逐渐趋向于 0。当 $j$ 慢慢被抵消到 0 时，我们也就达到了以 $j$ 这个速度来跳跃所能到达的最大高度。
+对于任意时刻 $t$，速度 $v = j - gt$，当 $j - gt = 0$ 时，也就是我们所能到达的最大高度。所以，到达最大高度的时间为 $t = \frac{j}{g}$。
+根据上面的公式，我们可以知道，在以 $j$ 来跳跃的整个过程中，任意时刻的高度为 $h = jt - \frac{gt^2}{2}$。
+由于我们上面已经知道了，在 $t = \frac{j}{g}$ 时，我们将达到最大跳跃高度。将 $\frac{j}{g}$ 带入到任意时刻的高度公式中 $h = jt - \frac{gt^2}{2}$。我们可以得到 $h = j(\frac{j}{g}) - \frac{g(\frac{j}{g})^2}{2}$。
+化简上面的公式将得到 $h = \frac{j^2}{g} - \frac{\frac{j^2}{g}}{2} = \frac{j^2}{g} - \frac{j^2}{2g} = \frac{j^2}{2g}$。</description>
+    </item>
+    
+    <item>
+      <title>Gameplay 01 游戏开发中的平滑移动</title>
+      <link>https://blog.moeif.com/posts/gamedev-smooth-move/</link>
+      <pubDate>Thu, 06 Jan 2022 20:11:49 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/gamedev-smooth-move/</guid>
+      <description>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
+一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
+而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
+游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
+代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
+using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度  private Vector3 velocity; // Update is called once per frame  void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput; playerInput.x = Input.GetAxis(&amp;#34;Horizontal&amp;#34;); playerInput.y = Input.GetAxis(&amp;#34;Vertical&amp;#34;); Vector3 desiredVelocity = new Vector3(playerInput.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -76,6 +76,40 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>Gameplay 02 游戏中的跳跃
+</h2>
+</header>
+<section class=entry-content>
+<p>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
+自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
+我们的目标是求出跳跃的速度。
+首先，假设我们以一个初始速度 $j$ 来跳跃，这个是一个向上的速度，但是因为重力的存在，所以我们的跳跃速度会因为重力的向下抵消，而逐渐趋向于 0。当 $j$ 慢慢被抵消到 0 时，我们也就达到了以 $j$ 这个速度来跳跃所能到达的最大高度。
+对于任意时刻 $t$，速度 $v = j - gt$，当 $j - gt = 0$ 时，也就是我们所能到达的最大高度。所以，到达最大高度的时间为 $t = \frac{j}{g}$。
+根据上面的公式，我们可以知道，在以 $j$ 来跳跃的整个过程中，任意时刻的高度为 $h = jt - \frac{gt^2}{2}$。
+由于我们上面已经知道了，在 $t = \frac{j}{g}$ 时，我们将达到最大跳跃高度。将 $\frac{j}{g}$ 带入到任意时刻的高度公式中 $h = jt - \frac{gt^2}{2}$。我们可以得到 $h = j(\frac{j}{g}) - \frac{g(\frac{j}{g})^2}{2}$。
+化简上面的公式将得到 $h = \frac{j^2}{g} - \frac{\frac{j^2}{g}}{2} = \frac{j^2}{g} - \frac{j^2}{2g} = \frac{j^2}{2g}$。...</p>
+</section>
+<footer class=entry-footer><span title="2022-01-22 20:50:49 +0800 CST">January 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Gameplay 02 游戏中的跳跃" href=https://blog.moeif.com/posts/gameplay-02-jump/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Gameplay 01 游戏开发中的平滑移动
+</h2>
+</header>
+<section class=entry-content>
+<p>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
+一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
+而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
+游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
+代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
+using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度 private Vector3 velocity; // Update is called once per frame void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向） Vector2 playerInput; playerInput.x = Input.GetAxis("Horizontal"); playerInput.y = Input.GetAxis("Vertical"); Vector3 desiredVelocity = new Vector3(playerInput....</p>
+</section>
+<footer class=entry-footer><span title="2022-01-06 20:11:49 +0800 CST">January 6, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Gameplay 01 游戏开发中的平滑移动" href=https://blog.moeif.com/posts/gamedev-smooth-move/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>编译 Apple Silicon 版本 Aseprite
 </h2>
 </header>
@@ -184,38 +218,6 @@ Android 下载连接: https://www.taptap.com/app/222178
 </section>
 <footer class=entry-footer><span title="2021-03-12 19:01:01 +0800 CST">March 12, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Unity XCode 自动设置签名" href=https://blog.moeif.com/posts/unity-xcode-auto-signing/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>Unity 接入 Sigmob SDK
-</h2>
-</header>
-<section class=entry-content>
-<p>在 Unity 项目中接入Sigmob 时，遇到很多问题，他们的文档写的也不是很清楚，特别是对于 Android 开发没有很深入了解的情况，读起来很困难，这篇博客记录了详细的 Sigmob 广告 sdk 接入过程。
-...</p>
-</section>
-<footer class=entry-footer><span title="2021-01-06 22:03:56 +0800 CST">January 6, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Unity 接入 Sigmob SDK" href=https://blog.moeif.com/posts/sigmob-sdk-for-unity/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>理解 Boids
-</h2>
-</header>
-<section class=entry-content>
-<p>Boids 可以理解为类似鸟群的东西，就是多个个体之间的相互作用。在游戏开发中经常会用到。例如 RTS 游戏，控制一个坦克战队，如何保持行进方向的一致性，以及坦克之间互相有一定有间隔，又不会间隔太大，这里就可以使用 Boids 相关的理论来实现。
-在众多这方面的文章中，基本上会涉及到三个方面，跟随、分离、聚合。跟随，就是说整个群体有一个行进的大方向。分离，则是个体与个体之间有一定的间隔，不至于发生碰撞。而聚合，就是个体不能离群体太远，不能脱离群体。
-对于上面提到的三个方面，简单来说，就是一个力的叠加。
-跟随 一个鸟群往哪个方向飞，可以假设有一只领头的鸟，其他的鸟跟随这只鸟的方向。知道领头的鸟的方向，知道自己当前的飞行方向，就可以计算出应该向中个方向施加一个力，可以使自己的方向，偏向于领头的鸟的方向。
-分离 分离，是要保证个体之间不要离的太近，不要发生碰撞。先考虑两个物体的情况，假设要使物体 A 远离物体 B，只要从 B，向 A 施加一个推力，就可以将 A 推离 B。那如果 A 要同时和 B 与 C 保持距离呢？一样的，只需要从 B 和 C 分别向 A 施加一个推力，这两个的合力，就是 A 远离 B 和 C 的方向。同理，不管 A 要与多少个物体保持距离，只需要从每个物体出发，向 A 的方向施加一个力，就可以将 A 推开。
-上面只考虑了 A 远离其他物体的情况，如果每一个物体都要与其他物体保持距离呢？一样的，只需要从每一个其他物体，向自己的方向施加一个力，这个合力，就是自己运动的方向。
-聚合 为了保证个体不脱离群体，还需要一个聚合力。就是将个体自身，推向群体中心的力。
-分离的力和聚合的力一定程度上抵消，从而达到个体之间即保持了距离，又保证了每一个体不脱离群体。
-下面的代码是我的一个小游戏项目中的，其中只用到了分离和聚合。只要懂了原理，就可以根据具体的情况灵活变通，达到自己想要的效果即可。
-using UnityEngine; using System.Collections.Generic; using System.Collections; public class GamePlayFlock : MonoBehaviour { public static List&lt;GamePlayFlock> flockList = new List&lt;GamePlayFlock>(); public static void StartAllFlock() { for(int i = 0; i &lt; flockList....</p>
-</section>
-<footer class=entry-footer><span title="2020-11-30 18:01:00 +0800 CST">November 30, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 理解 Boids" href=https://blog.moeif.com/posts/understanding-boids/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

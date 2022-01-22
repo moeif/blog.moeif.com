@@ -105,22 +105,6 @@
 </article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
-<h2>游戏开发中的平滑移动
-</h2>
-</header>
-<section class=entry-content>
-<p>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
-一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
-而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
-游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
-代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
-using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度 private Vector3 velocity; // Update is called once per frame void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向） Vector2 playerInput; playerInput.x = Input.GetAxis("Horizontal"); playerInput.y = Input.GetAxis("Vertical"); Vector3 desiredVelocity = new Vector3(playerInput....</p>
-</section>
-<footer class=entry-footer><span title="2022-01-06 20:11:49 +0800 CST">January 6, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 游戏开发中的平滑移动" href=https://blog.moeif.com/posts/gamedev-smooth-move/></a>
-</article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
 <h2>This Week In Moeif 28
 </h2>
 </header>
@@ -212,6 +196,18 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
 </section>
 <footer class=entry-footer><span title="2021-11-21 19:55:49 +0800 CST">November 21, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to This Week In Moeif 22" href=https://blog.moeif.com/posts/this-week-in-moeif-22/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>This Week In Moeif 21
+</h2>
+</header>
+<section class=entry-content>
+<p>这周的周记，拖到了周一才写。昨天周日，一天没干活，晚上的时候把博客从Hexo迁移到了Hugo，因为Hugo有更像样的主题。这个周小Q回家了，我一个人在上海，还是按原来的节奏开发，还在继续推进游戏码农项目，但是推的有点吃力，感觉好多东西没有想明白。
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-11-15 20:06:49 +0800 CST">November 15, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to This Week In Moeif 21" href=https://blog.moeif.com/posts/this-week-in-moeif-21/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

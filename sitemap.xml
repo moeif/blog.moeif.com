@@ -2,19 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.moeif.com/tags/gameplay/</loc>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/gameplay-02-jump/</loc>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
+  </url><url>
     <loc>https://blog.moeif.com/posts/</loc>
-    <lastmod>2022-01-16T23:11:49+08:00</lastmod>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/</loc>
-    <lastmod>2022-01-16T23:11:49+08:00</lastmod>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/</loc>
+    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/this-week-in-moeif/</loc>
     <lastmod>2022-01-16T23:11:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/this-week-in-moeif-30/</loc>
-    <lastmod>2022-01-16T23:11:49+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/</loc>
     <lastmod>2022-01-16T23:11:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/this-week-in-moeif-29/</loc>
@@ -55,9 +64,6 @@
   </url><url>
     <loc>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-10/</loc>
     <lastmod>2021-12-04T12:44:15+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2021-12-01T21:12:47+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/</loc>
     <lastmod>2021-12-01T21:12:47+08:00</lastmod>
