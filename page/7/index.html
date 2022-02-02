@@ -74,6 +74,18 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Unity XCode 自动设置签名
+</h2>
+</header>
+<section class=entry-content>
+<p>Unity ios导出XCode工程后，通常需要手动设置签名，就像下图中的样子。只要简单的两部设置，就可以自动选择我们想要的签名。
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-03-12 19:01:01 +0800 CST">March 12, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Unity XCode 自动设置签名" href=https://blog.moeif.com/posts/unity-xcode-auto-signing/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity 接入 Sigmob SDK
 </h2>
 </header>
@@ -221,19 +233,6 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
 </section>
 <footer class=entry-footer><span title="2020-04-25 18:57:08 +0800 CST">April 25, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 游戏项目资源管理" href=https://blog.moeif.com/posts/u3d-game-resources-managemant/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Rust 基础 | 常用集合数据类型
-</h2>
-</header>
-<section class=entry-content>
-<p>之前用到的 String 类型，并没有那么简单，接下来会聊一下关于 String 更多的一些应用。在说 String 前，需要先学习一下 Vec 这种数据类型，类似于一个动态的数组。然后是 HashMap，一个键对值的数据类型，与其他编程语言中的字典很类似。
-Vec Vec&lt;T> 和数组一样，用于存储一系列相同类型的值。但是 Vec 可以动态地插入，删除。首先，是创建一个 Vec，可以使用 Vec::new()，或者使用宏 vec!。要注意的是，只有使用 mut，才能使 Vec 可变，也就是可以插入和删除值。
-fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&lt;i32> = Vec::new(); // 在定义时不标明类型，而在首次插入值时，由Rust自动推断 let mut v2 = Vec::new(); // 这里插入了一个 i32 的值，所以Rust推断 v2 为存放 i32 的 Vec v2.push(2); let v3 = vec![1,2,3,4,5]; let v4 = vec!["hello", "rust"]; let mut v5: Vec&lt;String> = vec!["hello".to_string(), "rust".to_string()]; } 向 Vec 有两个操作函数，一个是 push，往里插入值，一个是 pop，往外弹出值，Pop返回的是最后插入的值。看下面的代码...</p>
-</section>
-<footer class=entry-footer><span title="2020-04-12 23:51:23 +0800 CST">April 12, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Rust 基础 | 常用集合数据类型" href=https://blog.moeif.com/posts/rust-syntax-summary-06/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

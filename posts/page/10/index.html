@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>使用Unity3D展示Sin函数动画
+</h2>
+</header>
+<section class=entry-content>
+<p>今天我们要实现的东西，就是下面这个动图的效果。使用代码控制方块的坐标，来展示 Sin 函数。方块的颜色变化，是随着坐标变化而动态改变的，我们会写一个超简单的 Shader 来实现。
+...</p>
+</section>
+<footer class=entry-footer><span title="2020-01-06 13:05:08 +0800 CST">January 6, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 使用Unity3D展示Sin函数动画" href=https://blog.moeif.com/posts/unity-sine-visualization/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>制作一个会动的时钟
 </h2>
 </header>
@@ -298,22 +310,6 @@ class Node { public int data; public Node next; public Node(int data){ this.data
 </section>
 <footer class=entry-footer><span title="2019-12-12 17:31:12 +0800 CST">December 12, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 堆栈" href=https://blog.moeif.com/posts/data-structure-03-stack/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>链表
-</h2>
-</header>
-<section class=entry-content>
-<p>什么是链表 链表和数组一样，是一种线性的数据结构，由一个一个节点构成，节点中存放着数据，以及指向下一个或上一个节点的指针，通过指针，将节点链接在一起，构成整个链表结构。不同于数组，链表在内存中并不是连续的存储空间。
-为什么要用链表？或者说链表有哪些优点 我们知道，数组是很方便的数据结构，但是数组有一些局限性。必须事先知道要分配多少内存空间。插入和移除是很耗费性能的操作，因为需要移动不止一个元素。
-而链表，正好弥补了数组的缺点，链表是动态内存，不需要事先分配固定大小的空间，添加和删除元素，也只需要改变指针即可，不需要移动很多元素。
-链表的缺点 当然，链表也有弊端。无法像数组一样随机访问，例如要访问第5个元素，是没办法直接访问的，只能遍历。每一个节点，需要额外的内存空间用来存储指向下一节点的指针。对缓存不友好，因为链表的内存空间并不一定是连续的。
-链表怎样用代码表示，以及插入、删除、遍历操作 下面我们使用C#来描述一下链表
-/// &lt;summary> /// 链表中的节点结构 /// &lt;/summary> public class Node { public int data; public Node next; public Node (int data) { this.data = data; } } public class Linkedlist { public Node head; public Node tail; /// &lt;summary> /// 插入一个节点 /// &lt;/summary> /// &lt;param name="data">&lt;/param> public void InsertNode(int data) { Node newNode = new Node(data); if(head == null) { head = newNode; tail = newNode; } else { tail....</p>
-</section>
-<footer class=entry-footer><span title="2019-12-11 10:43:51 +0800 CST">December 11, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 链表" href=https://blog.moeif.com/posts/data-structure-02-linkedlist/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
