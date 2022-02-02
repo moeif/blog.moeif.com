@@ -77,6 +77,33 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>浅谈在Unity3D中使用CriWare播放声音
+</h2>
+</header>
+<section class=entry-content>
+<p>在游戏开发中的音频解决方案，CriWare 是不错的选择，很多游戏大作也在使用。为什么使用CriWare呢？对于游戏运行时，可以显著提高加载速度和减小包体大小。而对于音频制作上，可以很方便地做更多的效果，例如多音源的避让等。
+今天我们就来浅浅地聊一下在 Unity3D 中使用 CriWare 播放声音，以及声音的管理等问题。
+音频文件由做音频的同学使用CriWare的软件去制作，最终导出的文件是以acb或awb为扩展名的文件。如果采用的是Memory的形式，则导出的acb文件。
+对于开发来说，首先要知道两个东西，一个是CueSheet，一个是CueName。在音频制作的时候，多个音频可以打成一个组，每一个音频的名字，就是CueName，而这个组，就是CueSheet。我们要播放一个声音，首先要知道声音的名字，就是CueName，还要知道它所在的组，因为要加载到内存中。即使要播放组中的一个音频，也是要把整个组加载到内存中的。
+所以在制作时，音频那边的同学要规划好，哪些音频要在同一个组，哪些音频要在另外的组。当然，可以一个音频一个组，但是打成组可以做很多事情，这个等我请教一个音频那边的同学再补充。
+先将声音播放出来 首先把CriWare插件导入到Unity中
+将做好的声音ACB文件放入StreamingAssets目录中
+新建一个空物体，然后挂载CriAtom组件如下图
+CriAtom 用于管理CueSheet，只有将CueSheet加入到CriAtom中，才能播放其中的某一个音频。将CueSheet加入到CriAtom中，意味着这个CueSheet会被加载到内存中，移除CueSheet，则会从内存中卸载。
+上图中每点击 Add CueSheet，就可以填入一个新的CueSheet，Name字段就是ACB文件的名字(不带扩展名)，ACB File字段填写ACB文件名字(带扩展名)。例如上图中我已经填了一个示例。
+新建一个空物体，然后挂载 CriAtomSource 组件。这个组件，可以理解为Unity的AudioSource，就是用来播声音的。
+上图中，CueSheet字段，填写要播放的音源，所在的CueSheet名(不带扩展名)，而CueName，就填写要播放的声音的名字。这些名字，都是做音频的同学定好的。勾选上 Play On Start，然后运行Unity，就可以听到声音。
+上面只是实现了声音能够播出来，要在真正的项目中使用，还需要管理声音，下面将说一下大概的思路。
+声音管理器 基本思路是这样的，首先有一个声音管理器我们称为AudioManager，提供接口播放声音，停止声音，暂停声音，恢复声音，播放完毕，CueSheet加载卸载。外面模块调用AudioManager去控制声音。
+调用 AudioManager 播放声音的接口时，会生成一个新的对象, GameObject，挂载一个脚本，我们称为 AudioPlayer，这个 AudioPlayer 中会动态的挂载 CriAudioSource，然后将我们要播放的CueSheet，CueName这些值通过AudioManager传进去，设置 CriAudioSource 参数，然后调用 CriAudioSource的 Play 函数。
+当调用 AudioManager 的播放声音接口时，AudioManager 会动态记录这个 CueSheet 是否已经添加到 CriAtom 中，如果没有，则会添加，这时，CriAtom会去加载声音文件到内存中。
+AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 AudioManager 的播放完毕接口，用于计数。这个计数，是为了让 AudioManager 知道一个CueSheet中，是否还有声音在播放，如果没有了，则要动态将 CueSheet 从 CriAtom 中移除掉，释放内存。...</p>
+</section>
+<footer class=entry-footer><span title="2019-11-30 19:17:25 +0800 CST">November 30, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 浅谈在Unity3D中使用CriWare播放声音" href=https://blog.moeif.com/posts/unity-criware/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>图形学相关的基本数学
 </h2>
 </header>

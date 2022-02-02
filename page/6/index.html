@@ -74,6 +74,25 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>This Week In Moeif 6
+</h2>
+</header>
+<section class=entry-content>
+<p>今天已经是8月份了，好快啊，从开始到现在，已经4个月了。
+这周没有做客户端的事情，几乎都在看服务器相关的东西，今天终于把排行榜的逻辑写完了，因为使用的是 Rust，所以写的过程中遇到很多问题，不断的查，不断地改，基本上是一边学一边改。昨天想过放弃使用 Rust，直接使用 Nodejs 推起来，但是后来考虑了一下，觉得那样没有任何积累，就还是继续学习使用 Rust 来写了。
+不过这周将 HTUSDT 的交易对也开始了网格交易。火币的API调了好一会才调通，主要是文档写的不清楚。
+这周还参加了 Unity 的技术开放活动。
+项目进度 pinmaker 这个跑了一个月，目前收益正好 105.35 USDT。不过DOT有一部分是在高价买的，现在并没有买回来，严格来说，还不能这样来考虑收益。
+pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上改了一下，大部分逻辑没有改，只是API的调用及数据结构改了一下。到今天为止，跑了4天了，目前收益 40 USDT。但是这个本金多，投入了 1500 USDT。
+诗仙与诗魔 这周没有做客户端的事情，全在搞服务器了。基本的流程已经理清，用户数据，服务器状态，版本信息等数据，全放 aws 的 DynamoDB中，客户端直接拉取。排行榜，匹配这两块，放 aws 的 ec2中，先使用免费的服务器，需要测一下并发。
+今天看了一下软著，已经走到了审查中这一步，提交的还是有点晚了。
+下周初步计划 完成服务器的全部逻辑 调通客户端与服务器的通信 客户端边缘模块完善，服务器状态，版本更新提示等 </p>
+</section>
+<footer class=entry-footer><span title="2021-08-01 22:23:44 +0800 CST">August 1, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to This Week In Moeif 6" href=https://blog.moeif.com/posts/this-week-in-moeif-6/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 5
 </h2>
 </header>
@@ -214,18 +233,6 @@
 </section>
 <footer class=entry-footer><span title="2021-06-08 23:01:57 +0800 CST">June 8, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 独立开发者注册企业资质" href=https://blog.moeif.com/posts/company-qualification-for-indie-developers/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Unity 接入 Topon 报错解决
-</h2>
-</header>
-<section class=entry-content>
-<p>最近在接入Topon广告聚合SDK是，导出XCode工程后，编译报了一堆错误，搞了好久，这里记录一下解决过程。
-...</p>
-</section>
-<footer class=entry-footer><span title="2021-04-25 20:16:59 +0800 CST">April 25, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Unity 接入 Topon 报错解决" href=https://blog.moeif.com/posts/solve-topon-ad-build-error/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

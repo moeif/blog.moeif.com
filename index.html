@@ -95,6 +95,27 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Roguelike In Rust 03: Entities and Components
+</h2>
+</header>
+<section class=entry-content>
+<p>对于游戏开发者，可能或多或少听说过或者使用过 ECS 的结构。现在大多数游戏使用的还是面向对象的模式，面向对象编程并没有什么问题，但是在游戏开发过程中，当游戏不断的超出原有的设计时，从整个工程的扩展来说，ECS 拥有更好的扩展性。
+下面是一个面向对象的例子
+BaseEntity Monster MeleeMob OrcWarrior ArcherMob OrcArcher BaseEntity 是一个基类，包含了基本的数据和代码，用于表示地图上的一个实体。Monster 是一个怪物，MeleeMob 是一个近战单位，它会必现近处的目标，然后干掉它。ArcherMob 是一个可以远程攻击的单位。完成这样一个实体逻辑，可能首先需要按照不同的单位，将逻辑分开，并且抽出共同的逻辑，放到基类中。如果这时增加了一个兽人的逻辑，它即可以近战，又可以远程，并且在完成某些任务时，会变得更友好，怎么办？那就改逻辑呗，继续抽象，分离和整理代码。有很多已经上线的游戏是这样做的。但是，如果使用 ECS，这样的扩展会变得更加容易。
+Entity Component 的模式会消除面向对象模式中的层级结构，取而代之的是使用 Components 来描述一切东西，例如一个兽人，一只狼，一瓶药水等等。Component 只是数据，给一个实体，添加多个 Component。
+例如，我们可以创建一个实体，然后赋予它一些 Components，Position，Renderable，MelleAI，RangedAI，Hostile，Friendly 等等。对于近战单位，可以给它 MelleAI，Renderable 等。对于远程单位，可以给它 RangedAI，Renderable。对于兽人，在完成任务前，它有 Hostile 组件，而完成任务后，会变得更加友好，那就移除 Hostile 然后添加 Friendly。可以按照游戏逻辑随意地去组合。
+ECS 中的 “S” 叫做 System。System 会从 Components 中读取数据，然后执行自己的逻辑代码。例如在单位的显示逻辑中，用于显示的 System 会从单位的 Position 和 Renderable 组件中拿取数据，然后用于在地图上显示实体。
+对于小型游戏来说，在使用 ECS 时可能会感觉比面向对象写了更多的代码，前期确实是这样，但是对于后期添加逻辑，ECS 就变得容易了很多。
+使用 ECS 很重要的一点就是要知道 ECS 只是处理组合的一种方式，但并不是唯一的方式。对于实现功能来说，并没有什么唯一的方式，在了解了原理后，按照自己的习惯和喜好来就行。
+接着上一节的 hellorust 工程，使用 Specs 库
+cargo add specs cargo add specs-derive
+Cargo.toml...</p>
+</section>
+<footer class=entry-footer><span title="2022-02-03 05:00:42 +0800 CST">February 3, 2022</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Roguelike In Rust 03: Entities and Components" href=https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Roguelike In Rust 02: Hello Rust
 </h2>
 </header>
@@ -225,21 +246,6 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
 </section>
 <footer class=entry-footer><span title="2021-12-20 21:11:49 +0800 CST">December 20, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to This Week In Moeif 26" href=https://blog.moeif.com/posts/this-week-in-moeif-26/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>This Week In Moeif 25
-</h2>
-</header>
-<section class=entry-content>
-<p>这周开始学习画像素画了，还不是很熟练，不过每天会多少画几分钟，使用数位板。以前使用数位板不太习惯，慢慢的对于它的控制会越来越顺手。
-另外，这周完成了 Ray Tracing in One Weekend 系列的博客Rust重实现。接下来就要开始第二篇章了。
-今天上海下雨了，下个周的温度，可能会冷很多。
-项目进度 游戏码农：那些打工的日子 这周主要完成了头像自定义模块，简历完善模块，招聘信息模块，以及添加了能用的提示消息界面。确定了核心玩法界面的基本结构，参考了其他同类型的游戏对于时间上的处理逻辑。基本上确定了由事件来驱动整个游戏的进程，如果没有事件填充，那么时间就会停止，这样避免了很多以前想不到解决方案的问题，只是这样唯一的问题是没法一直挂机，可能过一段时间就需要操作一下。另外确定的小玩法有赛车，地下搏击俱乐部这两个。整理了一下游戏的核心，就是围绕着金钱，健康，快乐的循环。
-本周电影 花与罪 (2021) 你 第一季 You Season 1 (2018) 本周书籍 《无后为大》（阅读中） 《重构：改善即有代码的设计》（阅读中） 下周初步计划 游戏码农逻辑编写 </p>
-</section>
-<footer class=entry-footer><span title="2021-12-12 19:47:49 +0800 CST">December 12, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to This Week In Moeif 25" href=https://blog.moeif.com/posts/this-week-in-moeif-25/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

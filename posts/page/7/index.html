@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Unity 接入 Topon 报错解决
+</h2>
+</header>
+<section class=entry-content>
+<p>最近在接入Topon广告聚合SDK是，导出XCode工程后，编译报了一堆错误，搞了好久，这里记录一下解决过程。
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-04-25 20:16:59 +0800 CST">April 25, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Unity 接入 Topon 报错解决" href=https://blog.moeif.com/posts/solve-topon-ad-build-error/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>独立开发者，使用 Unity 开发 App
 </h2>
 </header>
@@ -210,23 +222,6 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
 </section>
 <footer class=entry-footer><span title="2020-07-11 12:36:46 +0800 CST">July 11, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Letsencrypt Nginx HTTPS 配置" href=https://blog.moeif.com/posts/nginx-https-config-and-redirect/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>对比 Rust 和 Python 图片缩放速度
-</h2>
-</header>
-<section class=entry-content>
-<p>写博客时经常会用到 tinypng 这个网站进行图片压缩，所以今天就想用 Rust 试一下关于图片处理的东西。首先对比了一个 Rust 和 Python 的缩放速度，Rust 使用了 image-rs，Python 使用了 Image 中的 PIL，速度结果如下图。
-原图是一张 2.9M，4800x2500 的图片，缩小为 500x260。电脑CPU型号是 Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz。使用 release 编译。
-> 点击这里查看大图
-注意下图中每个图片文件的文件名，标注了 image-rs 中使用的 FilterType
-可以发现，除了 image-rs 中的 Nearest 模式比较快之外，其他模式均比 Python 的 PIL 慢，因为 PIL 是C写的。
-代码如下
-[dependencies] image = "0.23.4" stopwatch = "0.0.7" extern crate image; extern crate stopwatch; use image::RgbImage; use image::DynamicImage; use image::imageops::FilterType; use stopwatch::{Stopwatch}; fn resize_image(){ let origin_image = "1....</p>
-</section>
-<footer class=entry-footer><span title="2020-04-26 19:38:35 +0800 CST">April 26, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 对比 Rust 和 Python 图片缩放速度" href=https://blog.moeif.com/posts/compare-rust-and-python-resize-image/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
