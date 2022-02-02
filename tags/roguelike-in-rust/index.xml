@@ -11,14 +11,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 03 Feb 2022 05:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/roguelike-in-rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Roguelike In Rust 03: Entities and Components</title>
+      <title>Roguelike In Rust 03: 实体和组件</title>
       <link>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</link>
       <pubDate>Thu, 03 Feb 2022 05:00:42 +0800</pubDate>
       
       <guid>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</guid>
       <description>对于游戏开发者，可能或多或少听说过或者使用过 ECS 的结构。现在大多数游戏使用的还是面向对象的模式，面向对象编程并没有什么问题，但是在游戏开发过程中，当游戏不断的超出原有的设计时，从整个工程的扩展来说，ECS 拥有更好的扩展性。
 下面是一个面向对象的例子
-BaseEntity Monster MeleeMob OrcWarrior ArcherMob OrcArcher BaseEntity 是一个基类，包含了基本的数据和代码，用于表示地图上的一个实体。Monster 是一个怪物，MeleeMob 是一个近战单位，它会必现近处的目标，然后干掉它。ArcherMob 是一个可以远程攻击的单位。完成这样一个实体逻辑，可能首先需要按照不同的单位，将逻辑分开，并且抽出共同的逻辑，放到基类中。如果这时增加了一个兽人的逻辑，它即可以近战，又可以远程，并且在完成某些任务时，会变得更友好，怎么办？那就改逻辑呗，继续抽象，分离和整理代码。有很多已经上线的游戏是这样做的。但是，如果使用 ECS，这样的扩展会变得更加容易。
+BaseEntity Monster MeleeMob OrcWarrior ArcherMob OrcArcher BaseEntity 是一个基类，包含了基本的数据和代码，用于表示地图上的一个实体。Monster 是一个怪物，MeleeMob 是一个近战单位，它会发现近处的目标，然后干掉它。ArcherMob 是一个可以远程攻击的单位。完成这样一个实体逻辑，可能首先需要按照不同的单位，将逻辑分开，并且抽出共同的逻辑，放到基类中。如果这时增加了一个兽人的逻辑，它即可以近战，又可以远程，并且在完成某些任务时，会变得更友好，怎么办？那就改逻辑呗，继续抽象，分离和整理代码。有很多已经上线的游戏是这样做的。但是，如果使用 ECS，这样的扩展会变得更加容易。
 Entity Component 的模式会消除面向对象模式中的层级结构，取而代之的是使用 Components 来描述一切东西，例如一个兽人，一只狼，一瓶药水等等。Component 只是数据，给一个实体，添加多个 Component。
 例如，我们可以创建一个实体，然后赋予它一些 Components，Position，Renderable，MelleAI，RangedAI，Hostile，Friendly 等等。对于近战单位，可以给它 MelleAI，Renderable 等。对于远程单位，可以给它 RangedAI，Renderable。对于兽人，在完成任务前，它有 Hostile 组件，而完成任务后，会变得更加友好，那就移除 Hostile 然后添加 Friendly。可以按照游戏逻辑随意地去组合。
 ECS 中的 &amp;ldquo;S&amp;rdquo; 叫做 System。System 会从 Components 中读取数据，然后执行自己的逻辑代码。例如在单位的显示逻辑中，用于显示的 System 会从单位的 Position 和 Renderable 组件中拿取数据，然后用于在地图上显示实体。
