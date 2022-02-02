@@ -74,6 +74,18 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>独立开发者，使用 Unity 开发 App
+</h2>
+</header>
+<section class=entry-content>
+<p>我终于成为了一名独立开发者…
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-04-24 23:44:29 +0800 CST">April 24, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 独立开发者，使用 Unity 开发 App" href=https://blog.moeif.com/posts/app-dev-with-unity/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity XCode 自动设置签名
 </h2>
 </header>
@@ -212,27 +224,6 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
 </section>
 <footer class=entry-footer><span title="2020-04-26 19:38:35 +0800 CST">April 26, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 对比 Rust 和 Python 图片缩放速度" href=https://blog.moeif.com/posts/compare-rust-and-python-resize-image/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>游戏项目资源管理
-</h2>
-</header>
-<section class=entry-content>
-<p>在游戏开发的过程中，整个项目的资源管理是很重要的一部分。涉及到与美术、策划等同事的协作，以及资源的打包，和后续运行时资源的更新，加载，卸载，内存管理等方面。规划好资源的的各个目录存放，以及资源的分类，会为后续的开发工作节省不少时间。这一篇博客主要来聊一下到资源的存放问题，而 AssetBundle 打包，以及运行时的更新和资源管理，将在后面的博客中详细说明。
-资源类型 一个游戏项目，涉及到的资源主要有 配置数据、图片、模型、材质、Shader、字体、音频、视频、动画Clip、Prefab、Animator Controller、Timeline、场景文件、Lua脚本 等。
-关于协作 首先说一下协作问题。在游戏开发的过程中，美术的同学需要将资源直接提交到建立好的项目中的指定目录中，一般来说，提交到哪个目录，是由程序的同学来决定，具体哪个目录，要根据后续的资源打包以及管理等方面决定。美术的同学提交的资源一般就是模型、动画、贴图等。
-而配置数据，则通常由策划同学来提交。配置数据的方式有很多种，常用的例如 Excel，有的项目是直接将原始的 Excel 文件放到工程中，而有的是将 Excel 数据转成其他格式再放到项目中。改表由策划同学来着手操作，在配表的过程中，除了数值，可能也会涉及到一些资源路径，例如有一些图片，是要动态加载的，那么路径也就配在某个模块的相关配置表中。而这些路径配在表中的资源，通常也由策划同学根据不同的系统来操作资源的位置。当然，首先会有一个父目录，在这个父目录下，策划的同学可以自由操作资源的位置，然后将资源的路径配置在数据表中。
-还有一个很重要的部分是UI，对于UI来说，如果不打图集，放入项目目录中的都是一个一个的散图，则可以由UI部分的同学直接将UI的图提交到指定的UI父目录下，父目录下的子目录，根据不同的模块来划分，共用的同可以放到一个公用的目录中。对于图的移动操作，都要在 Unity 中进行操作，防止 Prefab 上的图片引用丢失。如果UI使用 TexturePacker 这类工具打成一张图集，则可以由程序同学来做，在开发某个模块时，顺便将对应UI的图打成一张图集，原始的UI图就不必放到工程中，放在外部的一个美术的资源目录即可。
-资源存放 接下来，就说一下各个资源怎么去划分。在运行时，需要手动加载的资源，一般有下面这些，Prefab、图片、音频、视频、动画Clip、Animator Controller、配置数据 等，Prefab 这个不用多说。而图片，主要是UI上的一些动态的图，例如头像，或者其他一些需要根据数值，来显示不同的图。动画Clip 可以做成动态加载，也可以直接放到动画状态机中，根据实际情况决定。Animator Controller 也要根据情况决定。配置数据一般需要动态加载。而像 Prefab中用到的材质，贴图等，一般不需要我们手动加载，我们只需要加载 Prefab 即可。
-这些需要动态加载的资源，我们可以放在一个父目录下，例如这个目录就叫 Prefabs，然后在 Prefabs 下面建立各个子目录，或者多级子目录来存放不同的资源。如下图
-上面的图中只是大概划分了一下，每一个目录下，都可以再次建立子目录，子目录下还可以再细分子目录，具体还需要根据实际项目来划分。
-上面图中的目录，是用于存放那些我们需要动态加载的资源，还有一些不需要我们动态加载的资源，例如美术同学上传的原始FBX，以及模型使用到的材质，贴图等等。对于这些资源，我们可以再建立一个目录，例如叫做 RawResources。在这个目录下，我们也需要清晰地去划分子目录，要清楚地知道哪一个目录放了什么资源，哪一些 Prefab 会引用这些资源，后面写 Bundle 打包模块时，可能会用得到。
-关于 AssetBundle 问题 在打包 AssetBundle 时，Unity是可以自己处理依赖关系，例如我们可以不用管 RawResources 中的东西，只把 Prefabs 目录下的资源打包，而Prefab引用的原始资源，例如贴图，材质等，会自动打进Bundle，不需要我们手动管理。但是这样有一个问题是，对于共用的资源，会造成重复包含。看下面的图
-上面的图中，两个 Prefab 引用了同一个材质，而材质，引用了一张贴图。如果我们将 PrefabA 和 PrefabB 分别打成一个Bundle，而让 Unity 自己处理依赖打包关系，那么就会出现 PrefabA 所在的 Bundle 中包含了材质和贴图，而 PrefabB 所在的 Bundle 中，也包含了材质和贴图。这样就造成了 Bundle 文件占用空间变大，在运行时，占用内存变大。...</p>
-</section>
-<footer class=entry-footer><span title="2020-04-25 18:57:08 +0800 CST">April 25, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 游戏项目资源管理" href=https://blog.moeif.com/posts/u3d-game-resources-managemant/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

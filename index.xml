@@ -9,7 +9,23 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 02 Feb 2022 14:44:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Feb 2022 17:44:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Roguelike In Rust 02: Hello Rust</title>
+      <link>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</link>
+      <pubDate>Wed, 02 Feb 2022 17:44:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</guid>
+      <description>Rust 算是一个新兴的语言，近两年非常火了，但是他首次出现是在 2010 年。Rust 有非常好用的工具 cargo 和 rustup。
+如果要学习 Rust 这门编程语言，也有很多优秀的教程。
+ The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers  Rust 编辑器可以使用 VSCode
+在终端中使用命令 cargo new hellorust 可以创建一个名为 hellorust 的工程。src/main.rs 是起始文件。Cargo.toml 是工程的配置文件，里面包含了一些其他库的引用信息。
+此时 src/main.rs 的代码如下
+fn main() { println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键字 main 是主函数名，也就是整个程序的起始函数。 println! 是一个打印宏  使用命令 cargo run 可以编译并运行工程。
+一些有用的 cargo 命令
+ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库，并且编译整个项目 cargo update 会根据 Cargo.</description>
+    </item>
+    
     <item>
       <title>Roguelike In Rust 01: 前言</title>
       <link>https://blog.moeif.com/posts/roguelike-rs-01-introduction/</link>
@@ -19,7 +35,8 @@
       <description>这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -&amp;gt; rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
-我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。</description>
+我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
+注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。</description>
     </item>
     
     <item>

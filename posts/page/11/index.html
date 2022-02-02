@@ -77,6 +77,27 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>堆栈
+</h2>
+</header>
+<section class=entry-content>
+<p>有一堆书，一本叠一本地放入箱子里，最后放入的，一定是在最上面，对不对。取书的时候，规定只能从上面一本一本地取，如果要拿最先放入箱子里的那本书，也就是最下面的那本书，只能先把上面的拿出来。
+什么是堆栈(Stack) 上面说的就是我们今天要讲的堆栈，也可以简单叫做栈。堆栈是很常用很基础的数据结构。堆栈涉及到的概念如果下。
+栈顶，就是最上面的一个元素。
+压栈(Push)，就是将一个元素放入栈中。
+弹出(Pop)，就是将栈顶的元素从堆栈中拿出来。
+就像上面往箱子里放书一样，最先放入堆栈的元素，在最下面，最后放入的元素，在最上面，而取元素，只能从上面一个一个取，不能从中间抽取元素。
+堆栈有什么用呢 那栈有什么用呢，举几个简单的例子。我们用的很多软件，都有撤销功能对不对，其实，那个就可以用堆栈来实现。将每一步操作时的状态，保存到堆栈中，当用户要撤销时，就从堆栈中拿出最近的一个状态进行恢复，也就是最后放入堆栈中 (栈顶) 的状态数据。是不是很熟悉？
+后面要学到的树的遍历，深度优先搜索，也是用堆栈来实现的。
+总之呢，记住一句话，先进后出(Fist in last out) 或者 后进先出(Last in first out) 就可以完美诠释堆栈这种数据结构。
+自己动手实现一下 很多编程语言已经实现了堆栈(Stack)结构，但是呢，我们这里自己实现一下，加深理解。代码使用 C#，以链表的形式来实现。(C# 语言本身已经拥有了Stack，在实际使用中，不需要自己实现)
+class Node { public int data; public Node next; public Node(int data){ this.data = data; } } class Stack { public Node topNode = null; // 将一个数据压入堆栈中 public void Push(int data){ Node newNode = new Node(data); newNode.next = topNode; topNode = newNode; } // 将一个栈顶数据从堆栈中弹出 public int Pop() { if (!...</p>
+</section>
+<footer class=entry-footer><span title="2019-12-12 17:31:12 +0800 CST">December 12, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 堆栈" href=https://blog.moeif.com/posts/data-structure-03-stack/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>链表
 </h2>
 </header>
@@ -256,33 +277,6 @@ AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 
 </section>
 <footer class=entry-footer><span title="2019-11-30 19:17:25 +0800 CST">November 30, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 浅谈在Unity3D中使用CriWare播放声音" href=https://blog.moeif.com/posts/unity-criware/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>图形学相关的基本数学
-</h2>
-</header>
-<section class=entry-content>
-<p>这一篇博客会比较长，目前还没写完，处于不断更新中…
-这一节会用一些通俗的语言去解释一些数学上的概念，有一些解释可能并不是严谨，我们更多地是把焦点放在理解这些概念是什么，为后面的应用做铺垫。如果有一些点不能理解，也没关系，只要知道有这样一个东西就行，等真正用到的时候，有点印象，这样就会有解决问题的方向，再回来查相关的知识就可以。单纯记住一些知识是没有太多意义的，只有会应用了，才有意义。
-集合 (Sets) 一堆东西，就是一个集合。例如桌子上有一堆苹果，就可以说，这是一个苹果的集合。旁边放了一堆干果，就可以说，那是一个干果的集合。这里有100个数字，都是整数，那这就是一个整数集合。
-下面是一些常用的集合
-ℝ 实数集合 实数包含有理数 和无理数，有理数包括整数和分数，无理数就是无限不循环小数
-ℝ+ 非负实数集合 理解了实数集，这个非负实数集合就好理解了，就是把把负数去掉
-ℝ2 有序对，像二维的坐标，就属于一个有限对，(x,y)
-ℝn 在n维笛卡尔空间中的点
-ℤ 整数集合
-S2 在单位球面上的3D点
-上面的这些常用的集合，大概了解一下就好了，不用详细的去探究，只要大概知道是什么，有这个名词的印象就OK，等用到的时候自然就了解了。
-映射 (Mappings) 映射和编程上的函数很类似，输入参数，输出结果，或者说，给函数一个A，函数进行运算后，会返回给你一个B。而映射，类似，就是将一个东西从A变成B。
-f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个函数呢，接收一个输入，这个输入是ℝ，也就是上面说到的实数类型的数，注意，这里是输入一个实数，而不是输入实数集合，这里的ℝ可以理解成编程函数中的数据类型。然后呢输出一个整数类型的数。基本上可以当作编程语言中的函数调用。
-映射，是将一个集合中的元素，映射成另一个集合中的元素。可以说，你从A集合中找一个元素，扔进映射函数里，那么映射函数会从B集合中找一个元素，再扔给你。
-逆映射 (Inverse Mappings) 通俗来讲，逆映射就是映射反过来，你从B集后找一个元素扔进映射函数，映射函数会从A集合中根据映射规则找一个元素还给你。映射中，有一个名词，叫做 双射，就是说，对于A集合中的任何一个元素，都能在B集后中找到唯一一个与它一一对应的元素，并且，对于B集后中的任何一个元素，也都在能A集合找到唯一一个与它一一对应的元素。这种情况，就叫做双射。
-区间 (Intervals) 区间可以理解为一个数值范围，这个范围内的元素放在一起，也就是我们前面学到的集合。例如一周有7天，数值范围就是从星期一到星期日，某幼儿园小朋友的身高范围是80cm到140cm之间的，这些都是区间。我们从整数集合上定义一个区间，例如[1, 15]，意思就是从1到15这15个数。用中括号[] 表示的区间叫做闭区间，用小括号()表示的区间叫做开区间，还可以混合使用，例如 (] 或者 [)，这种分别叫做半开区间和半闭区间。那它们有什么区别呢？中括号，表示区间范围包含起始或结束数值，小括号表示区间范围不包含起始或结束数值。
-[1, 10] 表示区间范围是从 1到10 (1, 10) 表示区间范围是从 2到9 (1, 10] 表示区间范围是从 2到10 [1, 10) 表示区间范围是从 1到9 并集: 给定两个集合A，B，把他们所有的元素合并在一起组成的集合，叫做集合A与集合B的 并集，记作A∪B，读作A并B。...</p>
-</section>
-<footer class=entry-footer><span title="2019-11-20 12:56:25 +0800 CST">November 20, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 图形学相关的基本数学" href=https://blog.moeif.com/posts/computer-graphics-math/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

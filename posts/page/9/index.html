@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Unity UGUI RGB通道分离抖动
+</h2>
+</header>
+<section class=entry-content>
+<p>今天我们要在 UGUI 上实现图片RGB通道分离抖动效果，先看最终效果图
+...</p>
+</section>
+<footer class=entry-footer><span title="2020-03-08 22:18:03 +0800 CST">March 8, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Unity UGUI RGB通道分离抖动" href=https://blog.moeif.com/posts/unity-ugui-tiktok-effect/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity Shader | 使用Struct传递数据
 </h2>
 </header>
@@ -205,26 +217,6 @@ void Update () { for (int i = 0; i &lt; points....</p>
 </section>
 <footer class=entry-footer><span title="2020-01-10 10:51:45 +0800 CST">January 10, 2020</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 使用 Unity 实现漂亮的数学曲面(上)" href=https://blog.moeif.com/posts/unity-basis-03-math-curve1/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>哈希
-</h2>
-</header>
-<section class=entry-content>
-<p>今天我们来聊一下哈希(Hashing)，有时候也被称为散列。简单来说，哈希是一个唯一标识，用于标识一个东西。例如，一个人的身份证号就可以称为一个哈希，通过一个身份证号，可以定位到某一个人的信息。一个人的名字，也可以用作哈希，不过这个可能会产生重复，因为有很多人重名，这样导致的问题就是，通过名字，可能定位到多个人的信息，这种情况叫做哈希碰撞。
-哈希表(Hash Table) 哈希表是一种存储结构，也称为散列表，是一种 Key-Value 的存储结构。通过 Key 可以直接访问在内存存储位置的数据(Value)。例如 C# 中的 Dictionary 数据结构就是一种哈希表，还有一些编程语言中的 Tuple，也可以用哈希表实现。
-哈希函数/散列函数 哈希函数也可以称为散列函数，是在哈希表内部，用于将我们之前提到的 Key，转为哈希表用于直接访问数据的索引。
-哈希表的实现 在哈希表的内部，可以用数组来存储数据，当我们添加一个 Key-Vale 时，首先会使用哈希函数将 Key 转换成索引，然后将 Value 存储在数组中，而位置就是刚才计算出来的索引。哈希表通常有一个默认容量大小，而哈希函数计算出来的索引，通常会和当前的哈希表容量进行取模计算，然后得到最终的索引，这样能保证不管计算出来的索引有多大，永远不会超界。而当哈希表快要满时，则会进行自动扩容，通常扩为当前容量的2倍，而扩容后，当前哈希表中的所有数据，会重新计算位置。
-举一个例子，假设当前哈希表的容量为 10，我们要将 jack 作为 Key 存放在哈希表中，那索引是什么呢。我们这里使用一个简单哈希函数将Jack转为数据，使用每一个字母的Ascii值之和，也就是 106 + 97 + 99 + 107，最后的结果是 409，然后用 409 % 10，也就是对当前的容量取模，最后得到的索引就是 9，所以数据最终放在数据中索引为9的位置。
-而从哈希表中取数据，也是通过Key来取的，内部也是先把Key计算成索引，然后取数据。
-有时，哈希表部分结构也会使用树的形式来存储数据，也有可能在不同容量时，线性存储和树形存储会互相转换
-哈希碰撞 哈希函数在计算索引时，有时候同一个 Key 得到的索引是一样的，这种情况称为哈希碰撞，通常的解决方案是，哈希表内部的数组不直接存储数据，而是存储一个数据的指针，当有碰撞时，会以链表的形式将数据挂到索引所对应的数据指针上，这种处理碰撞的方法，也叫做拉链法。看一下下面的图，就会很容易明白。
-总结 哈希表的实现要考虑很多情况，例如哈希函数是否均匀、处理冲突的方法、哈希表的载荷因子等等，这些细节直接决定了哈希表增删改查数据的效率。通常情况下我们直接使用编程语言已经实现好的哈希表结构即可，没有必要自己实现。
-更多资料 维基百科 哈希表 Hashing data structure</p>
-</section>
-<footer class=entry-footer><span title="2020-01-08 12:35:13 +0800 CST">January 8, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 哈希" href=https://blog.moeif.com/posts/data-structure-08-hash/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
