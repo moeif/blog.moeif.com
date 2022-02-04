@@ -77,6 +77,19 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Letsencrypt Nginx HTTPS 配置
+</h2>
+</header>
+<section class=entry-content>
+<p>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
+域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
+HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名 Nginx 配置 执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl....</p>
+</section>
+<footer class=entry-footer><span title="2020-07-11 12:36:46 +0800 CST">July 11, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Letsencrypt Nginx HTTPS 配置" href=https://blog.moeif.com/posts/nginx-https-config-and-redirect/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>对比 Rust 和 Python 图片缩放速度
 </h2>
 </header>
@@ -220,27 +233,6 @@ const MAX_SCORE: i32 = 10000; 2. 标量数据类型 Rust 数据类型可以分�
 </section>
 <footer class=entry-footer><span title="2020-03-28 22:45:24 +0800 CST">March 28, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Rust 基础 | 基本语法" href=https://blog.moeif.com/posts/rust-syntax-summary-01/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Unity Shader | 半兰伯特、高光反射、BlinnPhone
-</h2>
-</header>
-<section class=entry-content>
-<p>写 Shader，到底是在做什么？Shader 就像一个拥有魔法的黑箱，我们最终从它那里得到的，是像素的颜色。而得到的是什么样的像素颜色，则取决于我们丢进黑箱里的是什么东西，以及使用的魔法咒语是什么。丢进同样的东西，使用不同的魔法咒语，得到的像素颜色也是不一样的。输入顶点的坐标，光线方向，以及自定义的颜色，使用不同的计算方式，得到的像素颜色是不一样的。使用同样的计算方式，丢进一个纯色颜色值，和丢进一张纹理，得到的像素，也是不一样的。
-如果把整个 Shader 比作一个函数，那么顶点位置，自定义的颜色值，纹理，灯光等这些就相当于函数的输入参数，而 Shader 中写的各种计算，用的各种算法，都是对输入的那些参数进行操作，而最终生成的，就是颜色值，也就是相当于函数的返回值。把 Shader 想的简单一点，就是输入需要的东西，进行计算，得到像素值。
-这篇博客，还是关于光照模型的，接下来我们首先总结一下常用的光照模型。
-Lambert (兰伯特) 光照模型 在之前的博客中说了漫反射的实现，实现漫反射用到的模型，叫做 Lambert (兰伯特) 光照模型。Lambert 实现出来的效果，一旦入射光向量与材质表面的角度大于90度，那么得到的漫反射颜色就会全部变为黑色，没有任何明暗变化效果。
-Lambert 光照模型公式: 最终颜色 = 直射光颜色 * 漫反射颜色 * max(0, dot(光源方向, 法线方向))
-其中，直射光颜色，漫反射颜色，都是我们自定义的变量。
-Half Lambert (半兰伯特) 光照模型 Half Lambert 是在 Lambert 模型的基础上，做了微调，也就是将光源方向与法线方向的点乘结果，从原来[-1, 1]，映射为 [0, 1]，这样原来背光面，也会有明暗效果。
-Half Lambert 光照模型公式: 最终颜色 = 直射光颜色 * 漫反射颜色 * (dot(光源方向, 法线方向) * 0.5 + 0.5)
-Specular (高光反射) 这里的高光反射使用了 Phone 模型，的原理很简单，想象一束光射向某个点，然后反射出去，我们的眼睛同样看向那个点，当我们的眼睛看向那个点的方向，与光线反射的方向，越接近时，进入我们眼睛的反射光则越多，也就是更亮。看下面的图
-很明显，当视野方向与光的反射方向夹角越小时，也就是说进入眼睛的光越多，所以那个点也就会越亮，这就是高光反射的原理。所以高光反射，实现起来也就很简单了，只要拿到视野方向，拿到直射光的反射方向，就可以求出最终的颜色值。
-Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * pow(max(0, dot(反射光方向, 视野方向)), 光泽度(gloss)) + 漫反射颜色 + 环境光颜色...</p>
-</section>
-<footer class=entry-footer><span title="2020-03-19 21:50:16 +0800 CST">March 19, 2020</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Unity Shader | 半兰伯特、高光反射、BlinnPhone" href=https://blog.moeif.com/posts/unity-shader-basis-05/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

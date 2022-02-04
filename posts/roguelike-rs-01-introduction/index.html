@@ -9,7 +9,8 @@
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -> rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
 我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
-注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。">
+注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。
+萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ">
 <meta name=author content="fred">
 <link rel=canonical href=https://blog.moeif.com/posts/roguelike-rs-01-introduction/>
 <meta name=google-site-verification content="XYZabc">
@@ -34,7 +35,8 @@
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -> rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
 我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
-注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。">
+注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。
+萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.moeif.com/posts/roguelike-rs-01-introduction/"><meta property="og:image" content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2022-02-02T14:44:42+08:00">
@@ -46,9 +48,10 @@
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -> rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
 我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
-注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。">
+注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。
+萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.moeif.com/posts/"},{"@type":"ListItem","position":2,"name":"Roguelike In Rust 01: 前言","item":"https://blog.moeif.com/posts/roguelike-rs-01-introduction/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Roguelike In Rust 01: 前言","name":"Roguelike In Rust 01: 前言","description":"这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。\n每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -\u0026gt; rustyroguelike\n上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。\n我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。\n注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。","keywords":["Roguelike In Rust"],"articleBody":"这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。\n每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 - rustyroguelike\n上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。\n我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。\n注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。\n","wordCount":"41","inLanguage":"en","datePublished":"2022-02-02T14:44:42+08:00","dateModified":"2022-02-02T14:44:42+08:00","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/posts/roguelike-rs-01-introduction/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Roguelike In Rust 01: 前言","name":"Roguelike In Rust 01: 前言","description":"这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。\n每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -\u0026gt; rustyroguelike\n上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。\n我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。\n注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。\n萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ","keywords":["Roguelike In Rust"],"articleBody":"这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。\n每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 - rustyroguelike\n上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。\n我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。\n注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。\n萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ","wordCount":"44","inLanguage":"en","datePublished":"2022-02-02T14:44:42+08:00","dateModified":"2022-02-02T14:44:42+08:00","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/posts/roguelike-rs-01-introduction/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -101,6 +104,10 @@ Roguelike In Rust 01: 前言
 <p>上面的 <strong>rustyroguelike</strong> 代码是使用 <code>Python</code> 和 <code>libtcod</code> 来实现的。</p>
 <p>我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 <code>Specs</code>。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。</p>
 <p>注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。</p>
+<h3 id=萌一小栈>萌一小栈<a hidden class=anchor aria-hidden=true href=#萌一小栈>#</a></h3>
+<p>欢迎关注微信公众号 <strong>萌一小栈</strong>，博客文章同步推送
+<img loading=lazy src=/images/qrcode.jpg alt>
+</p>
 </div>
 <footer class=post-footer>
 <ul class=post-tags>

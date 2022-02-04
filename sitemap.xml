@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.moeif.com/posts/</loc>
-    <lastmod>2022-02-03T05:00:42+08:00</lastmod>
+    <lastmod>2022-02-04T23:00:42+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/tags/</loc>
+    <lastmod>2022-02-04T23:00:42+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2022-02-04T23:00:42+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/coder-game/</loc>
+    <lastmod>2022-02-04T23:00:42+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/</loc>
+    <lastmod>2022-02-04T23:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/roguelike-in-rust/</loc>
     <lastmod>2022-02-03T05:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</loc>
-    <lastmod>2022-02-03T05:00:42+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/tags/</loc>
-    <lastmod>2022-02-03T05:00:42+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/</loc>
     <lastmod>2022-02-03T05:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</loc>
@@ -27,9 +33,6 @@
     <lastmod>2022-01-22T20:50:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/gameplay-02-jump/</loc>
-    <lastmod>2022-01-22T20:50:49+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2022-01-22T20:50:49+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/this-week-in-moeif/</loc>

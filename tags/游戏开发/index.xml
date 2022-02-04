@@ -9,7 +9,32 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 23:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>游戏码农：那些打工的日子</title>
+      <link>https://blog.moeif.com/posts/coder-game/</link>
+      <pubDate>Fri, 04 Feb 2022 23:00:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/coder-game/</guid>
+      <description>经过了几个月的开发，我的游戏终于上线了。
+《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
+目前已经上线 AppStore，TapTap，好游快爆等平台。
+AppStore: https://apps.apple.com/cn/app/id1607035933
+TapTap: https://www.taptap.com/app/230651
+好游快爆：https://www.3839.com/a/141332.htm
+找工作 游戏开始需要完善简历信息，然后选择中意的公司进行投递和面试，拿到 Offer 后，不同的公司，给出的薪资略有差距，需要仔细考虑。
+租房子 压一付一的租房模式，大大缓解了刚开始打工的年轻人，到底是住的远一点，舒服一点，便宜一点。还是住的近一点，老破小，还贵。
+点外卖还是自己做饭 自己做饭，需要先购买食材，然后根据菜谱来做，挑战很大，但是成本低。点外卖，省力，就是花钱有点多。
+学习 想要提高自己的专业经验，光打工是不够的，还得多多学习。
+休息 在家里的时候，可以打打游戏，看看小说，睡睡觉，打工也是一个长期的活，同时也要照顾好自己噢。
+通勤 打车很舒服，消耗体力也小，坐地铁便宜，但是人挤人，应该怎么选择呢？似乎还得看看自己的存款
+上班 认认真真完成工作，也别忘记偶尔摸个鱼，或者钱很多可以把自己的工作任务偷偷外包给同事。
+投资 光靠打工是很难实现财富自由的，还是投资吧，股票、基金、贵金属等等，多种投资模式自己选择，真实的市场波动。
+资产 有些东西可能平时用不着，但是很贵。
+赚钱小游戏 偶尔休闲一下，打两把小游戏，顺便赚点钱，当然，也可能输。
+萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 </description>
+    </item>
+    
     <item>
       <title>Gameplay 02 游戏中的跳跃</title>
       <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
