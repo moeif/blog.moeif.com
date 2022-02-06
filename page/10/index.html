@@ -74,6 +74,18 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>使用外部工具登录Google VPS
+</h2>
+</header>
+<section class=entry-content>
+<p>Google的VPS创建好后，默认是无法通过外部的工具ssh登录的，要使用外部SSH工具登录，需要修改ssh的配置。
+...</p>
+</section>
+<footer class=entry-footer><span title="2020-02-09 10:04:23 +0800 CST">February 9, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 使用外部工具登录Google VPS" href=https://blog.moeif.com/posts/ligin-google-vps/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>使用 Unity 实现漂亮的数学曲面(下)
 </h2>
 </header>
@@ -243,22 +255,6 @@ void in_order_traversal(Node root) { // 如果左子树不为空，则递归处�
 </section>
 <footer class=entry-footer><span title="2019-12-21 16:22:10 +0800 CST">December 21, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 二叉树" href=https://blog.moeif.com/posts/data-structure-05-binary-tree/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>队列
-</h2>
-</header>
-<section class=entry-content>
-<p>生活中的一些排队行为，基本上都是队列的形式。这篇博客涉及的概念有 队列，循环队列，优先队列，双端队列。
-很多编程语言已经内置了队列结构，在实际项目中可以直接使用。这篇文章里的代码实现，主要用做原理理解。
-拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
-队列 队列，是一种先进先出的结构(First in first out)，也就是在队尾进行插入操作，在队头进行删除操作。队列可以用链表来实现，也可以用数组来实现，要根据实际需求来决定。
-队列的操作有入列、出列、判断是否为空、判断是否已满等操作。下面将用C#来实现列表结构，看代码
-public class Node { public int data; public Node next; public Node(int data) { this.data = data; } } public class LinkedListQueue { public Node head; public Node tail; // 插入一个元素 public void Enqueue(int data) { Node newNode = new Node(data); if (head == null) { head = newNode; tail = newNode; } else { tail.next = newNode; tail = newNode; } } // 删除一个元素 public int Dequeue() { if (IsEmpty()) { Debug....</p>
-</section>
-<footer class=entry-footer><span title="2019-12-18 13:53:31 +0800 CST">December 18, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 队列" href=https://blog.moeif.com/posts/data-structure-04-queue/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

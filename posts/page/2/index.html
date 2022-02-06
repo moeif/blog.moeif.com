@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>This Week In Moeif 27
+</h2>
+</header>
+<section class=entry-content>
+<p>又是一周结束了，时间过的好快啊。这周在焦虑和烦躁中度过。上海也开启了冬天模式，很冷，还没有取暖设备，买了一个取暖器，也做不到整屋加热，不过还好距离过年也就剩一个多月了，可以回北方了。好像已经两个周没有出去跑步了…
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-12-26 23:11:49 +0800 CST">December 26, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to This Week In Moeif 27" href=https://blog.moeif.com/posts/this-week-in-moeif-27/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 26
 </h2>
 </header>
@@ -206,23 +218,6 @@ $ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + (-入射向量 \cdot 法向�
 </section>
 <footer class=entry-footer><span title="2021-12-01 21:12:47 +0800 CST">December 1, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 编译 Apple Silicon 版本 Aseprite" href=https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Rust 光线追踪 09: 理想散射
-</h2>
-</header>
-<section class=entry-content>
-<p>上一节生成的图看起来很暗，有一个问题是因为有些物体反射的光线，会在 t = 0 时再次击中自己，而由于浮点数精度的问题，这些值可能是 0.00000001 或 -0.0000001 之类的任意接近0的浮点数，所以我们 hit 函数的 t_min 参数，需要忽略掉 0 附近的一小部分范围，防止物体发出的光线再次与自己相交。这样也就避免了阴影痤疮（Shadow ance）的产生。
-修改 main.rs 中 ray_color 函数中的 word.hit()，改为 if let Some(hit_record) = world.hit(r, 0.001, f64::INFINITY)，也就是 t_min 参数传值 0.001。
-cargo run --release > diffuse_random_in_sphere.ppm 生成图如下
-可以看到，已经比上一节生成的图亮了很多。
-我们上一节使用的漫反射光线散射的方法，是在球体内部生成一个随机的点。然后，这样生成的向量，有很大的概率会和法线方向相近，并且及小概率会沿着入射方向反射回去。然而，真正的理想散射（Lambertian 反射）后的光线距离法向量比较近的概率会更高，但是分布规律会更加均衡，而实现这个方法，就是在球面上选取一个点，而不是在球内。我们可以通过在球内选取一个点，然后将其标准化，来得到球面上的点，因为我们的球是单位球。
-在 vec3.rs 中 Vec3 的实现里，添加一个新的方法 random_unit_vector，代码如下
-// src/vec3.rs pub fn random_unit_vector() -> Vec3 { let point = Vec3::random_in_unit_sphere(); return Vec3::unit_vector(point); } 然后修改 main.rs 中的 ray_color 函数，将原来调用 random_in_unit_sphere 的代码改成调用 random_unit_vector。...</p>
-</section>
-<footer class=entry-footer><span title="2021-12-01 13:26:15 +0800 CST">December 1, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Rust 光线追踪 09: 理想散射" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-09/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

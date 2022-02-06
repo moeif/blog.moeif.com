@@ -74,6 +74,22 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>队列
+</h2>
+</header>
+<section class=entry-content>
+<p>生活中的一些排队行为，基本上都是队列的形式。这篇博客涉及的概念有 队列，循环队列，优先队列，双端队列。
+很多编程语言已经内置了队列结构，在实际项目中可以直接使用。这篇文章里的代码实现，主要用做原理理解。
+拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
+队列 队列，是一种先进先出的结构(First in first out)，也就是在队尾进行插入操作，在队头进行删除操作。队列可以用链表来实现，也可以用数组来实现，要根据实际需求来决定。
+队列的操作有入列、出列、判断是否为空、判断是否已满等操作。下面将用C#来实现列表结构，看代码
+public class Node { public int data; public Node next; public Node(int data) { this.data = data; } } public class LinkedListQueue { public Node head; public Node tail; // 插入一个元素 public void Enqueue(int data) { Node newNode = new Node(data); if (head == null) { head = newNode; tail = newNode; } else { tail.next = newNode; tail = newNode; } } // 删除一个元素 public int Dequeue() { if (IsEmpty()) { Debug....</p>
+</section>
+<footer class=entry-footer><span title="2019-12-18 13:53:31 +0800 CST">December 18, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 队列" href=https://blog.moeif.com/posts/data-structure-04-queue/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>通过阅读儿童图书快速提高你的英语水平
 </h2>
 </header>
@@ -292,18 +308,6 @@ class Node { public int data; public Node next; public Node(int data){ this.data
 </section>
 <footer class=entry-footer><span title="2019-12-06 12:43:44 +0800 CST">December 6, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 在游戏公司工作是什么体验呢？" href=https://blog.moeif.com/posts/experience-at-game-company/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>浅谈Unity3D音频可视化效果原理
-</h2>
-</header>
-<section class=entry-content>
-<p>在游戏开发中，你是否也想将音乐旋律变为漂亮的图形显示？就像这样的效果。
-...</p>
-</section>
-<footer class=entry-footer><span title="2019-12-04 16:08:42 +0800 CST">December 4, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 浅谈Unity3D音频可视化效果原理" href=https://blog.moeif.com/posts/unity-audio-visualization/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

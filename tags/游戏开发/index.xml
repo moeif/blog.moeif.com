@@ -9,7 +9,25 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 04 Feb 2022 23:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Feb 2022 17:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的独立游戏下载量和广告收入情况</title>
+      <link>https://blog.moeif.com/posts/coder-game-ad/</link>
+      <pubDate>Sun, 06 Feb 2022 17:00:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/coder-game-ad/</guid>
+      <description>经过了几个月的开发，我的游戏终于上线了。这篇博客来聊一下目前这个游戏的下载量和广告收入情况。
+《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
+目前已经上线 AppStore，TapTap，好游快爆等平台。
+AppStore: https://apps.apple.com/cn/app/id1607035933
+TapTap: https://www.taptap.com/app/230651
+好游快爆：https://www.3839.com/a/141332.htm
+下图是 Android 平台的广告收入情况 下图是 iOS 平台的广告收入情况 通过上面的广告收数据可以知道，从 2022.01.27 到 2022.02.05 这几天，Android 平台一共收入了 111 块钱，而 iOS 共收入了 70 块。
+下面是各个渠道的下载量统计 从上线以来，目前总玩家数有2982，期中日活玩家平均不到200。在渠道统计中有一个为 Development 的渠道，占了总玩家数的大部分，但是，这个渠道的包不是我发的，而是被破解了广告的一个包，所以其实真正导致收入的玩家数，是很少的。
+综上，这个游戏从玩法上来说，玩家粘性一般。从收入上来说，也是几乎可以忽略了。假设包没有被破解，可能收入会翻倍，不过那也没多少，和之前打工时的工资，根本无法比。
+萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 </description>
+    </item>
+    
     <item>
       <title>游戏码农：那些打工的日子</title>
       <link>https://blog.moeif.com/posts/coder-game/</link>
