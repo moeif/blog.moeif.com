@@ -9,22 +9,22 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 06 Feb 2022 17:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Feb 2022 11:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Roguelike In Rust</title>
+      <link>https://blog.moeif.com/tags/roguelike-in-rust/</link>
+      <pubDate>Tue, 08 Feb 2022 11:00:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/tags/roguelike-in-rust/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>游戏开发</title>
       <link>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sun, 06 Feb 2022 17:00:42 +0800</pubDate>
       
       <guid>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Roguelike In Rust</title>
-      <link>https://blog.moeif.com/tags/roguelike-in-rust/</link>
-      <pubDate>Thu, 03 Feb 2022 05:00:42 +0800</pubDate>
-      
-      <guid>https://blog.moeif.com/tags/roguelike-in-rust/</guid>
       <description></description>
     </item>
     

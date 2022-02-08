@@ -9,7 +9,19 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 03 Feb 2022 05:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/roguelike-in-rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Feb 2022 11:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/roguelike-in-rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Roguelike In Rust 04: 地图与行走</title>
+      <link>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</link>
+      <pubDate>Tue, 08 Feb 2022 11:00:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</guid>
+      <description>&lt;p&gt;接着上一节的内容，这一节将创建地图，然后玩家可以在地图中行走。地图分为可行走区域和不可行走区域。我们可以认为地图是由一个一个的格子组成。&lt;/p&gt;
+&lt;p&gt;先看一下最终的效果&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.moeif.com/postimages/roguelike-rs/0401.gif&#34; alt=&#34;&#34;  /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Roguelike In Rust 03: 实体和组件</title>
       <link>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</link>
