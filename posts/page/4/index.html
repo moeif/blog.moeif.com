@@ -77,6 +77,24 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Rust 光线追踪 03: 渲染一个圆
+</h2>
+</header>
+<section class=entry-content>
+<p>下面的公式有点多，只是把原教程中的公式详细展开了，一步一步来，很简单，相信我。
+给定一个点，判断一个点是否在一个半径为 $R$ 的圆或者圆外、圆内，我们可以使用下面的公式来判断。这里假设圆心在 $(0，0，0)$ 点，半径为 $R$
+如果一个点 $(x, y, z)$ 在圆上，则 $x^2 + y^2 + z^2 = R^2$
+如果一个点 $(x, y, z)$ 在圆内，则 $x^2 + y^2 + z^2 &lt; R^2$
+如果一个点 $(x, y, z)$ 在圆外，则 $x^2 + y^2 + z^2 > R^2$
+假设圆心在点 $C = (C_x, C_y, C_z)$，半径为 r，则根据上面的第一个公式，可以得到
+$(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
+我们可以将点 $(x, y, z)$ 使用之前的 Vec3 向量表示，例如设 $点P = (x, y, z)$，则可以将上面的公式，换一种表达形式，也就是...</p>
+</section>
+<footer class=entry-footer><span title="2021-11-20 22:10:15 +0800 CST">November 20, 2021</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Rust 光线追踪 03: 渲染一个圆" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-03/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Rust 光线追踪 02: 使用光线生成渐变图
 </h2>
 </header>
@@ -182,18 +200,6 @@
 </section>
 <footer class=entry-footer><span title="2021-10-11 12:43:45 +0800 CST">October 11, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to This Week In Moeif 16" href=https://blog.moeif.com/posts/this-week-in-moeif-16/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>This Week In Moeif 15
-</h2>
-</header>
-<section class=entry-content>
-<p>这周比较轻松，没有做太多的事情，改了一下界面的设计及逻辑，然后改了一下服务器。国庆也没出去玩，假期和工作日现在并没有那么明显的界限了。打算下个周去一个偏远点的地方，例如滴水湖。
-...</p>
-</section>
-<footer class=entry-footer><span title="2021-10-03 19:37:28 +0800 CST">October 3, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to This Week In Moeif 15" href=https://blog.moeif.com/posts/this-week-in-moeif-15/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

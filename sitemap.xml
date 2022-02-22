@@ -3,18 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.moeif.com/posts/</loc>
-    <lastmod>2022-02-08T11:00:42+08:00</lastmod>
+    <lastmod>2022-02-22T13:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/roguelike-in-rust/</loc>
-    <lastmod>2022-02-08T11:00:42+08:00</lastmod>
+    <lastmod>2022-02-22T13:00:42+08:00</lastmod>
   </url><url>
-    <loc>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</loc>
-    <lastmod>2022-02-08T11:00:42+08:00</lastmod>
+    <loc>https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/</loc>
+    <lastmod>2022-02-22T13:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/</loc>
-    <lastmod>2022-02-08T11:00:42+08:00</lastmod>
+    <lastmod>2022-02-22T13:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/</loc>
+    <lastmod>2022-02-22T13:00:42+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</loc>
     <lastmod>2022-02-08T11:00:42+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/coder-game-ad/</loc>

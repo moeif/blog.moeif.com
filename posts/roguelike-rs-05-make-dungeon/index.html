@@ -1,0 +1,366 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Roguelike In Rust 05: 生成地牢 | 萌一小栈</title>
+<meta name=keywords content="Roguelike In Rust">
+<meta name=description content="这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。">
+<meta name=author content="fred">
+<link rel=canonical href=https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css integrity="sha256-yIlj/i15RiAA/Q+xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as=style>
+<link rel=preload href=/images/favicon.svg as=image>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.moeif.com/images/favicon.svg>
+<link rel=icon type=image/png sizes=16x16 href=https://blog.moeif.com/images/favicon.svg>
+<link rel=icon type=image/png sizes=32x32 href=https://blog.moeif.com/images/favicon.svg>
+<link rel=apple-touch-icon href=https://blog.moeif.com/favicon.svg>
+<link rel=mask-icon href=https://blog.moeif.com/favicon.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.89.2">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript><meta property="og:title" content="Roguelike In Rust 05: 生成地牢">
+<meta property="og:description" content="这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/"><meta property="og:image" content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-02-22T13:00:42+08:00">
+<meta property="article:modified_time" content="2022-02-22T13:00:42+08:00"><meta property="og:site_name" content="萌一小栈">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E">
+<meta name=twitter:title content="Roguelike In Rust 05: 生成地牢">
+<meta name=twitter:description content="这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.moeif.com/posts/"},{"@type":"ListItem","position":2,"name":"Roguelike In Rust 05: 生成地牢","item":"https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Roguelike In Rust 05: 生成地牢","name":"Roguelike In Rust 05: 生成地牢","description":"这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。\n","keywords":["Roguelike In Rust"],"articleBody":"这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。\n工程代码接着上一节的内容。随着代码越来越多，我们需要将逻辑代码分割到不同的代码文件中。\n首先将地图描述及生成相关的代码，放到一个独立的文件中，新建一个名为 map.rs 的文件，将 main.rs 中的 TileType，xy_idx()，new_map 函数，这三部分的代码，剪到 map.rs 中。并将 new_map 函数名字改为 new_map_test。代码如下\nuse rltk::RandomNumberGenerator; use super::Rect; use std::cmp::{max, min}; #[derive(PartialEq, Copy, Clone)] pub enum TileType { Wall, Floor } pub fn xy_idx(x: i32, y: i32) - usize { (y as usize * 80) + x as usize } /// Makes a map with solid boundaries and 400 randomly placed walls. /// No guarantees that it won't look awful. pub fn new_map_test() - VecTileType { let mut map = vec![TileType::Floor; 80*50]; // 下面和上面的墙  for x in 0..80 { map[xy_idx(x, 0)] = TileType::Wall; map[xy_idx(x, 49)] = TileType::Wall; } // 左边和右边的墙  for y in 0..50 { map[xy_idx(0, y)] = TileType::Wall; map[xy_idx(79, y)] = TileType::Wall; } let mut rng = rltk::RandomNumberGenerator::new(); for _i in 0..400 { let x = rng.roll_dice(1, 79); let y = rng.roll_dice(1, 49); let idx = xy_idx(x, y); // 地图的中心不能为墙，因为角色出生在那里  if idx != xy_idx(40, 25) { map[idx] = TileType::Wall; } } map } 在 map.rs 中添加一个新的函数，用来生成房间和走廊。\npub fn new_map_rooms_and_corridors() - VecTileType { let mut map = vec![TileType::Wall; 80*50]; map } 为了更方便的进行计算，我们还需要创建一个 Rect 结构体，用来描述坐标位置。新建一个名为 rect.rs 的文件，代码如下\npub struct Rect { pub x1 : i32, // x 起始  pub x2 : i32, // x 结束  pub y1 : i32, // y 起始  pub y2 : i32, // y 结束 } impl Rect { pub fn new(x:i32, y: i32, w:i32, h:i32) - Rect { Rect{x1:x, y1:y, x2:x+w, y2:y+h} } // Returns true if this overlaps with other  pub fn intersect(\u0026self, other:\u0026Rect) - bool { self.x1  other.x2 \u0026\u0026 self.x2 = other.x1 \u0026\u0026 self.y1  other.y2 \u0026\u0026 self.y2 = other.y1 } pub fn center(\u0026self) - (i32, i32) { ((self.x1 + self.x2)/2, (self.y1 + self.y2)/2) } } 现在回到 map.rs 代码文件，添加一个函数 apply_room_to_map 的函数，用来在地图上设置房间。\nfn apply_room_to_map(room : \u0026Rect, map: \u0026mut [TileType]) { for y in room.y1 +1 ..= room.y2 { for x in room.x1 + 1 ..= room.x2 { map[xy_idx(x, y)] = TileType::Floor; } } } 现在我们在 new_map_rooms_and_corridors 这个地图生成函数中，添加两个房间，来测试一下我们的逻辑\npub fn new_map_rooms_and_corridors() - VecTileType { let mut map = vec![TileType::Wall; 80*50]; let room1 = Rect::new(20, 15, 10, 15); let room2 = Rect::new(35, 15, 10, 15); apply_room_to_map(\u0026room1, \u0026mut map); apply_room_to_map(\u0026room2, \u0026mut map); map } 为了能够运行，我们需要修改一下 main.rs 中的函数调用，首先在最上面，添加两个文件的引用，并且将原来调用 new_map 的地方，修改为调用 new_map_rooms_and_corridors\n// main.rs mod map; pub use map::*; mod rect; pub use rect::Rect; 然后运行 cargo run，将得到现在的结果\n接下来我们要做的，是生成走廊，来连接两个房间。在 map.rs 中添加走廊生成函数，走廊有横向的，和纵向的。\nfn apply_horizontal_tunnel(map: \u0026mut [TileType], x1:i32, x2:i32, y:i32) { for x in min(x1,x2) ..= max(x1,x2) { let idx = xy_idx(x, y); if idx  0 \u0026\u0026 idx  80*50 { map[idx as usize] = TileType::Floor; } } } fn apply_vertical_tunnel(map: \u0026mut [TileType], y1:i32, y2:i32, x:i32) { for y in min(y1,y2) ..= max(y1,y2) { let idx = xy_idx(x, y); if idx  0 \u0026\u0026 idx  80*50 { map[idx as usize] = TileType::Floor; } } } 然后运行 cargo run 将得到下面的结果\n接下来我们来生成地牢，地牢是有多个相连的房间构成，首先要做的就是生成多个房间。修改 new_map_rooms_and_corridors 函数，首先定义最大的房间数量，以及房间的最大和最小值。然后跑个循环，进行生成，如果生成的房间没有与已生成的房间重叠，则视为合法的，否则，直接丢弃。\npub fn new_map_rooms_and_corridors() - VecTileType { let mut map = vec![TileType::Wall; 80*50]; let mut rooms : VecRect = Vec::new(); const MAX_ROOMS : i32 = 30; const MIN_SIZE : i32 = 6; const MAX_SIZE : i32 = 10; let mut rng = RandomNumberGenerator::new(); for _ in 0..MAX_ROOMS { let w = rng.range(MIN_SIZE, MAX_SIZE); let h = rng.range(MIN_SIZE, MAX_SIZE); let x = rng.roll_dice(1, 80 - w - 1) - 1; let y = rng.roll_dice(1, 50 - h - 1) - 1; let new_room = Rect::new(x, y, w, h); let mut ok = true; for other_room in rooms.iter() { if new_room.intersect(other_room) { ok = false } } if ok { apply_room_to_map(\u0026new_room, \u0026mut map); rooms.push(new_room); } } map } 然后运行 cargo run 将得到下面的结果\n接下来就是将生成的多个房间进行连接，如何连接呢？就是每当一个新的房间产生时，将它与上一个房间进行连接，即可。还是修改 new_map_rooms_and_corridors 函数中的 if ok 那一段\nif ok { apply_room_to_map(\u0026new_room, \u0026mut map); if !rooms.is_empty() { let (new_x, new_y) = new_room.center(); let (prev_x, prev_y) = rooms[rooms.len()-1].center(); if rng.range(0,2) == 1 { apply_horizontal_tunnel(\u0026mut map, prev_x, new_x, prev_y); apply_vertical_tunnel(\u0026mut map, prev_y, new_y, new_x); } else { apply_vertical_tunnel(\u0026mut map, prev_y, new_y, prev_x); apply_horizontal_tunnel(\u0026mut map, prev_x, new_x, new_y); } } rooms.push(new_room); } 然后运行 cargo run 将得到下面的结果\n现在，整个地牢已经生成好了，下面还需要将玩家放在正确的位置，在修改之前，玩家可能出现在墙里。为了将玩家放在正确的位置，main 函数就需要知道所有生成的房间，所以我们将 new_map_rooms_and_corridors 函数的返回值，修改为 pub fn new_map_rooms_and_corridors() - (Vec, Vec)，也就是将生成的房间数据，也返回，这样 main 函数就可以使用第一个房间的位置数据，并且将玩家放在第一个房间内。\nfn main() - rltk::BError { use rltk::RltkBuilder; let context = RltkBuilder::simple80x50() .with_title(\"Roguelike Tutorial\") .build()?; let mut gs = State { ecs: World::new() }; gs.ecs.register::Position(); gs.ecs.register::Renderable(); gs.ecs.register::Player(); // 将玩家放在第一个房间内  let (rooms, map) = new_map_rooms_and_corridors(); gs.ecs.insert(map); let (player_x, player_y) = rooms[0].center(); gs.ecs .create_entity() .with(Position { x: player_x, y: player_y }) .with(Renderable { glyph: rltk::to_cp437('@'), fg: RGB::named(rltk::YELLOW), bg: RGB::named(rltk::BLACK), }) .with(Player{}) .build(); rltk::main_loop(context, gs) } 到此为止，基本上OK了，不过我们再修改一点东西，添加 VIM 的键位控制，也就是可以使用 H、L、K、J，以及小键盘，来控制玩家的移动，这个很简单，只需要修改 player_input 函数即可\npub fn player_input(gs: \u0026mut State, ctx: \u0026mut Rltk) { // Player movement  match ctx.key { None = {} // Nothing happened  Some(key) = match key { VirtualKeyCode::Left | VirtualKeyCode::Numpad4 | VirtualKeyCode::H = try_move_player(-1, 0, \u0026mut gs.ecs), VirtualKeyCode::Right | VirtualKeyCode::Numpad6 | VirtualKeyCode::L = try_move_player(1, 0, \u0026mut gs.ecs), VirtualKeyCode::Up | VirtualKeyCode::Numpad8 | VirtualKeyCode::K = try_move_player(0, -1, \u0026mut gs.ecs), VirtualKeyCode::Down | VirtualKeyCode::Numpad2 | VirtualKeyCode::J = try_move_player(0, 1, \u0026mut gs.ecs), _ = {} }, } } 好了，一切已经做完了，使用 cargo run 运行体验一下吧。\n本篇所有代码 https://github.com/moeif/roguelike-rs/tree/05\n萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ","wordCount":"793","inLanguage":"en","datePublished":"2022-02-22T13:00:42+08:00","dateModified":"2022-02-22T13:00:42+08:00","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://blog.moeif.com/ accesskey=h title="Moeif (Alt + H)">
+<img src=/images/favicon.svg alt=logo aria-label=logo height=35>Moeif</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://blog.moeif.com/archives/ title=Archives>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=https://blog.moeif.com/tags/ title=Tags>
+<span>Tags</span>
+</a>
+</li>
+<li>
+<a href=https://blog.moeif.com/about/ title=About>
+<span>About</span>
+</a>
+</li>
+<li>
+<a href=https://moeif.com title="Moeif Games">
+<span>Moeif Games</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://blog.moeif.com/>Home</a>&nbsp;»&nbsp;<a href=https://blog.moeif.com/posts/>Posts</a></div>
+<h1 class=post-title>
+Roguelike In Rust 05: 生成地牢
+</h1>
+<div class=post-meta><span title="2022-02-22 13:00:42 +0800 CST">February 22, 2022</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;fred
+</div>
+</header>
+<div class=post-content><p>这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。</p>
+<p><img loading=lazy src=/postimages/roguelike-rs/0501.gif alt>
+</p>
+<p>工程代码接着上一节的内容。随着代码越来越多，我们需要将逻辑代码分割到不同的代码文件中。</p>
+<p>首先将地图描述及生成相关的代码，放到一个独立的文件中，新建一个名为 <code>map.rs</code> 的文件，将 main.rs 中的 <code>TileType</code>，<code>xy_idx()</code>，<code>new_map</code> 函数，这三部分的代码，剪到 map.rs 中。并将 <code>new_map</code> 函数名字改为 <code>new_map_test</code>。代码如下</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>use</span> rltk::RandomNumberGenerator;
+
+<span style=color:#66d9ef>use</span> <span style=color:#66d9ef>super</span>::Rect;
+<span style=color:#66d9ef>use</span> std::cmp::{max, min};
+
+<span style=color:#75715e>#[derive(PartialEq, Copy, Clone)]</span>
+<span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>TileType</span> {
+    Wall, Floor
+}
+
+<span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>xy_idx</span>(x: <span style=color:#66d9ef>i32</span>, y: <span style=color:#66d9ef>i32</span>) -&gt; <span style=color:#66d9ef>usize</span> {
+    (y <span style=color:#66d9ef>as</span> <span style=color:#66d9ef>usize</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>80</span>) <span style=color:#f92672>+</span> x <span style=color:#66d9ef>as</span> <span style=color:#66d9ef>usize</span>
+}
+
+<span style=color:#e6db74>/// Makes a map with solid boundaries and 400 randomly placed walls.
+</span><span style=color:#e6db74>/// No guarantees that it won&#39;t look awful.
+</span><span style=color:#e6db74></span><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new_map_test</span>() -&gt; Vec<span style=color:#f92672>&lt;</span>TileType<span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> map <span style=color:#f92672>=</span> vec![TileType::Floor; <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span>];
+    <span style=color:#75715e>// 下面和上面的墙
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> x <span style=color:#66d9ef>in</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>..</span><span style=color:#ae81ff>80</span> {
+        map[xy_idx(x, <span style=color:#ae81ff>0</span>)] <span style=color:#f92672>=</span> TileType::Wall;
+        map[xy_idx(x, <span style=color:#ae81ff>49</span>)] <span style=color:#f92672>=</span> TileType::Wall;
+    }
+
+    <span style=color:#75715e>// 左边和右边的墙
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>for</span> y <span style=color:#66d9ef>in</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>..</span><span style=color:#ae81ff>50</span> {
+        map[xy_idx(<span style=color:#ae81ff>0</span>, y)] <span style=color:#f92672>=</span> TileType::Wall;
+        map[xy_idx(<span style=color:#ae81ff>79</span>, y)] <span style=color:#f92672>=</span> TileType::Wall;
+    }
+
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> rng <span style=color:#f92672>=</span> rltk::RandomNumberGenerator::new();
+    <span style=color:#66d9ef>for</span> _i <span style=color:#66d9ef>in</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>..</span><span style=color:#ae81ff>400</span> {
+        <span style=color:#66d9ef>let</span> x <span style=color:#f92672>=</span> rng.roll_dice(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>79</span>);
+        <span style=color:#66d9ef>let</span> y <span style=color:#f92672>=</span> rng.roll_dice(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>49</span>);
+        <span style=color:#66d9ef>let</span> idx <span style=color:#f92672>=</span> xy_idx(x, y);
+
+        <span style=color:#75715e>// 地图的中心不能为墙，因为角色出生在那里
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> idx <span style=color:#f92672>!=</span> xy_idx(<span style=color:#ae81ff>40</span>, <span style=color:#ae81ff>25</span>) {
+            map[idx] <span style=color:#f92672>=</span> TileType::Wall;
+        }
+    }
+
+    map
+}
+</code></pre></div><p>在 <code>map.rs</code> 中添加一个新的函数，用来生成房间和走廊。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new_map_rooms_and_corridors</span>() -&gt; Vec<span style=color:#f92672>&lt;</span>TileType<span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> map <span style=color:#f92672>=</span> vec![TileType::Wall; <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span>];
+
+    map
+}
+</code></pre></div><p>为了更方便的进行计算，我们还需要创建一个 <code>Rect</code> 结构体，用来描述坐标位置。新建一个名为 <code>rect.rs</code> 的文件，代码如下</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>Rect</span> {
+    <span style=color:#66d9ef>pub</span> x1 : <span style=color:#66d9ef>i32</span>,   <span style=color:#75715e>// x 起始
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>pub</span> x2 : <span style=color:#66d9ef>i32</span>,   <span style=color:#75715e>// x 结束
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>pub</span> y1 : <span style=color:#66d9ef>i32</span>,   <span style=color:#75715e>// y 起始
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>pub</span> y2 : <span style=color:#66d9ef>i32</span>,   <span style=color:#75715e>// y 结束
+</span><span style=color:#75715e></span>}
+
+<span style=color:#66d9ef>impl</span> Rect {
+    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new</span>(x:<span style=color:#66d9ef>i32</span>, y: <span style=color:#66d9ef>i32</span>, w:<span style=color:#66d9ef>i32</span>, h:<span style=color:#66d9ef>i32</span>) -&gt; <span style=color:#a6e22e>Rect</span> {
+        Rect{x1:<span style=color:#a6e22e>x</span>, y1:<span style=color:#a6e22e>y</span>, x2:<span style=color:#a6e22e>x</span><span style=color:#f92672>+</span>w, y2:<span style=color:#a6e22e>y</span><span style=color:#f92672>+</span>h}
+    }
+
+    <span style=color:#75715e>// Returns true if this overlaps with other
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>intersect</span>(<span style=color:#f92672>&amp;</span>self, other:<span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Rect</span>) -&gt; <span style=color:#66d9ef>bool</span> {
+        self.x1 <span style=color:#f92672>&lt;=</span> other.x2 <span style=color:#f92672>&amp;&amp;</span> self.x2 <span style=color:#f92672>&gt;=</span> other.x1 <span style=color:#f92672>&amp;&amp;</span> self.y1 <span style=color:#f92672>&lt;=</span> other.y2 <span style=color:#f92672>&amp;&amp;</span> self.y2 <span style=color:#f92672>&gt;=</span> other.y1
+    }
+
+    <span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>center</span>(<span style=color:#f92672>&amp;</span>self) -&gt; (<span style=color:#66d9ef>i32</span>, <span style=color:#66d9ef>i32</span>) {
+        ((self.x1 <span style=color:#f92672>+</span> self.x2)<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, (self.y1 <span style=color:#f92672>+</span> self.y2)<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>)
+    }
+}
+</code></pre></div><p>现在回到 <code>map.rs</code> 代码文件，添加一个函数 <code>apply_room_to_map</code> 的函数，用来在地图上设置房间。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>apply_room_to_map</span>(room : <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>Rect</span>, map: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> [TileType]) {
+    <span style=color:#66d9ef>for</span> y <span style=color:#66d9ef>in</span> room.y1 <span style=color:#f92672>+</span><span style=color:#ae81ff>1</span> <span style=color:#f92672>..=</span> room.y2 {
+        <span style=color:#66d9ef>for</span> x <span style=color:#66d9ef>in</span> room.x1 <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>..=</span> room.x2 {
+            map[xy_idx(x, y)] <span style=color:#f92672>=</span> TileType::Floor;
+        }
+    }
+}
+</code></pre></div><p>现在我们在 <code>new_map_rooms_and_corridors</code> 这个地图生成函数中，添加两个房间，来测试一下我们的逻辑</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new_map_rooms_and_corridors</span>() -&gt; Vec<span style=color:#f92672>&lt;</span>TileType<span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> map <span style=color:#f92672>=</span> vec![TileType::Wall; <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span>];
+
+    <span style=color:#66d9ef>let</span> room1 <span style=color:#f92672>=</span> Rect::new(<span style=color:#ae81ff>20</span>, <span style=color:#ae81ff>15</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>15</span>);
+    <span style=color:#66d9ef>let</span> room2 <span style=color:#f92672>=</span> Rect::new(<span style=color:#ae81ff>35</span>, <span style=color:#ae81ff>15</span>, <span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>15</span>);
+
+    apply_room_to_map(<span style=color:#f92672>&amp;</span>room1, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map);
+    apply_room_to_map(<span style=color:#f92672>&amp;</span>room2, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map);
+
+    map
+}
+</code></pre></div><p>为了能够运行，我们需要修改一下 <code>main.rs</code> 中的函数调用，首先在最上面，添加两个文件的引用，并且将原来调用 <code>new_map</code> 的地方，修改为调用 <code>new_map_rooms_and_corridors</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#75715e>// main.rs
+</span><span style=color:#75715e></span><span style=color:#66d9ef>mod</span> map;
+<span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>use</span> map::<span style=color:#f92672>*</span>;
+<span style=color:#66d9ef>mod</span> rect;
+<span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>use</span> rect::Rect;
+</code></pre></div><p>然后运行 <code>cargo run</code>，将得到现在的结果</p>
+<p><img loading=lazy src=/postimages/roguelike-rs/0502.png alt>
+</p>
+<p>接下来我们要做的，是生成走廊，来连接两个房间。在 <code>map.rs</code> 中添加走廊生成函数，走廊有横向的，和纵向的。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>apply_horizontal_tunnel</span>(map: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> [TileType], x1:<span style=color:#66d9ef>i32</span>, x2:<span style=color:#66d9ef>i32</span>, y:<span style=color:#66d9ef>i32</span>) {
+    <span style=color:#66d9ef>for</span> x <span style=color:#66d9ef>in</span> min(x1,x2) <span style=color:#f92672>..=</span> max(x1,x2) {
+        <span style=color:#66d9ef>let</span> idx <span style=color:#f92672>=</span> xy_idx(x, y);
+        <span style=color:#66d9ef>if</span> idx <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> idx <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span> {
+            map[idx <span style=color:#66d9ef>as</span> <span style=color:#66d9ef>usize</span>] <span style=color:#f92672>=</span> TileType::Floor;
+        }
+    }
+}
+
+<span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>apply_vertical_tunnel</span>(map: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> [TileType], y1:<span style=color:#66d9ef>i32</span>, y2:<span style=color:#66d9ef>i32</span>, x:<span style=color:#66d9ef>i32</span>) {
+    <span style=color:#66d9ef>for</span> y <span style=color:#66d9ef>in</span> min(y1,y2) <span style=color:#f92672>..=</span> max(y1,y2) {
+        <span style=color:#66d9ef>let</span> idx <span style=color:#f92672>=</span> xy_idx(x, y);
+        <span style=color:#66d9ef>if</span> idx <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>&amp;&amp;</span> idx <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span> {
+            map[idx <span style=color:#66d9ef>as</span> <span style=color:#66d9ef>usize</span>] <span style=color:#f92672>=</span> TileType::Floor;
+        }
+    }
+}
+</code></pre></div><p>然后运行 <code>cargo run</code> 将得到下面的结果</p>
+<p><img loading=lazy src=/postimages/roguelike-rs/0503.png alt>
+</p>
+<p>接下来我们来生成地牢，地牢是有多个相连的房间构成，首先要做的就是生成多个房间。修改 <code>new_map_rooms_and_corridors</code> 函数，首先定义最大的房间数量，以及房间的最大和最小值。然后跑个循环，进行生成，如果生成的房间没有与已生成的房间重叠，则视为合法的，否则，直接丢弃。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>new_map_rooms_and_corridors</span>() -&gt; Vec<span style=color:#f92672>&lt;</span>TileType<span style=color:#f92672>&gt;</span> {
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> map <span style=color:#f92672>=</span> vec![TileType::Wall; <span style=color:#ae81ff>80</span><span style=color:#f92672>*</span><span style=color:#ae81ff>50</span>];
+
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> rooms : Vec<span style=color:#f92672>&lt;</span>Rect<span style=color:#f92672>&gt;</span> <span style=color:#f92672>=</span> Vec::new();
+    <span style=color:#66d9ef>const</span> MAX_ROOMS : <span style=color:#66d9ef>i32</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>30</span>;
+    <span style=color:#66d9ef>const</span> MIN_SIZE : <span style=color:#66d9ef>i32</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>6</span>;
+    <span style=color:#66d9ef>const</span> MAX_SIZE : <span style=color:#66d9ef>i32</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>;
+
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> rng <span style=color:#f92672>=</span> RandomNumberGenerator::new();
+
+    <span style=color:#66d9ef>for</span> _ <span style=color:#66d9ef>in</span> <span style=color:#ae81ff>0</span><span style=color:#f92672>..</span>MAX_ROOMS {
+        <span style=color:#66d9ef>let</span> w <span style=color:#f92672>=</span> rng.range(MIN_SIZE, MAX_SIZE);
+        <span style=color:#66d9ef>let</span> h <span style=color:#f92672>=</span> rng.range(MIN_SIZE, MAX_SIZE);
+        <span style=color:#66d9ef>let</span> x <span style=color:#f92672>=</span> rng.roll_dice(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>80</span> <span style=color:#f92672>-</span> w <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>;
+        <span style=color:#66d9ef>let</span> y <span style=color:#f92672>=</span> rng.roll_dice(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>50</span> <span style=color:#f92672>-</span> h <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>;
+        <span style=color:#66d9ef>let</span> new_room <span style=color:#f92672>=</span> Rect::new(x, y, w, h);
+        <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> ok <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>;
+        <span style=color:#66d9ef>for</span> other_room <span style=color:#66d9ef>in</span> rooms.iter() {
+            <span style=color:#66d9ef>if</span> new_room.intersect(other_room) { ok <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span> }
+        }
+        <span style=color:#66d9ef>if</span> ok {
+            apply_room_to_map(<span style=color:#f92672>&amp;</span>new_room, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map);        
+            rooms.push(new_room);            
+        }
+    }
+
+    map
+}
+</code></pre></div><p>然后运行 <code>cargo run</code> 将得到下面的结果</p>
+<p><img loading=lazy src=/postimages/roguelike-rs/0504.png alt>
+</p>
+<p>接下来就是将生成的多个房间进行连接，如何连接呢？就是每当一个新的房间产生时，将它与上一个房间进行连接，即可。还是修改 <code>new_map_rooms_and_corridors</code> 函数中的 <code>if ok</code> 那一段</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>if</span> ok {
+    apply_room_to_map(<span style=color:#f92672>&amp;</span>new_room, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map);
+
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>!</span>rooms.is_empty() {
+        <span style=color:#66d9ef>let</span> (new_x, new_y) <span style=color:#f92672>=</span> new_room.center();
+        <span style=color:#66d9ef>let</span> (prev_x, prev_y) <span style=color:#f92672>=</span> rooms[rooms.len()<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>].center();
+        <span style=color:#66d9ef>if</span> rng.range(<span style=color:#ae81ff>0</span>,<span style=color:#ae81ff>2</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> {
+            apply_horizontal_tunnel(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map, prev_x, new_x, prev_y);
+            apply_vertical_tunnel(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map, prev_y, new_y, new_x);
+        } <span style=color:#66d9ef>else</span> {
+            apply_vertical_tunnel(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map, prev_y, new_y, prev_x);
+            apply_horizontal_tunnel(<span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> map, prev_x, new_x, new_y);
+        }
+    }
+
+    rooms.push(new_room);
+}
+</code></pre></div><p>然后运行 <code>cargo run</code> 将得到下面的结果</p>
+<p><img loading=lazy src=/postimages/roguelike-rs/0505.png alt>
+</p>
+<p>现在，整个地牢已经生成好了，下面还需要将玩家放在正确的位置，在修改之前，玩家可能出现在墙里。为了将玩家放在正确的位置，<code>main</code> 函数就需要知道所有生成的房间，所以我们将 <code>new_map_rooms_and_corridors</code> 函数的返回值，修改为 <code>pub fn new_map_rooms_and_corridors() -> (Vec&lt;Rect>, Vec&lt;TileType>)</code>，也就是将生成的房间数据，也返回，这样 main 函数就可以使用第一个房间的位置数据，并且将玩家放在第一个房间内。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>main</span>() -&gt; <span style=color:#a6e22e>rltk</span>::BError {
+    <span style=color:#66d9ef>use</span> rltk::RltkBuilder;
+    <span style=color:#66d9ef>let</span> context <span style=color:#f92672>=</span> RltkBuilder::simple80x50()
+        .with_title(<span style=color:#e6db74>&#34;Roguelike Tutorial&#34;</span>)
+        .build()<span style=color:#f92672>?</span>;
+    <span style=color:#66d9ef>let</span> <span style=color:#66d9ef>mut</span> gs <span style=color:#f92672>=</span> State {
+        ecs: <span style=color:#a6e22e>World</span>::new()
+    };
+    gs.ecs.register::<span style=color:#f92672>&lt;</span>Position<span style=color:#f92672>&gt;</span>();
+    gs.ecs.register::<span style=color:#f92672>&lt;</span>Renderable<span style=color:#f92672>&gt;</span>();
+    gs.ecs.register::<span style=color:#f92672>&lt;</span>Player<span style=color:#f92672>&gt;</span>();
+
+    <span style=color:#75715e>// 将玩家放在第一个房间内
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>let</span> (rooms, map) <span style=color:#f92672>=</span> new_map_rooms_and_corridors();
+    gs.ecs.insert(map);
+    <span style=color:#66d9ef>let</span> (player_x, player_y) <span style=color:#f92672>=</span> rooms[<span style=color:#ae81ff>0</span>].center();
+
+    gs.ecs
+        .create_entity()
+        .with(Position { x: <span style=color:#a6e22e>player_x</span>, y: <span style=color:#a6e22e>player_y</span> })
+        .with(Renderable {
+            glyph: <span style=color:#a6e22e>rltk</span>::to_cp437(<span style=color:#e6db74>&#39;@&#39;</span>),
+            fg: <span style=color:#a6e22e>RGB</span>::named(rltk::YELLOW),
+            bg: <span style=color:#a6e22e>RGB</span>::named(rltk::BLACK),
+        })
+        .with(Player{})
+        .build();
+
+    rltk::main_loop(context, gs)
+}
+</code></pre></div><p>到此为止，基本上OK了，不过我们再修改一点东西，添加 VIM 的键位控制，也就是可以使用 H、L、K、J，以及小键盘，来控制玩家的移动，这个很简单，只需要修改 <code>player_input</code> 函数即可</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-rust data-lang=rust><span style=color:#66d9ef>pub</span> <span style=color:#66d9ef>fn</span> <span style=color:#a6e22e>player_input</span>(gs: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> State, ctx: <span style=color:#66d9ef>&amp;</span><span style=color:#a6e22e>mut</span> Rltk) {
+    <span style=color:#75715e>// Player movement
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>match</span> ctx.key {
+        None <span style=color:#f92672>=&gt;</span> {} <span style=color:#75715e>// Nothing happened
+</span><span style=color:#75715e></span>        Some(key) <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>match</span> key {
+            VirtualKeyCode::Left <span style=color:#f92672>|</span>
+            VirtualKeyCode::Numpad4 <span style=color:#f92672>|</span>
+            VirtualKeyCode::H <span style=color:#f92672>=&gt;</span> try_move_player(<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> gs.ecs),
+
+            VirtualKeyCode::Right <span style=color:#f92672>|</span>
+            VirtualKeyCode::Numpad6 <span style=color:#f92672>|</span>
+            VirtualKeyCode::L <span style=color:#f92672>=&gt;</span> try_move_player(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> gs.ecs),
+
+            VirtualKeyCode::Up <span style=color:#f92672>|</span>
+            VirtualKeyCode::Numpad8 <span style=color:#f92672>|</span>
+            VirtualKeyCode::K <span style=color:#f92672>=&gt;</span> try_move_player(<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> gs.ecs),
+
+            VirtualKeyCode::Down <span style=color:#f92672>|</span>
+            VirtualKeyCode::Numpad2 <span style=color:#f92672>|</span>
+            VirtualKeyCode::J <span style=color:#f92672>=&gt;</span> try_move_player(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#f92672>&amp;</span><span style=color:#66d9ef>mut</span> gs.ecs),
+
+            _ <span style=color:#f92672>=&gt;</span> {}
+        },
+    }
+}
+</code></pre></div><p>好了，一切已经做完了，使用 <code>cargo run</code> 运行体验一下吧。</p>
+<p>本篇所有代码 <a href=https://github.com/moeif/roguelike-rs/tree/05>https://github.com/moeif/roguelike-rs/tree/05</a></p>
+<h3 id=萌一小栈>萌一小栈<a hidden class=anchor aria-hidden=true href=#萌一小栈>#</a></h3>
+<p>欢迎关注微信公众号 <strong>萌一小栈</strong>，博客文章同步推送
+<img loading=lazy src=/images/qrcode.jpg alt>
+</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://blog.moeif.com/tags/roguelike-in-rust/>Roguelike In Rust</a></li>
+</ul>
+<nav class=paginav>
+<a class=next href=https://blog.moeif.com/posts/roguelike-rs-04-walking-map/>
+<span class=title>Next Page »</span>
+<br>
+<span>Roguelike In Rust 04: 地图与行走</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on twitter" href="https://twitter.com/intent/tweet/?text=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2&url=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f&hashtags=RoguelikeInRust"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f&title=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2&summary=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2&source=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f&title=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on whatsapp" href="https://api.whatsapp.com/send?text=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2%20-%20https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Roguelike In Rust 05: 生成地牢 on telegram" href="https://telegram.me/share/url?text=Roguelike%20In%20Rust%2005%3a%20%e7%94%9f%e6%88%90%e5%9c%b0%e7%89%a2&url=https%3a%2f%2fblog.moeif.com%2fposts%2froguelike-rs-05-make-dungeon%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script>
+<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?da9253be08586e454189323668956d43",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7X4M6RGQGH"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-7X4M6RGQGH')</script></body>
+</html>
