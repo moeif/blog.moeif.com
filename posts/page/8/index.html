@@ -77,6 +77,23 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>使用 frp 的远程桌面方案
+</h2>
+</header>
+<section class=entry-content>
+<p>当我们想使用 Windows 自带的 mstsc 远程桌面连接远程电脑时，常见的情况由于远程电脑没有公网IP而连接失败，这时就需要一个拥有公网 IP 的 VPS 来做代理，实现内网穿透，也就是相当于一个桥梁，将目标内网的机器与我们当前机器连起来。像花生壳，Teamviewer 等这类软件都可以实现，远程桌面，但是要么费用比较高，要么免费版体验很差，所以这里我们购买一台廉价的 VPS，使用 frp 来做这个代理功能，更方便，更好用。
+1. 在VPS和目标机器上分别下载 frp frp Github: https://github.com/fatedier/frp，通常下载最新的 Release 版本就可以。
+2. 在VPS上配置服务器端 在服务器端，用的是 frps.exe，配置文件是 frps.ini，配置内容如下即可。
+[common] bind_port = 7000 dashboard_user = jack dashboard_pwd = jack'svps dashboard_port = 8888 上面的配置中， bind_port = 7000 就是配置对外开放的端口，客户端都会连接服务器的这个端口。下面三行的配置是网页的管理页面，可以通过网页查看当前有多少设备连接。
+配置完成后，打开 CMD 或 PowerShell，执行 frps.exe -c frps.ini 就启动了服务器端，注意这个窗口不要关闭。
+3. 在目标机器上配置客户端 客户端使用的是 frpc.exe，配置文件是 frpc.ini，配置内容如下
+[common] server_addr = 110.112.110.112 server_port = 7000 [RDP] type = tcp local_ip = 127....</p>
+</section>
+<footer class=entry-footer><span title="2020-11-14 13:50:25 +0800 CST">November 14, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 使用 frp 的远程桌面方案" href=https://blog.moeif.com/posts/frp-for-remote-desktop/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Apk 上架前的签名操作
 </h2>
 </header>
@@ -218,24 +235,6 @@ nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到�
 </section>
 <footer class=entry-footer><span title="2020-04-05 22:29:14 +0800 CST">April 5, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Rust 基础 | 枚举、匹配" href=https://blog.moeif.com/posts/rust-syntax-summary-05/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Rust 基础 | 结构体
-</h2>
-</header>
-<section class=entry-content>
-<p>在有类的编程语言中，组织数据的方式可以定义一个类，而在 Rust 中，组织数据的方式，使用 struct。struct 可以定义三种不同的类型，一种是带有字段名字的结构体，一种是没有字段名字的元组结构体，一种是没有任何字段的单元结构体。
-定义 struct 带有字段名字的结构体
-#[derive(Debug)] struct User { username: String, email: String, active: bool, } fn main() { let user1 = User { username: String::from("fred"), email: String::from("fred@outlook.com"), active: false, }; println!("{:?}", user1); } 注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
-上面的代码中定义了一个 User 结构体，里面的每一个字段，前面是字段名，后面是字段的数据类型。在 main 函数中的代码，是创建一个 User 实例。
-元组结构体
-#[derive(Debug)] struct Color(u8, u8, u8, u8); fn main() { let color = Color(255,255,255,255); println!("{:?}", color); } 上面的代码中，定义了一个元组结构体，用来存储颜色值。
-单元结构体
-#[derive(Debug)] struct Unit; fn main() { let unit = Unit; println!...</p>
-</section>
-<footer class=entry-footer><span title="2020-04-02 17:26:15 +0800 CST">April 2, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Rust 基础 | 结构体" href=https://blog.moeif.com/posts/rust-syntax-summary-04/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
