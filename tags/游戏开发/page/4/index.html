@@ -76,6 +76,28 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>怎样在Unity中Reload原生插件
+</h2>
+</header>
+<section class=entry-content>
+<p>这是一篇翻译文章，原文来自 how-to-reload-native-plugins-in-unity
+在Unity编辑器使用原生插件，Dll之类的，经常会遇到一个问题，替换插件时，Unity会提示正在使用，无法替换，这是因为Unity一旦点了Play，加载了Dll，就不会去卸载。
+要解决这个问题也很简单，那就是先关掉Unity，然后替换Dll，然后再打开Unity。对于插件的使用者，倒不是什么大问题，但是如果你是插件的开发者，需要频繁的修改和测试插件，那就有点悲惨了。
+这篇博客将介绍一个我认为不错的解决方案，有很多开发者已经实现了这个或者类似的解决方案，但是在Google或者Github上很难找到。
+TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，在OnDestroy时会卸载所有的Dll，我们自己去管理Dll的加载和卸载，就可以做到停止Play时，卸载掉所有的Dll，这样就可以在不关闭Unity的情况下，替换Dll。
+要做到这个，就不能用 PInvoke 去调用，而是用类似的方式，达到相同的目的。
+完整的工程代码在 Github。但是我们只需要一个文件就可以 NativePluginLoader.cs
+如何使用: 将 NativePluginLoader.cs 放到你的工程中
+在场景中新建一个GameObject，然后挂载 NativePluginLoader.cs
+定义一个类，用于声明所有的插件方法，例如命名为 FooPlugin，然后给这个类赋予 PluginAttr 属性
+给 delegate 添加 PluginFunctionAttr 属性，示例代码如下
+// C# 代码 [PluginAttr("my_cool_plugin")] public static class FooPlugin { [PluginFunctionAttr("sum")] public static Sum sum = null; public delegate float Sum(float a, float b); // 原生方法的 delegate } void CoolFunc() { float s = FooPlugin.sum(1.0, 2....</p>
+</section>
+<footer class=entry-footer><span title="2019-12-01 01:05:25 +0800 CST">December 1, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 怎样在Unity中Reload原生插件" href=https://blog.moeif.com/posts/reload-native-unity-plugins/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>浅谈在Unity3D中使用CriWare播放声音
 </h2>
 </header>

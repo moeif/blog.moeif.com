@@ -74,6 +74,18 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Rust 基础 | 枚举、匹配
+</h2>
+</header>
+<section class=entry-content>
+<p>这篇博客涉及到的知识点有 枚举的定义、Option 枚举、match 语法、if let 语法。
+...</p>
+</section>
+<footer class=entry-footer><span title="2020-04-05 22:29:14 +0800 CST">April 5, 2020</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Rust 基础 | 枚举、匹配" href=https://blog.moeif.com/posts/rust-syntax-summary-05/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Rust 基础 | 结构体
 </h2>
 </header>
@@ -213,26 +225,6 @@ Shader "iMoeGirl/MyShader" { // Shader 名字 // 这里定义一些属性，可�
 </section>
 <footer class=entry-footer><span title="2020-03-02 22:46:56 +0800 CST">March 2, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Unity Shader |  属性、顶点与片元函数" href=https://blog.moeif.com/posts/unity-shader-basis-02/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Unity Shader | 基础
-</h2>
-</header>
-<section class=entry-content>
-<p>MeshFilter 存储一个Mesh（网格，模型的网格，模型的三角面顶点信息）
-MeshRenderer 用于渲染一个物体的外观，数据来源于MeshFilter
-Material 材质包含两部分，贴图和Shader
-OpenGL DirectX 直接与显卡交互图形渲染库，可以理解为应用程序与显卡之间的桥梁，为应用程序提供一些渲染接口，用于渲染。
-Shader Shader可以理解为是一种渲染命令，由opengl或DX进行解析，用于控制图形的渲染。
-GLSL/HLSL/CG shader编程语言，GLSL面向OpenGL，HLSL面向DirectX，CG是Nvidia公司出的，跨平台的shader编程语言。
-ShaderLab 我们在Unitiy中写Shader用的语言是ShaderLab，可以理解为Unity为了方便使用者写Shader而创造的一种新的Shader语言，最后其实都会在底层被翻译成GLSL或HLSL或CG。
-Unity中的Shader分类 Shader的中文名叫做着色器
-表面着色器，Surface Shader 顶点/片元着色器，Vertex/Fragment Shader 固定功能着色器，Fixed function Shader (在现代硬件上基本已被弃用) 表面着色器可以理解为是对顶点/片元着色器的一种封装，它帮我们处理了很多渲染上比较麻烦的事情。而顶点/片元着色器就相对更灵活一些，也就是说很多东西要自己处理，相对来说要写的代码更多一些。进一步讲，使用顶点/片元着色器能实现的效果，使用表面着色器并不一定能实现，或者说，并不一定那么方便地实现。
-Unity Shader 结构 Shader "iMoeGirl/MyShader" { // Shader 名字 Properties { // 这里定义一些属性，可以显示在UI面板上用于调节 } SubShader { // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback "VertexLit" } Unity Shader 属性类型 Shader "iMoeGirl/MyShader" { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名("Inspector面板上显示出来的属性名", 属性类型) = 默认值 _Color("颜色类型", Color) = (1,1,1,1) _Vector("向量类型", Vector) = (1, 2, 3, 4) _Int("整型", Int) = 11111 _Float("浮点型", Float) = 12....</p>
-</section>
-<footer class=entry-footer><span title="2020-02-24 22:14:04 +0800 CST">February 24, 2020</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Unity Shader | 基础" href=https://blog.moeif.com/posts/unity-shader-basis-01/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

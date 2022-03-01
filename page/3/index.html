@@ -74,6 +74,30 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Rust 光线追踪 11: 折射
+</h2>
+</header>
+<section class=entry-content>
+<p>关于折射的实现，可以使用斯涅尔定律。当光波从一种介质传播到另一种介质时，如果两种介质拥有不同的折射率，那么光线就会发生折射现象。例如光线从空气中进入水中，或者从空气中进入玻璃中。
+下面涉及到的公式，也可以不用理解推导过程，只要拿来用就行。
+斯涅尔定律 斯涅尔定律表明，当光波从介质1传播到介质2时，假若两种介质的折射率不同，则会发生折射现象，其入射光和折射光都处于同一平面，称为“入射平面”，并且与界面法线的夹角满足如下关系：
+$n_{1}\sin\theta_{1} = n_{2}\sin\theta_{2}$
+其中，$n_{1}$、$n_{3}$ 分别是两种介质的折射率，$\theta_{1}$、$\theta_{2}$ 分别是入射光线、折射光线与界面法线的夹角，分别叫做入射角和折射角。
+要求折射光线的方向，就需要解出 $\sin\theta_{2}$ 来。根据上面的公式可知
+$\sin\theta_{2} = \frac{n_{1}}{n_{2}} \cdot \sin\theta_{1}$
+我们可以将折射光线的向量，分解为一个垂直向量和一个平行向量。计算出这两个向量，然后相加，即可得到最终的折射向量。
+$ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + \cos\theta_{1}*法向量)$
+$ 平行向量 = - \sqrt{1 - |垂直向量|^2 * 法向量}$
+由于，两个向量的点乘与其夹角的 cos 值有关，也就是 $ a \cdot b = |a||b|\cos\theta $ ，如果 a 和 b 都是单位向量，那么可得到 $a \cdot b = \cos\theta$
+根据上面的规则，可以使用新的方式来表示垂直向量
+$ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + (-入射向量 \cdot 法向量) * 法向量) $
+综上，可以使用代码来实现折射逻辑，在 vec3.rs 中添加一个新的函数 refract...</p>
+</section>
+<footer class=entry-footer><span title="2021-12-07 15:01:15 +0800 CST">December 7, 2021</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Rust 光线追踪 11: 折射" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-11/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 24
 </h2>
 </header>
@@ -188,21 +212,6 @@ cargo run --release > diffuse_random_in_sphere.ppm 生成图如下
 </section>
 <footer class=entry-footer><span title="2021-11-22 22:06:15 +0800 CST">November 22, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Rust 光线追踪 05: 简化 hit_sphere 函数" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-05/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>This Week In Moeif 22
-</h2>
-</header>
-<section class=entry-content>
-<p>11月马上快要结束了，时间过的真快，有一点点的焦虑，但是也还好。这周开始了不断输出博客内容，可能是因为和Rust有关，阅读数量和关注数量增长了很多，后面可以考虑在每一篇文章最后加上游戏的宣传链接。看起来写博客这件事情可以长期写下去，可能前期没什么，后期积累到一定程度，不确定会发生什么。
-这周上海的温度还可以，但是今天下雨了，未来两天温度下降的很多。
-项目进度 游戏码农：那些打工的日子 这周主要做的事情还是各个模块的数据配置，以及界面元素的考虑，具体的UI还没有仔细考虑。专业技能相关配置、厨艺配置、外卖配置、找工作和面试相关配置、通勤配置、行为配置。
-夜莺号的记忆 这个项目这周做了很多事情，工程的搭建，游戏循环的逻辑，具体的关卡的逻辑等。
-本周电影 欲望号快车 Crash (1996) 毒液 本周书籍 《KK三部曲》（阅读中） 下周初步计划 继续数据配置工作 夜莺号关卡逻辑 有时间的话考虑游戏码农的UI构建 </p>
-</section>
-<footer class=entry-footer><span title="2021-11-21 19:55:49 +0800 CST">November 21, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to This Week In Moeif 22" href=https://blog.moeif.com/posts/this-week-in-moeif-22/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

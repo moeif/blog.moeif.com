@@ -77,6 +77,18 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>《音乐与僵尸：Zombie Rhythm》开发日志
+</h2>
+</header>
+<section class=entry-content>
+<p>《音乐与僵尸：Zombie Rhythm》经过了一个多月的开发，终于上线了。这是一个融合了丧尸和音乐节奏的休闲游戏。这篇文章就聊一下这个游戏的整个开发过程。
+...</p>
+</section>
+<footer class=entry-footer><span title="2021-10-12 12:43:47 +0800 CST">October 12, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 《音乐与僵尸：Zombie Rhythm》开发日志" href=https://blog.moeif.com/posts/zombie-rhythm-devlog/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 16
 </h2>
 </header>
@@ -194,33 +206,6 @@ pinmaker 重新调整了一下程序，目前一共有3W的本金在跑，上个
 </section>
 <footer class=entry-footer><span title="2021-08-29 21:25:59 +0800 CST">August 29, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to This Week In Moeif 10" href=https://blog.moeif.com/posts/this-week-in-moeif-10/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>如何开发一个问答类游戏
-</h2>
-</header>
-<section class=entry-content>
-<p>问答类游戏，在开发过程中还算是比较简单的一个分类，核心的内容就是问题与答案。抽象来讲，问题可能是文字，也可以是图片，也可以是声音等等，而对应玩家可以选择的答案，也可以不同的表现形式。例如看电影海报猜电影名字，听音乐片段猜歌曲等等
-【诗仙与诗魔】，是一个诗词挑战类游戏，本质上也算是一个答类游戏，问题变成了某一首诗中的某一句，而答案就是从给定的类似诗句中选择正确的那一句。接下来我将从技术有角度来解析一下这个游戏的整个开发过程。
-这个游戏现在可以直接从商店下载体验，在 AppStore 或 TapTap 搜索 诗仙与诗魔 即可找到。
-这个游戏现在可以直接从商店下载体验，在 AppStore 或 TapTap 搜索 诗仙与诗魔 即可找到。
-iOS 下载连接: https://apps.apple.com/app/id1583234447
-Android 下载连接: https://www.taptap.com/app/222178
-先解析一下这个游戏，诗仙与诗魔有三种玩法，独自练习，就是关卡模式。无尽冲榜，就是不断地累积得分，然后进行排行榜。匹配挑战，是可以与其他玩家进行联网匹配的玩法，这一个涉及到服务器部分的开发。
-客户端的部分 客户端在启动后，会先去一个固定的域名，拉取一些必要的配置信息，例如服务器的状态，排行榜和匹配服务器的连接地址，服务器的状态等等。这个可以自己根据需求配置各种各样的信息，只有这些必要的信息拉到后，游戏才会继续下一步。
-接下来会从本地尝试读取用户数据，如果本地没有，则会从服务器尝试请求，如果服务器也没有，则认为这是一个新玩家。弹出玩家昵称输入界面，玩家确定后，会将用户的ID和昵称等数据发到服务器，并且在本地存档，然后就会进入游戏。如果本地没有用户数据，但是服务器有，就会使用服务器保存的用户数据，进行数据恢复，然后在本地存档。
-接下来就进入了主界面，可以选择三种不同的玩法。先说一下诗词数据。诗词数据是使用 flatbuffers 存储在游戏包里的。每一个记录，保存了一首诗的ID，名字，作者，内容等。游戏启动后，会读取所有的诗词数据，进行结构化存储。每一首诗，会创建一个 Poem 对象，里面保存了这首诗的内容，以及额外的数据，例如这首诗有几句，每一句的字数，这些数据会用于随机生成问题，以及根据字数，从其他诗词中选择类似的诗句，用作答案。
-关卡模式，就是罗列出诗词配置表中的每一首诗，作为一个关卡，当玩家作答完毕后，会记录所用时间。在关卡界面，所以看到每一首作答过的诗词所用的时间。
-无尽冲榜，首先进入时会消耗体力，对于每一个新玩家，会给予默认300体力，还有2个复活道具，5个刷新道具。在冲榜模式中，每一首诗会有10秒的倒计时，在过程中，玩家可以选择使用一个刷新道具，换一首诗作答，以此不终断冲榜过程。冲榜结束后，会给出得分，客户端会得得分提交到服务器。对于头衔，是由得分计算出来的，这个直接在客户端计算。游戏没有作作弊方面的处理，对于这个游戏来说，没什么必要。如果失败，则必须消耗一个复活道具，才能继续从失败的地方继续冲榜。如果道具或体力不足，则可以通完看广告获得。
-匹配挑战，匹配挑战同样会消耗体力，进入后，首先会向服务器发送匹配消息，服务器会在根据匹配的等待时间，根据玩家的 elo 分值，进行实力相当的匹配，如果最后没有真实玩家，则会匹配一个机器人，与玩家一起玩。每一局匹配挑战由10首诗构成，由哪10首诗，以及每一首诗的可选择答案，则由服务器生成，以此保证两个玩家使用的挑战数据是一致的，保证公平性。
-匹配挑战的分得计算，每一首诗为1000分，如果答错，则0分。如果答对，先得500分，剩下的500分，根据作答速度，剩余时间的百分比，进行得分。得分由服务器计算，一定程度上受网络影响。
-服务器的部分 服务器可以分为三部分，服务器及用户基础数据，排行榜，匹配，这三部分是使用不同的方式实现的。
-服务器及用户基础数据 这一部分使用 aws 的 DynamoDB、Lambda、 API gateway 实现的。通过API gateway 调用 lambda 读写 DynamoDB的数据，可以根据网上一些视频教程来操作来下。逻辑很简单，主要是配置各种权限的时候稍微麻烦一点，也还好。
-排行榜 排行榜放在了 aws 的免费 ec2上，因为游戏的量不大，所以免费的也够用，数据直接放在了 Redis 中，API 逻辑是使用 Rust 来写的。...</p>
-</section>
-<footer class=entry-footer><span title="2021-08-29 12:19:40 +0800 CST">August 29, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 如何开发一个问答类游戏" href=https://blog.moeif.com/posts/how-to-make-a-quiz-game/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
