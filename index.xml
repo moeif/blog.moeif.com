@@ -1718,5 +1718,15 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
 &amp;laquo; 游戏码农：那些打工的日子 &amp;raquo;  状态：开发中  &amp;laquo; 音乐与僵尸：Zombie Rhythm &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 音乐与僵尸是一个以丧尸为元素的音乐游戏。 &amp;laquo; 诗仙与诗魔 &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 诗仙与诗魔是一个以诗词挑战为主题的休闲游戏，融合单人练习，冲榜，匹配等玩法模式。 &amp;laquo; 百变罪犯 &amp;raquo; 下载试玩 &amp;raquo; GooglePlay | TapTap | 试玩视频 百变罪犯是一款快节奏寻物、像素风格的休闲游戏。 </description>
     </item>
     
+    <item>
+      <title>Weekly</title>
+      <link>https://blog.moeif.com/weekly/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/weekly/</guid>
+      <description>这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
+ xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  </description>
+    </item>
+    
   </channel>
 </rss>
