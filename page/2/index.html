@@ -79,6 +79,24 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Gameplay 02 游戏中的跳跃
+</h2>
+</header>
+<section class=entry-content>
+<p>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
+自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
+我们的目标是求出跳跃的速度。
+首先，假设我们以一个初始速度 $j$ 来跳跃，这个是一个向上的速度，但是因为重力的存在，所以我们的跳跃速度会因为重力的向下抵消，而逐渐趋向于 0。当 $j$ 慢慢被抵消到 0 时，我们也就达到了以 $j$ 这个速度来跳跃所能到达的最大高度。
+对于任意时刻 $t$，速度 $v = j - gt$，当 $j - gt = 0$ 时，也就是我们所能到达的最大高度。所以，到达最大高度的时间为 $t = \frac{j}{g}$。
+根据上面的公式，我们可以知道，在以 $j$ 来跳跃的整个过程中，任意时刻的高度为 $h = jt - \frac{gt^2}{2}$。
+由于我们上面已经知道了，在 $t = \frac{j}{g}$ 时，我们将达到最大跳跃高度。将 $\frac{j}{g}$ 带入到任意时刻的高度公式中 $h = jt - \frac{gt^2}{2}$。我们可以得到 $h = j(\frac{j}{g}) - \frac{g(\frac{j}{g})^2}{2}$。
+化简上面的公式将得到 $h = \frac{j^2}{g} - \frac{\frac{j^2}{g}}{2} = \frac{j^2}{g} - \frac{j^2}{2g} = \frac{j^2}{2g}$。...</p>
+</section>
+<footer class=entry-footer><span title="2022-01-22 20:50:49 +0800 CST">January 22, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to Gameplay 02 游戏中的跳跃" href=https://blog.moeif.com/posts/gameplay-02-jump/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>This Week In Moeif 30
 </h2>
 </header>
@@ -198,22 +216,6 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
 </section>
 <footer class=entry-footer><span title="2021-12-10 20:19:15 +0800 CST">December 10, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Rust 光线追踪 13: 散焦模糊" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-13/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Rust 光线追踪 12: 正交相机
-</h2>
-</header>
-<section class=entry-content>
-<p>正交相机所看到的东西大小，与远近无关，只与正交相机的视野（FOV）有关。FOV越大，能看到的世界范围就大，也就是能看到更多的东西，而FOV越小，能看到的世界范围就越小，也就是只能看到较少的东西。
-由于FOV越小，看到的范围就越小，从而，相机的上下界，所发出的射线，所能覆盖的范围，就小。也就是相当于所有的射线，都集中在世界中一个小范围，从这个小范围中取得颜色，填充画布（最后渲染的图片），所以看到的东西就大。而如果FOV很大，射线所能覆盖的世界范围就大，用这个大范围来填充画布，自然同一个物体就会看起来小。
-可以想象一个两个盒子，一个大的，假设口径是50厘米，扣在一把键盘上，可以扣住整个键盘，相当于摄像机看到了整个键盘。而将一个1厘米口径的盒子，扣在键盘上，可能只能覆盖其中一个键，也就是相机只能看到这一个键范围的东西。但最后都会将扣到的东西填充到画布上，所以，就相当于FOV越小，看到的东西就越大。
-添加相机FOV逻辑 在本文中，相机的FOV，我们使用角度来表示，上图中，$\theta$ 就是相机的开口大小，而 $h = \tan(\frac{\theta}{2})$，$2 * h$就是视口的高度，而视口的宽度，通过自定义的宽高比，来动态计算出来。
-下面修改 camera.rs 的代码，添加 fov 和 宽高比。
-// src/camera.rs impl Camera { pub fn new(vfov: f64, aspect_ratio: f64) -> Self { let theta = vfov * std::f64::consts::PI / 180.0; let h = (theta / 2.0).tan(); let viewport_height = 2.0 * h; let viewport_width = aspect_ratio * viewport_height; let focal_length = 1.0; let origin = Vec3::zero(); let horizontal = Vec3::new(viewport_width, 0.0, 0....</p>
-</section>
-<footer class=entry-footer><span title="2021-12-08 23:01:15 +0800 CST">December 8, 2021</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Rust 光线追踪 12: 正交相机" href=https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-12/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

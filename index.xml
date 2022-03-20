@@ -9,7 +9,21 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 01 Mar 2022 13:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Mar 2022 12:30:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity 完整的热更新方案和流程</title>
+      <link>https://blog.moeif.com/posts/unity-hot-update/</link>
+      <pubDate>Sun, 20 Mar 2022 12:30:42 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/unity-hot-update/</guid>
+      <description>在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
+这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
+整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
+编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构
+Res/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。
+LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.</description>
+    </item>
+    
     <item>
       <title>一个游戏兑换码生成及验证方案</title>
       <link>https://blog.moeif.com/posts/exchange-code/</link>

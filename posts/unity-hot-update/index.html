@@ -1,0 +1,1439 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Unity 完整的热更新方案和流程 | 萌一小栈</title>
+<meta name=keywords content="游戏开发">
+<meta name=description content="在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
+这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
+整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
+编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构
+Res/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。
+LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.">
+<meta name=author content="fred">
+<link rel=canonical href=https://blog.moeif.com/posts/unity-hot-update/>
+<meta name=google-site-verification content="XYZabc">
+<meta name=yandex-verification content="XYZabc">
+<meta name=msvalidate.01 content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.c88963fe2d79462000fd0fb1b3737783c32855d340583e4523343f8735c787f0.css integrity="sha256-yIlj/i15RiAA/Q+xs3N3g8MoVdNAWD5FIzQ/hzXHh/A=" rel="preload stylesheet" as=style>
+<link rel=preload href=/images/favicon.svg as=image>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://blog.moeif.com/images/favicon.svg>
+<link rel=icon type=image/png sizes=16x16 href=https://blog.moeif.com/images/favicon.svg>
+<link rel=icon type=image/png sizes=32x32 href=https://blog.moeif.com/images/favicon.svg>
+<link rel=apple-touch-icon href=https://blog.moeif.com/favicon.svg>
+<link rel=mask-icon href=https://blog.moeif.com/favicon.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.89.2">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+<style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
+</noscript><meta property="og:title" content="Unity 完整的热更新方案和流程">
+<meta property="og:description" content="在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
+这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
+整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
+编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构
+Res/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。
+LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.moeif.com/posts/unity-hot-update/"><meta property="og:image" content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2022-03-20T12:30:42+08:00">
+<meta property="article:modified_time" content="2022-03-20T12:30:42+08:00"><meta property="og:site_name" content="萌一小栈">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E">
+<meta name=twitter:title content="Unity 完整的热更新方案和流程">
+<meta name=twitter:description content="在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
+这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
+整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
+编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构
+Res/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。
+LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.moeif.com/posts/"},{"@type":"ListItem","position":2,"name":"Unity 完整的热更新方案和流程","item":"https://blog.moeif.com/posts/unity-hot-update/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Unity 完整的热更新方案和流程","name":"Unity 完整的热更新方案和流程","description":"在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。\n这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。\n整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。\n编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构\nRes/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。\nLuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.","keywords":["游戏开发"],"articleBody":"在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。\n这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。\n整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。\n编辑器部分 编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构\nRes/ - ConfigBytes/ - UI/ - LuaScripts/ - Data/ - ItemsData/ - CharactersData/ 首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会递归取这个文件夹下的子目录。\nLuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.txt。因为 .lua 在 Unity 中识别不了。\n打 Bundle 的脚本，会记录每一个资源，所在的 Bundle 名称，最后会生成一个 index.json 文件，这份索引文件记录的，就是每一个资源的加载路径，和所在的 Bundle 名。\nBundle 输出后，会生成一个 version.json 的文件，这个文件，记录了每一个 Bundle 的名字，MD5 和 文件大小。而热更新对比一个文件是否需要更新，就是判断远程文件的 MD5 与本地文件的 MD5 是否相同，如果不想同，则需要更新远程文件。\n以上就是编辑器所做的事情，总结一下就是\n 拷贝 LuaScripts 到 Assets/Res/ 目录中 将 Res/ 目录下的文件按目录进行 Bundle 生成 生成资源索引文件(index.json)，并且将这个文件也打成 Bundle 根据生成的 Bundle，生成 version.json 文件 拷贝上面的 Bundle 及 version.json 文件到 StreamingAssets 目录 将上面的 Bundle 及 version.json 文件上传到远程服务器或 CDN  第 5 步，之所以是要拷贝到 StreamingAssets 目录，是为了用户在第一次安装游戏时，运行时逻辑会先判断本地有没有资源，如果没有，或者版本号小于 StreamingAssets 中的 version.json 文件版本号，则需要将 StreamingAssets 目录下的 Bundle 及 version.json 文件拷贝到 Persistent 目录下，这样就不用第一次安装游戏，还需要跑条更新资源了。当然，虽然有了这个过程，拷贝完后，正常的版本检查还是会做。\n以上就是编辑器下做的事情，下面为运行时的流程\n运行时资源更新部分 版本检查及更新逻辑，可以放在一个独立的场景中去进行，一旦更新完成后，就直接跳转场景到游戏启动场景，这个逻辑比较简单清晰，不容易出错。\n在游戏启动时，首先会去远程拉取 version.json 文件，然后根据 version.json 文件中的版本号与本地 version.json 文件中的版本号进行对比。如果不一样，则需要根据 version.json 文件中的 Bundle 信息，看一下哪一些 Bundle 需要更新，找到需要更新的 Bundle 后，依次下载始可。因为 version.json 中包含了每一个 Bundle 的文件大小，所以这里的下载进度条的进度，也是可以计算出来的。\n在对比版本号时，需要根据自己游戏的实际进行，分为大版本号和热更新版本号，如果大版本号不一样，则直接不用判断 Bundle 了，让用户进不了游戏，弹窗告诉用户去下载最新的安装包即可。如果大版本一样，则进行热更新的逻辑。这里的大版本判断，不当要根据 version.json 文件里的版本号来判断，最好是根据包里代码中或者包里的某个配置文件中的版本号来判断，因为 version.json 文件是在手机的可读写目录，对于 Android 来说，是很容易随意找到这个文件，然后改掉的，从而绕过热更新。\n在 Bundle 都下载完后，需要将远程的 version.json 文件写入本地，覆盖本地的 version.json 文件。\n最后，再进行一步本地资源校对，就是计算每一个本地 Bundle MD5，是否与 version.json 中的 MD5 一致，如果不一致，则需要弹窗告诉玩家需要手动修复资源，或者直接自动下载覆盖。手动修复也就是从远程重新下载资源进行覆盖。\n最后一步资源校对通过后，则跳到游戏逻辑开始场景。\n我是将版本检查和更新的逻辑放在了 C# 实现的，当然，也可以放在 lua 来实现，不过需要在更新完后，重新创建整个 lua 环境，以保证使用了最新的资源。\n运行时资源加载部分 资源的加载，可以使用一个资源管理器脚本来实现。资源管理器在初始化时首先要加载 Bundle 的 AssetBundleManifest 信息，这个资源里记录了各个 Bundle 与其他 Bundle 的依赖关系。然后加载 index 文件，也就是我们一开始生成的资源索引文件，这样才能知道哪一个资源，在哪一个 Bundle 里。当要加载一个资源时，传入资源加载路径，首先会根据 index 文件中的信息，找到这个 Bundle，然后从 Manifest 信息中，读取这个 Bundle 的依赖 Bundle，如果有，则先加载依赖，最后，再加载当前 Bundle。Bundle加载完后，从 Bundle 中加载资源。\n具体代码（仅供参考） AssetBundleBuilder.cs 编辑器下编 Bundle 的代码\nusing System.Collections.Generic; using UnityEngine; using UnityEditor; using UnityEditor.Build; using System; using System.IO; using System.Text; using System.Linq; using System.Xml.Linq; using System.Security.Cryptography; using UnityEditor.Build.Reporting; // 注意：BundleCombineConfig.json 中的配置，目录最后！不要！加上 '/' public class AssetBundleBuilder { private static string RES_TO_BUILD_PATH = \"Assets/Res/\"; private static string MANIFEST_FILES_PATH = string.Format(\"{0}/../BundleManifest/\", Application.dataPath); private static StringBuilder IndexFileContent = null; private static StringBuilder VersionFileContent = null; private static MD5 md5 = null; private static BuildAssetBundleOptions BuildOption = BuildAssetBundleOptions.ChunkBasedCompression | BuildAssetBundleOptions.ForceRebuildAssetBundle; private static BundleCombineConfig combineConfig = null; private static Dictionarystring, int combinePathDict = null; private static string version = \"0.0.0\"; private static bool copyToStreaming = false; private static void InitBuilder() { IndexFileContent = new StringBuilder(); VersionFileContent = new StringBuilder(); md5 = new MD5CryptoServiceProvider(); combineConfig = null; combinePathDict = new Dictionarystring, int(); } private static void WriteIndexFile(string key, string value) { IndexFileContent.AppendFormat(\"{0}:{1}\", key, value); IndexFileContent.AppendLine(); } private static void WriteVersionFile(string key, string value1, long value2) { VersionFileContent.AppendFormat(\"{0}:{1}:{2}\", key, value1, value2); VersionFileContent.AppendLine(); } private static long GetFileSize(string fileName) { try { FileInfo fileInfo = new FileInfo(fileName); return fileInfo.Length; } catch (Exception ex) { throw new Exception(\"GetFileSize() fail, error:\" + ex.Message); } } private static string GetMD5(byte[] retVal) { StringBuilder sb = new StringBuilder(); for (int i = 0; i \"x2\")); } return sb.ToString(); } private static string GetMD5HashFromFile(string fileName) { try { FileStream file = new FileStream(fileName, FileMode.Open); byte[] retVal = md5.ComputeHash(file); file.Close(); return GetMD5(retVal); } catch (Exception ex) { throw new Exception(\"GetMD5HashFromFile() fail, error:\" + ex.Message); } } static string GetBundleName(string path) { byte[] md5Byte = md5.ComputeHash(Encoding.Default.GetBytes(path)); string str = GetMD5(md5Byte) + \".assetbundle\"; return str; } private class BuildBundleData { private AssetBundleBuild build = new AssetBundleBuild(); private Liststring assets = new Liststring(); private Liststring addresses = new Liststring(); public BuildBundleData(string bundleName) { build.assetBundleName = bundleName; } public void AddAsset(string filePath) { string addressableName = GetAddressableName(filePath); assets.Add(filePath); addresses.Add(addressableName); WriteIndexFile(addressableName, build.assetBundleName); } public AssetBundleBuild Gen() { build.assetNames = assets.ToArray(); build.addressableNames = addresses.ToArray(); return build; } } private static string GetAddressableName(string file_path) { string addressable_name = file_path; addressable_name = addressable_name.Replace(RES_TO_BUILD_PATH, \"\"); int dot_pos = addressable_name.LastIndexOf('.'); if (dot_pos != -1) { int count = addressable_name.Length - dot_pos; addressable_name = addressable_name.Remove(dot_pos, count); } return addressable_name; } private static string[] GetTopDirs(string rPath) { return Directory.GetDirectories(rPath, \"*\", SearchOption.TopDirectoryOnly); } private static void CopyLuaDir() { // Copy Lua  string luaOutPath = Application.dataPath + \"/../LuaScripts\"; string luaInPath = Application.dataPath + \"/Res/LuaScripts\"; DeleteLuaDir(); MoeUtils.DirectoryCopy(luaOutPath, luaInPath, true, \".txt\"); AssetDatabase.Refresh(); } private static void DeleteLuaDir() { string luaInPath = Application.dataPath + \"/Res/LuaScripts\"; if (Directory.Exists(luaInPath)) { Directory.Delete(luaInPath, true); } } public static void BuildBundleWithVersion(string v, bool copy) { version = v; copyToStreaming = copy; BuildAssetBundle(); } [MenuItem(\"Tools/Build Bundles\")] private static void BuildAssetBundle() { if (version == \"0.0.0\") { Debug.LogErrorFormat(\"请确认版本号\"); return; } CopyLuaDir(); InitBuilder(); LoadBundleCombineConfig(); Dictionarystring, BuildBundleData bundleDatas = new Dictionarystring, BuildBundleData(); IndexFileContent.Clear(); VersionFileContent.Clear(); List dirList = new List(); // ============================  Queue dirQueue = new Queue(); dirQueue.Enqueue(new DirBundleInfo(RES_TO_BUILD_PATH)); while (dirQueue.Count  0) { DirBundleInfo rootDirInfo = dirQueue.Dequeue(); if (rootDirInfo.dir != RES_TO_BUILD_PATH) { if (combinePathDict.ContainsKey(rootDirInfo.dir)) { rootDirInfo.combine2Dir = rootDirInfo.dir; } dirList.Add(rootDirInfo); } foreach (string subDir in GetTopDirs(rootDirInfo.dir)) { DirBundleInfo subDirInfo = new DirBundleInfo(subDir); subDirInfo.combine2Dir = rootDirInfo.combine2Dir; dirQueue.Enqueue(subDirInfo); Debug.LogFormat(\"Dir: {0}, Combine2Dir: {1}\", subDirInfo.dir, subDirInfo.combine2Dir); } } foreach (DirBundleInfo dirInfo in dirList) { string[] files = GetFiles(dirInfo.dir, SearchOption.TopDirectoryOnly); if (files.Length  0) { Debug.LogFormat(\"Dir: {0}, FileCount: {1}\", dirInfo.dir, files.Length); string bundleDirName = dirInfo.BundleDirName; BuildBundleData bbData = null; if (bundleDatas.ContainsKey(bundleDirName)) { bbData = bundleDatas[bundleDirName]; } else { bbData = new BuildBundleData(GetBundleName(bundleDirName)); bundleDatas.Add(bundleDirName, bbData); } foreach (string file in files) { bbData.AddAsset(file); } } } List bundleBuildList = new List(); foreach (BuildBundleData data in bundleDatas.Values) { bundleBuildList.Add(data.Gen()); } string index_file_path = string.Format(\"{0}{1}.txt\", RES_TO_BUILD_PATH, \"index\"); File.WriteAllText(index_file_path, IndexFileContent.ToString()); AssetDatabase.ImportAsset(index_file_path); AssetDatabase.SaveAssets(); AssetDatabase.Refresh(); AssetBundleBuild indexBuild = new AssetBundleBuild(); indexBuild.assetBundleName = \"index\"; indexBuild.assetNames = new string[] { index_file_path }; indexBuild.addressableNames = new string[] { \"index\" }; bundleBuildList.Add(indexBuild); string bundleExportPath = string.Format(\"{0}/{1}/\", Application.dataPath + \"/../streaming\", \"Bundles\"); if (Directory.Exists(bundleExportPath)) { Directory.Delete(bundleExportPath, true); } Directory.CreateDirectory(bundleExportPath); if (Directory.Exists(MANIFEST_FILES_PATH)) { Directory.Delete(MANIFEST_FILES_PATH, true); } Directory.CreateDirectory(MANIFEST_FILES_PATH); BuildPipeline.BuildAssetBundles(bundleExportPath, bundleBuildList.ToArray(), BuildOption, EditorUserBuildSettings.activeBuildTarget); AssetDatabase.Refresh(); DeleteLuaDir(); AssetDatabase.Refresh(); // VersionProfile  List versionBundleList = new List(); MoeVersionInfo versionInfo = new MoeVersionInfo(); versionInfo.version = version; versionInfo.asset_date = DateTime.Now.ToString(\"yyyyMMddHHmm\"); string[] ab_files = Directory.GetFiles(bundleExportPath); foreach (string ab_file in ab_files) { if (Path.GetExtension(ab_file) == \".manifest\") { string new_path = ab_file.Replace(bundleExportPath, MANIFEST_FILES_PATH); File.Move(ab_file, new_path); } else { Debug.LogFormat(\"BundleName: {0}\", ab_file); var data = File.ReadAllBytes(ab_file); using (var abStream = new AssetBundleStream(ab_file, FileMode.Create)) { abStream.Write(data, 0, data.Length); } string md5 = GetMD5HashFromFile(ab_file); long size = GetFileSize(ab_file); string bundleName = string.Format(\"Bundles/{0}\", Path.GetFileName(ab_file)); VersionBundleInfo bInfo = new VersionBundleInfo(); bInfo.bundle_name = bundleName; bInfo.md5 = md5; bInfo.size = size; versionBundleList.Add(bInfo); } } versionInfo.bundles = versionBundleList.ToArray(); string versionInfoText = Newtonsoft.Json.JsonConvert.SerializeObject(versionInfo); File.WriteAllText(string.Format(\"{0}/{1}\", bundleExportPath, \"version.json\"), versionInfoText); if (copyToStreaming) { CopyBundleToStreaming(bundleExportPath); } MoveToVersionDir(bundleExportPath, version); AssetDatabase.Refresh(); } private static void MoveToVersionDir(string rootBundlePath, string version) { string destPath = rootBundlePath + \"/\" + version; Directory.CreateDirectory(destPath); destPath += \"/Bundles\"; Directory.CreateDirectory(destPath); string[] files = GetFiles(rootBundlePath, SearchOption.TopDirectoryOnly); foreach (string file in files) { string fileName = System.IO.Path.GetFileName(file); string destFilePath = destPath + \"/\" + fileName; File.Move(file, destFilePath); } } private static void CopyBundleToStreaming(string bundleExportPath) { string destPath = Application.streamingAssetsPath + \"/Bundles\"; if (Directory.Exists(destPath)) { Directory.Delete(destPath, true); } MoeUtils.DirectoryCopy(bundleExportPath, destPath, true); } private static string[] GetFiles(string path, SearchOption so) { string[] files = Directory.GetFiles(path, \"*\", so); Liststring fileList = new Liststring(); foreach (string file in files) { string ext = Path.GetExtension(file); if (ext == \".meta\" || ext == \".DS_Store\") { continue; } fileList.Add(file); } return fileList.ToArray(); } class DirBundleInfo { public string dir; public string combine2Dir; public bool IsCombine { get { return !string.IsNullOrEmpty(combine2Dir); } } public string BundleDirName { get { if (IsCombine) { return combine2Dir; } else { return dir; } } } public DirBundleInfo(string dir, string combine2Dir = null) { this.dir = dir; this.combine2Dir = combine2Dir; } } class BundleCombineConfig { public string[] combieDirs; } private static void LoadBundleCombineConfig() { string path = Application.dataPath + RES_TO_BUILD_PATH.Replace(\"Assets\", \"\") + \"BundleCombineConfig.json\"; if (File.Exists(path)) { string text = File.ReadAllText(path); if (!string.IsNullOrEmpty(text)) { combineConfig = Newtonsoft.Json.JsonConvert.DeserializeObject(text); if (combineConfig != null) { Debug.LogFormat(\"Bundle合并配置成功！\"); foreach (string cPath in combineConfig.combieDirs) { if (!combinePathDict.ContainsKey(cPath)) { combinePathDict.Add(cPath, 0); } } } } } } } MoeVersionManager.cs 资源版本检查及 Bundle 更新逻辑\nusing UnityEngine; using System.Collections; using System.Collections.Generic; using BestHTTP; using System; public class MoeVersionManager : MoeSingleton { const string REMOTE_URL = \"这里改成自己的CDN域名或IP\"; static string VERSION_FILE_DIR; static string VERSION_FILE_PATH; static string IN_VERSION_FILE_PATH; private MoeVersionInfo currVersionInfo = null; private MoeVersionInfo remoteVersionInfo = null; private UpdateInfo updateInfo = null; private static OnVersionStateParam versionStateParam = new OnVersionStateParam(); private static OnUpdateProgressParam updateProgressParam = new OnUpdateProgressParam(); private static OnVersionMsgBoxParam msgBoxParam = new OnVersionMsgBoxParam(); private enum EnProcessType { Normal, Fix, } private Action actionTryUnCompress = null; private Action actionUpdateVersionFile = null; private Action actionUpdateBundles = null; private Action actionCheckAssets = null; private Action actionForceUpdateVersionFile = null; protected override void InitOnCreate() { VERSION_FILE_DIR = Application.persistentDataPath + \"/Bundles/\"; VERSION_FILE_PATH = Application.persistentDataPath + \"/Bundles/version.json\"; IN_VERSION_FILE_PATH = Application.streamingAssetsPath + \"/Bundles/version.json\"; Debug.LogFormat(\"{0}\", VERSION_FILE_PATH); InitProcessChain(); StartNormalProcess(); } private void InitProcessChain() { this.actionTryUnCompress = (EnProcessType param) = { Debug.LogFormat(\"Action 解压: {0}\", param); this.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH); // if (!CheckBundleCorrect())  if (currVersionInfo == null) { UpdateUIState(\"正在解压资源\"); UnCompressBundle(); this.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH); } else { // 判断是不是更新包，也就是StreamingAssets里的版本是否比Persistent版本高，如果高的话，再次解压Bundle  MoeVersionInfo inVersionInfo = LoadVersionInfo(IN_VERSION_FILE_PATH); if (inVersionInfo != null) { int[] inVersionDigit = inVersionInfo.GetVersionDigitArray(); int[] currVersionDigit = this.currVersionInfo.GetVersionDigitArray(); // if (inVersionInfo.GetVersionLong()  this.currVersionInfo.GetVersionLong())  if (inVersionDigit[0]  currVersionDigit[0] || inVersionDigit[1]  currVersionDigit[1] || inVersionDigit[2]  currVersionDigit[2]) { // 包里的版本比Persistent的版本高，可能玩家进行了大版本更新，重新解压  Debug.LogFormat(\"包里的Bundle版本  Persistent Bundle 版本，重新解压\"); UpdateUIState(\"正在解压资源\"); UnCompressBundle(); this.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH); } else { Debug.LogFormat(\"包里Bundle版本 ); } } else { Debug.LogErrorFormat(\"逻辑错误，从StreamingAssets 中加载VersionInfo文件失败\"); } } }; this.actionUpdateVersionFile = (EnProcessType param) = { Debug.LogFormat(\"Action 获取远程版本文件: {0}\", param); StartCoroutine(TryUpdateVersion((bool ok, bool majorUpdate) = { if (ok) { if (majorUpdate) { // 调用商店  OnMsgBox(\"新的大版本已更新，请下载最新安装包！\", \"确定\", () = { JumpToDownloadMarket(); }); } else { // 成功了，接下来更新Bundle  this.actionUpdateBundles?.Invoke(param); } } else { // 版本文件更新失败，弹窗询问  OnMsgBox(\"版本信息获取失败，请检查网络连接！\", \"重试\", () = { this.actionUpdateVersionFile?.Invoke(param); }); } })); }; this.actionForceUpdateVersionFile = (EnProcessType param) = { Debug.LogFormat(\"Action 强制获取远程版本文件: {0}\", param); TryDeleteBundleDir(); TryCreateBundleDir(); StartCoroutine(TryUpdateVersion((bool ok, bool majorUpdate) = { if (ok) { if (majorUpdate) { // 调用商店  OnMsgBox(\"新的大版本已更新，请下载最新安装包！\", \"确定\", () = { JumpToDownloadMarket(); }); } else { // 成功了，接下来更新Bundle  this.actionUpdateBundles?.Invoke(param); } } else { // 版本文件更新失败，弹窗询问  OnMsgBox(\"版本信息获取失败，请检查网络连接！\", \"重试\", () = { this.actionForceUpdateVersionFile?.Invoke(param); }); } }, true)); }; this.actionUpdateBundles = (EnProcessType param) = { Debug.LogFormat(\"Action 更新Bundle: {0}\", param); StartCoroutine(TryUpdateBundle((bool ok) = { if (ok) { // 成功了，接下来检查资源，  this.actionCheckAssets?.Invoke(param); } else { OnMsgBox(\"资源下载失败，请检查网络连接！\", \"重试\", () = { this.actionUpdateBundles(param); }); } })); }; this.actionCheckAssets = (EnProcessType param) = { Debug.LogFormat(\"Action 校对资源: {0}\", param); if (!CheckBundleCorrect()) { // 更新完了，本地Bundle还是不对  Debug.LogFormat(\"更新完Bundle后，发现文件不对\"); if (param == EnProcessType.Normal) { OnMsgBox(\"资源有错误，请修复客户端！\", \"修复\", () = { this.actionForceUpdateVersionFile?.Invoke(EnProcessType.Fix); }); } else { OnMsgBox(\"客户端修复失败，请重新下载安装包！\", \"确定\", () = { JumpToDownloadMarket(); }); } } else { UpdateUIState(\"进入游戏\"); MoeEventManager.Inst.SendEvent(EventID.Event_OnUpdateEnd); } }; } // 跳转到下载商店  private void JumpToDownloadMarket() { Application.OpenURL(\"https://taptap.com\"); } private void StartNormalProcess() { TryCreateBundleDir(); this.actionTryUnCompress?.Invoke(EnProcessType.Normal); this.actionUpdateVersionFile?.Invoke(EnProcessType.Normal); } private void StartFixProcess() { this.actionForceUpdateVersionFile(EnProcessType.Fix); } private MoeVersionInfo LoadVersionInfo(string path) { Debug.LogFormat(\"加载 Version 文件: {0}\", path); try { if (System.IO.File.Exists(path)) { string text = System.IO.File.ReadAllText(path); if (!string.IsNullOrEmpty(text)) { MoeVersionInfo vInfo = Newtonsoft.Json.JsonConvert.DeserializeObject(text); if (vInfo != null) { Debug.LogFormat(\"Version 信息加载成功: {0}\", vInfo.version); return vInfo; } } else { Debug.LogFormat(\"Version 文件内容为空\"); } } else { Debug.LogFormat(\"Version 文件不存在\"); } } catch (System.Exception e) { Debug.LogErrorFormat(\"读取Version文件出错: {0}\", e.ToString()); } return null; } ///   /// 从 StreamingAssets 里将Bundle拷贝到 Persistent 目录里  ///   private void UnCompressBundle() { TryDeleteBundleDir(); TryCreateBundleDir(); Debug.LogFormat(\"尝试从 Steaming 拷贝Bundle 到 Persistent\"); try { if (System.IO.File.Exists(IN_VERSION_FILE_PATH)) { string text = System.IO.File.ReadAllText(IN_VERSION_FILE_PATH); Debug.LogFormat(\"Text: {0}\", text); MoeVersionInfo inVersionInfo = Newtonsoft.Json.JsonConvert.DeserializeObject(text); if (inVersionInfo != null) { // 拷贝 Bundle  foreach (VersionBundleInfo bundleInfo in inVersionInfo.bundles) { string srcFilePath = string.Format(\"{0}/{1}\", Application.streamingAssetsPath, bundleInfo.bundle_name); string destFilePath = string.Format(\"{0}/{1}\", Application.persistentDataPath, bundleInfo.bundle_name); Debug.LogFormat(\"拷贝Bundle， {0} - {1}\", srcFilePath, destFilePath); System.IO.File.Copy(srcFilePath, destFilePath, true); } // 拷贝 Version文件  System.IO.File.Copy(IN_VERSION_FILE_PATH, VERSION_FILE_PATH, true); } } else { Debug.LogErrorFormat(\"解压失败，StreamingAssets 中没有 Version 文件\"); } } catch (System.Exception e) { Debug.LogErrorFormat(\"Bundle拷贝出错! {0}\", e.ToString()); } } public void TryCreateBundleDir() { if (!System.IO.Directory.Exists(VERSION_FILE_DIR)) { Debug.LogFormat(\"创建 Persistent Bundle 目录\"); System.IO.Directory.CreateDirectory(VERSION_FILE_DIR); } else { Debug.LogFormat(\"Persistent Bundle 目录已存在，不需要创建\"); } } public void TryDeleteBundleDir() { if (System.IO.Directory.Exists(VERSION_FILE_DIR)) { System.IO.Directory.Delete(VERSION_FILE_DIR, true); } } private string GetLocalBundleMD5(string bundle_name) { string bundleFilePath = string.Format(\"{0}/{1}\", Application.persistentDataPath, bundle_name); if (System.IO.File.Exists(bundleFilePath)) { string md5 = MoeUtils.GetMD5HashFromFile(bundleFilePath); return md5; } return null; } ///   /// 检查当前的Bundle是否正确  ///   ///   public bool CheckBundleCorrect() { if (currVersionInfo != null) { foreach (VersionBundleInfo bundleInfo in currVersionInfo.bundles) { string bundleFilePath = string.Format(\"{0}/{1}\", Application.persistentDataPath, bundleInfo.bundle_name); bool matched = false; if (GetLocalBundleMD5(bundleInfo.bundle_name) == bundleInfo.md5) { matched = true; } else { Debug.LogErrorFormat(\"MD5 不匹配： {0}, FileMD5: {1}, bInfoMD5: {2}\", bundleInfo.bundle_name, GetLocalBundleMD5(bundleInfo.bundle_name), bundleInfo.md5); } if (!matched) { return false; } } Debug.LogFormat(\"本地Bundle文件检完全正确\"); return true; } else { return false; } } ///   ///  ///   ///   ///   ///   private IEnumerator TryUpdateVersion(System.Actionbool, bool callback, bool force = false) { UpdateUIState(\"正在检查更新\"); this.remoteVersionInfo = null; this.updateInfo = null; string remoteVersionUrl = REMOTE_URL + \"/fishing/version.json\"; Debug.LogFormat(\"开始下载远程 Version 文件: {0}\", remoteVersionUrl); HTTPRequest request = new HTTPRequest(new System.Uri(remoteVersionUrl), false, true, null).Send(); while (request.State yield return new WaitForSeconds(0.1f); } if (request.State == HTTPRequestStates.Finished \u0026\u0026 request.Response.IsSuccess) { string remoteVersionText = request.Response.DataAsText; if (!string.IsNullOrEmpty(remoteVersionText)) { MoeVersionInfo remoteVersionInfo = Newtonsoft.Json.JsonConvert.DeserializeObject(remoteVersionText); if (remoteVersionInfo != null) { Debug.LogFormat(\"远程 Version 文件解析成功, Version: {0}\", remoteVersionInfo.version); // 判断是否要更新  int appMajorVersion = AppConfig.Inst.GetMajorVersion(); // 判断是否要强更  int remoteMajor = remoteVersionInfo.GetMajorVersion(); if (remoteMajor  appMajorVersion) { // 这是一个需要强更的版本，需要提示用户去商店下载  Debug.LogFormat(\"发现强更版本，需要重新下包，进行大版本更新!\"); callback?.Invoke(true, true); callback = null; UpdateUIState(\"新的大版本已更新，请下载最新安装包！\"); } else { // 强制修复  if (force) { this.remoteVersionInfo = remoteVersionInfo; List updateBundleList = new List(); updateBundleList.AddRange(remoteVersionInfo.bundles); // 有需要更新的包  this.updateInfo = new UpdateInfo(); this.updateInfo.remoteVersionInfo = remoteVersionInfo; this.updateInfo.updateBundleList = updateBundleList; Debug.LogFormat(\"强制更新，有需要更新的Bundle\"); callback?.Invoke(true, false); callback = null; } else { // 正常更新  int[] remoteVersionDigit = remoteVersionInfo.GetVersionDigitArray(); int[] currVersionDigit = this.currVersionInfo == null ? new int[] { 0, 0, 0 } : this.currVersionInfo.GetVersionDigitArray(); // if (this.currVersionInfo == null || remoteVersionInfo.GetVersionLong()  this.currVersionInfo.GetVersionLong())  if (remoteVersionDigit[0]  currVersionDigit[0] || remoteVersionDigit[1]  currVersionDigit[1] || remoteVersionDigit[2]  currVersionDigit[2]) { Debug.LogFormat(\"这次需要热更新\"); this.remoteVersionInfo = remoteVersionInfo; List updateBundleList = new List(); foreach (VersionBundleInfo rBInfo in remoteVersionInfo.bundles) { if (GetLocalBundleMD5(rBInfo.bundle_name) != rBInfo.md5) { updateBundleList.Add(rBInfo); } } // 有需要更新的包  this.updateInfo = new UpdateInfo(); this.updateInfo.remoteVersionInfo = remoteVersionInfo; this.updateInfo.updateBundleList = updateBundleList; Debug.LogFormat(\"有需要更新的Bundle\"); callback?.Invoke(true, false); callback = null; } else { Debug.LogFormat(\"远程版本号 {0} , remoteVersionInfo.version, this.currVersionInfo.version); callback?.Invoke(true, false); callback = null; } } } } else { Debug.LogErrorFormat(\"远程 Version 文件反序列化失败: {0}\", remoteVersionText); } } else { Debug.LogErrorFormat(\"远程 Version 文件内容为空\"); } } else { Debug.LogErrorFormat(\"远程 Version 文件下载失败: {0}, {1}\", request.State, request.Response.StatusCode); } BestHTTP.PlatformSupport.Memory.BufferPool.Release(request.Response.Data); callback?.Invoke(false, false); } private IEnumerator TryUpdateBundle(System.Actionbool callback) { if (this.remoteVersionInfo != null \u0026\u0026 this.updateInfo != null) { long totalSize = 0; foreach (VersionBundleInfo bInfo in this.updateInfo.updateBundleList) { totalSize += bInfo.size; } UpdateUIDownload(totalSize, 0); long downloadedSize = 0; bool hasError = false; foreach (VersionBundleInfo bInfo in this.updateInfo.updateBundleList) { Debug.LogFormat(\"Bundle信息 {0} | {1}\", GetLocalBundleMD5(bInfo.bundle_name), bInfo.md5); if (GetLocalBundleMD5(bInfo.bundle_name) != bInfo.md5) { string remoteBundleUrl = string.Format(\"{0}/fishing/{1}/{2}\", REMOTE_URL, this.updateInfo.remoteVersionInfo.version, bInfo.bundle_name); Debug.LogFormat(\"开始更新Bundle: {0}\", remoteBundleUrl); HTTPRequest request = new HTTPRequest(new System.Uri(remoteBundleUrl), false, true, null).Send(); while (request.State yield return new WaitForSeconds(0.1f); } if (request.State == HTTPRequestStates.Finished \u0026\u0026 request.Response.IsSuccess) { downloadedSize += bInfo.size; string bundleWritePath = Application.persistentDataPath + \"/\" + bInfo.bundle_name; // 写入Bundle文件  System.IO.File.WriteAllBytes(bundleWritePath, request.Response.Data); Debug.LogFormat(\"{0} 更新完成\", bInfo.bundle_name); UpdateUIDownload(totalSize, downloadedSize); } else { Debug.LogErrorFormat(\"{0} 下载出错: {1}, {2}\", bInfo.bundle_name, request.State, request.Response.IsSuccess); callback?.Invoke(false); callback = null; hasError = true; break; } yield return null; BestHTTP.PlatformSupport.Memory.BufferPool.Release(request.Response.Data); } else { Debug.LogFormat(\"!!!!!!!!!!! 本地已存在需要更新的 {0}，跳过下载\", bInfo.bundle_name); downloadedSize += bInfo.size; UpdateUIDownload(totalSize, downloadedSize); } } if (!hasError) { Debug.LogFormat(\"写入远程 Version 文件\"); // 最后写入Version文件  string versionText = Newtonsoft.Json.JsonConvert.SerializeObject(this.updateInfo.remoteVersionInfo); System.IO.File.WriteAllText(VERSION_FILE_PATH, versionText); yield return null; // 重新加载一遍本地文件  this.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH); UpdateUIState(\"更新完成\"); } } else { Debug.LogFormat(\"无需要更新，前置数据不足: remoteVersionInfo is Null: {0}, updateInfo is Null: {1}\", this.remoteVersionInfo == null, this.updateInfo == null); } callback?.Invoke(true); } private class UpdateInfo { public MoeVersionInfo remoteVersionInfo; public List updateBundleList; } private void UpdateUIState(string msg) { versionStateParam.state = msg; MoeEventManager.Inst.SendEvent(EventID.Event_OnVersionState, versionStateParam); } private void UpdateUIDownload(long total, long downloaded) { updateProgressParam.totalUpdateSize = total; updateProgressParam.nowUpdatedSize = downloaded; MoeEventManager.Inst.SendEvent(EventID.Event_OnUpdateProgress, updateProgressParam); } private void OnMsgBox(string msg, string btnText, System.Action callback) { msgBoxParam.msg = msg; msgBoxParam.btnText = btnText; msgBoxParam.callback = callback; MoeEventManager.Inst.SendEvent(EventID.Event_OnVersionMsgBox, msgBoxParam); } } MoeReleaseAssetBundleManager.cs 运行时资源管理器\nusing System.Collections; using System.Collections.Generic; using UnityEngine; using System.IO; public class MoeReleaseAssetBundleManager : IMoeResAgent { const string INDEX_FILE = \"index\"; private Dictionaryint, Object _resources = new Dictionaryint, Object(); private Dictionaryint, AssetBundle _bundles = new Dictionaryint, AssetBundle(); private Dictionaryint, string _bundles_index = new Dictionaryint, string(); private AssetBundleManifest _manifest = null; public void Init() { InitAndLoadManifestFile(); InitAndLoadIndexFile(); } private void InitAndLoadIndexFile() { _bundles_index.Clear(); AssetBundle indexBundle = LoadBundleSync(INDEX_FILE); TextAsset ta = indexBundle.LoadAsset(INDEX_FILE); if (ta == null) { Debug.LogErrorFormat(\"Index 文件加载失败！\"); return; } string[] lines = ta.text.Split('\\n'); char[] trim = new char[] { '\\r', '\\n' }; if (lines != null \u0026\u0026 lines.Length  0) { for (int i = 0; i string line = lines[i].Trim(trim); if (string.IsNullOrEmpty(line)) { continue; } string[] pair = line.Split(':'); if (pair.Length != 2) { Debug.LogErrorFormat(\"Index 行数据有问题: {0}\", line); continue; } int hash = pair[0].GetHashCode(); if (_bundles_index.ContainsKey(hash)) { Debug.LogErrorFormat(\"Index 文件中存在相同的路径: {0}\", pair[0]); } else { _bundles_index.Add(hash, pair[1]); } } } if (_bundles_index.Count != 0) { Debug.LogFormat(\"Bundle Index 初始化完成\"); } else { Debug.LogErrorFormat(\"Index 文件数据为空\"); } indexBundle.Unload(true); indexBundle = null; } private void InitAndLoadManifestFile() { AssetBundle manifestBundle = LoadBundleSync(\"Bundles\"); _manifest = manifestBundle.LoadAsset(\"AssetBundleManifest\"); manifestBundle.Unload(false); manifestBundle = null; } public T LoadAsset(string path) where T : UnityEngine.Object { UnityEngine.Object obj = Load(path); if (obj != null) { return obj as T; } return null; } public byte[] LoadLuaCode(string path) { string assetPath = string.Format(\"LuaScripts/{0}\", path); TextAsset ta = LoadAsset(assetPath); if (ta != null) { return ta.bytes; } return null; } private UnityEngine.Object Load(string assetPath) { if (string.IsNullOrEmpty(assetPath)) { return null; } int pathHash = assetPath.GetHashCode(); Object obj = null; if (_resources.TryGetValue(pathHash, out obj)) { if (obj == null) { _resources.Remove(pathHash); } else { return obj; } } AssetLoadInfo loadInfo = GetAssetLoadInfo(assetPath); // 加载依赖Bundle  for (int i = 0; i if (LoadBundleSync(loadInfo.dependencies[i]) == null) { Debug.LogErrorFormat(\"加载依赖Bundle出错，资源 {0}， 主Bundle：{1}， 依赖：{2}\", assetPath, loadInfo.mainBundle, loadInfo.dependencies[i]); return null; } } AssetBundle mainBundle = LoadBundleSync(loadInfo.mainBundle); if (mainBundle == null) { Debug.LogErrorFormat(\"加载主Bundle出错，资源：{0}，主Bundle：{1}\", assetPath, loadInfo.mainBundle); return null; } obj = mainBundle.LoadAsset(assetPath); if (obj == null) { Debug.LogErrorFormat(\"从Bundle加载资源失败，资源：{0}，主Bundle：{1}\", assetPath, loadInfo.mainBundle); return null; } _resources.Add(pathHash, obj); return obj; } private AssetBundle LoadBundleSync(string bundleName) { int bundleHash = bundleName.GetHashCode(); AssetBundle bundle = null; if (!_bundles.TryGetValue(bundleHash, out bundle)) { #if UNITY_EDITOR  string rootPath = Application.dataPath + \"/../streaming\"; #else  string rootPath = Application.persistentDataPath; #endif  string bundleLoadPath = System.IO.Path.Combine(rootPath, string.Format(\"Bundles/{0}\", bundleName)); Debug.LogFormat(\" 加载Bundle: {0}\", bundleLoadPath); using (var fileStream = new AssetBundleStream(bundleLoadPath, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false)) { bundle = AssetBundle.LoadFromStream(fileStream); } // bundle = AssetBundle.LoadFromFile(bundleLoadPath);  if (bundle != null) { _bundles.Add(bundleHash, bundle); } else { Debug.LogErrorFormat(\"Bundle 加载失败 {0}, LoadPath: {1}\", bundleName, bundleLoadPath); } } else { // Debug.LogFormat(\"Bundle {0} 已加载，直接返回\", bundleName);  } return bundle; } private string GetAssetOfBundleFileName(string assetPath) { int assetHash = assetPath.GetHashCode(); string bundleName; if (_bundles_index.TryGetValue(assetHash, out bundleName)) { return bundleName; } return string.Empty; } private AssetLoadInfo GetAssetLoadInfo(string assetPath) { AssetLoadInfo loadInfo = new AssetLoadInfo(); loadInfo.assetPath = assetPath; loadInfo.mainBundle = GetAssetOfBundleFileName(assetPath); loadInfo.dependencies = _manifest.GetAllDependencies(loadInfo.mainBundle); return loadInfo; } private class AssetLoadInfo { public string assetPath; public string mainBundle; public string[] dependencies; } } 萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 ","wordCount":"2970","inLanguage":"en","datePublished":"2022-03-20T12:30:42+08:00","dateModified":"2022-03-20T12:30:42+08:00","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/posts/unity-hot-update/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
+</head>
+<body id=top>
+<script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://blog.moeif.com/ accesskey=h title="Moeif (Alt + H)">
+<img src=/images/favicon.svg alt=logo aria-label=logo height=35>Moeif</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://blog.moeif.com/archives/ title=Archives>
+<span>Archives</span>
+</a>
+</li>
+<li>
+<a href=https://blog.moeif.com/tags/ title=Tags>
+<span>Tags</span>
+</a>
+</li>
+<li>
+<a href=https://blog.moeif.com/about/ title=About>
+<span>About</span>
+</a>
+</li>
+<li>
+<a href=https://blog.moeif.com/weekly/ title=Weekly>
+<span>Weekly</span>
+</a>
+</li>
+<li>
+<a href=https://moeif.com title="Moeif Games">
+<span>Moeif Games</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://blog.moeif.com/>Home</a>&nbsp;»&nbsp;<a href=https://blog.moeif.com/posts/>Posts</a></div>
+<h1 class=post-title>
+Unity 完整的热更新方案和流程
+</h1>
+<div class=post-meta><span title="2022-03-20 12:30:42 +0800 CST">March 20, 2022</span>&nbsp;·&nbsp;14 min&nbsp;·&nbsp;fred
+</div>
+</header>
+<div class=post-content><p>在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。</p>
+<p>这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。</p>
+<p>整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。</p>
+<h3 id=编辑器部分>编辑器部分<a hidden class=anchor aria-hidden=true href=#编辑器部分>#</a></h3>
+<p>编辑器部分主要就是生成 Bundle 文件，首先，我是按目录来划分 Bundle 的，任何一个目录下的文件（不包括子目录）则会打成一个 Bundle。例如下面的目录结构</p>
+<pre tabindex=0><code>Res/
+    - ConfigBytes/
+    - UI/
+    - LuaScripts/
+    - Data/
+        - ItemsData/
+        - CharactersData/
+</code></pre><p>首先 Res 目录是资源的主目录，下面有各种子目录（Res 目录下不会有需要打 Bundle 的文件）。ConfigBytes 目录下的文件，会打成一个 Bundle。UI 目录下的文件会打成一个 Bundle。LuaScripts 目录下的文件会打成一个 Bundle。Data 目录下的 ItemsData 目录中的文件会打成一个 Bundle，Data 目录下的 CharactersData 目录会打成一个Bundle。如果 Data 目录下存在文件（非目录），则这些文件会打成一个 Bundle。简单来讲，就是会按文件夹来决定哪些文件打成一个Bundle，检查的时候只会取一个文件夹下的文件，而不会<strong>递归</strong>取这个文件夹下的子目录。</p>
+<p>LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在编 Bundle 时，会拷贝 LuaScripts 目录及下面的所有文件，按原有目录结构，拷贝到 Res 目录中，并且会将每一个 xxx.lua 文件的扩展名改为 xxx.txt。因为 .lua 在 Unity 中识别不了。</p>
+<p>打 Bundle 的脚本，会记录每一个资源，所在的 Bundle 名称，最后会生成一个 index.json 文件，这份索引文件记录的，就是每一个资源的加载路径，和所在的 Bundle 名。</p>
+<p>Bundle 输出后，会生成一个 version.json 的文件，这个文件，记录了每一个 Bundle 的名字，MD5 和 文件大小。而热更新对比一个文件是否需要更新，就是判断远程文件的 MD5 与本地文件的 MD5 是否相同，如果不想同，则需要更新远程文件。</p>
+<p>以上就是编辑器所做的事情，总结一下就是</p>
+<ol>
+<li>拷贝 LuaScripts 到 Assets/Res/ 目录中</li>
+<li>将 Res/ 目录下的文件按目录进行 Bundle 生成</li>
+<li>生成资源索引文件(index.json)，并且将这个文件也打成 Bundle</li>
+<li>根据生成的 Bundle，生成 version.json 文件</li>
+<li>拷贝上面的 Bundle 及 version.json 文件到 StreamingAssets 目录</li>
+<li>将上面的 Bundle 及 version.json 文件上传到远程服务器或 CDN</li>
+</ol>
+<p>第 5 步，之所以是要拷贝到 StreamingAssets 目录，是为了用户在第一次安装游戏时，运行时逻辑会先判断本地有没有资源，如果没有，或者版本号小于 StreamingAssets 中的 version.json 文件版本号，则需要将 StreamingAssets 目录下的 Bundle 及 version.json 文件拷贝到 Persistent 目录下，这样就不用第一次安装游戏，还需要跑条更新资源了。当然，虽然有了这个过程，拷贝完后，正常的版本检查还是会做。</p>
+<p>以上就是编辑器下做的事情，下面为运行时的流程</p>
+<h3 id=运行时资源更新部分>运行时资源更新部分<a hidden class=anchor aria-hidden=true href=#运行时资源更新部分>#</a></h3>
+<p>版本检查及更新逻辑，可以放在一个独立的场景中去进行，一旦更新完成后，就直接跳转场景到游戏启动场景，这个逻辑比较简单清晰，不容易出错。</p>
+<p>在游戏启动时，首先会去远程拉取 version.json 文件，然后根据 version.json 文件中的版本号与本地 version.json 文件中的版本号进行对比。如果不一样，则需要根据 version.json 文件中的 Bundle 信息，看一下哪一些 Bundle 需要更新，找到需要更新的 Bundle 后，依次下载始可。因为 version.json 中包含了每一个 Bundle 的文件大小，所以这里的下载进度条的进度，也是可以计算出来的。</p>
+<p>在对比版本号时，需要根据自己游戏的实际进行，分为大版本号和热更新版本号，如果大版本号不一样，则直接不用判断 Bundle 了，让用户进不了游戏，弹窗告诉用户去下载最新的安装包即可。如果大版本一样，则进行热更新的逻辑。这里的大版本判断，不当要根据 version.json 文件里的版本号来判断，最好是根据包里代码中或者包里的某个配置文件中的版本号来判断，因为 version.json 文件是在手机的可读写目录，对于 Android 来说，是很容易随意找到这个文件，然后改掉的，从而绕过热更新。</p>
+<p>在 Bundle 都下载完后，需要将远程的 version.json 文件写入本地，覆盖本地的 version.json 文件。</p>
+<p>最后，再进行一步本地资源校对，就是计算每一个本地 Bundle MD5，是否与 version.json 中的 MD5 一致，如果不一致，则需要弹窗告诉玩家需要手动修复资源，或者直接自动下载覆盖。手动修复也就是从远程重新下载资源进行覆盖。</p>
+<p>最后一步资源校对通过后，则跳到游戏逻辑开始场景。</p>
+<p>我是将版本检查和更新的逻辑放在了 C# 实现的，当然，也可以放在 lua 来实现，不过需要在更新完后，重新创建整个 lua 环境，以保证使用了最新的资源。</p>
+<h3 id=运行时资源加载部分>运行时资源加载部分<a hidden class=anchor aria-hidden=true href=#运行时资源加载部分>#</a></h3>
+<p>资源的加载，可以使用一个资源管理器脚本来实现。资源管理器在初始化时首先要加载 Bundle 的 AssetBundleManifest 信息，这个资源里记录了各个 Bundle 与其他 Bundle 的依赖关系。然后加载 index 文件，也就是我们一开始生成的资源索引文件，这样才能知道哪一个资源，在哪一个 Bundle 里。当要加载一个资源时，传入资源加载路径，首先会根据 index 文件中的信息，找到这个 Bundle，然后从 Manifest 信息中，读取这个 Bundle 的依赖 Bundle，如果有，则先加载依赖，最后，再加载当前 Bundle。Bundle加载完后，从 Bundle 中加载资源。</p>
+<h3 id=具体代码仅供参考>具体代码（仅供参考）<a hidden class=anchor aria-hidden=true href=#具体代码仅供参考>#</a></h3>
+<p>AssetBundleBuilder.cs 编辑器下编 Bundle 的代码</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>using</span> System.Collections.Generic;
+<span style=color:#66d9ef>using</span> UnityEngine;
+<span style=color:#66d9ef>using</span> UnityEditor;
+<span style=color:#66d9ef>using</span> UnityEditor.Build;
+<span style=color:#66d9ef>using</span> System;
+<span style=color:#66d9ef>using</span> System.IO;
+<span style=color:#66d9ef>using</span> System.Text;
+<span style=color:#66d9ef>using</span> System.Linq;
+<span style=color:#66d9ef>using</span> System.Xml.Linq;
+<span style=color:#66d9ef>using</span> System.Security.Cryptography;
+<span style=color:#66d9ef>using</span> UnityEditor.Build.Reporting;
+
+<span style=color:#75715e>// 注意：BundleCombineConfig.json 中的配置，目录最后！不要！加上 &#39;/&#39;
+</span><span style=color:#75715e></span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AssetBundleBuilder</span>
+{
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> RES_TO_BUILD_PATH = <span style=color:#e6db74>&#34;Assets/Res/&#34;</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> MANIFEST_FILES_PATH = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/../BundleManifest/&#34;</span>, Application.dataPath);
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> StringBuilder IndexFileContent = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> StringBuilder VersionFileContent = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> MD5 md5 = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> BuildAssetBundleOptions BuildOption = BuildAssetBundleOptions.ChunkBasedCompression |
+                                                        BuildAssetBundleOptions.ForceRebuildAssetBundle;
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> BundleCombineConfig combineConfig = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> Dictionary&lt;<span style=color:#66d9ef>string</span>, <span style=color:#66d9ef>int</span>&gt; combinePathDict = <span style=color:#66d9ef>null</span>;
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> version = <span style=color:#e6db74>&#34;0.0.0&#34;</span>;
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>bool</span> copyToStreaming = <span style=color:#66d9ef>false</span>;
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> InitBuilder()
+    {
+        IndexFileContent = <span style=color:#66d9ef>new</span> StringBuilder();
+        VersionFileContent = <span style=color:#66d9ef>new</span> StringBuilder();
+        md5 = <span style=color:#66d9ef>new</span> MD5CryptoServiceProvider();
+        combineConfig = <span style=color:#66d9ef>null</span>;
+        combinePathDict = <span style=color:#66d9ef>new</span> Dictionary&lt;<span style=color:#66d9ef>string</span>, <span style=color:#66d9ef>int</span>&gt;();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> WriteIndexFile(<span style=color:#66d9ef>string</span> key, <span style=color:#66d9ef>string</span> <span style=color:#66d9ef>value</span>)
+    {
+        IndexFileContent.AppendFormat(<span style=color:#e6db74>&#34;{0}:{1}&#34;</span>, key, <span style=color:#66d9ef>value</span>);
+        IndexFileContent.AppendLine();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> WriteVersionFile(<span style=color:#66d9ef>string</span> key, <span style=color:#66d9ef>string</span> value1, <span style=color:#66d9ef>long</span> value2)
+    {
+        VersionFileContent.AppendFormat(<span style=color:#e6db74>&#34;{0}:{1}:{2}&#34;</span>, key, value1, value2);
+        VersionFileContent.AppendLine();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>long</span> GetFileSize(<span style=color:#66d9ef>string</span> fileName)
+    {
+        <span style=color:#66d9ef>try</span>
+        {
+            FileInfo fileInfo = <span style=color:#66d9ef>new</span> FileInfo(fileName);
+            <span style=color:#66d9ef>return</span> fileInfo.Length;
+        }
+        <span style=color:#66d9ef>catch</span> (Exception ex)
+        {
+            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Exception(<span style=color:#e6db74>&#34;GetFileSize() fail, error:&#34;</span> + ex.Message);
+        }
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> GetMD5(<span style=color:#66d9ef>byte</span>[] retVal)
+    {
+        StringBuilder sb = <span style=color:#66d9ef>new</span> StringBuilder();
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i = <span style=color:#ae81ff>0</span>; i &lt; retVal.Length; i++)
+        {
+            sb.Append(retVal[i].ToString(<span style=color:#e6db74>&#34;x2&#34;</span>));
+        }
+        <span style=color:#66d9ef>return</span> sb.ToString();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> GetMD5HashFromFile(<span style=color:#66d9ef>string</span> fileName)
+    {
+        <span style=color:#66d9ef>try</span>
+        {
+            FileStream file = <span style=color:#66d9ef>new</span> FileStream(fileName, FileMode.Open);
+            <span style=color:#66d9ef>byte</span>[] retVal = md5.ComputeHash(file);
+            file.Close();
+
+            <span style=color:#66d9ef>return</span> GetMD5(retVal);
+        }
+        <span style=color:#66d9ef>catch</span> (Exception ex)
+        {
+            <span style=color:#66d9ef>throw</span> <span style=color:#66d9ef>new</span> Exception(<span style=color:#e6db74>&#34;GetMD5HashFromFile() fail, error:&#34;</span> + ex.Message);
+        }
+    }
+
+    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> GetBundleName(<span style=color:#66d9ef>string</span> path)
+    {
+        <span style=color:#66d9ef>byte</span>[] md5Byte = md5.ComputeHash(Encoding.Default.GetBytes(path));
+        <span style=color:#66d9ef>string</span> str = GetMD5(md5Byte) + <span style=color:#e6db74>&#34;.assetbundle&#34;</span>;
+        <span style=color:#66d9ef>return</span> str;
+    }
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BuildBundleData</span>
+    {
+        <span style=color:#66d9ef>private</span> AssetBundleBuild build = <span style=color:#66d9ef>new</span> AssetBundleBuild();
+        <span style=color:#66d9ef>private</span> List&lt;<span style=color:#66d9ef>string</span>&gt; assets = <span style=color:#66d9ef>new</span> List&lt;<span style=color:#66d9ef>string</span>&gt;();
+        <span style=color:#66d9ef>private</span> List&lt;<span style=color:#66d9ef>string</span>&gt; addresses = <span style=color:#66d9ef>new</span> List&lt;<span style=color:#66d9ef>string</span>&gt;();
+
+        <span style=color:#66d9ef>public</span> BuildBundleData(<span style=color:#66d9ef>string</span> bundleName)
+        {
+            build.assetBundleName = bundleName;
+        }
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> AddAsset(<span style=color:#66d9ef>string</span> filePath)
+        {
+            <span style=color:#66d9ef>string</span> addressableName = GetAddressableName(filePath);
+            assets.Add(filePath);
+            addresses.Add(addressableName);
+            WriteIndexFile(addressableName, build.assetBundleName);
+        }
+
+        <span style=color:#66d9ef>public</span> AssetBundleBuild Gen()
+        {
+            build.assetNames = assets.ToArray();
+            build.addressableNames = addresses.ToArray();
+            <span style=color:#66d9ef>return</span> build;
+        }
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> GetAddressableName(<span style=color:#66d9ef>string</span> file_path)
+    {
+        <span style=color:#66d9ef>string</span> addressable_name = file_path;
+        addressable_name = addressable_name.Replace(RES_TO_BUILD_PATH, <span style=color:#e6db74>&#34;&#34;</span>);
+        <span style=color:#66d9ef>int</span> dot_pos = addressable_name.LastIndexOf(<span style=color:#e6db74>&#39;.&#39;</span>);
+        <span style=color:#66d9ef>if</span> (dot_pos != -<span style=color:#ae81ff>1</span>)
+        {
+            <span style=color:#66d9ef>int</span> count = addressable_name.Length - dot_pos;
+            addressable_name = addressable_name.Remove(dot_pos, count);
+        }
+        <span style=color:#66d9ef>return</span> addressable_name;
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span>[] GetTopDirs(<span style=color:#66d9ef>string</span> rPath)
+    {
+        <span style=color:#66d9ef>return</span> Directory.GetDirectories(rPath, <span style=color:#e6db74>&#34;*&#34;</span>, SearchOption.TopDirectoryOnly);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> CopyLuaDir()
+    {
+        <span style=color:#75715e>// Copy Lua
+</span><span style=color:#75715e></span>        <span style=color:#66d9ef>string</span> luaOutPath = Application.dataPath + <span style=color:#e6db74>&#34;/../LuaScripts&#34;</span>;
+        <span style=color:#66d9ef>string</span> luaInPath = Application.dataPath + <span style=color:#e6db74>&#34;/Res/LuaScripts&#34;</span>;
+
+        DeleteLuaDir();
+
+        MoeUtils.DirectoryCopy(luaOutPath, luaInPath, <span style=color:#66d9ef>true</span>, <span style=color:#e6db74>&#34;.txt&#34;</span>);
+        AssetDatabase.Refresh();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> DeleteLuaDir()
+    {
+        <span style=color:#66d9ef>string</span> luaInPath = Application.dataPath + <span style=color:#e6db74>&#34;/Res/LuaScripts&#34;</span>;
+
+        <span style=color:#66d9ef>if</span> (Directory.Exists(luaInPath))
+        {
+            Directory.Delete(luaInPath, <span style=color:#66d9ef>true</span>);
+        }
+    }
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> BuildBundleWithVersion(<span style=color:#66d9ef>string</span> v, <span style=color:#66d9ef>bool</span> copy)
+    {
+        version = v;
+        copyToStreaming = copy;
+        BuildAssetBundle();
+    }
+<span style=color:#a6e22e>
+</span><span style=color:#a6e22e>    [MenuItem(&#34;Tools/Build Bundles&#34;)]</span>
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> BuildAssetBundle()
+    {
+        <span style=color:#66d9ef>if</span> (version == <span style=color:#e6db74>&#34;0.0.0&#34;</span>)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;请确认版本号&#34;</span>);
+            <span style=color:#66d9ef>return</span>;
+        }
+        CopyLuaDir();
+
+        InitBuilder();
+        LoadBundleCombineConfig();
+        Dictionary&lt;<span style=color:#66d9ef>string</span>, BuildBundleData&gt; bundleDatas = <span style=color:#66d9ef>new</span> Dictionary&lt;<span style=color:#66d9ef>string</span>, BuildBundleData&gt;();
+        IndexFileContent.Clear();
+        VersionFileContent.Clear();
+
+        List&lt;DirBundleInfo&gt; dirList = <span style=color:#66d9ef>new</span> List&lt;DirBundleInfo&gt;();
+
+        <span style=color:#75715e>// ============================
+</span><span style=color:#75715e></span>        Queue&lt;DirBundleInfo&gt; dirQueue = <span style=color:#66d9ef>new</span> Queue&lt;DirBundleInfo&gt;();
+        dirQueue.Enqueue(<span style=color:#66d9ef>new</span> DirBundleInfo(RES_TO_BUILD_PATH));
+        <span style=color:#66d9ef>while</span> (dirQueue.Count &gt; <span style=color:#ae81ff>0</span>)
+        {
+            DirBundleInfo rootDirInfo = dirQueue.Dequeue();
+            <span style=color:#66d9ef>if</span> (rootDirInfo.dir != RES_TO_BUILD_PATH)
+            {
+                <span style=color:#66d9ef>if</span> (combinePathDict.ContainsKey(rootDirInfo.dir))
+                {
+                    rootDirInfo.combine2Dir = rootDirInfo.dir;
+                }
+                dirList.Add(rootDirInfo);
+            }
+
+            <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> subDir <span style=color:#66d9ef>in</span> GetTopDirs(rootDirInfo.dir))
+            {
+                DirBundleInfo subDirInfo = <span style=color:#66d9ef>new</span> DirBundleInfo(subDir);
+                subDirInfo.combine2Dir = rootDirInfo.combine2Dir;
+                dirQueue.Enqueue(subDirInfo);
+
+                Debug.LogFormat(<span style=color:#e6db74>&#34;Dir: {0}, Combine2Dir: {1}&#34;</span>, subDirInfo.dir, subDirInfo.combine2Dir);
+            }
+        }
+
+        <span style=color:#66d9ef>foreach</span> (DirBundleInfo dirInfo <span style=color:#66d9ef>in</span> dirList)
+        {
+            <span style=color:#66d9ef>string</span>[] files = GetFiles(dirInfo.dir, SearchOption.TopDirectoryOnly);
+            <span style=color:#66d9ef>if</span> (files.Length &gt; <span style=color:#ae81ff>0</span>)
+            {
+                Debug.LogFormat(<span style=color:#e6db74>&#34;Dir: {0}, FileCount: {1}&#34;</span>, dirInfo.dir, files.Length);
+                <span style=color:#66d9ef>string</span> bundleDirName = dirInfo.BundleDirName;
+                BuildBundleData bbData = <span style=color:#66d9ef>null</span>;
+                <span style=color:#66d9ef>if</span> (bundleDatas.ContainsKey(bundleDirName))
+                {
+                    bbData = bundleDatas[bundleDirName];
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    bbData = <span style=color:#66d9ef>new</span> BuildBundleData(GetBundleName(bundleDirName));
+                    bundleDatas.Add(bundleDirName, bbData);
+                }
+
+                <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> file <span style=color:#66d9ef>in</span> files)
+                {
+                    bbData.AddAsset(file);
+                }
+            }
+        }
+
+        List&lt;AssetBundleBuild&gt; bundleBuildList = <span style=color:#66d9ef>new</span> List&lt;AssetBundleBuild&gt;();
+        <span style=color:#66d9ef>foreach</span> (BuildBundleData data <span style=color:#66d9ef>in</span> bundleDatas.Values)
+        {
+            bundleBuildList.Add(data.Gen());
+        }
+
+        <span style=color:#66d9ef>string</span> index_file_path = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}{1}.txt&#34;</span>, RES_TO_BUILD_PATH, <span style=color:#e6db74>&#34;index&#34;</span>);
+        File.WriteAllText(index_file_path, IndexFileContent.ToString());
+        AssetDatabase.ImportAsset(index_file_path);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        AssetBundleBuild indexBuild = <span style=color:#66d9ef>new</span> AssetBundleBuild();
+        indexBuild.assetBundleName = <span style=color:#e6db74>&#34;index&#34;</span>;
+        indexBuild.assetNames = <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>string</span>[] { index_file_path };
+        indexBuild.addressableNames = <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>string</span>[] { <span style=color:#e6db74>&#34;index&#34;</span> };
+        bundleBuildList.Add(indexBuild);
+        <span style=color:#66d9ef>string</span> bundleExportPath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}/&#34;</span>, Application.dataPath + <span style=color:#e6db74>&#34;/../streaming&#34;</span>, <span style=color:#e6db74>&#34;Bundles&#34;</span>);
+        <span style=color:#66d9ef>if</span> (Directory.Exists(bundleExportPath))
+        {
+            Directory.Delete(bundleExportPath, <span style=color:#66d9ef>true</span>);
+        }
+        Directory.CreateDirectory(bundleExportPath);
+
+        <span style=color:#66d9ef>if</span> (Directory.Exists(MANIFEST_FILES_PATH))
+        {
+            Directory.Delete(MANIFEST_FILES_PATH, <span style=color:#66d9ef>true</span>);
+        }
+        Directory.CreateDirectory(MANIFEST_FILES_PATH);
+
+        BuildPipeline.BuildAssetBundles(bundleExportPath, bundleBuildList.ToArray(), BuildOption, EditorUserBuildSettings.activeBuildTarget);
+        AssetDatabase.Refresh();
+        DeleteLuaDir();
+        AssetDatabase.Refresh();
+
+        <span style=color:#75715e>// VersionProfile
+</span><span style=color:#75715e></span>
+        List&lt;VersionBundleInfo&gt; versionBundleList = <span style=color:#66d9ef>new</span> List&lt;VersionBundleInfo&gt;();
+        MoeVersionInfo versionInfo = <span style=color:#66d9ef>new</span> MoeVersionInfo();
+        versionInfo.version = version;
+        versionInfo.asset_date = DateTime.Now.ToString(<span style=color:#e6db74>&#34;yyyyMMddHHmm&#34;</span>);
+        <span style=color:#66d9ef>string</span>[] ab_files = Directory.GetFiles(bundleExportPath);
+        <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> ab_file <span style=color:#66d9ef>in</span> ab_files)
+        {
+            <span style=color:#66d9ef>if</span> (Path.GetExtension(ab_file) == <span style=color:#e6db74>&#34;.manifest&#34;</span>)
+            {
+                <span style=color:#66d9ef>string</span> new_path = ab_file.Replace(bundleExportPath, MANIFEST_FILES_PATH);
+                File.Move(ab_file, new_path);
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+
+                Debug.LogFormat(<span style=color:#e6db74>&#34;BundleName: {0}&#34;</span>, ab_file);
+                <span style=color:#66d9ef>var</span> data = File.ReadAllBytes(ab_file);
+                <span style=color:#66d9ef>using</span> (<span style=color:#66d9ef>var</span> abStream = <span style=color:#66d9ef>new</span> AssetBundleStream(ab_file, FileMode.Create))
+                {
+                    abStream.Write(data, <span style=color:#ae81ff>0</span>, data.Length);
+                }
+
+                <span style=color:#66d9ef>string</span> md5 = GetMD5HashFromFile(ab_file);
+                <span style=color:#66d9ef>long</span> size = GetFileSize(ab_file);
+                <span style=color:#66d9ef>string</span> bundleName = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;Bundles/{0}&#34;</span>, Path.GetFileName(ab_file));
+                VersionBundleInfo bInfo = <span style=color:#66d9ef>new</span> VersionBundleInfo();
+                bInfo.bundle_name = bundleName;
+                bInfo.md5 = md5;
+                bInfo.size = size;
+                versionBundleList.Add(bInfo);
+            }
+        }
+
+        versionInfo.bundles = versionBundleList.ToArray();
+        <span style=color:#66d9ef>string</span> versionInfoText = Newtonsoft.Json.JsonConvert.SerializeObject(versionInfo);
+
+        File.WriteAllText(<span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}&#34;</span>, bundleExportPath, <span style=color:#e6db74>&#34;version.json&#34;</span>), versionInfoText);
+
+        <span style=color:#66d9ef>if</span> (copyToStreaming)
+        {
+            CopyBundleToStreaming(bundleExportPath);
+        }
+        MoveToVersionDir(bundleExportPath, version);
+        AssetDatabase.Refresh();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> MoveToVersionDir(<span style=color:#66d9ef>string</span> rootBundlePath, <span style=color:#66d9ef>string</span> version)
+    {
+        <span style=color:#66d9ef>string</span> destPath = rootBundlePath + <span style=color:#e6db74>&#34;/&#34;</span> + version;
+        Directory.CreateDirectory(destPath);
+        destPath += <span style=color:#e6db74>&#34;/Bundles&#34;</span>;
+        Directory.CreateDirectory(destPath);
+
+        <span style=color:#66d9ef>string</span>[] files = GetFiles(rootBundlePath, SearchOption.TopDirectoryOnly);
+        <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> file <span style=color:#66d9ef>in</span> files)
+        {
+            <span style=color:#66d9ef>string</span> fileName = System.IO.Path.GetFileName(file);
+            <span style=color:#66d9ef>string</span> destFilePath = destPath + <span style=color:#e6db74>&#34;/&#34;</span> + fileName;
+            File.Move(file, destFilePath);
+        }
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> CopyBundleToStreaming(<span style=color:#66d9ef>string</span> bundleExportPath)
+    {
+        <span style=color:#66d9ef>string</span> destPath = Application.streamingAssetsPath + <span style=color:#e6db74>&#34;/Bundles&#34;</span>;
+        <span style=color:#66d9ef>if</span> (Directory.Exists(destPath))
+        {
+            Directory.Delete(destPath, <span style=color:#66d9ef>true</span>);
+        }
+
+        MoeUtils.DirectoryCopy(bundleExportPath, destPath, <span style=color:#66d9ef>true</span>);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span>[] GetFiles(<span style=color:#66d9ef>string</span> path, SearchOption so)
+    {
+        <span style=color:#66d9ef>string</span>[] files = Directory.GetFiles(path, <span style=color:#e6db74>&#34;*&#34;</span>, so);
+        List&lt;<span style=color:#66d9ef>string</span>&gt; fileList = <span style=color:#66d9ef>new</span> List&lt;<span style=color:#66d9ef>string</span>&gt;();
+        <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> file <span style=color:#66d9ef>in</span> files)
+        {
+            <span style=color:#66d9ef>string</span> ext = Path.GetExtension(file);
+            <span style=color:#66d9ef>if</span> (ext == <span style=color:#e6db74>&#34;.meta&#34;</span> || ext == <span style=color:#e6db74>&#34;.DS_Store&#34;</span>)
+            {
+                <span style=color:#66d9ef>continue</span>;
+            }
+            fileList.Add(file);
+        }
+
+        <span style=color:#66d9ef>return</span> fileList.ToArray();
+    }
+
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>DirBundleInfo</span>
+    {
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span> dir;
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span> combine2Dir;
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>bool</span> IsCombine
+        {
+            <span style=color:#66d9ef>get</span>
+            {
+                <span style=color:#66d9ef>return</span> !<span style=color:#66d9ef>string</span>.IsNullOrEmpty(combine2Dir);
+            }
+        }
+
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span> BundleDirName
+        {
+            <span style=color:#66d9ef>get</span>
+            {
+                <span style=color:#66d9ef>if</span> (IsCombine)
+                {
+                    <span style=color:#66d9ef>return</span> combine2Dir;
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    <span style=color:#66d9ef>return</span> dir;
+                }
+            }
+        }
+
+        <span style=color:#66d9ef>public</span> DirBundleInfo(<span style=color:#66d9ef>string</span> dir, <span style=color:#66d9ef>string</span> combine2Dir = <span style=color:#66d9ef>null</span>)
+        {
+            <span style=color:#66d9ef>this</span>.dir = dir;
+            <span style=color:#66d9ef>this</span>.combine2Dir = combine2Dir;
+        }
+
+    }
+
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>BundleCombineConfig</span>
+    {
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span>[] combieDirs;
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> LoadBundleCombineConfig()
+    {
+        <span style=color:#66d9ef>string</span> path = Application.dataPath + RES_TO_BUILD_PATH.Replace(<span style=color:#e6db74>&#34;Assets&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>) + <span style=color:#e6db74>&#34;BundleCombineConfig.json&#34;</span>;
+        <span style=color:#66d9ef>if</span> (File.Exists(path))
+        {
+            <span style=color:#66d9ef>string</span> text = File.ReadAllText(path);
+            <span style=color:#66d9ef>if</span> (!<span style=color:#66d9ef>string</span>.IsNullOrEmpty(text))
+            {
+                combineConfig = Newtonsoft.Json.JsonConvert.DeserializeObject&lt;BundleCombineConfig&gt;(text);
+                <span style=color:#66d9ef>if</span> (combineConfig != <span style=color:#66d9ef>null</span>)
+                {
+                    Debug.LogFormat(<span style=color:#e6db74>&#34;Bundle合并配置成功！&#34;</span>);
+                    <span style=color:#66d9ef>foreach</span> (<span style=color:#66d9ef>string</span> cPath <span style=color:#66d9ef>in</span> combineConfig.combieDirs)
+                    {
+                        <span style=color:#66d9ef>if</span> (!combinePathDict.ContainsKey(cPath))
+                        {
+                            combinePathDict.Add(cPath, <span style=color:#ae81ff>0</span>);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre></div><p>MoeVersionManager.cs 资源版本检查及 Bundle 更新逻辑</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>using</span> UnityEngine;
+<span style=color:#66d9ef>using</span> System.Collections;
+<span style=color:#66d9ef>using</span> System.Collections.Generic;
+<span style=color:#66d9ef>using</span> BestHTTP;
+<span style=color:#66d9ef>using</span> System;
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MoeVersionManager</span> : MoeSingleton&lt;MoeVersionManager&gt;
+{
+    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>string</span> REMOTE_URL = <span style=color:#e6db74>&#34;这里改成自己的CDN域名或IP&#34;</span>;
+    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> VERSION_FILE_DIR;
+    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> VERSION_FILE_PATH;
+    <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>string</span> IN_VERSION_FILE_PATH;
+
+    <span style=color:#66d9ef>private</span> MoeVersionInfo currVersionInfo = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> MoeVersionInfo remoteVersionInfo = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> UpdateInfo updateInfo = <span style=color:#66d9ef>null</span>;
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> OnVersionStateParam versionStateParam = <span style=color:#66d9ef>new</span> OnVersionStateParam();
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> OnUpdateProgressParam updateProgressParam = <span style=color:#66d9ef>new</span> OnUpdateProgressParam();
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> OnVersionMsgBoxParam msgBoxParam = <span style=color:#66d9ef>new</span> OnVersionMsgBoxParam();
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>enum</span> EnProcessType
+    {
+        Normal,
+        Fix,
+    }
+
+    <span style=color:#66d9ef>private</span> Action&lt;EnProcessType&gt; actionTryUnCompress = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> Action&lt;EnProcessType&gt; actionUpdateVersionFile = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> Action&lt;EnProcessType&gt; actionUpdateBundles = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> Action&lt;EnProcessType&gt; actionCheckAssets = <span style=color:#66d9ef>null</span>;
+    <span style=color:#66d9ef>private</span> Action&lt;EnProcessType&gt; actionForceUpdateVersionFile = <span style=color:#66d9ef>null</span>;
+
+
+
+    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> InitOnCreate()
+    {
+        VERSION_FILE_DIR = Application.persistentDataPath + <span style=color:#e6db74>&#34;/Bundles/&#34;</span>;
+        VERSION_FILE_PATH = Application.persistentDataPath + <span style=color:#e6db74>&#34;/Bundles/version.json&#34;</span>;
+        IN_VERSION_FILE_PATH = Application.streamingAssetsPath + <span style=color:#e6db74>&#34;/Bundles/version.json&#34;</span>;
+        Debug.LogFormat(<span style=color:#e6db74>&#34;{0}&#34;</span>, VERSION_FILE_PATH);
+        InitProcessChain();
+        StartNormalProcess();
+    }
+
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> InitProcessChain()
+    {
+        <span style=color:#66d9ef>this</span>.actionTryUnCompress = (EnProcessType param) =&gt;
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Action&gt;&gt;&gt; 解压: {0}&#34;</span>, param);
+            <span style=color:#66d9ef>this</span>.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH);
+            <span style=color:#75715e>// if (!CheckBundleCorrect())
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>if</span> (currVersionInfo == <span style=color:#66d9ef>null</span>)
+            {
+                UpdateUIState(<span style=color:#e6db74>&#34;正在解压资源&#34;</span>);
+                UnCompressBundle();
+                <span style=color:#66d9ef>this</span>.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH);
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                <span style=color:#75715e>// 判断是不是更新包，也就是StreamingAssets里的版本是否比Persistent版本高，如果高的话，再次解压Bundle
+</span><span style=color:#75715e></span>                MoeVersionInfo inVersionInfo = LoadVersionInfo(IN_VERSION_FILE_PATH);
+                <span style=color:#66d9ef>if</span> (inVersionInfo != <span style=color:#66d9ef>null</span>)
+                {
+                    <span style=color:#66d9ef>int</span>[] inVersionDigit = inVersionInfo.GetVersionDigitArray();
+                    <span style=color:#66d9ef>int</span>[] currVersionDigit = <span style=color:#66d9ef>this</span>.currVersionInfo.GetVersionDigitArray();
+                    <span style=color:#75715e>// if (inVersionInfo.GetVersionLong() &gt; this.currVersionInfo.GetVersionLong())
+</span><span style=color:#75715e></span>                    <span style=color:#66d9ef>if</span> (inVersionDigit[<span style=color:#ae81ff>0</span>] &gt; currVersionDigit[<span style=color:#ae81ff>0</span>] ||
+                       inVersionDigit[<span style=color:#ae81ff>1</span>] &gt; currVersionDigit[<span style=color:#ae81ff>1</span>] ||
+                       inVersionDigit[<span style=color:#ae81ff>2</span>] &gt; currVersionDigit[<span style=color:#ae81ff>2</span>])
+                    {
+                        <span style=color:#75715e>// 包里的版本比Persistent的版本高，可能玩家进行了大版本更新，重新解压
+</span><span style=color:#75715e></span>                        Debug.LogFormat(<span style=color:#e6db74>&#34;包里的Bundle版本 &gt; Persistent Bundle 版本，重新解压&#34;</span>);
+                        UpdateUIState(<span style=color:#e6db74>&#34;正在解压资源&#34;</span>);
+                        UnCompressBundle();
+                        <span style=color:#66d9ef>this</span>.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH);
+                    }
+                    <span style=color:#66d9ef>else</span>
+                    {
+                        Debug.LogFormat(<span style=color:#e6db74>&#34;包里Bundle版本 &lt;= Persistent Bundle版本，无需解压~&#34;</span>);
+                    }
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    Debug.LogErrorFormat(<span style=color:#e6db74>&#34;逻辑错误，从StreamingAssets 中加载VersionInfo文件失败&#34;</span>);
+                }
+            }
+        };
+
+        <span style=color:#66d9ef>this</span>.actionUpdateVersionFile = (EnProcessType param) =&gt;
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Action&gt;&gt;&gt; 获取远程版本文件: {0}&#34;</span>, param);
+            StartCoroutine(TryUpdateVersion((<span style=color:#66d9ef>bool</span> ok, <span style=color:#66d9ef>bool</span> majorUpdate) =&gt;
+            {
+                <span style=color:#66d9ef>if</span> (ok)
+                {
+                    <span style=color:#66d9ef>if</span> (majorUpdate)
+                    {
+                        <span style=color:#75715e>// 调用商店
+</span><span style=color:#75715e></span>                        OnMsgBox(<span style=color:#e6db74>&#34;新的大版本已更新，请下载最新安装包！&#34;</span>, <span style=color:#e6db74>&#34;确定&#34;</span>, () =&gt;
+                        {
+                            JumpToDownloadMarket();
+                        });
+                    }
+                    <span style=color:#66d9ef>else</span>
+                    {
+                        <span style=color:#75715e>// 成功了，接下来更新Bundle
+</span><span style=color:#75715e></span>                        <span style=color:#66d9ef>this</span>.actionUpdateBundles?.Invoke(param);
+                    }
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    <span style=color:#75715e>// 版本文件更新失败，弹窗询问
+</span><span style=color:#75715e></span>                    OnMsgBox(<span style=color:#e6db74>&#34;版本信息获取失败，请检查网络连接！&#34;</span>, <span style=color:#e6db74>&#34;重试&#34;</span>, () =&gt;
+                    {
+                        <span style=color:#66d9ef>this</span>.actionUpdateVersionFile?.Invoke(param);
+                    });
+                }
+            }));
+        };
+
+        <span style=color:#66d9ef>this</span>.actionForceUpdateVersionFile = (EnProcessType param) =&gt;
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Action&gt;&gt;&gt; 强制获取远程版本文件: {0}&#34;</span>, param);
+            TryDeleteBundleDir();
+            TryCreateBundleDir();
+            StartCoroutine(TryUpdateVersion((<span style=color:#66d9ef>bool</span> ok, <span style=color:#66d9ef>bool</span> majorUpdate) =&gt;
+            {
+                <span style=color:#66d9ef>if</span> (ok)
+                {
+                    <span style=color:#66d9ef>if</span> (majorUpdate)
+                    {
+                        <span style=color:#75715e>// 调用商店
+</span><span style=color:#75715e></span>                        OnMsgBox(<span style=color:#e6db74>&#34;新的大版本已更新，请下载最新安装包！&#34;</span>, <span style=color:#e6db74>&#34;确定&#34;</span>, () =&gt;
+                        {
+                            JumpToDownloadMarket();
+                        });
+                    }
+                    <span style=color:#66d9ef>else</span>
+                    {
+                        <span style=color:#75715e>// 成功了，接下来更新Bundle
+</span><span style=color:#75715e></span>                        <span style=color:#66d9ef>this</span>.actionUpdateBundles?.Invoke(param);
+                    }
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    <span style=color:#75715e>// 版本文件更新失败，弹窗询问
+</span><span style=color:#75715e></span>                    OnMsgBox(<span style=color:#e6db74>&#34;版本信息获取失败，请检查网络连接！&#34;</span>, <span style=color:#e6db74>&#34;重试&#34;</span>, () =&gt;
+                    {
+                        <span style=color:#66d9ef>this</span>.actionForceUpdateVersionFile?.Invoke(param);
+                    });
+                }
+            }, <span style=color:#66d9ef>true</span>));
+        };
+
+        <span style=color:#66d9ef>this</span>.actionUpdateBundles = (EnProcessType param) =&gt;
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Action&gt;&gt;&gt; 更新Bundle: {0}&#34;</span>, param);
+            StartCoroutine(TryUpdateBundle((<span style=color:#66d9ef>bool</span> ok) =&gt;
+            {
+                <span style=color:#66d9ef>if</span> (ok)
+                {
+                    <span style=color:#75715e>// 成功了，接下来检查资源，
+</span><span style=color:#75715e></span>                    <span style=color:#66d9ef>this</span>.actionCheckAssets?.Invoke(param);
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    OnMsgBox(<span style=color:#e6db74>&#34;资源下载失败，请检查网络连接！&#34;</span>, <span style=color:#e6db74>&#34;重试&#34;</span>, () =&gt;
+                    {
+                        <span style=color:#66d9ef>this</span>.actionUpdateBundles(param);
+                    });
+                }
+            }));
+        };
+
+        <span style=color:#66d9ef>this</span>.actionCheckAssets = (EnProcessType param) =&gt;
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Action&gt;&gt;&gt; 校对资源: {0}&#34;</span>, param);
+            <span style=color:#66d9ef>if</span> (!CheckBundleCorrect())
+            {
+                <span style=color:#75715e>// 更新完了，本地Bundle还是不对
+</span><span style=color:#75715e></span>                Debug.LogFormat(<span style=color:#e6db74>&#34;更新完Bundle后，发现文件不对&#34;</span>);
+                <span style=color:#66d9ef>if</span> (param == EnProcessType.Normal)
+                {
+                    OnMsgBox(<span style=color:#e6db74>&#34;资源有错误，请修复客户端！&#34;</span>, <span style=color:#e6db74>&#34;修复&#34;</span>, () =&gt;
+                    {
+                        <span style=color:#66d9ef>this</span>.actionForceUpdateVersionFile?.Invoke(EnProcessType.Fix);
+                    });
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    OnMsgBox(<span style=color:#e6db74>&#34;客户端修复失败，请重新下载安装包！&#34;</span>, <span style=color:#e6db74>&#34;确定&#34;</span>, () =&gt;
+                    {
+                        JumpToDownloadMarket();
+                    });
+                }
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                UpdateUIState(<span style=color:#e6db74>&#34;进入游戏&#34;</span>);
+                MoeEventManager.Inst.SendEvent(EventID.Event_OnUpdateEnd);
+            }
+        };
+    }
+
+
+
+    <span style=color:#75715e>// 跳转到下载商店
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> JumpToDownloadMarket()
+    {
+        Application.OpenURL(<span style=color:#e6db74>&#34;https://taptap.com&#34;</span>);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> StartNormalProcess()
+    {
+        TryCreateBundleDir();
+        <span style=color:#66d9ef>this</span>.actionTryUnCompress?.Invoke(EnProcessType.Normal);
+        <span style=color:#66d9ef>this</span>.actionUpdateVersionFile?.Invoke(EnProcessType.Normal);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> StartFixProcess()
+    {
+        <span style=color:#66d9ef>this</span>.actionForceUpdateVersionFile(EnProcessType.Fix);
+    }
+
+
+    <span style=color:#66d9ef>private</span> MoeVersionInfo LoadVersionInfo(<span style=color:#66d9ef>string</span> path)
+    {
+        Debug.LogFormat(<span style=color:#e6db74>&#34;加载 Version 文件: {0}&#34;</span>, path);
+        <span style=color:#66d9ef>try</span>
+        {
+            <span style=color:#66d9ef>if</span> (System.IO.File.Exists(path))
+            {
+                <span style=color:#66d9ef>string</span> text = System.IO.File.ReadAllText(path);
+                <span style=color:#66d9ef>if</span> (!<span style=color:#66d9ef>string</span>.IsNullOrEmpty(text))
+                {
+                    MoeVersionInfo vInfo = Newtonsoft.Json.JsonConvert.DeserializeObject&lt;MoeVersionInfo&gt;(text);
+                    <span style=color:#66d9ef>if</span> (vInfo != <span style=color:#66d9ef>null</span>)
+                    {
+                        Debug.LogFormat(<span style=color:#e6db74>&#34;Version 信息加载成功: {0}&#34;</span>, vInfo.version);
+                        <span style=color:#66d9ef>return</span> vInfo;
+                    }
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    Debug.LogFormat(<span style=color:#e6db74>&#34;Version 文件内容为空&#34;</span>);
+                }
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                Debug.LogFormat(<span style=color:#e6db74>&#34;Version 文件不存在&#34;</span>);
+            }
+        }
+        <span style=color:#66d9ef>catch</span> (System.Exception e)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;读取Version文件出错: {0}&#34;</span>, e.ToString());
+        }
+
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+    }
+
+    <span style=color:#75715e>/// &lt;summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// 从 StreamingAssets 里将Bundle拷贝到 Persistent 目录里 
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;/summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> UnCompressBundle()
+    {
+        TryDeleteBundleDir();
+        TryCreateBundleDir();
+        Debug.LogFormat(<span style=color:#e6db74>&#34;尝试从 Steaming 拷贝Bundle 到 Persistent&#34;</span>);
+        <span style=color:#66d9ef>try</span>
+        {
+            <span style=color:#66d9ef>if</span> (System.IO.File.Exists(IN_VERSION_FILE_PATH))
+            {
+                <span style=color:#66d9ef>string</span> text = System.IO.File.ReadAllText(IN_VERSION_FILE_PATH);
+                Debug.LogFormat(<span style=color:#e6db74>&#34;Text: {0}&#34;</span>, text);
+                MoeVersionInfo inVersionInfo = Newtonsoft.Json.JsonConvert.DeserializeObject&lt;MoeVersionInfo&gt;(text);
+                <span style=color:#66d9ef>if</span> (inVersionInfo != <span style=color:#66d9ef>null</span>)
+                {
+                    <span style=color:#75715e>// 拷贝 Bundle
+</span><span style=color:#75715e></span>                    <span style=color:#66d9ef>foreach</span> (VersionBundleInfo bundleInfo <span style=color:#66d9ef>in</span> inVersionInfo.bundles)
+                    {
+                        <span style=color:#66d9ef>string</span> srcFilePath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}&#34;</span>, Application.streamingAssetsPath, bundleInfo.bundle_name);
+                        <span style=color:#66d9ef>string</span> destFilePath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}&#34;</span>, Application.persistentDataPath, bundleInfo.bundle_name);
+                        Debug.LogFormat(<span style=color:#e6db74>&#34;拷贝Bundle， {0} -&gt; {1}&#34;</span>, srcFilePath, destFilePath);
+                        System.IO.File.Copy(srcFilePath, destFilePath, <span style=color:#66d9ef>true</span>);
+                    }
+
+                    <span style=color:#75715e>// 拷贝 Version文件
+</span><span style=color:#75715e></span>                    System.IO.File.Copy(IN_VERSION_FILE_PATH, VERSION_FILE_PATH, <span style=color:#66d9ef>true</span>);
+                }
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                Debug.LogErrorFormat(<span style=color:#e6db74>&#34;解压失败，StreamingAssets 中没有 Version 文件&#34;</span>);
+            }
+        }
+        <span style=color:#66d9ef>catch</span> (System.Exception e)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Bundle拷贝出错! {0}&#34;</span>, e.ToString());
+        }
+    }
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> TryCreateBundleDir()
+    {
+        <span style=color:#66d9ef>if</span> (!System.IO.Directory.Exists(VERSION_FILE_DIR))
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;创建 Persistent Bundle 目录&#34;</span>);
+            System.IO.Directory.CreateDirectory(VERSION_FILE_DIR);
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Persistent Bundle 目录已存在，不需要创建&#34;</span>);
+        }
+    }
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> TryDeleteBundleDir()
+    {
+        <span style=color:#66d9ef>if</span> (System.IO.Directory.Exists(VERSION_FILE_DIR))
+        {
+            System.IO.Directory.Delete(VERSION_FILE_DIR, <span style=color:#66d9ef>true</span>);
+        }
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>string</span> GetLocalBundleMD5(<span style=color:#66d9ef>string</span> bundle_name)
+    {
+        <span style=color:#66d9ef>string</span> bundleFilePath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}&#34;</span>, Application.persistentDataPath, bundle_name);
+        <span style=color:#66d9ef>if</span> (System.IO.File.Exists(bundleFilePath))
+        {
+            <span style=color:#66d9ef>string</span> md5 = MoeUtils.GetMD5HashFromFile(bundleFilePath);
+            <span style=color:#66d9ef>return</span> md5;
+        }
+
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+    }
+
+    <span style=color:#75715e>/// &lt;summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// 检查当前的Bundle是否正确 
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;/summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;returns&gt;&lt;/returns&gt;
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>bool</span> CheckBundleCorrect()
+    {
+        <span style=color:#66d9ef>if</span> (currVersionInfo != <span style=color:#66d9ef>null</span>)
+        {
+            <span style=color:#66d9ef>foreach</span> (VersionBundleInfo bundleInfo <span style=color:#66d9ef>in</span> currVersionInfo.bundles)
+            {
+                <span style=color:#66d9ef>string</span> bundleFilePath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/{1}&#34;</span>, Application.persistentDataPath, bundleInfo.bundle_name);
+                <span style=color:#66d9ef>bool</span> matched = <span style=color:#66d9ef>false</span>;
+
+                <span style=color:#66d9ef>if</span> (GetLocalBundleMD5(bundleInfo.bundle_name) == bundleInfo.md5)
+                {
+                    matched = <span style=color:#66d9ef>true</span>;
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    Debug.LogErrorFormat(<span style=color:#e6db74>&#34;MD5 不匹配： {0}, FileMD5: {1}, bInfoMD5: {2}&#34;</span>, bundleInfo.bundle_name, GetLocalBundleMD5(bundleInfo.bundle_name), bundleInfo.md5);
+                }
+
+                <span style=color:#66d9ef>if</span> (!matched)
+                {
+                    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+                }
+            }
+
+            Debug.LogFormat(<span style=color:#e6db74>&#34;本地Bundle文件检完全正确&#34;</span>);
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+        }
+    }
+
+    <span style=color:#75715e>/// &lt;summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// 
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;/summary&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;param name=&#34;callback&#34;&gt;&lt;是否成功，是否是强更&gt;&lt;/param&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;param name=&#34;force&#34;&gt;&lt;/param&gt;
+</span><span style=color:#75715e></span>    <span style=color:#75715e>/// &lt;returns&gt;&lt;/returns&gt;
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>private</span> IEnumerator TryUpdateVersion(System.Action&lt;<span style=color:#66d9ef>bool</span>, <span style=color:#66d9ef>bool</span>&gt; callback, <span style=color:#66d9ef>bool</span> force = <span style=color:#66d9ef>false</span>)
+    {
+        UpdateUIState(<span style=color:#e6db74>&#34;正在检查更新&#34;</span>);
+        <span style=color:#66d9ef>this</span>.remoteVersionInfo = <span style=color:#66d9ef>null</span>;
+        <span style=color:#66d9ef>this</span>.updateInfo = <span style=color:#66d9ef>null</span>;
+        <span style=color:#66d9ef>string</span> remoteVersionUrl = REMOTE_URL + <span style=color:#e6db74>&#34;/fishing/version.json&#34;</span>;
+        Debug.LogFormat(<span style=color:#e6db74>&#34;开始下载远程 Version 文件: {0}&#34;</span>, remoteVersionUrl);
+        HTTPRequest request = <span style=color:#66d9ef>new</span> HTTPRequest(<span style=color:#66d9ef>new</span> System.Uri(remoteVersionUrl), <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>null</span>).Send();
+
+        <span style=color:#66d9ef>while</span> (request.State &lt; HTTPRequestStates.Finished)
+        {
+            <span style=color:#66d9ef>yield</span> <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> WaitForSeconds(<span style=color:#ae81ff>0.1f</span>);
+        }
+
+        <span style=color:#66d9ef>if</span> (request.State == HTTPRequestStates.Finished &amp;&amp;
+         request.Response.IsSuccess)
+        {
+            <span style=color:#66d9ef>string</span> remoteVersionText = request.Response.DataAsText;
+            <span style=color:#66d9ef>if</span> (!<span style=color:#66d9ef>string</span>.IsNullOrEmpty(remoteVersionText))
+            {
+                MoeVersionInfo remoteVersionInfo = Newtonsoft.Json.JsonConvert.DeserializeObject&lt;MoeVersionInfo&gt;(remoteVersionText);
+                <span style=color:#66d9ef>if</span> (remoteVersionInfo != <span style=color:#66d9ef>null</span>)
+                {
+                    Debug.LogFormat(<span style=color:#e6db74>&#34;远程 Version 文件解析成功, Version: {0}&#34;</span>, remoteVersionInfo.version);
+                    <span style=color:#75715e>// 判断是否要更新
+</span><span style=color:#75715e></span>
+                    <span style=color:#66d9ef>int</span> appMajorVersion = AppConfig.Inst.GetMajorVersion();
+                    <span style=color:#75715e>// 判断是否要强更
+</span><span style=color:#75715e></span>                    <span style=color:#66d9ef>int</span> remoteMajor = remoteVersionInfo.GetMajorVersion();
+                    <span style=color:#66d9ef>if</span> (remoteMajor &gt; appMajorVersion)
+                    {
+                        <span style=color:#75715e>// 这是一个需要强更的版本，需要提示用户去商店下载
+</span><span style=color:#75715e></span>                        Debug.LogFormat(<span style=color:#e6db74>&#34;发现强更版本，需要重新下包，进行大版本更新!&#34;</span>);
+                        callback?.Invoke(<span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>true</span>);
+                        callback = <span style=color:#66d9ef>null</span>;
+
+                        UpdateUIState(<span style=color:#e6db74>&#34;新的大版本已更新，请下载最新安装包！&#34;</span>);
+                    }
+                    <span style=color:#66d9ef>else</span>
+                    {
+                        <span style=color:#75715e>// 强制修复
+</span><span style=color:#75715e></span>                        <span style=color:#66d9ef>if</span> (force)
+                        {
+                            <span style=color:#66d9ef>this</span>.remoteVersionInfo = remoteVersionInfo;
+                            List&lt;VersionBundleInfo&gt; updateBundleList = <span style=color:#66d9ef>new</span> List&lt;VersionBundleInfo&gt;();
+                            updateBundleList.AddRange(remoteVersionInfo.bundles);
+                            <span style=color:#75715e>// 有需要更新的包
+</span><span style=color:#75715e></span>                            <span style=color:#66d9ef>this</span>.updateInfo = <span style=color:#66d9ef>new</span> UpdateInfo();
+                            <span style=color:#66d9ef>this</span>.updateInfo.remoteVersionInfo = remoteVersionInfo;
+                            <span style=color:#66d9ef>this</span>.updateInfo.updateBundleList = updateBundleList;
+                            Debug.LogFormat(<span style=color:#e6db74>&#34;强制更新，有需要更新的Bundle&#34;</span>);
+                            callback?.Invoke(<span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>false</span>);
+                            callback = <span style=color:#66d9ef>null</span>;
+                        }
+                        <span style=color:#66d9ef>else</span>
+                        {
+                            <span style=color:#75715e>// 正常更新
+</span><span style=color:#75715e></span>                            <span style=color:#66d9ef>int</span>[] remoteVersionDigit = remoteVersionInfo.GetVersionDigitArray();
+                            <span style=color:#66d9ef>int</span>[] currVersionDigit = <span style=color:#66d9ef>this</span>.currVersionInfo == <span style=color:#66d9ef>null</span> ? <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>int</span>[] { <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span> } : <span style=color:#66d9ef>this</span>.currVersionInfo.GetVersionDigitArray();
+                            <span style=color:#75715e>// if (this.currVersionInfo == null || remoteVersionInfo.GetVersionLong() &gt; this.currVersionInfo.GetVersionLong())
+</span><span style=color:#75715e></span>                            <span style=color:#66d9ef>if</span> (remoteVersionDigit[<span style=color:#ae81ff>0</span>] &gt; currVersionDigit[<span style=color:#ae81ff>0</span>] ||
+                               remoteVersionDigit[<span style=color:#ae81ff>1</span>] &gt; currVersionDigit[<span style=color:#ae81ff>1</span>] ||
+                               remoteVersionDigit[<span style=color:#ae81ff>2</span>] &gt; currVersionDigit[<span style=color:#ae81ff>2</span>])
+                            {
+                                Debug.LogFormat(<span style=color:#e6db74>&#34;这次需要热更新&#34;</span>);
+                                <span style=color:#66d9ef>this</span>.remoteVersionInfo = remoteVersionInfo;
+                                List&lt;VersionBundleInfo&gt; updateBundleList = <span style=color:#66d9ef>new</span> List&lt;VersionBundleInfo&gt;();
+
+                                <span style=color:#66d9ef>foreach</span> (VersionBundleInfo rBInfo <span style=color:#66d9ef>in</span> remoteVersionInfo.bundles)
+                                {
+                                    <span style=color:#66d9ef>if</span> (GetLocalBundleMD5(rBInfo.bundle_name) != rBInfo.md5)
+                                    {
+                                        updateBundleList.Add(rBInfo);
+                                    }
+                                }
+
+                                <span style=color:#75715e>// 有需要更新的包
+</span><span style=color:#75715e></span>                                <span style=color:#66d9ef>this</span>.updateInfo = <span style=color:#66d9ef>new</span> UpdateInfo();
+                                <span style=color:#66d9ef>this</span>.updateInfo.remoteVersionInfo = remoteVersionInfo;
+                                <span style=color:#66d9ef>this</span>.updateInfo.updateBundleList = updateBundleList;
+                                Debug.LogFormat(<span style=color:#e6db74>&#34;有需要更新的Bundle&#34;</span>);
+                                callback?.Invoke(<span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>false</span>);
+                                callback = <span style=color:#66d9ef>null</span>;
+                            }
+                            <span style=color:#66d9ef>else</span>
+                            {
+                                Debug.LogFormat(<span style=color:#e6db74>&#34;远程版本号 {0} &lt;= 本地版本号 {1}，无需更新!&#34;</span>, remoteVersionInfo.version, <span style=color:#66d9ef>this</span>.currVersionInfo.version);
+                                callback?.Invoke(<span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>false</span>);
+                                callback = <span style=color:#66d9ef>null</span>;
+                            }
+                        }
+                    }
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    Debug.LogErrorFormat(<span style=color:#e6db74>&#34;远程 Version 文件反序列化失败: {0}&#34;</span>, remoteVersionText);
+                }
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                Debug.LogErrorFormat(<span style=color:#e6db74>&#34;远程 Version 文件内容为空&#34;</span>);
+            }
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;远程 Version 文件下载失败: {0}, {1}&#34;</span>, request.State, request.Response.StatusCode);
+        }
+
+        BestHTTP.PlatformSupport.Memory.BufferPool.Release(request.Response.Data);
+        callback?.Invoke(<span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>false</span>);
+    }
+
+    <span style=color:#66d9ef>private</span> IEnumerator TryUpdateBundle(System.Action&lt;<span style=color:#66d9ef>bool</span>&gt; callback)
+    {
+        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>this</span>.remoteVersionInfo != <span style=color:#66d9ef>null</span> &amp;&amp; <span style=color:#66d9ef>this</span>.updateInfo != <span style=color:#66d9ef>null</span>)
+        {
+            <span style=color:#66d9ef>long</span> totalSize = <span style=color:#ae81ff>0</span>;
+            <span style=color:#66d9ef>foreach</span> (VersionBundleInfo bInfo <span style=color:#66d9ef>in</span> <span style=color:#66d9ef>this</span>.updateInfo.updateBundleList)
+            {
+                totalSize += bInfo.size;
+            }
+
+            UpdateUIDownload(totalSize, <span style=color:#ae81ff>0</span>);
+            <span style=color:#66d9ef>long</span> downloadedSize = <span style=color:#ae81ff>0</span>;
+            <span style=color:#66d9ef>bool</span> hasError = <span style=color:#66d9ef>false</span>;
+
+            <span style=color:#66d9ef>foreach</span> (VersionBundleInfo bInfo <span style=color:#66d9ef>in</span> <span style=color:#66d9ef>this</span>.updateInfo.updateBundleList)
+            {
+                Debug.LogFormat(<span style=color:#e6db74>&#34;Bundle信息 {0} | {1}&#34;</span>, GetLocalBundleMD5(bInfo.bundle_name), bInfo.md5);
+                <span style=color:#66d9ef>if</span> (GetLocalBundleMD5(bInfo.bundle_name) != bInfo.md5)
+                {
+                    <span style=color:#66d9ef>string</span> remoteBundleUrl = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;{0}/fishing/{1}/{2}&#34;</span>, REMOTE_URL, <span style=color:#66d9ef>this</span>.updateInfo.remoteVersionInfo.version, bInfo.bundle_name);
+                    Debug.LogFormat(<span style=color:#e6db74>&#34;开始更新Bundle: {0}&#34;</span>, remoteBundleUrl);
+                    HTTPRequest request = <span style=color:#66d9ef>new</span> HTTPRequest(<span style=color:#66d9ef>new</span> System.Uri(remoteBundleUrl), <span style=color:#66d9ef>false</span>, <span style=color:#66d9ef>true</span>, <span style=color:#66d9ef>null</span>).Send();
+                    <span style=color:#66d9ef>while</span> (request.State &lt; HTTPRequestStates.Finished)
+                    {
+
+                        <span style=color:#66d9ef>yield</span> <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>new</span> WaitForSeconds(<span style=color:#ae81ff>0.1f</span>);
+                    }
+
+                    <span style=color:#66d9ef>if</span> (request.State == HTTPRequestStates.Finished &amp;&amp; request.Response.IsSuccess)
+                    {
+                        downloadedSize += bInfo.size;
+                        <span style=color:#66d9ef>string</span> bundleWritePath = Application.persistentDataPath + <span style=color:#e6db74>&#34;/&#34;</span> + bInfo.bundle_name;
+                        <span style=color:#75715e>// 写入Bundle文件
+</span><span style=color:#75715e></span>                        System.IO.File.WriteAllBytes(bundleWritePath, request.Response.Data);
+                        Debug.LogFormat(<span style=color:#e6db74>&#34;{0} 更新完成&#34;</span>, bInfo.bundle_name);
+                        UpdateUIDownload(totalSize, downloadedSize);
+                    }
+                    <span style=color:#66d9ef>else</span>
+                    {
+                        Debug.LogErrorFormat(<span style=color:#e6db74>&#34;{0} 下载出错: {1}, {2}&#34;</span>, bInfo.bundle_name, request.State, request.Response.IsSuccess);
+                        callback?.Invoke(<span style=color:#66d9ef>false</span>);
+                        callback = <span style=color:#66d9ef>null</span>;
+                        hasError = <span style=color:#66d9ef>true</span>;
+                        <span style=color:#66d9ef>break</span>;
+                    }
+                    <span style=color:#66d9ef>yield</span> <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+                    BestHTTP.PlatformSupport.Memory.BufferPool.Release(request.Response.Data);
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    Debug.LogFormat(<span style=color:#e6db74>&#34;!!!!!!!!!!! 本地已存在需要更新的 {0}，跳过下载&#34;</span>, bInfo.bundle_name);
+                    downloadedSize += bInfo.size;
+                    UpdateUIDownload(totalSize, downloadedSize);
+                }
+            }
+
+            <span style=color:#66d9ef>if</span> (!hasError)
+            {
+                Debug.LogFormat(<span style=color:#e6db74>&#34;写入远程 Version 文件&#34;</span>);
+                <span style=color:#75715e>// 最后写入Version文件
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>string</span> versionText = Newtonsoft.Json.JsonConvert.SerializeObject(<span style=color:#66d9ef>this</span>.updateInfo.remoteVersionInfo);
+                System.IO.File.WriteAllText(VERSION_FILE_PATH, versionText);
+                <span style=color:#66d9ef>yield</span> <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+
+                <span style=color:#75715e>// 重新加载一遍本地文件
+</span><span style=color:#75715e></span>                <span style=color:#66d9ef>this</span>.currVersionInfo = LoadVersionInfo(VERSION_FILE_PATH);
+                UpdateUIState(<span style=color:#e6db74>&#34;更新完成&#34;</span>);
+            }
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;无需要更新，前置数据不足: remoteVersionInfo is Null: {0}, updateInfo is Null: {1}&#34;</span>, <span style=color:#66d9ef>this</span>.remoteVersionInfo == <span style=color:#66d9ef>null</span>, <span style=color:#66d9ef>this</span>.updateInfo == <span style=color:#66d9ef>null</span>);
+        }
+        callback?.Invoke(<span style=color:#66d9ef>true</span>);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>UpdateInfo</span>
+    {
+        <span style=color:#66d9ef>public</span> MoeVersionInfo remoteVersionInfo;
+        <span style=color:#66d9ef>public</span> List&lt;VersionBundleInfo&gt; updateBundleList;
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> UpdateUIState(<span style=color:#66d9ef>string</span> msg)
+    {
+        versionStateParam.state = msg;
+        MoeEventManager.Inst.SendEvent(EventID.Event_OnVersionState, versionStateParam);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> UpdateUIDownload(<span style=color:#66d9ef>long</span> total, <span style=color:#66d9ef>long</span> downloaded)
+    {
+        updateProgressParam.totalUpdateSize = total;
+        updateProgressParam.nowUpdatedSize = downloaded;
+        MoeEventManager.Inst.SendEvent(EventID.Event_OnUpdateProgress, updateProgressParam);
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> OnMsgBox(<span style=color:#66d9ef>string</span> msg, <span style=color:#66d9ef>string</span> btnText, System.Action callback)
+    {
+        msgBoxParam.msg = msg;
+        msgBoxParam.btnText = btnText;
+        msgBoxParam.callback = callback;
+        MoeEventManager.Inst.SendEvent(EventID.Event_OnVersionMsgBox, msgBoxParam);
+    }
+}
+</code></pre></div><p>MoeReleaseAssetBundleManager.cs 运行时资源管理器</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-csharp data-lang=csharp><span style=color:#66d9ef>using</span> System.Collections;
+<span style=color:#66d9ef>using</span> System.Collections.Generic;
+<span style=color:#66d9ef>using</span> UnityEngine;
+<span style=color:#66d9ef>using</span> System.IO;
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>MoeReleaseAssetBundleManager</span> : IMoeResAgent
+{
+    <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>string</span> INDEX_FILE = <span style=color:#e6db74>&#34;index&#34;</span>;
+    <span style=color:#66d9ef>private</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, Object&gt; <span style=color:#ae81ff>_</span>resources = <span style=color:#66d9ef>new</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, Object&gt;();
+    <span style=color:#66d9ef>private</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, AssetBundle&gt; <span style=color:#ae81ff>_</span>bundles = <span style=color:#66d9ef>new</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, AssetBundle&gt;();
+    <span style=color:#66d9ef>private</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, <span style=color:#66d9ef>string</span>&gt; <span style=color:#ae81ff>_</span>bundles_index = <span style=color:#66d9ef>new</span> Dictionary&lt;<span style=color:#66d9ef>int</span>, <span style=color:#66d9ef>string</span>&gt;();
+
+    <span style=color:#66d9ef>private</span> AssetBundleManifest <span style=color:#ae81ff>_</span>manifest = <span style=color:#66d9ef>null</span>;
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> Init()
+    {
+        InitAndLoadManifestFile();
+        InitAndLoadIndexFile();
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> InitAndLoadIndexFile()
+    {
+        <span style=color:#ae81ff>_</span>bundles_index.Clear();
+        AssetBundle indexBundle = LoadBundleSync(INDEX_FILE);
+        TextAsset ta = indexBundle.LoadAsset&lt;TextAsset&gt;(INDEX_FILE);
+        <span style=color:#66d9ef>if</span> (ta == <span style=color:#66d9ef>null</span>)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Index 文件加载失败！&#34;</span>);
+            <span style=color:#66d9ef>return</span>;
+        }
+
+        <span style=color:#66d9ef>string</span>[] lines = ta.text.Split(<span style=color:#e6db74>&#39;\n&#39;</span>);
+        <span style=color:#66d9ef>char</span>[] trim = <span style=color:#66d9ef>new</span> <span style=color:#66d9ef>char</span>[] { <span style=color:#e6db74>&#39;\r&#39;</span>, <span style=color:#e6db74>&#39;\n&#39;</span> };
+
+        <span style=color:#66d9ef>if</span> (lines != <span style=color:#66d9ef>null</span> &amp;&amp; lines.Length &gt; <span style=color:#ae81ff>0</span>)
+        {
+            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i = <span style=color:#ae81ff>0</span>; i &lt; lines.Length; ++i)
+            {
+                <span style=color:#66d9ef>string</span> line = lines[i].Trim(trim);
+                <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>string</span>.IsNullOrEmpty(line))
+                {
+                    <span style=color:#66d9ef>continue</span>;
+                }
+
+                <span style=color:#66d9ef>string</span>[] pair = line.Split(<span style=color:#e6db74>&#39;:&#39;</span>);
+                <span style=color:#66d9ef>if</span> (pair.Length != <span style=color:#ae81ff>2</span>)
+                {
+                    Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Index 行数据有问题: {0}&#34;</span>, line);
+                    <span style=color:#66d9ef>continue</span>;
+                }
+
+                <span style=color:#66d9ef>int</span> hash = pair[<span style=color:#ae81ff>0</span>].GetHashCode();
+                <span style=color:#66d9ef>if</span> (<span style=color:#ae81ff>_</span>bundles_index.ContainsKey(hash))
+                {
+                    Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Index 文件中存在相同的路径: {0}&#34;</span>, pair[<span style=color:#ae81ff>0</span>]);
+                }
+                <span style=color:#66d9ef>else</span>
+                {
+                    <span style=color:#ae81ff>_</span>bundles_index.Add(hash, pair[<span style=color:#ae81ff>1</span>]);
+                }
+            }
+        }
+
+        <span style=color:#66d9ef>if</span> (<span style=color:#ae81ff>_</span>bundles_index.Count != <span style=color:#ae81ff>0</span>)
+        {
+            Debug.LogFormat(<span style=color:#e6db74>&#34;Bundle Index 初始化完成&#34;</span>);
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Index 文件数据为空&#34;</span>);
+        }
+
+        indexBundle.Unload(<span style=color:#66d9ef>true</span>);
+        indexBundle = <span style=color:#66d9ef>null</span>;
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>void</span> InitAndLoadManifestFile()
+    {
+        AssetBundle manifestBundle = LoadBundleSync(<span style=color:#e6db74>&#34;Bundles&#34;</span>);
+        <span style=color:#ae81ff>_</span>manifest = manifestBundle.LoadAsset&lt;AssetBundleManifest&gt;(<span style=color:#e6db74>&#34;AssetBundleManifest&#34;</span>);
+        manifestBundle.Unload(<span style=color:#66d9ef>false</span>);
+        manifestBundle = <span style=color:#66d9ef>null</span>;
+    }
+
+    <span style=color:#66d9ef>public</span> T LoadAsset&lt;T&gt;(<span style=color:#66d9ef>string</span> path) <span style=color:#66d9ef>where</span> T : UnityEngine.Object
+    {
+        UnityEngine.Object obj = Load(path);
+        <span style=color:#66d9ef>if</span> (obj != <span style=color:#66d9ef>null</span>)
+        {
+            <span style=color:#66d9ef>return</span> obj <span style=color:#66d9ef>as</span> T;
+        }
+
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+    }
+
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>byte</span>[] LoadLuaCode(<span style=color:#66d9ef>string</span> path)
+    {
+        <span style=color:#66d9ef>string</span> assetPath = <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;LuaScripts/{0}&#34;</span>, path);
+        TextAsset ta = LoadAsset&lt;TextAsset&gt;(assetPath);
+        <span style=color:#66d9ef>if</span> (ta != <span style=color:#66d9ef>null</span>)
+        {
+            <span style=color:#66d9ef>return</span> ta.bytes;
+        }
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+    }
+
+
+
+    <span style=color:#66d9ef>private</span> UnityEngine.Object Load(<span style=color:#66d9ef>string</span> assetPath)
+    {
+        <span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>string</span>.IsNullOrEmpty(assetPath))
+        {
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+        }
+
+        <span style=color:#66d9ef>int</span> pathHash = assetPath.GetHashCode();
+        Object obj = <span style=color:#66d9ef>null</span>;
+        <span style=color:#66d9ef>if</span> (<span style=color:#ae81ff>_</span>resources.TryGetValue(pathHash, <span style=color:#66d9ef>out</span> obj))
+        {
+            <span style=color:#66d9ef>if</span> (obj == <span style=color:#66d9ef>null</span>)
+            {
+                <span style=color:#ae81ff>_</span>resources.Remove(pathHash);
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                <span style=color:#66d9ef>return</span> obj;
+            }
+        }
+
+        AssetLoadInfo loadInfo = GetAssetLoadInfo(assetPath);
+        <span style=color:#75715e>// 加载依赖Bundle
+</span><span style=color:#75715e></span>
+        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> i = <span style=color:#ae81ff>0</span>; i &lt; loadInfo.dependencies.Length; ++i)
+        {
+            <span style=color:#66d9ef>if</span> (LoadBundleSync(loadInfo.dependencies[i]) == <span style=color:#66d9ef>null</span>)
+            {
+                Debug.LogErrorFormat(<span style=color:#e6db74>&#34;加载依赖Bundle出错，资源 {0}， 主Bundle：{1}， 依赖：{2}&#34;</span>, assetPath, loadInfo.mainBundle, loadInfo.dependencies[i]);
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+            }
+        }
+
+        AssetBundle mainBundle = LoadBundleSync(loadInfo.mainBundle);
+        <span style=color:#66d9ef>if</span> (mainBundle == <span style=color:#66d9ef>null</span>)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;加载主Bundle出错，资源：{0}，主Bundle：{1}&#34;</span>, assetPath, loadInfo.mainBundle);
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+        }
+
+        obj = mainBundle.LoadAsset(assetPath);
+
+        <span style=color:#66d9ef>if</span> (obj == <span style=color:#66d9ef>null</span>)
+        {
+            Debug.LogErrorFormat(<span style=color:#e6db74>&#34;从Bundle加载资源失败，资源：{0}，主Bundle：{1}&#34;</span>, assetPath, loadInfo.mainBundle);
+            <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>null</span>;
+        }
+
+        <span style=color:#ae81ff>_</span>resources.Add(pathHash, obj);
+        <span style=color:#66d9ef>return</span> obj;
+    }
+
+    <span style=color:#66d9ef>private</span> AssetBundle LoadBundleSync(<span style=color:#66d9ef>string</span> bundleName)
+    {
+        <span style=color:#66d9ef>int</span> bundleHash = bundleName.GetHashCode();
+        AssetBundle bundle = <span style=color:#66d9ef>null</span>;
+
+        <span style=color:#66d9ef>if</span> (!<span style=color:#ae81ff>_</span>bundles.TryGetValue(bundleHash, <span style=color:#66d9ef>out</span> bundle))
+        {
+<span style=color:#75715e>#if UNITY_EDITOR
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>string</span> rootPath = Application.dataPath + <span style=color:#e6db74>&#34;/../streaming&#34;</span>;
+<span style=color:#75715e>#else
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>string</span> rootPath = Application.persistentDataPath;
+<span style=color:#75715e>#endif
+</span><span style=color:#75715e></span>            <span style=color:#66d9ef>string</span> bundleLoadPath = System.IO.Path.Combine(rootPath, <span style=color:#66d9ef>string</span>.Format(<span style=color:#e6db74>&#34;Bundles/{0}&#34;</span>, bundleName));
+            Debug.LogFormat(<span style=color:#e6db74>&#34;&gt;&gt;&gt;&gt; 加载Bundle: {0}&#34;</span>, bundleLoadPath);
+
+            <span style=color:#66d9ef>using</span> (<span style=color:#66d9ef>var</span> fileStream = <span style=color:#66d9ef>new</span> AssetBundleStream(bundleLoadPath, FileMode.Open, FileAccess.Read, FileShare.None, <span style=color:#ae81ff>1024</span> * <span style=color:#ae81ff>4</span>, <span style=color:#66d9ef>false</span>))
+            {
+                bundle = AssetBundle.LoadFromStream(fileStream);
+            }
+
+            <span style=color:#75715e>// bundle = AssetBundle.LoadFromFile(bundleLoadPath);
+</span><span style=color:#75715e></span>
+            <span style=color:#66d9ef>if</span> (bundle != <span style=color:#66d9ef>null</span>)
+            {
+                <span style=color:#ae81ff>_</span>bundles.Add(bundleHash, bundle);
+            }
+            <span style=color:#66d9ef>else</span>
+            {
+                Debug.LogErrorFormat(<span style=color:#e6db74>&#34;Bundle 加载失败 {0}, LoadPath: {1}&#34;</span>, bundleName, bundleLoadPath);
+            }
+        }
+        <span style=color:#66d9ef>else</span>
+        {
+            <span style=color:#75715e>// Debug.LogFormat(&#34;Bundle {0} 已加载，直接返回&#34;, bundleName);
+</span><span style=color:#75715e></span>        }
+
+        <span style=color:#66d9ef>return</span> bundle;
+    }
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>string</span> GetAssetOfBundleFileName(<span style=color:#66d9ef>string</span> assetPath)
+    {
+        <span style=color:#66d9ef>int</span> assetHash = assetPath.GetHashCode();
+        <span style=color:#66d9ef>string</span> bundleName;
+        <span style=color:#66d9ef>if</span> (<span style=color:#ae81ff>_</span>bundles_index.TryGetValue(assetHash, <span style=color:#66d9ef>out</span> bundleName))
+        {
+            <span style=color:#66d9ef>return</span> bundleName;
+        }
+
+        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>string</span>.Empty;
+    }
+
+    <span style=color:#66d9ef>private</span> AssetLoadInfo GetAssetLoadInfo(<span style=color:#66d9ef>string</span> assetPath)
+    {
+        AssetLoadInfo loadInfo = <span style=color:#66d9ef>new</span> AssetLoadInfo();
+        loadInfo.assetPath = assetPath;
+        loadInfo.mainBundle = GetAssetOfBundleFileName(assetPath);
+        loadInfo.dependencies = <span style=color:#ae81ff>_</span>manifest.GetAllDependencies(loadInfo.mainBundle);
+        <span style=color:#66d9ef>return</span> loadInfo;
+    }
+
+
+    <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>AssetLoadInfo</span>
+    {
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span> assetPath;
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span> mainBundle;
+        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>string</span>[] dependencies;
+    }
+}
+</code></pre></div><h3 id=萌一小栈>萌一小栈<a hidden class=anchor aria-hidden=true href=#萌一小栈>#</a></h3>
+<p>欢迎关注微信公众号 <strong>萌一小栈</strong>，博客文章同步推送
+<img loading=lazy src=/images/qrcode.jpg alt>
+</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/>游戏开发</a></li>
+</ul>
+<nav class=paginav>
+<a class=next href=https://blog.moeif.com/posts/exchange-code/>
+<span class=title>Next Page »</span>
+<br>
+<span>一个游戏兑换码生成及验证方案</span>
+</a>
+</nav>
+<div class=share-buttons>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on twitter" href="https://twitter.com/intent/tweet/?text=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b&url=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f&hashtags=%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f&title=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b&summary=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b&source=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f&title=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on whatsapp" href="https://api.whatsapp.com/send?text=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b%20-%20https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg>
+</a>
+<a target=_blank rel="noopener noreferrer" aria-label="share Unity 完整的热更新方案和流程 on telegram" href="https://telegram.me/share/url?text=Unity%20%e5%ae%8c%e6%95%b4%e7%9a%84%e7%83%ad%e6%9b%b4%e6%96%b0%e6%96%b9%e6%a1%88%e5%92%8c%e6%b5%81%e7%a8%8b&url=https%3a%2f%2fblog.moeif.com%2fposts%2funity-hot-update%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg>
+</a>
+</div>
+</footer>
+</article>
+</main>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script>
+<script>var _hmt=_hmt||[];(function(){var a=document.createElement("script"),b;a.src="https://hm.baidu.com/hm.js?da9253be08586e454189323668956d43",b=document.getElementsByTagName("script")[0],b.parentNode.insertBefore(a,b)})()</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7X4M6RGQGH"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-7X4M6RGQGH')</script></body>
+</html>

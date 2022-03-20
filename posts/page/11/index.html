@@ -82,6 +82,25 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>制作一个会动的时钟
+</h2>
+</header>
+<section class=entry-content>
+<p>这是 Unity 基础系列教程的第一篇博客。我们将由浅入深，一步一步学习Unity及游戏开发相关的东西。整个系列教程所使用的Unity版本为 2018.4 及以上就可以，如果要使用特殊版本，则会在文中指出。
+今天要做的是一个能够实时显示当前时间的时钟，就是下面这个东东。
+1 首先建立一个新工程 首先打开Unity，创建一个新工程，名字自己定，例如 Clock 就可以。默认打开后，Unity 默认布局是下面图的样子。
+你也可以更新布局，例如换成同时显示View和Game视图的布局，只需要点击编辑器最右上角的那个按钮，然后选择 2 by 3 即可成为下面图的样子。
+下面是分辨率的设置，一般游戏开发中，会使用一个基准分辨率，很多游戏采用的是 16:9 的模式。这个在 Game 视图中设置，看下面的图，选择 16:9 即可
+1.1 创建一个 GameObject 默认的场景中，会包含两个 GameObject，一个是主相机 MainCamera， 一个是灯光 Directional Light。这两个东西保持默认就好，现在我们创建一个新的物体，在 Hierarchy 面板右键，然后 Create Empty，或者通过菜单栏 GameObject/Create Empty都可以，这样就会在Hierarchy 面板上看到我们新建的物体，然后对这个物体重命名为 Clock，并且把它的位置置为 (0,0,0)。看下面的图
+1.2 创建时钟的表盘 创建表盘，我们使用 Unity 默认的物体 Cylinder，然后改变它的大小，使其成为我们的表盘。首先，通过右键 Hierarchy 空白处，或者通过菜单栏 GameObject 中的 3D Object/Cylinder 选项，来创建一个 Cylinder，就是一个圆柱体。
+Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshRenderer。默认我们不需要物理模拟方面的东西，所以我们先把 Capsule Collider 这个碰撞器给删掉，通过右键这个组件，Remove Component 即可。
+然后我们改变园柱体的大小，因为表盘是一个圆盘形状的东西，所以我们把圆柱体压平，也就是改变y轴的大小始可。把圆柱体 Scale 设置为 (10, 0.1, 10)，如下图。...</p>
+</section>
+<footer class=entry-footer><span title="2020-01-06 11:02:32 +0800 CST">January 6, 2020</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 制作一个会动的时钟" href=https://blog.moeif.com/posts/unity-basis-01-clock/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>二叉堆
 </h2>
 </header>
@@ -300,18 +319,6 @@ class Node { public int data; public Node next; public Node(int data){ this.data
 </section>
 <footer class=entry-footer><span title="2019-12-11 10:43:51 +0800 CST">December 11, 2019</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to 链表" href=https://blog.moeif.com/posts/data-structure-02-linkedlist/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>超简单的VPS购买和配置教程
-</h2>
-</header>
-<section class=entry-content>
-<p>这篇博客将一步一步教大家学习VPS的购买和配置教程，只需要简单几步，就可以拥有自己的VPS，然后愉快玩耍。可以自己搭一个科学上网代理服务器啦，托管自己的博客啦，等等。
-...</p>
-</section>
-<footer class=entry-footer><span title="2019-12-10 15:02:30 +0800 CST">December 10, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to 超简单的VPS购买和配置教程" href=https://blog.moeif.com/posts/vps-buy-and-setup/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
