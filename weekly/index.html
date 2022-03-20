@@ -5,7 +5,8 @@
 <meta name=robots content="index, follow">
 <title>Weekly | 萌一小栈</title>
 <meta name=keywords content>
-<meta name=description content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
+<meta name=description content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下
+ 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
  xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ">
 <meta name=author content="fred">
 <link rel=canonical href=https://blog.moeif.com/weekly/>
@@ -27,7 +28,8 @@
 <style>#theme-toggle,.top-link{display:none}</style>
 <style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style>
 </noscript><meta property="og:title" content="Weekly">
-<meta property="og:description" content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
+<meta property="og:description" content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下
+ 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
  xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://blog.moeif.com/weekly/"><meta property="og:image" content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content>
@@ -35,10 +37,11 @@
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E">
 <meta name=twitter:title content="Weekly">
-<meta name=twitter:description content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
+<meta name=twitter:description content="这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下
+ 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
  xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ">
 <script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Weekly","item":"https://blog.moeif.com/weekly/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Weekly","name":"Weekly","description":"这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。\n xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ","keywords":[],"articleBody":"这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。\n xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ","wordCount":"10","inLanguage":"en","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/weekly/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Weekly","name":"Weekly","description":"这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下\n 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。\n xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ","keywords":[],"articleBody":"这里将记录每周做过的事情，目前主要以开发任务为主 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下\n 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。\n xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  ","wordCount":"17","inLanguage":"en","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","author":{"@type":"Person","name":"fred"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.moeif.com/weekly/"},"publisher":{"@type":"Organization","name":"萌一小栈","logo":{"@type":"ImageObject","url":"https://blog.moeif.com/images/favicon.svg"}}}</script>
 </head>
 <body id=top>
 <script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add('dark'):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove('dark'):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add('dark')</script>
@@ -92,6 +95,14 @@ Weekly
 </div>
 </header>
 <div class=post-content><h3 id=这里将记录每周做过的事情目前主要以开发任务为主>这里将记录每周做过的事情，目前主要以开发任务为主<a hidden class=anchor aria-hidden=true href=#这里将记录每周做过的事情目前主要以开发任务为主>#</a></h3>
+<h2 id=2022-03-20-周日>2022-03-20 周日<a hidden class=anchor aria-hidden=true href=#2022-03-20-周日>#</a></h2>
+<p>本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下</p>
+<ul>
+<li>主界面UI及逻辑</li>
+<li>包裹模块UI及逻辑</li>
+<li>数据层逻辑</li>
+<li>广告，统计等逻辑接入Lua层</li>
+</ul>
 <h2 id=2022-03-12-周六>2022-03-12 周六<a hidden class=anchor aria-hidden=true href=#2022-03-12-周六>#</a></h2>
 <p>本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。</p>
 <ul>
