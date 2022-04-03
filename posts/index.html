@@ -82,6 +82,25 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>理解 Entity Component System
+</h2>
+</header>
+<section class=entry-content>
+<p>Entity-Component-System (ECS) 是一种架构模式。这种模式广泛地应用在游戏开发中。ECS 使用组合原则，因此这种模式使程序具有更好的灵活性和扩展性。游戏场景中的所有对象都被视为一个实体 (Entity)。这种模式在默认情况下也具有更高的性能。
+Entity-Component-System 有三个部分组成
+Entity (实体) Component (组件) System (系统) 什么是 Entity Entity 可以理解为一个对象的标识，它没有任何具体的数据和行为，只是标识一个东西。在实现上，通常可以用一个 Struct 来实现。而组件，为其提供数据。
+例如，我们要实现一个太空版本 Minecraft，所有游戏中能看到的，有形的东西，都算作一个实体。一搜飞船，一个角色等等。
+什么是 Component 组件是附加到实体的可重用模块，它是实体的单一行为描述。组件提供了实体的表现，行为，和功能。不同组件的组合，可以创造出不同类型的逻辑实体。
+什么是 System 一个 System 在运行时会遍历很多组件，以此实现高效的性能。例如渲染，物理，寻路。系统为组件提代了全局的管理和服务。
+我们可以使用系统来分离逻辑和数据，系统可以用来处理逻辑组件，充当数据容器。
+关于系统的例子 处理重力加速度 将速度应用到一个向量上 根据 AI 的设计，来控制机器人的输入 渲染 (位置，Sprite) 处理玩家输入 组合 我们可以组合不同的 Component，以及设置 Component 不同的数据值，来配置具体的实体。
+ECS 的优势 降低代码量以及复杂度 对于逻辑扩展拥有很高的灵活性 对于 3D 和 VR 需要大量渲染逻辑的项目有性能优势 让非技术人员更方便地编写脚本 可以分离庞大复杂的类结构 代码可重用和可组合性很强 更加方便的单元测试 可以支撑复杂的 VR 程序 运行时组件的替换 多进程和多线程友好 分离数据和功能 更加灵活地定义游戏对象 提供了解耦，封装，模块化，可重用性方法，以此构成一个干净的设计。 ECS 的劣势 不能像 MVC 那样直观定义逻辑 要用好 ECS，需要更多的思考组件的设计 ECS 需要写大量的小型代码，增加了出错的风险 目前的应用没有面向对象广泛 ECS 示例 看下面的图，这是一个兔子的实体，其中有很多组件被附加到了实体上，Placeable、Huggable、Consumable、Hopping 等 …...</p>
+</section>
+<footer class=entry-footer><span title="2022-04-03 15:23:39 +0800 CST">April 3, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
+<a class=entry-link aria-label="post link to 理解 Entity Component System" href=https://blog.moeif.com/posts/entity-component-system/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Unity 完整的热更新方案和流程
 </h2>
 </header>
@@ -247,22 +266,6 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
 </section>
 <footer class=entry-footer><span title="2022-02-02 17:44:42 +0800 CST">February 2, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
 <a class=entry-link aria-label="post link to Roguelike In Rust 02: Hello Rust" href=https://blog.moeif.com/posts/roguelike-rs-02-hellorust/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Roguelike In Rust 01: 前言
-</h2>
-</header>
-<section class=entry-content>
-<p>这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。
-每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -> rustyroguelike
-上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
-我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
-注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。
-萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 </p>
-</section>
-<footer class=entry-footer><span title="2022-02-02 14:44:42 +0800 CST">February 2, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer>
-<a class=entry-link aria-label="post link to Roguelike In Rust 01: 前言" href=https://blog.moeif.com/posts/roguelike-rs-01-introduction/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
