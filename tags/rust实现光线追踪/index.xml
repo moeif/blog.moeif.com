@@ -18,7 +18,7 @@
       <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-14/</guid>
       <description>这一节没有新的知识，只是将之前知识汇总起来，然后生成一张最终的图，最终生成的图如下
 首先，将创建世界及添加物体的代码从 main 函数中删除，然后抽象成一个函数 random_scene，在这个函数中，会随机生成一些球体，并且根据规则，随机使用我们的已有的三个材质。
-// src/main.rs fn random_scene() -&amp;gt; HittableList { let mut world = HittableList::new(); let ground_material = Lambertian::new(Color::new(0.5, 0.5, 0.5)); world.add(Box::new(Sphere::new( Vec3::new(0.0, -1000.0, 0.0), 1000.0, ground_material, ))); let mut rng = rand::thread_rng(); // 生成一些小球  for a in -11..11 { for b in -11..11 { let choose_mat: f64 = rng.gen(); let x_offset: f64 = rng.gen(); let z_offset: f64 = rng.gen(); let center = Vec3::new(a as f64 + 0.</description>
+// src/main.rs fn random_scene() -&amp;gt; HittableList {  let mut world = HittableList::new();   let ground_material = Lambertian::new(Color::new(0.5, 0.5, 0.5));  world.add(Box::new(Sphere::new(  Vec3::new(0.0, -1000.0, 0.0),  1000.0,  ground_material,  )));   let mut rng = rand::thread_rng();   // 生成一些小球  for a in -11..11 {  for b in -11..11 {  let choose_mat: f64 = rng.gen();  let x_offset: f64 = rng.</description>
     </item>
     
     <item>
@@ -41,7 +41,7 @@
 可以想象一个两个盒子，一个大的，假设口径是50厘米，扣在一把键盘上，可以扣住整个键盘，相当于摄像机看到了整个键盘。而将一个1厘米口径的盒子，扣在键盘上，可能只能覆盖其中一个键，也就是相机只能看到这一个键范围的东西。但最后都会将扣到的东西填充到画布上，所以，就相当于FOV越小，看到的东西就越大。
 添加相机FOV逻辑 在本文中，相机的FOV，我们使用角度来表示，上图中，$\theta$ 就是相机的开口大小，而 $h = \tan(\frac{\theta}{2})$，$2 * h$就是视口的高度，而视口的宽度，通过自定义的宽高比，来动态计算出来。
 下面修改 camera.rs 的代码，添加 fov 和 宽高比。
-// src/camera.rs impl Camera { pub fn new(vfov: f64, aspect_ratio: f64) -&amp;gt; Self { let theta = vfov * std::f64::consts::PI / 180.0; let h = (theta / 2.0).tan(); let viewport_height = 2.0 * h; let viewport_width = aspect_ratio * viewport_height; let focal_length = 1.0; let origin = Vec3::zero(); let horizontal = Vec3::new(viewport_width, 0.0, 0.</description>
+// src/camera.rs impl Camera {  pub fn new(vfov: f64, aspect_ratio: f64) -&amp;gt; Self {  let theta = vfov * std::f64::consts::PI / 180.0;  let h = (theta / 2.0).tan();  let viewport_height = 2.0 * h;  let viewport_width = aspect_ratio * viewport_height;  let focal_length = 1.0;   let origin = Vec3::zero();  let horizontal = Vec3::new(viewport_width, 0.</description>
     </item>
     
     <item>
@@ -90,7 +90,7 @@ cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
 可以看到，已经比上一节生成的图亮了很多。
 我们上一节使用的漫反射光线散射的方法，是在球体内部生成一个随机的点。然后，这样生成的向量，有很大的概率会和法线方向相近，并且及小概率会沿着入射方向反射回去。然而，真正的理想散射（Lambertian 反射）后的光线距离法向量比较近的概率会更高，但是分布规律会更加均衡，而实现这个方法，就是在球面上选取一个点，而不是在球内。我们可以通过在球内选取一个点，然后将其标准化，来得到球面上的点，因为我们的球是单位球。
 在 vec3.rs 中 Vec3 的实现里，添加一个新的方法 random_unit_vector，代码如下
-// src/vec3.rs pub fn random_unit_vector() -&amp;gt; Vec3 { let point = Vec3::random_in_unit_sphere(); return Vec3::unit_vector(point); } 然后修改 main.rs 中的 ray_color 函数，将原来调用 random_in_unit_sphere 的代码改成调用 random_unit_vector。</description>
+// src/vec3.rs pub fn random_unit_vector() -&amp;gt; Vec3 {  let point = Vec3::random_in_unit_sphere();  return Vec3::unit_vector(point); } 然后修改 main.rs 中的 ray_color 函数，将原来调用 random_in_unit_sphere 的代码改成调用 random_unit_vector。</description>
     </item>
     
     <item>

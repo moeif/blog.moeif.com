@@ -45,7 +45,7 @@
 上图中，再次用 3 和父节点 5 比较，因为 3 小于 5，所以再次交换两个节点的值
 上图中，再次用 3 和父节点 1 比较，咦，3 不小于 1，所以不交换，节点调整结束。此时的树满足二叉堆的规则。
 以上就是整个插入节点的流程，下面我们用代码去实现一下。代码中的 TreeAlgo 类是我们为了方便写的一个帮助类，实现了层序打印和查找的一些方法。
-// 定义节点的结构 public class Node { public int data; public Node parent = null; public Node left = null; public Node right = null; public Node(int data){ this.data = data; } } // 定义二叉堆操作类 using System; public class BinaryHeap { public Node root; public void Insert(int data){ Node lastParentNode = TreeAlgo.</description>
+// 定义节点的结构 public class Node {  public int data;  public Node parent = null;  public Node left = null;  public Node right = null;   public Node(int data){  this.</description>
     </item>
     
     <item>
@@ -59,7 +59,7 @@
 假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
 例如上面的数组，第一次循环，当前数字为10，我们从1~10之间，随机选择一个数，与10交换，这样第9个索引位就算洗完了，接下来就是第8个索引位，也就是数字为9，我们从第1个索引位与第8个索引位之间，选择一个数，第9交换，这样第8个索引位也就洗完了&amp;hellip;。这个算法之所以公平，是因为保证了每一个元素出现在每一个位置上的概率，都是一样的。
 代码实现
-using System; using System.Collections.Generic; class Program { static void Main(string[] args) { List&amp;lt;int&amp;gt; songList = new List&amp;lt;int&amp;gt;(); songList.Add(1); songList.Add(2); songList.Add(3); songList.Add(4); songList.Add(5); songList.Add(6); songList.Add(7); songList.Add(8); songList.Add(9); songList.Add(10); Random rand = new Random(); // 开始洗牌算法  int last = songList.Count - 1; for (int i = last; i &amp;gt;= 0; --i) { // 从当0~当前索引位之间，选择一个数  int selection = rand.</description>
+using System; using System.Collections.Generic;  class Program {  static void Main(string[] args)  {  List&amp;lt;int&amp;gt; songList = new List&amp;lt;int&amp;gt;();  songList.Add(1);  songList.Add(2);  songList.Add(3);  songList.Add(4);  songList.Add(5);  songList.Add(6);  songList.Add(7);  songList.Add(8);  songList.Add(9);  songList.Add(10);   Random rand = new Random();   // 开始洗牌算法  int last = songList.</description>
     </item>
     
     <item>
@@ -76,7 +76,7 @@ using System; using System.Collections.Generic; class Program { static void Main
 看上面的树，假设要搜索7这个节点。首先从Root节点出发，我们知道7大于3，所以会走到右子树6，然后因为7也大于6，所以会继续往右子树走，到了9，因为7小于9，所以会向左子树走，走到7，发现7等于7，所以找到要搜索的节点。
 二叉树的一些性质  将任何一个点看作Root节点，则这个点的左子树也是 Binary Search Tree 将任何一个点看作Root节点，则这个点的右子树也是 Binary Search Tree Binary Search Tree中的最小节点，一定是整棵树中最左下的叶子节点(从Root开始一直顺着左子树往下走，直到某一个点没有左子节点，则这个点就是最小的) Binary Search Tree中的最大节点，一定是整棵树中最右下的叶子节点(从Root开始一直顺着右子树往下走，直到某一个点没有右子节点，则这个点就是最大的)  怎样构建和插入节点 向BST中插入一个节点，也是一个构建的过程，和上面的搜索思路基本一样。首先从Root开始，如果Root点为空，则直接构建Root点。如果Root点不为空，则要判断要插入的值，比Root点的值大还是小，如果小，则往左子树走，如果大，则往右子树走。直到走到某一个点，我们称为点X，发现要插入的值，小于那个点X的值，并且点X没有左子树，则要插入的点作为X的左子节点。或者，要插入的点大于X，并且X没有右子树，则要插入的点作为X的右子节点。
 下面是代码实现（为了方便后面的删除逻辑，我们每一个点，包含了指向左子树，右子树，以及父节点的引用）
-// 这里先定义出节点的结构 class Node { public int data; public Node parent; public Node left; public Node right; public Node(int _data) { this.data = _data; } } // 定义二叉搜索树结构 class BST { private Node root; // 这个函数是 private 的，递归调用，插入节点  private Node RecursionInsert(Node node, int data) { if (node == null) { return new Node(data); } if (data &amp;lt; node.</description>
+// 这里先定义出节点的结构 class Node {  public int data;  public Node parent;  public Node left;  public Node right;   public Node(int _data)  {  this.data = _data;  } } // 定义二叉搜索树结构 class BST {  private Node root;   // 这个函数是 private 的，递归调用，插入节点  private Node RecursionInsert(Node node, int data)  {  if (node == null)  {  return new Node(data);  }   if (data &amp;lt; node.</description>
     </item>
     
     <item>
@@ -105,8 +105,7 @@ using System; using System.Collections.Generic; class Program { static void Main
 8，4，12，2，6，10，14，1，3，5，7，9，11，13，15
   深度优先索索 深度优先搜索，通常采用递归的形式来进行。这里我们用简单的代码去描述，会比文字描述更直观。
   前序遍历 前序遍历的顺序是先访问根节点，然后再访问子树。
-void pre_order_traversal(Node root) { // TODO：操作当前节点  // 如果左子树不为空，则递归处理左子树  if(root.left != null){ pre_order_traversal(root.left); } // 如果右子树不为空，则递归处理右子树  if(root.right != null){ pre_order_traversal(root.right); } }   中序遍历 中序遍历的顺序是先访问左（右）子树，然后访问根，然后访问右（左）子树。
-void in_order_traversal(Node root) { // 如果左子树不为空，则递归处理左子树  if(root.</description>
+void pre_order_traversal(Node root) {  // TODO：操作当前节点   // 如果左子树不为空，则递归处理左子树  if(root.left != null){  pre_order_traversal(root.left);  }   // 如果右子树不为空，则递归处理右子树  if(root.right != null){  pre_order_traversal(root.right);  } }   中序遍历 中序遍历的顺序是先访问左（右）子树，然后访问根，然后访问右（左）子树。</description>
     </item>
     
     <item>
@@ -120,7 +119,7 @@ void in_order_traversal(Node root) { // 如果左子树不为空，则递归处�
 拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
 队列 队列，是一种先进先出的结构(First in first out)，也就是在队尾进行插入操作，在队头进行删除操作。队列可以用链表来实现，也可以用数组来实现，要根据实际需求来决定。
 队列的操作有入列、出列、判断是否为空、判断是否已满等操作。下面将用C#来实现列表结构，看代码
-public class Node { public int data; public Node next; public Node(int data) { this.data = data; } } public class LinkedListQueue { public Node head; public Node tail; // 插入一个元素  public void Enqueue(int data) { Node newNode = new Node(data); if (head == null) { head = newNode; tail = newNode; } else { tail.next = newNode; tail = newNode; } } // 删除一个元素  public int Dequeue() { if (IsEmpty()) { Debug.</description>
+public class Node {  public int data;  public Node next;   public Node(int data)  {  this.data = data;  } }  public class LinkedListQueue {  public Node head;  public Node tail;   // 插入一个元素  public void Enqueue(int data)  {  Node newNode = new Node(data);  if (head == null)  {  head = newNode;  tail = newNode;  }  else  {  tail.</description>
     </item>
     
     <item>
@@ -139,7 +138,7 @@ public class Node { public int data; public Node next; public Node(int data) { t
 后面要学到的树的遍历，深度优先搜索，也是用堆栈来实现的。
 总之呢，记住一句话，先进后出(Fist in last out) 或者 后进先出(Last in first out) 就可以完美诠释堆栈这种数据结构。
 自己动手实现一下 很多编程语言已经实现了堆栈(Stack)结构，但是呢，我们这里自己实现一下，加深理解。代码使用 C#，以链表的形式来实现。(C# 语言本身已经拥有了Stack，在实际使用中，不需要自己实现)
-class Node { public int data; public Node next; public Node(int data){ this.data = data; } } class Stack { public Node topNode = null; // 将一个数据压入堆栈中  public void Push(int data){ Node newNode = new Node(data); newNode.next = topNode; topNode = newNode; } // 将一个栈顶数据从堆栈中弹出  public int Pop() { if (!</description>
+ class Node {  public int data;  public Node next;   public Node(int data){  this.data = data;  }  }   class Stack {  public Node topNode = null;   // 将一个数据压入堆栈中  public void Push(int data){  Node newNode = new Node(data);  newNode.</description>
     </item>
     
     <item>
@@ -153,7 +152,7 @@ class Node { public int data; public Node next; public Node(int data){ this.data
 而链表，正好弥补了数组的缺点，链表是动态内存，不需要事先分配固定大小的空间，添加和删除元素，也只需要改变指针即可，不需要移动很多元素。
 链表的缺点 当然，链表也有弊端。无法像数组一样随机访问，例如要访问第5个元素，是没办法直接访问的，只能遍历。每一个节点，需要额外的内存空间用来存储指向下一节点的指针。对缓存不友好，因为链表的内存空间并不一定是连续的。
 链表怎样用代码表示，以及插入、删除、遍历操作 下面我们使用C#来描述一下链表
-/// &amp;lt;summary&amp;gt; /// 链表中的节点结构 /// &amp;lt;/summary&amp;gt; public class Node { public int data; public Node next; public Node (int data) { this.data = data; } } public class Linkedlist { public Node head; public Node tail; /// &amp;lt;summary&amp;gt;  /// 插入一个节点  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;data&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  public void InsertNode(int data) { Node newNode = new Node(data); if(head == null) { head = newNode; tail = newNode; } else { tail.</description>
+/// &amp;lt;summary&amp;gt; /// 链表中的节点结构 /// &amp;lt;/summary&amp;gt; public class Node {  public int data;  public Node next;   public Node (int data)  {  this.data = data;  } }  public class Linkedlist {  public Node head;  public Node tail;   /// &amp;lt;summary&amp;gt;  /// 插入一个节点  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;data&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  public void InsertNode(int data)  {  Node newNode = new Node(data);  if(head == null)  {  head = newNode;  tail = newNode;  }  else  {  tail.</description>
     </item>
     
     <item>

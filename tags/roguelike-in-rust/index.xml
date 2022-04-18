@@ -61,7 +61,7 @@ Cargo.toml</description>
  The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers  Rust 编辑器可以使用 VSCode
 在终端中使用命令 cargo new hellorust 可以创建一个名为 hellorust 的工程。src/main.rs 是起始文件。Cargo.toml 是工程的配置文件，里面包含了一些其他库的引用信息。
 此时 src/main.rs 的代码如下
-fn main() { println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键字 main 是主函数名，也就是整个程序的起始函数。 println! 是一个打印宏  使用命令 cargo run 可以编译并运行工程。
+fn main() {  println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键字 main 是主函数名，也就是整个程序的起始函数。 println! 是一个打印宏  使用命令 cargo run 可以编译并运行工程。
 一些有用的 cargo 命令
  cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库，并且编译整个项目 cargo update 会根据 Cargo.</description>
     </item>

@@ -37,7 +37,7 @@
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
 游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
 代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
-using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度  private Vector3 velocity; // Update is called once per frame  void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput; playerInput.x = Input.GetAxis(&amp;#34;Horizontal&amp;#34;); playerInput.y = Input.GetAxis(&amp;#34;Vertical&amp;#34;); Vector3 desiredVelocity = new Vector3(playerInput.</description>
+using System.Collections; using System.Collections.Generic; using UnityEngine;  public class MovingSphere : MonoBehaviour {  // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f;  // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f;   // 当前的运动速度  private Vector3 velocity;   // Update is called once per frame  void Update()  {  // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput;  playerInput.</description>
     </item>
     
   </channel>

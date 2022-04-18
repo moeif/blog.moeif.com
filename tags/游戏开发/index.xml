@@ -127,7 +127,7 @@ TapTap: https://www.taptap.com/app/230651
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
 游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
 代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
-using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度  private Vector3 velocity; // Update is called once per frame  void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput; playerInput.x = Input.GetAxis(&amp;#34;Horizontal&amp;#34;); playerInput.y = Input.GetAxis(&amp;#34;Vertical&amp;#34;); Vector3 desiredVelocity = new Vector3(playerInput.</description>
+using System.Collections; using System.Collections.Generic; using UnityEngine;  public class MovingSphere : MonoBehaviour {  // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f;  // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f;   // 当前的运动速度  private Vector3 velocity;   // Update is called once per frame  void Update()  {  // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput;  playerInput.</description>
     </item>
     
     <item>
@@ -242,7 +242,7 @@ Android 下载连接: https://www.taptap.com/app/222178
 聚合 为了保证个体不脱离群体，还需要一个聚合力。就是将个体自身，推向群体中心的力。
  分离的力和聚合的力一定程度上抵消，从而达到个体之间即保持了距离，又保证了每一个体不脱离群体。
  下面的代码是我的一个小游戏项目中的，其中只用到了分离和聚合。只要懂了原理，就可以根据具体的情况灵活变通，达到自己想要的效果即可。
-using UnityEngine; using System.Collections.Generic; using System.Collections; public class GamePlayFlock : MonoBehaviour { public static List&amp;lt;GamePlayFlock&amp;gt; flockList = new List&amp;lt;GamePlayFlock&amp;gt;(); public static void StartAllFlock() { for(int i = 0; i &amp;lt; flockList.</description>
+using UnityEngine; using System.Collections.Generic; using System.Collections;  public class GamePlayFlock : MonoBehaviour {  public static List&amp;lt;GamePlayFlock&amp;gt; flockList = new List&amp;lt;GamePlayFlock&amp;gt;();   public static void StartAllFlock()  {  for(int i = 0; i &amp;lt; flockList.</description>
     </item>
     
     <item>
@@ -328,7 +328,7 @@ Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * 
 这一篇博客，接下来我们将在Shader中实现一下漫反射。实现漫反射，可以在顶点函数中，这叫做逐顶点光照。也可以在片元函数中实现，这叫做逐片元光照。在顶点函数中实现，也就是对每一个顶点都进行一次光照的计算，而在片元函数中也就是对每一像素执行光照计算，所以，在片元函数中实现相对来说要更耗费一点性能。
 在顶点函数中实现漫反射 漫反射的计算公式是 最终颜色=直射光颜色 * max(0, dot(光线，法线))，也就是使用 Directional Light 的颜色 乘 光线发射方向 与顶点法线方向的夹角，dot函数就是点乘，结果就是夹角。有一点要注意的是，dot中的 光线 和 法线 都是单位向量，也就是我们要对其进行标准化。max函数是取最大值，也就是说，如果dot计算出来的结果小于0，那就取0。
 看下面的代码，注意看注释，从上往下每一个注释都要看
-Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要使用光照，首先要定义一下LightMode，这里我们使用ForwardBase， // 这里先不用管意思，只要照着写上就行 Tags { &amp;#34;LightMode&amp;#34; = &amp;#34;ForwardBase&amp;#34; } CGPROGRAM // 这里我们将 Unity 一些预定义的Shader代码包含进来， // 里面有我们需要的东西，场景中第一个Directional Light的信息（后面用来做计算） #include &amp;#34;Lighting.cginc&amp;#34; #pragma vertex vert #pragma fragment frag // 根据共识，要计算最终顶点的颜色，需要法线数据，所以这里将法线从Application传到顶点处理函数中 struct a2v { float4 vertex: POSITION; float3 normal: NORMAL; // NORMAL就是法线语义，之前的文章说过 }; struct v2f { float4 position: SV_POSITION; fixed3 color : COLOR; // 这个颜色就是在顶点函数中计算完的顶点的漫反射颜色，传到片元函数中 }; // 把光照的计算放在顶点函数中，所以叫做顶点光照 v2f vert(a2v v) { // 定义一个数据传送结构体（传送到片元函数中） v2f f; f.</description>
+Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; {  SubShader {  Pass {  // 要使用光照，首先要定义一下LightMode，这里我们使用ForwardBase，  // 这里先不用管意思，只要照着写上就行  Tags {  &amp;#34;LightMode&amp;#34; = &amp;#34;ForwardBase&amp;#34;  }    CGPROGRAM  // 这里我们将 Unity 一些预定义的Shader代码包含进来，  // 里面有我们需要的东西，场景中第一个Directional Light的信息（后面用来做计算）  #include &amp;#34;Lighting.cginc&amp;#34;  #pragma vertex vert  #pragma fragment frag   // 根据共识，要计算最终顶点的颜色，需要法线数据，所以这里将法线从Application传到顶点处理函数中  struct a2v {  float4 vertex: POSITION;  float3 normal: NORMAL; // NORMAL就是法线语义，之前的文章说过  };   struct v2f {  float4 position: SV_POSITION;  fixed3 color : COLOR; // 这个颜色就是在顶点函数中计算完的顶点的漫反射颜色，传到片元函数中  };   // 把光照的计算放在顶点函数中，所以叫做顶点光照  v2f vert(a2v v) {  // 定义一个数据传送结构体（传送到片元函数中）  v2f f;   f.</description>
     </item>
     
     <item>
@@ -350,7 +350,7 @@ Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要�
 Shader的基本理解 简单来说，Shader 决定了一个模型最终呈现在屏幕上的样子。一个模型由很多顶点构成，而每一个顶点，都会经过 Shader 中的顶点处理函数，这个过程，就是从应用将数据传递到顶点处理函数，顶点函数需要将顶点从模型空间转换到屏幕空间，或者说是裁剪空间，也可以简单理解为从 3 维空间转换到屏幕上的 2 维空间。在这个过程中，还可以做一些其他对顶点的操作。
 顶点数据经过顶点处理函数处理后，接下来就返回，然后传给片元处理函数，到了这一步，面对的，就是像素，也就是每一个像素的颜色值。在这里，可以根据自己的需求，对每一个像素做处理，例如做高斯模糊，RGB通道分离，等等，各种各样的效果。
 向 Shader 传递更多的数据 在之前的博客文章中，我们只是将顶点的坐标传给了Shader，但是我们还需要其他的数据，例如法线，例如切线，纹理坐标等等。接下来，我们将使用结构体来存储要传递的数据，看下面的代码
-Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) } SubShader { Pass { CGPROGRAM float4 _MainColor; #pragma vertex vert #pragma fragment frag // 这里定义一个结构体，封装需要从应用传到顶点函数的数据 struct a2v { float4 vertex : POSITION; // 顶点坐标 float3 normal : NORMAL; // 顶点法线 float4 textcoord : TEXCOORD0; // 第一套纹理坐标(可以有多套) }; // 这里定义另一个结构体，封装从顶点函数传到片元函数的数据 struct v2f { float4 position : SV_POSITION; float3 temp : COLOR0; }; // 顶点处理函数，传入的是a2v结构体，返回的是要传到片元函数的v2f结构体 v2f vert(a2v v){ v2f result; result.</description>
+Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; {  Properties {  _MainColor(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  }   SubShader {  Pass {   CGPROGRAM  float4 _MainColor;   #pragma vertex vert  #pragma fragment frag   // 这里定义一个结构体，封装需要从应用传到顶点函数的数据  struct a2v {  float4 vertex : POSITION; // 顶点坐标  float3 normal : NORMAL; // 顶点法线  float4 textcoord : TEXCOORD0; // 第一套纹理坐标(可以有多套)  };   // 这里定义另一个结构体，封装从顶点函数传到片元函数的数据  struct v2f {  float4 position : SV_POSITION;  float3 temp : COLOR0;  };   // 顶点处理函数，传入的是a2v结构体，返回的是要传到片元函数的v2f结构体  v2f vert(a2v v){  v2f result;  result.</description>
     </item>
     
     <item>
@@ -360,7 +360,7 @@ Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;�
       
       <guid>https://blog.moeif.com/posts/unity-shader-basis-02/</guid>
       <description>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
-Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11 _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128 _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{} _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{} _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
+Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字   // 这里定义一些属性，可以显示在UI面板上用于调节  Properties {  // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值  _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4)  _Int(&amp;#34;整型&amp;#34;, Int) = 11111  _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11  _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128  _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{}  _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{}  _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{}  }   // 子 Shader，可以写多个，显卡运行时，  // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个，  // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader  SubShader {   // 至少有一个Pass，相当于一个方法  Pass {  // 在Pass块里写Shader代码   CGPROGRAM  // 使用 CG语言编写Shader  ENDCG  }  }   // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案  Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
     </item>
     
     <item>
@@ -378,7 +378,7 @@ GLSL/HLSL/CG shader编程语言，GLSL面向OpenGL，HLSL面向DirectX，CG是Nv
 ShaderLab 我们在Unitiy中写Shader用的语言是ShaderLab，可以理解为Unity为了方便使用者写Shader而创造的一种新的Shader语言，最后其实都会在底层被翻译成GLSL或HLSL或CG。
 Unity中的Shader分类 Shader的中文名叫做着色器
  表面着色器，Surface Shader 顶点/片元着色器，Vertex/Fragment Shader 固定功能着色器，Fixed function Shader (在现代硬件上基本已被弃用)  表面着色器可以理解为是对顶点/片元着色器的一种封装，它帮我们处理了很多渲染上比较麻烦的事情。而顶点/片元着色器就相对更灵活一些，也就是说很多东西要自己处理，相对来说要写的代码更多一些。进一步讲，使用顶点/片元着色器能实现的效果，使用表面着色器并不一定能实现，或者说，并不一定那么方便地实现。
-Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 Properties { // 这里定义一些属性，可以显示在UI面板上用于调节 } SubShader { // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } Unity Shader 属性类型 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.</description>
+Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字  Properties {  // 这里定义一些属性，可以显示在UI面板上用于调节  }   SubShader {  // 子 Shader，可以写多个，显卡运行时，  // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个，  // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader  }   // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案  Fallback &amp;#34;VertexLit&amp;#34; } Unity Shader 属性类型 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字   // 这里定义一些属性，可以显示在UI面板上用于调节  Properties {  // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值  _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4)  _Int(&amp;#34;整型&amp;#34;, Int) = 11111  _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.</description>
     </item>
     
     <item>
@@ -406,8 +406,8 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
  使用Unity的Cube做成一个Prefab 新建一个 Shader，命名为 ColoredPoint，Shader 的代码为上一篇博客的 Shader 新建一个材质，命名为 ColoredPoint，并使用第2步中创建的Shader C# 逻辑代码，也使用上一篇博客中的完整代码，在本文中会有很多修改   接下来，我们开始新的内容。
 1 在不同的效果函数之间切换 在上一篇博客中我们实现了Sine函数的展示，现在要加入更多函数的展示，为了方便在运行状态可以随时切换到其他函数，我们需要把每一种类型的展示放在独立的函数中。
 1.1 将 Sine 函数的表示放在独立函数中 首先在 Graph 脚本中添加一个新的函数 float SineFunction(float x, float t) {}，这个函数将用于展示 $f(x,t) = sin(π(x + t))$。然后我们需要将函数体的内容填写进去，代码如下
-float SineFunction(float x, float t) { Mathf.Sin(Mathf.PI * (x + t)); } 然后把 Update 函数里的代码改为调用我们新添加的函数
-void Update () { for (int i = 0; i &amp;lt; points.</description>
+float SineFunction(float x, float t) {  Mathf.Sin(Mathf.PI * (x + t)); } 然后把 Update 函数里的代码改为调用我们新添加的函数
+void Update () {  for (int i = 0; i &amp;lt; points.</description>
     </item>
     
     <item>
@@ -480,7 +480,7 @@ TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，�
   在场景中新建一个GameObject，然后挂载 NativePluginLoader.cs
   定义一个类，用于声明所有的插件方法，例如命名为 FooPlugin，然后给这个类赋予 PluginAttr 属性
   给 delegate 添加 PluginFunctionAttr 属性，示例代码如下
-// C# 代码 [PluginAttr(&amp;#34;my_cool_plugin&amp;#34;)] public static class FooPlugin { [PluginFunctionAttr(&amp;#34;sum&amp;#34;)] public static Sum sum = null; public delegate float Sum(float a, float b); // 原生方法的 delegate } void CoolFunc() { float s = FooPlugin.sum(1.0, 2.</description>
+// C# 代码 [PluginAttr(&amp;#34;my_cool_plugin&amp;#34;)] public static class FooPlugin { [PluginFunctionAttr(&amp;#34;sum&amp;#34;)]  public static Sum sum = null;  public delegate float Sum(float a, float b); // 原生方法的 delegate }  void CoolFunc() {  float s = FooPlugin.</description>
     </item>
     
     <item>

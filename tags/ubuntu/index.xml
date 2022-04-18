@@ -18,7 +18,7 @@
       <guid>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</guid>
       <description>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
 域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
-HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名  Nginx 配置  执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl.</description>
+HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名  Nginx 配置  执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server {  listen 80;  listen [::]:80;  server_name imoegirl.</description>
     </item>
     
     <item>
