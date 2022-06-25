@@ -9,7 +9,23 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Jun 2022 10:04:23 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Jun 2022 11:04:23 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>让 Unity Shader 不受 Time.timeScale 的影响</title>
+      <link>https://blog.moeif.com/posts/unity-shader-unscaledtime/</link>
+      <pubDate>Sat, 25 Jun 2022 11:04:23 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/unity-shader-unscaledtime/</guid>
+      <description>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
+但是，有时候希望即使将 TimeScale 设置为 0，有些东西也能继续运行，比如在写 Shader 时，经常会用到 _Time 属性，但是它会受到 Time.timeScale 的影响。不过有以下几种方式可以做到不受影响。
+方法一 private void Update() {  material.SetFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
+方法二 Unity 可以设置 Shader 全局变量，即材质之间共享属性。
+private void Update() {  Shader.SetGlobalFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这样场景中只需要一个做这件事情的 MonoBehaviour 的脚本即可。这个方法可以覆盖大多数情况。
+方法三 如果场景中不想放任何脚本，还有一个更强大的方法，那就是使用 PlayerLoop 来独立于 MonoBehaviour 更新全局属性。
+首先引入一个工具类 PlayerLoopModifier.cs，代码如下
+using System; using System.Collections.Generic; using System.Linq; using UnityEngine.LowLevel;  public class PlayerLoopModifier : IDisposable {  private PlayerLoopSystem root;   public PlayerLoopModifier()  {  root = PlayerLoop.</description>
+    </item>
+    
     <item>
       <title>Lua 带权重随机</title>
       <link>https://blog.moeif.com/posts/lua-randon-with-weight/</link>
