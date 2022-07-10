@@ -13,7 +13,8 @@
 游戏从技术上采用了 xlua 热更新的方式开发的，所有的游戏逻辑都是用 lua 来写的，这带来了非常大的好处，我们可以快速的迭代版本，修改 Bug 等等。目前保持的节奏基本上是每天都会更新一点新内容。群里的玩家也养成了每天晚上8点等更新的习惯。如果技术上允许，建议大家使用这种方式，真的迭代很方便，资源上传 CDN 就可以。目前我用的 CDN 是 DogeCloud，新用户的话有免费的存储空间和流量，对于一个小项目来说，完全够用，目前我还没有把免费流量用完，连一半都没用上。
 目前游戏的主要收益来自于两方面，一方面是广告，一方面是爱发电的赞助。至于赚了多少钱，从开发时间上来算，肯定没有之前打工时赚的多，不过还好有点收入。
 游戏还在继续迭代，玩家的流量，也在缓慢减少，不过应该还能再持续一段时间。下一个项目，也在构思中了，敬请期待。
-以上这些都是我从一个独立开发者的角度来谈的，无法和商业公司的开发模式去比较，仅仅是我所经历的一些东西。</p></section><footer class=entry-footer><span title="2022-07-10 11:04:23 +0800 CST">July 10, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer><a class=entry-link aria-label="post link to 一个独立游戏的开发总结" href=https://blog.moeif.com/posts/a-indie-game-dev-summary/></a></article><article class=post-entry><header class=entry-header><h2>让 Unity Shader 不受 Time.timeScale 的影响</h2></header><section class=entry-content><p>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
+以上这些都是我从一个独立开发者的角度来谈的，无法和商业公司的开发模式去比较，仅仅是我所经历的一些东西。
+技术交流，欢迎添加我的微信：ifloop</p></section><footer class=entry-footer><span title="2022-07-10 11:04:23 +0800 CST">July 10, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;fred</footer><a class=entry-link aria-label="post link to 一个独立游戏的开发总结" href=https://blog.moeif.com/posts/a-indie-game-dev-summary/></a></article><article class=post-entry><header class=entry-header><h2>让 Unity Shader 不受 Time.timeScale 的影响</h2></header><section class=entry-content><p>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
 但是，有时候希望即使将 TimeScale 设置为 0，有些东西也能继续运行，比如在写 Shader 时，经常会用到 _Time 属性，但是它会受到 Time.timeScale 的影响。不过有以下几种方式可以做到不受影响。
 方法一 private void Update() { material.SetFloat("_UnscaledTime", Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
 方法二 Unity 可以设置 Shader 全局变量，即材质之间共享属性。
