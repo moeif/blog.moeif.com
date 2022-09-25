@@ -9,7 +9,25 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 17 Jul 2022 06:04:23 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Sep 2022 23:04:23 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>噪声函数与地图生成</title>
+      <link>https://blog.moeif.com/posts/noise-function-and-map-generation/</link>
+      <pubDate>Sun, 25 Sep 2022 23:04:23 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/noise-function-and-map-generation/</guid>
+      <description>在我学习声音信号处理的时候，我的大脑很自然地联想到了地图生成。这篇博客记录了关于信号处理的一些概念与地图生成相关的东西。这些知识点不是一些新的东西，但对我来说，是以前从未接触过的，所以我想记录一下，并且分享给大家。这篇博客会覆盖一些简单的主题，频率、振幅、噪声的种类、噪声的应用等。涉及到的数学部分，基本上只有正弦波形。
+这里会从简单的概念开始，然后逐渐深入。
+ 注意：下面涉及的代码，虽然是以 Python 来描述的（简单直观），但文章的目的是为了解释原理，使用任何语言都可以的。
+ 1. 为什么随机性是有用的 我们在程序化的地图生成中要做的是生成一组输出，其中有一些东西是相同的，而有一些东西是不同的。例如，在我的世界这个游戏中，所有的地图都有很多相似性。生物群落，方块大小，生物群落的平均大小，洞穴的平均高度，不同石头所占的比例等等。但是，也有一些不同的地的：群落的位置，黄金的位置，洞穴的大小等等。作为游戏的设计者，需要决定哪些部分需要是相同的，哪些部分需要是不同的。
+对于不同的部分，通常是使用随机数生成器。让我们来做一个极其简单的地图生成器：它将包含20个格子，其中某些格子将包含宝箱。结果如下 请注意这个地图有多少共同的地方：首先它都是由格子组成（每个点作为一个格子），每行有20个格子，然后有两种类型的块，一个是空白，一个是宝箱。
+但有一点是不同的，哪一个格子是什么类型，也就是说宝箱可能出现在从0到19的任何一个格子。
+我们可以使用随机数来选择将宝箱放在哪一个格子中。最简单的方式是选择从0到19的随机数。这意味着每一个格子都可能被选择。大部分的编程语言都包含随机数生成函数。在 Python 中，使用方式是 random.randint(0, 19)。完整代码如下
+def gen() 	map = [0] * 20 	pos = random.randint(0, 19) 	map[pos] = 1 	return map  for i in range(5): 	print_chart(i, gen()) 生成结果如下：
+假设我们想让地图中的宝箱有更多的可能性出现在左边，这时就要使用非均匀随机数选择了。有很多方法可以完成这件事情，其中一种方式是首先选择一个随机数，然后将它向左移动，例如，使用函数 random(0,19)/2，下面是 Python 代码
+def gen(): 	map = [0] * 20 	pos = random.randint(0, 19) / 2 	map[pos] = 1 	return map  for i in range(5): 	print_chart(i, gen()) 然后，如果我们想让宝箱更多地出现在左边，但是，右边也不能一个没有，应该怎么办呢？一个方式是使用平方数，也就是先选定一个随机数，然后计算它的平方，然后再用结果除以19(地图右边界索引)，得到的结果向下取整。下面是代码和效果</description>
+    </item>
+    
     <item>
       <title>Unity 游戏启动前显示隐私协议</title>
       <link>https://blog.moeif.com/posts/show-privacy-before-unity/</link>
