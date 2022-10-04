@@ -3,18 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.moeif.com/posts/</loc>
-    <lastmod>2022-09-25T23:04:23+08:00</lastmod>
+    <lastmod>2022-10-04T14:09:29+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/</loc>
-    <lastmod>2022-09-25T23:04:23+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/posts/noise-function-and-map-generation/</loc>
-    <lastmod>2022-09-25T23:04:23+08:00</lastmod>
+    <lastmod>2022-10-04T14:09:29+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2022-09-25T23:04:23+08:00</lastmod>
+    <lastmod>2022-10-04T14:09:29+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/</loc>
+    <lastmod>2022-10-04T14:09:29+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</loc>
+    <lastmod>2022-10-04T14:09:29+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/noise-function-and-map-generation/</loc>
     <lastmod>2022-09-25T23:04:23+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/show-privacy-before-unity/</loc>

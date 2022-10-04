@@ -9,7 +9,35 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 25 Sep 2022 23:04:23 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 Oct 2022 14:09:29 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>通过作用域最小化来避免屎一样的代码</title>
+      <link>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
+      <pubDate>Tue, 04 Oct 2022 14:09:29 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</guid>
+      <description>面条式代码，是软件工程中反面模式的一种，也就是源代码的控制流程复杂，混乱难以理解，见到来说，就是屎一样的代码。
+最小化变量的作用域，是避免产生面条式代码的一种有效方式。
+作用域最小化是一种构建代码的方式，操作起来很容易
+声明具有最小作用域的变量 用具有最小作用域的数据来分配变量 事实上，是代码的结构，定一了变量的可见性。
+背景 一个程序是由一些单一或者组合的语句构成，例如赋值操作、条件判断、循环等。
+通常来说，如果有两个代码块 A 和 B
+如果 A 包含 B，那么 A 就是 B 的外部代码块 如果 B 被 A 所包含，那么 B 就是 A 的内部代码块 代码的缩进级别，是由嵌套级别数量决定的，直接的内部块会比其外部块多一个级别。
+我们假设定义全局作用域，也就是没有外部块的代码，缩进级别为0，而全局变量，就是那些在全局范围内定义的变量。
+变量可见规则 一个变量的可见性，由下面规则决定
+从该变量的声明语句开始 结束于变量声明块的末尾 并且在开始与结束中间的嵌套块中也是可见的 反过来说，如果一个变量是不可见的，那么
+在变量声明前 在变量声明块结束后 建议 R1. 尽量不要使用全局变量 R2. 声明单一用途的变量 R3. 在接近变量用途的地方声明变量 R4. 保持小的代码块 R5. 使用靠近其声明的变量 R6. 使用不超过2层的嵌套 R1. 尽量不要使用全局变量 全局变量会使代码变得难以阅读和理解，难以维护和测试。
+全局变量的使用，增加了出现问题的概率，并且不容易被发现。
+程序中可能错误地分配变量的语句越少越好。
+总之，全局变量的使用往往代表着技术债务，必须尽快重构以避免后期的不可维护。
+R2. 声明单一用途的变量 为单一的特定目的声明和使用变量，以便将其作用域限制作到最小。
+一个变量的目的性越多，意味着可访问此变量的代码块越多。
+而变量可见的语句数量越多，可能错误地赋值变量的语句就越多。
+可能错误地赋值变量的语句越多，那么发现和修复潜在错误就越困难。
+R3. 在接近变量用途的地方声明变量 尽可能地在靠近将使用这些变量的语句和代码块的地方声明变量。
+与 R2 严格相关。</description>
+    </item>
+    
     <item>
       <title>噪声函数与地图生成</title>
       <link>https://blog.moeif.com/posts/noise-function-and-map-generation/</link>
@@ -18,14 +46,15 @@
       <guid>https://blog.moeif.com/posts/noise-function-and-map-generation/</guid>
       <description>在我学习声音信号处理的时候，我的大脑很自然地联想到了地图生成。这篇博客记录了关于信号处理的一些概念与地图生成相关的东西。这些知识点不是一些新的东西，但对我来说，是以前从未接触过的，所以我想记录一下，并且分享给大家。这篇博客会覆盖一些简单的主题，频率、振幅、噪声的种类、噪声的应用等。涉及到的数学部分，基本上只有正弦波形。
 这里会从简单的概念开始，然后逐渐深入。
- 注意：下面涉及的代码，虽然是以 Python 来描述的（简单直观），但文章的目的是为了解释原理，使用任何语言都可以的。
- 1. 为什么随机性是有用的 我们在程序化的地图生成中要做的是生成一组输出，其中有一些东西是相同的，而有一些东西是不同的。例如，在我的世界这个游戏中，所有的地图都有很多相似性。生物群落，方块大小，生物群落的平均大小，洞穴的平均高度，不同石头所占的比例等等。但是，也有一些不同的地的：群落的位置，黄金的位置，洞穴的大小等等。作为游戏的设计者，需要决定哪些部分需要是相同的，哪些部分需要是不同的。
+注意：下面涉及的代码，虽然是以 Python 来描述的（简单直观），但文章的目的是为了解释原理，使用任何语言都可以的。
+1. 为什么随机性是有用的 我们在程序化的地图生成中要做的是生成一组输出，其中有一些东西是相同的，而有一些东西是不同的。例如，在我的世界这个游戏中，所有的地图都有很多相似性。生物群落，方块大小，生物群落的平均大小，洞穴的平均高度，不同石头所占的比例等等。但是，也有一些不同的地的：群落的位置，黄金的位置，洞穴的大小等等。作为游戏的设计者，需要决定哪些部分需要是相同的，哪些部分需要是不同的。
 对于不同的部分，通常是使用随机数生成器。让我们来做一个极其简单的地图生成器：它将包含20个格子，其中某些格子将包含宝箱。结果如下 请注意这个地图有多少共同的地方：首先它都是由格子组成（每个点作为一个格子），每行有20个格子，然后有两种类型的块，一个是空白，一个是宝箱。
 但有一点是不同的，哪一个格子是什么类型，也就是说宝箱可能出现在从0到19的任何一个格子。
 我们可以使用随机数来选择将宝箱放在哪一个格子中。最简单的方式是选择从0到19的随机数。这意味着每一个格子都可能被选择。大部分的编程语言都包含随机数生成函数。在 Python 中，使用方式是 random.randint(0, 19)。完整代码如下
-def gen() 	map = [0] * 20 	pos = random.randint(0, 19) 	map[pos] = 1 	return map  for i in range(5): 	print_chart(i, gen()) 生成结果如下：
+def gen() map = [0] * 20 pos = random.randint(0, 19) map[pos] = 1 return map for i in range(5): print_chart(i, gen()) 生成结果如下：
 假设我们想让地图中的宝箱有更多的可能性出现在左边，这时就要使用非均匀随机数选择了。有很多方法可以完成这件事情，其中一种方式是首先选择一个随机数，然后将它向左移动，例如，使用函数 random(0,19)/2，下面是 Python 代码
-def gen(): 	map = [0] * 20 	pos = random.randint(0, 19) / 2 	map[pos] = 1 	return map  for i in range(5): 	print_chart(i, gen()) 然后，如果我们想让宝箱更多地出现在左边，但是，右边也不能一个没有，应该怎么办呢？一个方式是使用平方数，也就是先选定一个随机数，然后计算它的平方，然后再用结果除以19(地图右边界索引)，得到的结果向下取整。下面是代码和效果</description>
+def gen(): map = [0] * 20 pos = random.randint(0, 19) / 2 map[pos] = 1 return map for i in range(5): print_chart(i, gen()) 然后，如果我们想让宝箱更多地出现在左边，但是，右边也不能一个没有，应该怎么办呢？一个方式是使用平方数，也就是先选定一个随机数，然后计算它的平方，然后再用结果除以19(地图右边界索引)，得到的结果向下取整。下面是代码和效果
+def gen(): map = [0] * 20 pos = random.</description>
     </item>
     
     <item>
@@ -36,7 +65,7 @@ def gen(): 	map = [0] * 20 	pos = random.randint(0, 19) / 2 	map[pos] = 1 	retur
       <guid>https://blog.moeif.com/posts/show-privacy-before-unity/</guid>
       <description>使用 Unity 开发的游戏，在上架某些平台时，比如 TapTap，由于政策的原因，需要在收集用户信息，或使用某些权限时，先弹出隐私协议，用户同意之后，才能操作。但是如果直接在 Unity 里做这件事情，哪怕是用一个空场景来做，Unity 本身就会在隐私协议前收集一些信息，所以，我们需要使用原生代码，来操作这一块逻辑。这里只说 Android。
 首先要做的就是在 Assets/Plugins/Android 新建一个 java 文件，用来作为启动 Activity，在这个 Activity 中，先展示隐私协议，当玩家点击同意后，再去调用 Unity 的 Activity。
-package com.moeif.moeifgames;  import android.app.Activity; import android.app.AlertDialog; import android.content.DialogInterface; import android.content.Intent; import android.content.SharedPreferences; import android.os.Bundle; import com.unity3d.player.UnityPlayerActivity;  public class MoeNativeActivity extends Activity {  @Override  protected void onCreate(Bundle savedInstanceState) {  super.onCreate(savedInstanceState);   if (!isTaskRoot()) {  Intent intent = getIntent();  String action = intent.getAction();  if (intent.</description>
+package com.moeif.moeifgames; import android.app.Activity; import android.app.AlertDialog; import android.content.DialogInterface; import android.content.Intent; import android.content.SharedPreferences; import android.os.Bundle; import com.unity3d.player.UnityPlayerActivity; public class MoeNativeActivity extends Activity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); if (!isTaskRoot()) { Intent intent = getIntent(); String action = intent.getAction(); if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) &amp;amp;&amp;amp; action != null &amp;amp;&amp;amp; action.equals(Intent.ACTION_MAIN)) { finish(); return; } } Boolean anInt = false; // 隐私协议相关 SharedPreferences base = getSharedPreferences(&amp;#34;base&amp;#34;,MODE_PRIVATE); anInt = base.</description>
     </item>
     
     <item>
@@ -71,12 +100,12 @@ package com.moeif.moeifgames;  import android.app.Activity; import android.app.A
       <guid>https://blog.moeif.com/posts/unity-shader-unscaledtime/</guid>
       <description>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
 但是，有时候希望即使将 TimeScale 设置为 0，有些东西也能继续运行，比如在写 Shader 时，经常会用到 _Time 属性，但是它会受到 Time.timeScale 的影响。不过有以下几种方式可以做到不受影响。
-方法一 private void Update() {  material.SetFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
+方法一 private void Update() { material.SetFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
 方法二 Unity 可以设置 Shader 全局变量，即材质之间共享属性。
-private void Update() {  Shader.SetGlobalFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这样场景中只需要一个做这件事情的 MonoBehaviour 的脚本即可。这个方法可以覆盖大多数情况。
+private void Update() { Shader.SetGlobalFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这样场景中只需要一个做这件事情的 MonoBehaviour 的脚本即可。这个方法可以覆盖大多数情况。
 方法三 如果场景中不想放任何脚本，还有一个更强大的方法，那就是使用 PlayerLoop 来独立于 MonoBehaviour 更新全局属性。
 首先引入一个工具类 PlayerLoopModifier.cs，代码如下
-using System; using System.Collections.Generic; using System.Linq; using UnityEngine.LowLevel;  public class PlayerLoopModifier : IDisposable {  private PlayerLoopSystem root;   public PlayerLoopModifier()  {  root = PlayerLoop.</description>
+using System; using System.Collections.Generic; using System.Linq; using UnityEngine.LowLevel; public class PlayerLoopModifier : IDisposable { private PlayerLoopSystem root; public PlayerLoopModifier() { root = PlayerLoop.</description>
     </item>
     
     <item>
@@ -86,7 +115,7 @@ using System; using System.Collections.Generic; using System.Linq; using UnityEn
       
       <guid>https://blog.moeif.com/posts/lua-randon-with-weight/</guid>
       <description>t 是数据数组，weights 是权重数组，两个数组长度是一致的。
-function RandomWithWeight(t, weights)  local sum = 0  for i = 1, #weights do  sum = sum + weights[i]  end  local compareWeight = math.random(1, sum)  local weightIndex = 1  while sum &amp;gt; 0 do  sum = sum - weights[weightIndex]  if sum &amp;lt; compareWeight then  return t[weightIndex], weightIndex  end  weightIndex = weightIndex + 1  end  return nil, nil end </description>
+function RandomWithWeight(t, weights) local sum = 0 for i = 1, #weights do sum = sum + weights[i] end local compareWeight = math.random(1, sum) local weightIndex = 1 while sum &amp;gt; 0 do sum = sum - weights[weightIndex] if sum &amp;lt; compareWeight then return t[weightIndex], weightIndex end weightIndex = weightIndex + 1 end return nil, nil end </description>
     </item>
     
     <item>
@@ -97,13 +126,13 @@ function RandomWithWeight(t, weights)  local sum = 0  for i = 1, #weights do  su
       <guid>https://blog.moeif.com/posts/entity-component-system/</guid>
       <description>Entity-Component-System (ECS) 是一种架构模式。这种模式广泛地应用在游戏开发中。ECS 使用组合原则，因此这种模式使程序具有更好的灵活性和扩展性。游戏场景中的所有对象都被视为一个实体 (Entity)。这种模式在默认情况下也具有更高的性能。
 Entity-Component-System 有三个部分组成
- Entity (实体) Component (组件) System (系统)  什么是 Entity Entity 可以理解为一个对象的标识，它没有任何具体的数据和行为，只是标识一个东西。在实现上，通常可以用一个 Struct 来实现。而组件，为其提供数据。
+Entity (实体) Component (组件) System (系统) 什么是 Entity Entity 可以理解为一个对象的标识，它没有任何具体的数据和行为，只是标识一个东西。在实现上，通常可以用一个 Struct 来实现。而组件，为其提供数据。
 例如，我们要实现一个太空版本 Minecraft，所有游戏中能看到的，有形的东西，都算作一个实体。一搜飞船，一个角色等等。
 什么是 Component 组件是附加到实体的可重用模块，它是实体的单一行为描述。组件提供了实体的表现，行为，和功能。不同组件的组合，可以创造出不同类型的逻辑实体。
 什么是 System 一个 System 在运行时会遍历很多组件，以此实现高效的性能。例如渲染，物理，寻路。系统为组件提代了全局的管理和服务。
 我们可以使用系统来分离逻辑和数据，系统可以用来处理逻辑组件，充当数据容器。
-关于系统的例子  处理重力加速度 将速度应用到一个向量上 根据 AI 的设计，来控制机器人的输入 渲染 (位置，Sprite) 处理玩家输入  组合 我们可以组合不同的 Component，以及设置 Component 不同的数据值，来配置具体的实体。
-ECS 的优势  降低代码量以及复杂度 对于逻辑扩展拥有很高的灵活性 对于 3D 和 VR 需要大量渲染逻辑的项目有性能优势 让非技术人员更方便地编写脚本 可以分离庞大复杂的类结构 代码可重用和可组合性很强 更加方便的单元测试 可以支撑复杂的 VR 程序 运行时组件的替换 多进程和多线程友好 分离数据和功能 更加灵活地定义游戏对象 提供了解耦，封装，模块化，可重用性方法，以此构成一个干净的设计。  ECS 的劣势  不能像 MVC 那样直观定义逻辑 要用好 ECS，需要更多的思考组件的设计 ECS 需要写大量的小型代码，增加了出错的风险 目前的应用没有面向对象广泛  ECS 示例 看下面的图，这是一个兔子的实体，其中有很多组件被附加到了实体上，Placeable、Huggable、Consumable、Hopping 等 &amp;hellip;</description>
+关于系统的例子 处理重力加速度 将速度应用到一个向量上 根据 AI 的设计，来控制机器人的输入 渲染 (位置，Sprite) 处理玩家输入 组合 我们可以组合不同的 Component，以及设置 Component 不同的数据值，来配置具体的实体。
+ECS 的优势 降低代码量以及复杂度 对于逻辑扩展拥有很高的灵活性 对于 3D 和 VR 需要大量渲染逻辑的项目有性能优势 让非技术人员更方便地编写脚本 可以分离庞大复杂的类结构 代码可重用和可组合性很强 更加方便的单元测试 可以支撑复杂的 VR 程序 运行时组件的替换 多进程和多线程友好 分离数据和功能 更加灵活地定义游戏对象 提供了解耦，封装，模块化，可重用性方法，以此构成一个干净的设计。 ECS 的劣势 不能像 MVC 那样直观定义逻辑 要用好 ECS，需要更多的思考组件的设计 ECS 需要写大量的小型代码，增加了出错的风险 目前的应用没有面向对象广泛 ECS 示例 看下面的图，这是一个兔子的实体，其中有很多组件被附加到了实体上，Placeable、Huggable、Consumable、Hopping 等 &amp;hellip;</description>
     </item>
     
     <item>
@@ -129,7 +158,7 @@ LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在�
       <description>在开发独立游戏《小镇危机：来自丧尸的问候》时，需要设计一个兑换码的功能，但是在网络上也没有找到合适的方案，所以这里就自己考虑了一种。这里会说明思路，具体的实现，可以按照自己的方式去定制。
 我们的游戏中有两种资源可以兑换，一种是星星，一种是钻石。所以就需要在兑换码中通过某种方式表示出来。本质上就是将自己想兑换的数据，通过某种方式的变换，隐藏在兑换码中，然后服务器是知道解码方式的，通过解码，即可还原出玩家兑换的是什么，然后将兑换物品回给玩家。
 我们的游戏兑换码为14位的，里面包含的信息有兑换类型，兑换数量，这两个信息，例如 LMA60XV7380QBH。
-1. 兑换码生成和验证过程 兑换码由大写字母和数字组成，对于兑换码中的每一个字符，我们可以使用的字符为 [0, 9] 和 [A, Z]。 确定要表示的信息，所占用的字符数。对于我们的游戏来说，兑换类型只需要 1 个字符即可，而兑换数量，需要占用 4 个字符，到此，已经消耗掉 5 个字符。 兑换码的数据校验和，会占用2个字符，到此消耗掉 7 个字符。 剩下的 7 个字符，为唯一的随机字符串，用于填充验证码的。  根据上面的步骤，首先生成第 3 步所需要的 7 位随机字符串。由于我们每一位可用的字符数是36个，所以最终的排列组合有上百亿种，我们不需要那么多，几百万个足够了。这里要注保证唯一性。生成的字符串如下所示
+1. 兑换码生成和验证过程 兑换码由大写字母和数字组成，对于兑换码中的每一个字符，我们可以使用的字符为 [0, 9] 和 [A, Z]。 确定要表示的信息，所占用的字符数。对于我们的游戏来说，兑换类型只需要 1 个字符即可，而兑换数量，需要占用 4 个字符，到此，已经消耗掉 5 个字符。 兑换码的数据校验和，会占用2个字符，到此消耗掉 7 个字符。 剩下的 7 个字符，为唯一的随机字符串，用于填充验证码的。 根据上面的步骤，首先生成第 3 步所需要的 7 位随机字符串。由于我们每一位可用的字符数是36个，所以最终的排列组合有上百亿种，我们不需要那么多，几百万个足够了。这里要注保证唯一性。生成的字符串如下所示
 DLDWVEQ WM8YB8M MNUP5RR 3RG7X8D VUBPD8J J3L3ZR1 1Y1ALB3 R6PRATR 然后表示出兑换码要兑换的数据，假设这里要兑换星星，并且兑换的数量为 10000 个。首先使用一个字符来表示星星，例如使用 S 来表示，当然，也可以将 36 个字符进行分组，然后从组中去随机一个，这样更不容易被破解。然后兑换的数量，可以转为 16 进制，或者 34 进制都行。假设这里使用 34 进制来表示，10000 转为 34 进制就是 8M4，不足4位，前面进行补0，也就是 08M4。进制转换的逻辑需要自己写。
 取一个随机字符串，与要兑换的信息进行组合，组合的方式随意，只要最后恢复时使用相同的方式即可。假设这里将随机字符串的前3位放在兑换码的开始，然后跟上兑换类型，后三位放在最后。这里使用上面第一个随机字符串为例子。经过这一步组合，得到的字符串如为 DLDS08M4WVEQ。
 然后计算上面得到的字符串的校验和，为 AD，将 AD 放在最后，这里随意，可以按自己想放的位置去放，自己知道就好了。现在得到的字符串为 DLDS08M4WVEQAD。
@@ -248,12 +277,12 @@ Cargo.toml</description>
       <guid>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</guid>
       <description>Rust 算是一个新兴的语言，近两年非常火了，但是他首次出现是在 2010 年。Rust 有非常好用的工具 cargo 和 rustup。
 如果要学习 Rust 这门编程语言，也有很多优秀的教程。
- The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers  Rust 编辑器可以使用 VSCode
+The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers Rust 编辑器可以使用 VSCode
 在终端中使用命令 cargo new hellorust 可以创建一个名为 hellorust 的工程。src/main.rs 是起始文件。Cargo.toml 是工程的配置文件，里面包含了一些其他库的引用信息。
 此时 src/main.rs 的代码如下
-fn main() {  println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键字 main 是主函数名，也就是整个程序的起始函数。 println! 是一个打印宏  使用命令 cargo run 可以编译并运行工程。
+fn main() { println!(&amp;#34;Hello, world!&amp;#34;); } fn 是函数的关键字 main 是主函数名，也就是整个程序的起始函数。 println! 是一个打印宏 使用命令 cargo run 可以编译并运行工程。
 一些有用的 cargo 命令
- cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库，并且编译整个项目 cargo update 会根据 Cargo.</description>
+cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库，并且编译整个项目 cargo update 会根据 Cargo.</description>
     </item>
     
     <item>
@@ -306,8 +335,8 @@ fn main() {  println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键
 这周注册了一个新的域名，国内的，这样可以备案，可是域名拼错了&amp;hellip;，不过也无所谓，反正不对外，只是在代码中使用。似乎找到了一个国内和国内访问腾讯云都很快的方法，就是国内直连，国外使用 Cloudflare 加速，等后面有了服务器的逻辑可以测一下。
 考虑了一下下一个项目的事情，准备下一个项目海外版增加内购，国内还是暂时以广告为主，暂时这样计划着。
 看了一下Godot，编辑器确实很快，但是从产品开发上，还是Unity更保险一些，一方面比较熟悉，一方面各种支持和资源很丰富。目前确实没有转引擎的必要。
-项目进度   游戏码农：那些打工的日子 这周完成了资产模块的逻辑和UI，投资模块的逻辑和UI。投资模块的价格数据，使用了市场上真实的数据，目前只加了一个数据源，后面会再加几个，增加可靠性。另外，这个项目的软著终于有动静了，目前处于待发放的状态，也就是通过了，估计下周能邮出。
-  本周电影  这周忙到没时间看电影  本周书籍  《愿你迷路到我身旁》 《游戏设计艺术》（阅读中）  下周初步计划  继续逻辑编写  </description>
+项目进度 游戏码农：那些打工的日子 这周完成了资产模块的逻辑和UI，投资模块的逻辑和UI。投资模块的价格数据，使用了市场上真实的数据，目前只加了一个数据源，后面会再加几个，增加可靠性。另外，这个项目的软著终于有动静了，目前处于待发放的状态，也就是通过了，估计下周能邮出。
+本周电影 这周忙到没时间看电影 本周书籍 《愿你迷路到我身旁》 《游戏设计艺术》（阅读中） 下周初步计划 继续逻辑编写 </description>
     </item>
     
     <item>
@@ -321,7 +350,7 @@ fn main() {  println!(&amp;#34;Hello, world!&amp;#34;); }  fn 是函数的关键
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
 游戏是按帧运行的，在初始的时候，目标运动速度为0，随着每一帧的流逝，目标速度会不断累加一帧中的加速度，当累加到期望速度时，则会以期望速度来运动。
 代码如下，这里是在 Unity 中实现的，但是原理对于所有游戏引擎通用
-using System.Collections; using System.Collections.Generic; using UnityEngine;  public class MovingSphere : MonoBehaviour {  // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f;  // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f;   // 当前的运动速度  private Vector3 velocity;   // Update is called once per frame  void Update()  {  // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向）  Vector2 playerInput;  playerInput.</description>
+using System.Collections; using System.Collections.Generic; using UnityEngine; public class MovingSphere : MonoBehaviour { // 用户设定最大期望速度 [SerializeField, Range(0f, 100f)] private float maxSpeed = 10f; // 用户设定最大加速度 [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f; // 当前的运动速度 private Vector3 velocity; // Update is called once per frame void Update() { // 通过读取用户输入，来确定期望速度向量（向量包含了大小和方向） Vector2 playerInput; playerInput.x = Input.GetAxis(&amp;#34;Horizontal&amp;#34;); playerInput.y = Input.GetAxis(&amp;#34;Vertical&amp;#34;); Vector3 desiredVelocity = new Vector3(playerInput.x, playerInput.y, 0.</description>
     </item>
     
     <item>
@@ -331,8 +360,8 @@ using System.Collections; using System.Collections.Generic; using UnityEngine;  
       
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-28/</guid>
       <description>现在已经 2022 年了，本来想跨年夜去外滩，看了一下新闻，好像也没什么活动，就在家里待着了。这个周又开始运动了，跑步加跳绳，保持健康。这周是单调的一周。这周还把博客使用 Cloudflare 加速了，能明显感觉也访问速度的提升。
-项目进度   游戏码农：那些打工的日子 这周完成了外卖和自己做饭界面的UI及逻辑，下周开始添加学习内容的模块。这周的内容比较单调，好像也没做什么特别的事情。软件著作权还没有下来，这次真是好慢。
-  本周电影  寂静之海 고요의 바다 (2021)  本周书籍  《愿你迷路到我身旁》（阅读中）  下周初步计划  继续逻辑编写  </description>
+项目进度 游戏码农：那些打工的日子 这周完成了外卖和自己做饭界面的UI及逻辑，下周开始添加学习内容的模块。这周的内容比较单调，好像也没做什么特别的事情。软件著作权还没有下来，这次真是好慢。
+本周电影 寂静之海 고요의 바다 (2021) 本周书籍 《愿你迷路到我身旁》（阅读中） 下周初步计划 继续逻辑编写 </description>
     </item>
     
     <item>
@@ -362,8 +391,8 @@ using System.Collections; using System.Collections.Generic; using UnityEngine;  
       <description>这周开始学习画像素画了，还不是很熟练，不过每天会多少画几分钟，使用数位板。以前使用数位板不太习惯，慢慢的对于它的控制会越来越顺手。
 另外，这周完成了 Ray Tracing in One Weekend 系列的博客Rust重实现。接下来就要开始第二篇章了。
 今天上海下雨了，下个周的温度，可能会冷很多。
-项目进度   游戏码农：那些打工的日子 这周主要完成了头像自定义模块，简历完善模块，招聘信息模块，以及添加了能用的提示消息界面。确定了核心玩法界面的基本结构，参考了其他同类型的游戏对于时间上的处理逻辑。基本上确定了由事件来驱动整个游戏的进程，如果没有事件填充，那么时间就会停止，这样避免了很多以前想不到解决方案的问题，只是这样唯一的问题是没法一直挂机，可能过一段时间就需要操作一下。另外确定的小玩法有赛车，地下搏击俱乐部这两个。整理了一下游戏的核心，就是围绕着金钱，健康，快乐的循环。
-  本周电影  花与罪 (2021) 你 第一季 You Season 1 (2018)  本周书籍  《无后为大》（阅读中） 《重构：改善即有代码的设计》（阅读中）  下周初步计划  游戏码农逻辑编写  </description>
+项目进度 游戏码农：那些打工的日子 这周主要完成了头像自定义模块，简历完善模块，招聘信息模块，以及添加了能用的提示消息界面。确定了核心玩法界面的基本结构，参考了其他同类型的游戏对于时间上的处理逻辑。基本上确定了由事件来驱动整个游戏的进程，如果没有事件填充，那么时间就会停止，这样避免了很多以前想不到解决方案的问题，只是这样唯一的问题是没法一直挂机，可能过一段时间就需要操作一下。另外确定的小玩法有赛车，地下搏击俱乐部这两个。整理了一下游戏的核心，就是围绕着金钱，健康，快乐的循环。
+本周电影 花与罪 (2021) 你 第一季 You Season 1 (2018) 本周书籍 《无后为大》（阅读中） 《重构：改善即有代码的设计》（阅读中） 下周初步计划 游戏码农逻辑编写 </description>
     </item>
     
     <item>
@@ -374,7 +403,7 @@ using System.Collections; using System.Collections.Generic; using UnityEngine;  
       <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-14/</guid>
       <description>这一节没有新的知识，只是将之前知识汇总起来，然后生成一张最终的图，最终生成的图如下
 首先，将创建世界及添加物体的代码从 main 函数中删除，然后抽象成一个函数 random_scene，在这个函数中，会随机生成一些球体，并且根据规则，随机使用我们的已有的三个材质。
-// src/main.rs fn random_scene() -&amp;gt; HittableList {  let mut world = HittableList::new();   let ground_material = Lambertian::new(Color::new(0.5, 0.5, 0.5));  world.add(Box::new(Sphere::new(  Vec3::new(0.0, -1000.0, 0.0),  1000.0,  ground_material,  )));   let mut rng = rand::thread_rng();   // 生成一些小球  for a in -11..11 {  for b in -11..11 {  let choose_mat: f64 = rng.gen();  let x_offset: f64 = rng.</description>
+// src/main.rs fn random_scene() -&amp;gt; HittableList { let mut world = HittableList::new(); let ground_material = Lambertian::new(Color::new(0.5, 0.5, 0.5)); world.add(Box::new(Sphere::new( Vec3::new(0.0, -1000.0, 0.0), 1000.0, ground_material, ))); let mut rng = rand::thread_rng(); // 生成一些小球 for a in -11..11 { for b in -11..11 { let choose_mat: f64 = rng.gen(); let x_offset: f64 = rng.gen(); let z_offset: f64 = rng.gen(); let center = Vec3::new(a as f64 + 0.9 * x_offset, 0.</description>
     </item>
     
     <item>
@@ -397,7 +426,7 @@ using System.Collections; using System.Collections.Generic; using UnityEngine;  
 可以想象一个两个盒子，一个大的，假设口径是50厘米，扣在一把键盘上，可以扣住整个键盘，相当于摄像机看到了整个键盘。而将一个1厘米口径的盒子，扣在键盘上，可能只能覆盖其中一个键，也就是相机只能看到这一个键范围的东西。但最后都会将扣到的东西填充到画布上，所以，就相当于FOV越小，看到的东西就越大。
 添加相机FOV逻辑 在本文中，相机的FOV，我们使用角度来表示，上图中，$\theta$ 就是相机的开口大小，而 $h = \tan(\frac{\theta}{2})$，$2 * h$就是视口的高度，而视口的宽度，通过自定义的宽高比，来动态计算出来。
 下面修改 camera.rs 的代码，添加 fov 和 宽高比。
-// src/camera.rs impl Camera {  pub fn new(vfov: f64, aspect_ratio: f64) -&amp;gt; Self {  let theta = vfov * std::f64::consts::PI / 180.0;  let h = (theta / 2.0).tan();  let viewport_height = 2.0 * h;  let viewport_width = aspect_ratio * viewport_height;  let focal_length = 1.0;   let origin = Vec3::zero();  let horizontal = Vec3::new(viewport_width, 0.</description>
+// src/camera.rs impl Camera { pub fn new(vfov: f64, aspect_ratio: f64) -&amp;gt; Self { let theta = vfov * std::f64::consts::PI / 180.0; let h = (theta / 2.0).tan(); let viewport_height = 2.0 * h; let viewport_width = aspect_ratio * viewport_height; let focal_length = 1.0; let origin = Vec3::zero(); let horizontal = Vec3::new(viewport_width, 0.0, 0.</description>
     </item>
     
     <item>
@@ -431,8 +460,8 @@ $ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + (-入射向量 \cdot 法向�
       <description>这周跑步了四天，还可以，下周继续。我发现跑步的时候可以捋清一些事情，这周主要跑 2.5 公里，然后走 2.5 公里，整体感觉还是挺舒适的，下个周看看是否可以加大一点跑步里程。
 这周输出了4篇博客和公众号，Rust光线追踪系列以及后续的博客，会同步到掘金这个平台上。
 这周把产品页面也搭建好了，更新了 moeif.com 这个域名。
-项目进度   游戏码农：那些打工的日子 这周开始写游戏逻辑了，已经确定了主要玩法界面的逻辑。这周把之前的Lua代码全删了，想了想，还是全用C#来写了，逻辑上不会有什么功能性的更新，如果加功能，加玩法模块，那就直接大版本更新，用C#的开发和调试效率也会更高一些。
-  本周电影  最后的决斗 The Last Duel (2021)  本周书籍  《KK三部曲》（阅读中） 《游戏设计艺术》（阅读中）  下周初步计划  游戏码农逻辑编写  </description>
+项目进度 游戏码农：那些打工的日子 这周开始写游戏逻辑了，已经确定了主要玩法界面的逻辑。这周把之前的Lua代码全删了，想了想，还是全用C#来写了，逻辑上不会有什么功能性的更新，如果加功能，加玩法模块，那就直接大版本更新，用C#的开发和调试效率也会更高一些。
+本周电影 最后的决斗 The Last Duel (2021) 本周书籍 《KK三部曲》（阅读中） 《游戏设计艺术》（阅读中） 下周初步计划 游戏码农逻辑编写 </description>
     </item>
     
     <item>
@@ -468,7 +497,7 @@ cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
 可以看到，已经比上一节生成的图亮了很多。
 我们上一节使用的漫反射光线散射的方法，是在球体内部生成一个随机的点。然后，这样生成的向量，有很大的概率会和法线方向相近，并且及小概率会沿着入射方向反射回去。然而，真正的理想散射（Lambertian 反射）后的光线距离法向量比较近的概率会更高，但是分布规律会更加均衡，而实现这个方法，就是在球面上选取一个点，而不是在球内。我们可以通过在球内选取一个点，然后将其标准化，来得到球面上的点，因为我们的球是单位球。
 在 vec3.rs 中 Vec3 的实现里，添加一个新的方法 random_unit_vector，代码如下
-// src/vec3.rs pub fn random_unit_vector() -&amp;gt; Vec3 {  let point = Vec3::random_in_unit_sphere();  return Vec3::unit_vector(point); } 然后修改 main.rs 中的 ray_color 函数，将原来调用 random_in_unit_sphere 的代码改成调用 random_unit_vector。</description>
+// src/vec3.rs pub fn random_unit_vector() -&amp;gt; Vec3 { let point = Vec3::random_in_unit_sphere(); return Vec3::unit_vector(point); } 然后修改 main.rs 中的 ray_color 函数，将原来调用 random_in_unit_sphere 的代码改成调用 random_unit_vector。</description>
     </item>
     
     <item>
@@ -524,9 +553,9 @@ cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-22/</guid>
       <description>11月马上快要结束了，时间过的真快，有一点点的焦虑，但是也还好。这周开始了不断输出博客内容，可能是因为和Rust有关，阅读数量和关注数量增长了很多，后面可以考虑在每一篇文章最后加上游戏的宣传链接。看起来写博客这件事情可以长期写下去，可能前期没什么，后期积累到一定程度，不确定会发生什么。
 这周上海的温度还可以，但是今天下雨了，未来两天温度下降的很多。
-项目进度   游戏码农：那些打工的日子 这周主要做的事情还是各个模块的数据配置，以及界面元素的考虑，具体的UI还没有仔细考虑。专业技能相关配置、厨艺配置、外卖配置、找工作和面试相关配置、通勤配置、行为配置。
-  夜莺号的记忆 这个项目这周做了很多事情，工程的搭建，游戏循环的逻辑，具体的关卡的逻辑等。
-  本周电影  欲望号快车 Crash (1996) 毒液  本周书籍  《KK三部曲》（阅读中）  下周初步计划  继续数据配置工作 夜莺号关卡逻辑 有时间的话考虑游戏码农的UI构建  </description>
+项目进度 游戏码农：那些打工的日子 这周主要做的事情还是各个模块的数据配置，以及界面元素的考虑，具体的UI还没有仔细考虑。专业技能相关配置、厨艺配置、外卖配置、找工作和面试相关配置、通勤配置、行为配置。
+夜莺号的记忆 这个项目这周做了很多事情，工程的搭建，游戏循环的逻辑，具体的关卡的逻辑等。
+本周电影 欲望号快车 Crash (1996) 毒液 本周书籍 《KK三部曲》（阅读中） 下周初步计划 继续数据配置工作 夜莺号关卡逻辑 有时间的话考虑游戏码农的UI构建 </description>
     </item>
     
     <item>
@@ -680,10 +709,10 @@ $(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
       <description>这周主要在学习使用Rust和Rocket Web框架写Web逻辑。这将用于ZombieDash以及其他游戏的排行榜，以前只是把功能堆起来，这一次重新看这些内容，清晰了许多，至于不至于头痛了。看文档也有点头绪了，目前用户部分的逻辑已经写完了，接下来就是把分数逻辑加上就可以了，下周应该可以搞完，顺别把UI重构一下，争取这个月底能够提交到AppStore并且审核通过。还有两周，时间还是挺紧的。
 这周还收到了诗仙与诗魔游戏的软著证书，但是发现并没有什么太大的用处，要上架国内的一些Android平台，还得接入各个平台的SDK，一个免费游戏，真是醉了&amp;hellip;
 中秋了，明天回家&amp;hellip;
-项目进度   音乐与僵尸（ZombieDash） 客户端添加了背景音乐，确定了大概的UI重构方式，以及音乐播放逻辑。服务器的写完确定，下周可以搞完。
-  动物旅行 上周主要的流程逻辑已经写完，这周主要做了一点UI视觉方面接入的工作，UI逻辑进行中。
-  pinmaker 横盘中&amp;hellip;
-  本周电影  好家伙 GoodFellas (1990)  本周书籍  《大师谈游戏设计：创意与节奏》（已读完） 《写给大家看的设计书》（已读完）  下周初步计划  完成音乐与僵尸的UI重工作 完成音乐与僵尸的服务器逻辑 完成继续动物旅行的UI逻辑  </description>
+项目进度 音乐与僵尸（ZombieDash） 客户端添加了背景音乐，确定了大概的UI重构方式，以及音乐播放逻辑。服务器的写完确定，下周可以搞完。
+动物旅行 上周主要的流程逻辑已经写完，这周主要做了一点UI视觉方面接入的工作，UI逻辑进行中。
+pinmaker 横盘中&amp;hellip;
+本周电影 好家伙 GoodFellas (1990) 本周书籍 《大师谈游戏设计：创意与节奏》（已读完） 《写给大家看的设计书》（已读完） 下周初步计划 完成音乐与僵尸的UI重工作 完成音乐与僵尸的服务器逻辑 完成继续动物旅行的UI逻辑 </description>
     </item>
     
     <item>
@@ -693,11 +722,11 @@ $(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
       
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-12/</guid>
       <description>这周开始看一书关于游戏设计，游戏节奏方面的书籍和相关资料，觉得有必要系统地科学得去学习一下游戏设计，学习一下前辈们积累的丰富经验。玩游戏是一会事，做游戏，把握好游戏的节奏，明白某个点为什么要那样设计，就是另一会事了。单纯参考（抄）其他游戏的设计，总觉得云里雾里的，无法做到极致。
-项目进度   诗仙与诗魔 这周收到软件著作权的证书，国内的几个商店提交了一下，目前正在审核中。作为独立开发者，感觉国内的市场环境还是有点难。
-  音乐与僵尸（ZombieDash） 这周把核心的流程跑通了，Node的位置也改变了一下，放到了两边，临时的UI也加了进去，录了Demo视频上传到了B站和Youtube。下周开始调整节奏，以及看一下UI怎么布局，怎么设计。
-  动物旅行 这周把核心玩法的逻辑框架搞完了，数据的恢复逻辑也可以了，接下来开始一边加入UI，一边完善整个逻辑。
-  pinmaker 重新调整了一下程序，目前一共有3W的本金在跑，上个月因为调整过本金，收益没法算了，这个月月底看一下。
-  本周电影  本能 Basic Instinct (1992)  下周初步计划  音乐与僵尸节奏体验调整，UI设计 动物旅行UI逻辑  </description>
+项目进度 诗仙与诗魔 这周收到软件著作权的证书，国内的几个商店提交了一下，目前正在审核中。作为独立开发者，感觉国内的市场环境还是有点难。
+音乐与僵尸（ZombieDash） 这周把核心的流程跑通了，Node的位置也改变了一下，放到了两边，临时的UI也加了进去，录了Demo视频上传到了B站和Youtube。下周开始调整节奏，以及看一下UI怎么布局，怎么设计。
+动物旅行 这周把核心玩法的逻辑框架搞完了，数据的恢复逻辑也可以了，接下来开始一边加入UI，一边完善整个逻辑。
+pinmaker 重新调整了一下程序，目前一共有3W的本金在跑，上个月因为调整过本金，收益没法算了，这个月月底看一下。
+本周电影 本能 Basic Instinct (1992) 下周初步计划 音乐与僵尸节奏体验调整，UI设计 动物旅行UI逻辑 </description>
     </item>
     
     <item>
@@ -707,10 +736,10 @@ $(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
       
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-11/</guid>
       <description>这周把原来的台式机各个部件挂闲鱼卖了，还有 2015 年的 MacBook Pro 也卖了，然后换成了一台 Macmini M1 和一个 Philips 的4K显示器。整体的体验，比原来的PC好了很多。家里工作的位置也换了一下，换到了靠近窗边的位置，感觉整体效率提高了许多。所以这周就没怎么写逻辑，配置了一下环境。
-项目进度   诗仙与诗魔 软著的审核终于有动静了，现在处于待发放的状态，预计下周可以收到。这样可以把国内各大Android 市场上一下。
-  音乐与僵尸 这周加入了僵尸的资源，修改了歌曲的难度逻辑。开始搭建基本的 UI 界面。
-  动物旅行 今天把游戏核心Action的逻辑重新构建了一下，为了做数据的保存以及恢复，重新整理了一下数据结构。
-  本周电影  尸骨无存3：零号病人 Cabin Fever: Patient Zero (2014) 神秘感染 Contracted (2013) 神秘感染：第二阶段 Contracted: Phase II (2015)  下周初步计划  音乐与僵尸的UI搭建 动物旅行核心Action逻辑写完  </description>
+项目进度 诗仙与诗魔 软著的审核终于有动静了，现在处于待发放的状态，预计下周可以收到。这样可以把国内各大Android 市场上一下。
+音乐与僵尸 这周加入了僵尸的资源，修改了歌曲的难度逻辑。开始搭建基本的 UI 界面。
+动物旅行 今天把游戏核心Action的逻辑重新构建了一下，为了做数据的保存以及恢复，重新整理了一下数据结构。
+本周电影 尸骨无存3：零号病人 Cabin Fever: Patient Zero (2014) 神秘感染 Contracted (2013) 神秘感染：第二阶段 Contracted: Phase II (2015) 下周初步计划 音乐与僵尸的UI搭建 动物旅行核心Action逻辑写完 </description>
     </item>
     
     <item>
@@ -735,16 +764,17 @@ $(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
 iOS 下载连接: https://apps.apple.com/app/id1583234447
 Android 下载连接: https://www.taptap.com/app/222178
 先解析一下这个游戏，诗仙与诗魔有三种玩法，独自练习，就是关卡模式。无尽冲榜，就是不断地累积得分，然后进行排行榜。匹配挑战，是可以与其他玩家进行联网匹配的玩法，这一个涉及到服务器部分的开发。
-客户端的部分   客户端在启动后，会先去一个固定的域名，拉取一些必要的配置信息，例如服务器的状态，排行榜和匹配服务器的连接地址，服务器的状态等等。这个可以自己根据需求配置各种各样的信息，只有这些必要的信息拉到后，游戏才会继续下一步。
-  接下来会从本地尝试读取用户数据，如果本地没有，则会从服务器尝试请求，如果服务器也没有，则认为这是一个新玩家。弹出玩家昵称输入界面，玩家确定后，会将用户的ID和昵称等数据发到服务器，并且在本地存档，然后就会进入游戏。如果本地没有用户数据，但是服务器有，就会使用服务器保存的用户数据，进行数据恢复，然后在本地存档。
-  接下来就进入了主界面，可以选择三种不同的玩法。先说一下诗词数据。诗词数据是使用 flatbuffers 存储在游戏包里的。每一个记录，保存了一首诗的ID，名字，作者，内容等。游戏启动后，会读取所有的诗词数据，进行结构化存储。每一首诗，会创建一个 Poem 对象，里面保存了这首诗的内容，以及额外的数据，例如这首诗有几句，每一句的字数，这些数据会用于随机生成问题，以及根据字数，从其他诗词中选择类似的诗句，用作答案。
+客户端的部分 客户端在启动后，会先去一个固定的域名，拉取一些必要的配置信息，例如服务器的状态，排行榜和匹配服务器的连接地址，服务器的状态等等。这个可以自己根据需求配置各种各样的信息，只有这些必要的信息拉到后，游戏才会继续下一步。
+接下来会从本地尝试读取用户数据，如果本地没有，则会从服务器尝试请求，如果服务器也没有，则认为这是一个新玩家。弹出玩家昵称输入界面，玩家确定后，会将用户的ID和昵称等数据发到服务器，并且在本地存档，然后就会进入游戏。如果本地没有用户数据，但是服务器有，就会使用服务器保存的用户数据，进行数据恢复，然后在本地存档。
+接下来就进入了主界面，可以选择三种不同的玩法。先说一下诗词数据。诗词数据是使用 flatbuffers 存储在游戏包里的。每一个记录，保存了一首诗的ID，名字，作者，内容等。游戏启动后，会读取所有的诗词数据，进行结构化存储。每一首诗，会创建一个 Poem 对象，里面保存了这首诗的内容，以及额外的数据，例如这首诗有几句，每一句的字数，这些数据会用于随机生成问题，以及根据字数，从其他诗词中选择类似的诗句，用作答案。
 关卡模式，就是罗列出诗词配置表中的每一首诗，作为一个关卡，当玩家作答完毕后，会记录所用时间。在关卡界面，所以看到每一首作答过的诗词所用的时间。
 无尽冲榜，首先进入时会消耗体力，对于每一个新玩家，会给予默认300体力，还有2个复活道具，5个刷新道具。在冲榜模式中，每一首诗会有10秒的倒计时，在过程中，玩家可以选择使用一个刷新道具，换一首诗作答，以此不终断冲榜过程。冲榜结束后，会给出得分，客户端会得得分提交到服务器。对于头衔，是由得分计算出来的，这个直接在客户端计算。游戏没有作作弊方面的处理，对于这个游戏来说，没什么必要。如果失败，则必须消耗一个复活道具，才能继续从失败的地方继续冲榜。如果道具或体力不足，则可以通完看广告获得。
 匹配挑战，匹配挑战同样会消耗体力，进入后，首先会向服务器发送匹配消息，服务器会在根据匹配的等待时间，根据玩家的 elo 分值，进行实力相当的匹配，如果最后没有真实玩家，则会匹配一个机器人，与玩家一起玩。每一局匹配挑战由10首诗构成，由哪10首诗，以及每一首诗的可选择答案，则由服务器生成，以此保证两个玩家使用的挑战数据是一致的，保证公平性。
 匹配挑战的分得计算，每一首诗为1000分，如果答错，则0分。如果答对，先得500分，剩下的500分，根据作答速度，剩余时间的百分比，进行得分。得分由服务器计算，一定程度上受网络影响。
-  服务器的部分 服务器可以分为三部分，服务器及用户基础数据，排行榜，匹配，这三部分是使用不同的方式实现的。
-  服务器及用户基础数据 这一部分使用 aws 的 DynamoDB、Lambda、 API gateway 实现的。通过API gateway 调用 lambda 读写 DynamoDB的数据，可以根据网上一些视频教程来操作来下。逻辑很简单，主要是配置各种权限的时候稍微麻烦一点，也还好。
-  排行榜 排行榜放在了 aws 的免费 ec2上，因为游戏的量不大，所以免费的也够用，数据直接放在了 Redis 中，API 逻辑是使用 Rust 来写的。</description>
+服务器的部分 服务器可以分为三部分，服务器及用户基础数据，排行榜，匹配，这三部分是使用不同的方式实现的。
+服务器及用户基础数据 这一部分使用 aws 的 DynamoDB、Lambda、 API gateway 实现的。通过API gateway 调用 lambda 读写 DynamoDB的数据，可以根据网上一些视频教程来操作来下。逻辑很简单，主要是配置各种权限的时候稍微麻烦一点，也还好。
+排行榜 排行榜放在了 aws 的免费 ec2上，因为游戏的量不大，所以免费的也够用，数据直接放在了 Redis 中，API 逻辑是使用 Rust 来写的。
+匹配 匹配部分也是放在 aws 的免费 ec2 上。也是使用 Rust 写的。连接模块使用了 message-io 的 websocket。客户端和服务器使用了简单的 json 交互，因为数据比较简单，就没有使用更复杂的协议。期中，匹配开了两个线程，一个用于监听客户端的连接，收到连接后，会将连接数据发往另一个线程，数据的交互是使用了 rust 的 channel。游戏管理器收到新的连接，就会加入到客户端的列表。收到客户端发来的消息后，会进行解析，然后进行逻辑处理。</description>
     </item>
     
     <item>
@@ -764,10 +794,10 @@ Android 下载连接: https://www.taptap.com/app/222178
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-9/</guid>
       <description>这周上架了诗仙与诗魔项目，不过没有多少玩家，国内只上架了TapTap，其他的Android商店等待著作权下来。这周有了一个新的项目构思，一个模拟养成的游戏，具体还在构思中，细节比较多。音乐与僵尸游戏进入了Demo阶段的开发流程。
 这周还整理了一下博客，换了一下主题，回到了以内容为中心的模式。后面会慢慢提高写作输入的频率。
-项目进度   诗仙与诗魔 国内已上架了TapTap，国外上架了GooglePlay，以及一些其他的商店，像华为，三星，小米，APKPure等。国内其他的Android商店等待著作权。
-  音乐与僵尸 开始了核心玩法的Demo逻辑开发，目前完成了Node点的逻辑。Beat点的规则下周再确定一下。预计这个月底可以完成整个核心玩法Demo的开发，然后就可以开始加音乐和做UI逻辑。
-  动物旅行 动物旅行目前只有周末会开发一天，今天写了一下数据方面的结构，游戏状态的描述逻辑基本上确定了，写了一些基类，下周可以继续填充细节。UI方面的资源有一些缺失，暂时先放一下，等待补全。
-  本周电影  第四公民 Citizenfour (2014) 黑白魔女库伊拉 Cruella (2021)  下周初步计划  音乐与僵尸游戏Demo逻辑 动物旅行游戏核心玩法逻辑  </description>
+项目进度 诗仙与诗魔 国内已上架了TapTap，国外上架了GooglePlay，以及一些其他的商店，像华为，三星，小米，APKPure等。国内其他的Android商店等待著作权。
+音乐与僵尸 开始了核心玩法的Demo逻辑开发，目前完成了Node点的逻辑。Beat点的规则下周再确定一下。预计这个月底可以完成整个核心玩法Demo的开发，然后就可以开始加音乐和做UI逻辑。
+动物旅行 动物旅行目前只有周末会开发一天，今天写了一下数据方面的结构，游戏状态的描述逻辑基本上确定了，写了一些基类，下周可以继续填充细节。UI方面的资源有一些缺失，暂时先放一下，等待补全。
+本周电影 第四公民 Citizenfour (2014) 黑白魔女库伊拉 Cruella (2021) 下周初步计划 音乐与僵尸游戏Demo逻辑 动物旅行游戏核心玩法逻辑 </description>
     </item>
     
     <item>
@@ -786,10 +816,10 @@ Android 下载连接: https://www.taptap.com/app/222178
       
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-8/</guid>
       <description>这周发生了令人很不愉快的事情，苹果把我的开发者账号封了，之前上架的物时和百变罪犯也被下架了。我不觉得我有做错什么，但是苹果认为我违反了3.2，申诉也不行。面对强硬的巨头，普通的开发者一点办法都没有，甚至没有任何辩解的机会。
-项目进度   诗仙与诗魔 这个项目算是开发完了，目前提交了 GooglePlay 和 TapTap，两个平台都还在审核中。软件著作权还没有下来，国内其他的应用商店还上不去，只能等等看。
-  动物旅行 这周整理了一下数据结构，然后今天搞了一下部分游戏数据的配置表，整理了一下基础代码的逻辑。
-  一些想法  相对于App需要受到平台的限制，Web产品似乎更加自由一点，只要有一个域名，在不违反法律的情况下，几乎不会有谁可以封禁产品。这个方向可以考虑一下。  关于学习 有一些东西是会变的，有一些东西是不会变的。
-下周初步计划  构思音乐与僵尸游戏 诗仙与诗魔上架各大Android平台 写动物旅行的逻辑  </description>
+项目进度 诗仙与诗魔 这个项目算是开发完了，目前提交了 GooglePlay 和 TapTap，两个平台都还在审核中。软件著作权还没有下来，国内其他的应用商店还上不去，只能等等看。
+动物旅行 这周整理了一下数据结构，然后今天搞了一下部分游戏数据的配置表，整理了一下基础代码的逻辑。
+一些想法 相对于App需要受到平台的限制，Web产品似乎更加自由一点，只要有一个域名，在不违反法律的情况下，几乎不会有谁可以封禁产品。这个方向可以考虑一下。 关于学习 有一些东西是会变的，有一些东西是不会变的。
+下周初步计划 构思音乐与僵尸游戏 诗仙与诗魔上架各大Android平台 写动物旅行的逻辑 </description>
     </item>
     
     <item>
@@ -800,13 +830,13 @@ Android 下载连接: https://www.taptap.com/app/222178
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-7/</guid>
       <description>这周总算把诗仙与诗魔服务器的逻辑全都写完了。
 今天一整天都在客户端和服务器联调，与AWS的数据交互部分应该没有什么大问题了。放在自己服务器的匹配逻辑，今天晚上调了一下，改了几个比较大的问题，协议都通了，明天还需要再看一下数据的准确性。
-项目进度   pinmaker 第40天，DOTUSDT 目前收益 119.19 USDT，上行的挂单已经全部卖出，目前无法再继续交易了，只能等待价格下跌。
-  pinmakerhuobi 第11天，HTUSDT 目前收益 80.06 USDT, 增加了一次本金，目前本金为 3000 美元。
-  诗仙与诗魔 服务器逻辑完成，需要更加详细的测试。客户端与服务器通信的逻辑全部完成，数据拉取与保存全部完成。等待与服务器进行更详细的数据正确性测试。
+项目进度 pinmaker 第40天，DOTUSDT 目前收益 119.19 USDT，上行的挂单已经全部卖出，目前无法再继续交易了，只能等待价格下跌。
+pinmakerhuobi 第11天，HTUSDT 目前收益 80.06 USDT, 增加了一次本金，目前本金为 3000 美元。
+诗仙与诗魔 服务器逻辑完成，需要更加详细的测试。客户端与服务器通信的逻辑全部完成，数据拉取与保存全部完成。等待与服务器进行更详细的数据正确性测试。
 在完成正确性测试后，客户端还需要添加音乐，添加排行榜头像随机显示的逻辑。然后看一下哪一些UI可以添加一下动效。
 接下来就是出包测试。
 软著还在审查中，不知道下周会不会审查完。
-  下周初步计划  客户端与服务器联调完 完成客户端各方面的完善 出包进行真机测试  </description>
+下周初步计划 客户端与服务器联调完 完成客户端各方面的完善 出包进行真机测试 </description>
     </item>
     
     <item>
@@ -819,11 +849,11 @@ Android 下载连接: https://www.taptap.com/app/222178
 这周没有做客户端的事情，几乎都在看服务器相关的东西，今天终于把排行榜的逻辑写完了，因为使用的是 Rust，所以写的过程中遇到很多问题，不断的查，不断地改，基本上是一边学一边改。昨天想过放弃使用 Rust，直接使用 Nodejs 推起来，但是后来考虑了一下，觉得那样没有任何积累，就还是继续学习使用 Rust 来写了。
 不过这周将 HTUSDT 的交易对也开始了网格交易。火币的API调了好一会才调通，主要是文档写的不清楚。
 这周还参加了 Unity 的技术开放活动。
-项目进度   pinmaker 这个跑了一个月，目前收益正好 105.35 USDT。不过DOT有一部分是在高价买的，现在并没有买回来，严格来说，还不能这样来考虑收益。
-  pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上改了一下，大部分逻辑没有改，只是API的调用及数据结构改了一下。到今天为止，跑了4天了，目前收益 40 USDT。但是这个本金多，投入了 1500 USDT。
-  诗仙与诗魔 这周没有做客户端的事情，全在搞服务器了。基本的流程已经理清，用户数据，服务器状态，版本信息等数据，全放 aws 的 DynamoDB中，客户端直接拉取。排行榜，匹配这两块，放 aws 的 ec2中，先使用免费的服务器，需要测一下并发。
+项目进度 pinmaker 这个跑了一个月，目前收益正好 105.35 USDT。不过DOT有一部分是在高价买的，现在并没有买回来，严格来说，还不能这样来考虑收益。
+pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上改了一下，大部分逻辑没有改，只是API的调用及数据结构改了一下。到今天为止，跑了4天了，目前收益 40 USDT。但是这个本金多，投入了 1500 USDT。
+诗仙与诗魔 这周没有做客户端的事情，全在搞服务器了。基本的流程已经理清，用户数据，服务器状态，版本信息等数据，全放 aws 的 DynamoDB中，客户端直接拉取。排行榜，匹配这两块，放 aws 的 ec2中，先使用免费的服务器，需要测一下并发。
 今天看了一下软著，已经走到了审查中这一步，提交的还是有点晚了。
-  下周初步计划  完成服务器的全部逻辑 调通客户端与服务器的通信 客户端边缘模块完善，服务器状态，版本更新提示等  </description>
+下周初步计划 完成服务器的全部逻辑 调通客户端与服务器的通信 客户端边缘模块完善，服务器状态，版本更新提示等 </description>
     </item>
     
     <item>
@@ -859,11 +889,11 @@ Android 下载连接: https://www.taptap.com/app/222178
       <pubDate>Sun, 11 Jul 2021 20:56:56 +0800</pubDate>
       
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-3/</guid>
-      <description>项目进度   pinmaker 目前 pinmaker 已经赚了37.9 USDT，在写这篇总结的此刻，没有待成交的交易对，现在正处于纯粹盈利 37.9 的状态。这周好像调整过一次上涨部分的网格大小。
-  诗词项目 这个项目的名字已经确定了，还是用了之前想的那个名字，诗仙与诗魔。这周完成了界面的设计，这次使用了 Figma，总体来说还挺好用的。今天打印邮寄了著作权申请的资料。
-  音乐游戏 音乐游戏暂时先放一下，从工作量已经实现上来说，有一些点工作量有点大，先做诗词项目。
-  彩票玩家 此项目暂时不考虑了，个人根本上不了线，基本死透。以这个产品为主题写了一篇公众号。
-  下周初步计划  诗词数据确定好 诗词数据格式化 客户端的部分代码可以开始写，顺便整理一下以前的框架 学习 Microservice in Rust，考虑一下服务器部分怎么写。 诗词项目开发模块和计划拆分  </description>
+      <description>项目进度 pinmaker 目前 pinmaker 已经赚了37.9 USDT，在写这篇总结的此刻，没有待成交的交易对，现在正处于纯粹盈利 37.9 的状态。这周好像调整过一次上涨部分的网格大小。
+诗词项目 这个项目的名字已经确定了，还是用了之前想的那个名字，诗仙与诗魔。这周完成了界面的设计，这次使用了 Figma，总体来说还挺好用的。今天打印邮寄了著作权申请的资料。
+音乐游戏 音乐游戏暂时先放一下，从工作量已经实现上来说，有一些点工作量有点大，先做诗词项目。
+彩票玩家 此项目暂时不考虑了，个人根本上不了线，基本死透。以这个产品为主题写了一篇公众号。
+下周初步计划 诗词数据确定好 诗词数据格式化 客户端的部分代码可以开始写，顺便整理一下以前的框架 学习 Microservice in Rust，考虑一下服务器部分怎么写。 诗词项目开发模块和计划拆分 </description>
     </item>
     
     <item>
@@ -874,9 +904,9 @@ Android 下载连接: https://www.taptap.com/app/222178
       <guid>https://blog.moeif.com/posts/this-week-in-moeif-2/</guid>
       <description>这是 The Week In Moeif 的第二周。对于 Moeif 未来的规划还是有点迷茫，到底做什么，目前来看，对于学习App开发是没有太大的兴趣，这一点可以确定。对于游戏开发，兴趣度挺好的，另外，对于Web，还没有一个明确的方向，做什么，但是相对于App开发来说，兴趣度高一点，有一些小想法想做成Web产品，例如 This Week In X。而对于后端，一方面是写一些纯后端的东西，例如程序化交易，或者后面的量化交易，再就是服务于游戏或App产品，这一块目前可以确定的是一定是用Rust来写。
 所以目前看来的方向有下面四个
- 游戏 Web 服务器 程序化/量化交易  项目进度   pinmaker pinmaker这周已经跑起来了，从6.30开始，到今天的7.4号晚上，一共收益了8 USDT了，中间调整了一次网格，由15个网格调整为了10个，交易数量每网格2个DOT调整为了3个DOT。这个项目先跑跑看，目前看来是能赚点小钱。计划再阅读或者学习一点自动化交易相关的东西，然后再加来看这个项目。
-  彩票玩家 彩票玩家这个项目已经完了，上不了线，只能算是学习项目了，著作权也申请不下来，还是因为一些版权问题。这个项目就这样了吧。
-  下周初步计划  准备古诗数据 对古诗游戏进行整体策划 开始阅读KK三部曲 写完网络营销课程的作业  </description>
+游戏 Web 服务器 程序化/量化交易 项目进度 pinmaker pinmaker这周已经跑起来了，从6.30开始，到今天的7.4号晚上，一共收益了8 USDT了，中间调整了一次网格，由15个网格调整为了10个，交易数量每网格2个DOT调整为了3个DOT。这个项目先跑跑看，目前看来是能赚点小钱。计划再阅读或者学习一点自动化交易相关的东西，然后再加来看这个项目。
+彩票玩家 彩票玩家这个项目已经完了，上不了线，只能算是学习项目了，著作权也申请不下来，还是因为一些版权问题。这个项目就这样了吧。
+下周初步计划 准备古诗数据 对古诗游戏进行整体策划 开始阅读KK三部曲 写完网络营销课程的作业 </description>
     </item>
     
     <item>
@@ -905,15 +935,17 @@ Android 下载连接: https://www.taptap.com/app/222178
       <guid>https://blog.moeif.com/posts/apply-for-software-copyright/</guid>
       <description>对于Android端的应用，要上线国内各大应用市场，很多都需要软件著作权。申请软著很简单，只要在中国版权保护中心注册并提交资料，然后邮寄资料就可以了。从版权中心接收到资料算起，到申请下来，正常情况一般要一个月左右，也可能更久，这个是无法控制的。当然，如果想更快，或者更省事，也可以某宝找代理申请，一般正常速度也就300块，如果要加急，那会贵很多。
 申请著作权主要有以下几个步骤：
- 在中国版权保护中心注册账号 准备好Android应用的说明文档 准备好Android应用的代码文档 在线填写申请信息 打印资料和申请表并邮寄到北京版权保护中心   应用不必等到都开发完才申请，开发的差不多了，能运行，有界面可以截图了，或者模拟一些假数据能在真机上截图，就可以开始申请著作权了。
- 1. 在中国版权保护中心注册账号 注册账号，如果已有账号，可以跳过这一步骤。进入 中国版权保护中心 http://www.ccopyright.com.cn/ 点击右上角的注册按钮。然后选择身份，看下图
+在中国版权保护中心注册账号 准备好Android应用的说明文档 准备好Android应用的代码文档 在线填写申请信息 打印资料和申请表并邮寄到北京版权保护中心 应用不必等到都开发完才申请，开发的差不多了，能运行，有界面可以截图了，或者模拟一些假数据能在真机上截图，就可以开始申请著作权了。
+1. 在中国版权保护中心注册账号 注册账号，如果已有账号，可以跳过这一步骤。进入 中国版权保护中心 http://www.ccopyright.com.cn/ 点击右上角的注册按钮。然后选择身份，看下图
 这里可以选择个人和机构，如果你想软著证书上著作权人是你的名字，那就选择个人。如果想要是你的工作室或公司的名字，那就选择机构。这个要想好了，一旦账号注册好了，是不能改的。选择好后，根据提示填写相关信息，然后提交即可。账号注册好后，接下来就是准备word文档资料，因为在线填写申请信息的时候，是需要提交这些资料的。看下面的步骤。
 2. 准备好 Android 应用的说明文档 应用文档，就是大概说明你的软件是如何使用的，基本上可以理解为，把应用截一下各个界面的图，然后配以文字说明一下即可。对于word文档页数的要求，30页以为就可以了。下面是我的一个应用的例子。下载 物时应用软件操作手册.doc
 这里有一个要注册的点是，word文档要有页眉，左边是软件名称和版本号，右边是页码 这个要和后面填写在线申请表时的名称完全一致，可以使用 xxxx应用软件 这种格式作为申请名字。对于保存成的word文档的名字，可以是 xxxx应用软件操作手册。如果是游戏的话，名字可以为 xxxx游戏软件。
 3. 准备好 Android 应用的代码文档 代码文档没什么好说的，就是把自己工程里的代码复制到一个word文档里就可以，总共需要凑够 60 页的代码，有几个注意的地方是
- 页眉和上面的说明文档完全一样，左边是软件名称和版本号，右边是页码。 代码不能有空行，就是不能有那种一个可见字符也没有的行。这个可以通过 Sublime 之类编辑器的批量去掉空行，具体方法 Google。 不同语言，需要代码文档的开头行和结尾行格式正确，例如C#语言是以 using xxxx 开头，代码最后是以 } 结尾。 源代码的文档，除了最后一页外，其他页的代码，每页不少于 50 行，如果放不下 50 行，请 Google 具体方法，对字体，行间距等进行调整。 代码文档的命名可以是 xxxx应用软件代码。  这个就不放下载了，各个软件的代码都不一样。
+页眉和上面的说明文档完全一样，左边是软件名称和版本号，右边是页码。 代码不能有空行，就是不能有那种一个可见字符也没有的行。这个可以通过 Sublime 之类编辑器的批量去掉空行，具体方法 Google。 不同语言，需要代码文档的开头行和结尾行格式正确，例如C#语言是以 using xxxx 开头，代码最后是以 } 结尾。 源代码的文档，除了最后一页外，其他页的代码，每页不少于 50 行，如果放不下 50 行，请 Google 具体方法，对字体，行间距等进行调整。 代码文档的命名可以是 xxxx应用软件代码。 这个就不放下载了，各个软件的代码都不一样。
 4. 在线填写申请信息 在线填写申请表，先登录，然后点击 版权登记 -&amp;gt; 计算机著作权相关登记 -&amp;gt; 立即登记。如果这时弹出要求实名认证，那就先去实名认证，等认证完再回来。
-接下来就是填写软件相关的信息。</description>
+接下来就是填写软件相关的信息。
+点击一下步后，需要填写更多信息，这里就不截图了，直接文字描述。
+开发的硬件环境: PC电脑 内存:8G CPU:i5 6500 3.</description>
     </item>
     
     <item>
@@ -939,8 +971,8 @@ Android 下载连接: https://www.taptap.com/app/222178
 有了上面三样东西，就可以去银行预约办理对公账户了，现在不管哪个银行，都会上门核实地址并拍照的。先去银行，或者直接在某些银行的企业公众号上预约都可以，然后根据银行工作人员说的流程来就可以。不同银行收费也是不同的，具体的费用可以打银行电话咨询。上海银行整个对公账户办下来，基本上 1000 块多一点，已经算是便宜的了。
 民用住宅能不能办理对公账户，得具体银行咨询，这个我也不确定。
 关键点，商住两用的公寓、租房合同、房产证地址页照片打印、营业执照、印章、公司牌子。
- 开对公账户也需要两个人身份证信息，而且开的时候另一个人最好也到场，具体咨询银行。
- 记账报税 这个我是用了 自记账 这个平台。公司不对外开发票的话，是29/月，如果 开发票的话，好像是69/月，比代理记账便宜太多，只要每月按要求录入一些信息就可以了，他们负责给报税之类的，很简单。
+开对公账户也需要两个人身份证信息，而且开的时候另一个人最好也到场，具体咨询银行。
+记账报税 这个我是用了 自记账 这个平台。公司不对外开发票的话，是29/月，如果 开发票的话，好像是69/月，比代理记账便宜太多，只要每月按要求录入一些信息就可以了，他们负责给报税之类的，很简单。
 以上就是获得企业资质的整个流程，有任何问题欢迎加微信讨论，微信号: ifloop
 萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送 </description>
     </item>
@@ -989,14 +1021,14 @@ Android 下载连接: https://www.taptap.com/app/222178
       <guid>https://blog.moeif.com/posts/understanding-boids/</guid>
       <description>Boids 可以理解为类似鸟群的东西，就是多个个体之间的相互作用。在游戏开发中经常会用到。例如 RTS 游戏，控制一个坦克战队，如何保持行进方向的一致性，以及坦克之间互相有一定有间隔，又不会间隔太大，这里就可以使用 Boids 相关的理论来实现。
 在众多这方面的文章中，基本上会涉及到三个方面，跟随、分离、聚合。跟随，就是说整个群体有一个行进的大方向。分离，则是个体与个体之间有一定的间隔，不至于发生碰撞。而聚合，就是个体不能离群体太远，不能脱离群体。
- 对于上面提到的三个方面，简单来说，就是一个力的叠加。
- 跟随 一个鸟群往哪个方向飞，可以假设有一只领头的鸟，其他的鸟跟随这只鸟的方向。知道领头的鸟的方向，知道自己当前的飞行方向，就可以计算出应该向中个方向施加一个力，可以使自己的方向，偏向于领头的鸟的方向。
+对于上面提到的三个方面，简单来说，就是一个力的叠加。
+跟随 一个鸟群往哪个方向飞，可以假设有一只领头的鸟，其他的鸟跟随这只鸟的方向。知道领头的鸟的方向，知道自己当前的飞行方向，就可以计算出应该向中个方向施加一个力，可以使自己的方向，偏向于领头的鸟的方向。
 分离 分离，是要保证个体之间不要离的太近，不要发生碰撞。先考虑两个物体的情况，假设要使物体 A 远离物体 B，只要从 B，向 A 施加一个推力，就可以将 A 推离 B。那如果 A 要同时和 B 与 C 保持距离呢？一样的，只需要从 B 和 C 分别向 A 施加一个推力，这两个的合力，就是 A 远离 B 和 C 的方向。同理，不管 A 要与多少个物体保持距离，只需要从每个物体出发，向 A 的方向施加一个力，就可以将 A 推开。
 上面只考虑了 A 远离其他物体的情况，如果每一个物体都要与其他物体保持距离呢？一样的，只需要从每一个其他物体，向自己的方向施加一个力，这个合力，就是自己运动的方向。
 聚合 为了保证个体不脱离群体，还需要一个聚合力。就是将个体自身，推向群体中心的力。
- 分离的力和聚合的力一定程度上抵消，从而达到个体之间即保持了距离，又保证了每一个体不脱离群体。
- 下面的代码是我的一个小游戏项目中的，其中只用到了分离和聚合。只要懂了原理，就可以根据具体的情况灵活变通，达到自己想要的效果即可。
-using UnityEngine; using System.Collections.Generic; using System.Collections;  public class GamePlayFlock : MonoBehaviour {  public static List&amp;lt;GamePlayFlock&amp;gt; flockList = new List&amp;lt;GamePlayFlock&amp;gt;();   public static void StartAllFlock()  {  for(int i = 0; i &amp;lt; flockList.</description>
+分离的力和聚合的力一定程度上抵消，从而达到个体之间即保持了距离，又保证了每一个体不脱离群体。
+下面的代码是我的一个小游戏项目中的，其中只用到了分离和聚合。只要懂了原理，就可以根据具体的情况灵活变通，达到自己想要的效果即可。
+using UnityEngine; using System.Collections.Generic; using System.Collections; public class GamePlayFlock : MonoBehaviour { public static List&amp;lt;GamePlayFlock&amp;gt; flockList = new List&amp;lt;GamePlayFlock&amp;gt;(); public static void StartAllFlock() { for(int i = 0; i &amp;lt; flockList.</description>
     </item>
     
     <item>
@@ -1031,7 +1063,7 @@ using UnityEngine; using System.Collections.Generic; using System.Collections;  
       <guid>https://blog.moeif.com/posts/unity-umeng-sdk/</guid>
       <description>友盟游戏统计 SDK 可以很方便的统计一些游戏数据。使用他们的自定义事件，来统计自己项目关心的数据。现在接入 SDK 已经比以前方便了很多，不需要再导出 Android 工程去修改 Java。下面将一步一步详细说明。
 要使用友盟 SDK，一共有以下几步
- 在友盟后面新建应用 在友盟后面建立自定义事件 下载并导入 SDK 调用 SDK  1. 在友盟后面新建应用 首先注册账号，然后进入友盟工作台。↓ https://www.umeng.com/
+在友盟后面新建应用 在友盟后面建立自定义事件 下载并导入 SDK 调用 SDK 1. 在友盟后面新建应用 首先注册账号，然后进入友盟工作台。↓ https://www.umeng.com/
 然后点击上面的产品，移动统计 ↓
 点击添加应用 ↓
 然后填写应用信息，下面是我随便填的，根据自己的应用信息填写即可（随便填也没关系）↓
@@ -1064,7 +1096,7 @@ using UnityEngine; using System.Collections.Generic; using System.Collections;  
       <guid>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</guid>
       <description>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
 域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
-HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名  Nginx 配置  执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server {  listen 80;  listen [::]:80;  server_name imoegirl.</description>
+HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名 Nginx 配置 执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl.com$request_uri; } server { listen 443 ssl http2; server_name imoegirl.</description>
     </item>
     
     <item>
@@ -1076,10 +1108,10 @@ HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到�
       <description>写博客时经常会用到 tinypng 这个网站进行图片压缩，所以今天就想用 Rust 试一下关于图片处理的东西。首先对比了一个 Rust 和 Python 的缩放速度，Rust 使用了 image-rs，Python 使用了 Image 中的 PIL，速度结果如下图。
 原图是一张 2.9M，4800x2500 的图片，缩小为 500x260。电脑CPU型号是 Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz。使用 release 编译。
 &amp;gt; 点击这里查看大图
- 注意下图中每个图片文件的文件名，标注了 image-rs 中使用的 FilterType
- 可以发现，除了 image-rs 中的 Nearest 模式比较快之外，其他模式均比 Python 的 PIL 慢，因为 PIL 是C写的。
+注意下图中每个图片文件的文件名，标注了 image-rs 中使用的 FilterType
+可以发现，除了 image-rs 中的 Nearest 模式比较快之外，其他模式均比 Python 的 PIL 慢，因为 PIL 是C写的。
 代码如下
-[dependencies] image = &amp;#34;0.23.4&amp;#34; stopwatch = &amp;#34;0.0.7&amp;#34; extern crate image; extern crate stopwatch;  use image::RgbImage; use image::DynamicImage; use image::imageops::FilterType; use stopwatch::{Stopwatch};   fn resize_image(){  let origin_image = &amp;#34;1.</description>
+[dependencies] image = &amp;#34;0.23.4&amp;#34; stopwatch = &amp;#34;0.0.7&amp;#34; extern crate image; extern crate stopwatch; use image::RgbImage; use image::DynamicImage; use image::imageops::FilterType; use stopwatch::{Stopwatch}; fn resize_image(){ let origin_image = &amp;#34;1.</description>
     </item>
     
     <item>
@@ -1109,7 +1141,7 @@ HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到�
       <guid>https://blog.moeif.com/posts/rust-syntax-summary-06/</guid>
       <description>之前用到的 String 类型，并没有那么简单，接下来会聊一下关于 String 更多的一些应用。在说 String 前，需要先学习一下 Vec 这种数据类型，类似于一个动态的数组。然后是 HashMap，一个键对值的数据类型，与其他编程语言中的字典很类似。
 Vec Vec&amp;lt;T&amp;gt; 和数组一样，用于存储一系列相同类型的值。但是 Vec 可以动态地插入，删除。首先，是创建一个 Vec，可以使用 Vec::new()，或者使用宏 vec!。要注意的是，只有使用 mut，才能使 Vec 可变，也就是可以插入和删除值。
-fn main() {  // 在定义时就标明数据类型为 i32 的 Vec  let v1: Vec&amp;lt;i32&amp;gt; = Vec::new();   // 在定义时不标明类型，而在首次插入值时，由Rust自动推断  let mut v2 = Vec::new();   // 这里插入了一个 i32 的值，所以Rust推断 v2 为存放 i32 的 Vec  v2.push(2);   let v3 = vec![1,2,3,4,5];   let v4 = vec!</description>
+fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;lt;i32&amp;gt; = Vec::new(); // 在定义时不标明类型，而在首次插入值时，由Rust自动推断 let mut v2 = Vec::new(); // 这里插入了一个 i32 的值，所以Rust推断 v2 为存放 i32 的 Vec v2.push(2); let v3 = vec![1,2,3,4,5]; let v4 = vec![&amp;#34;hello&amp;#34;, &amp;#34;rust&amp;#34;]; let mut v5: Vec&amp;lt;String&amp;gt; = vec![&amp;#34;hello&amp;#34;.to_string(), &amp;#34;rust&amp;#34;.to_string()]; } 向 Vec 有两个操作函数，一个是 push，往里插入值，一个是 pop，往外弹出值，Pop返回的是最后插入的值。看下面的代码</description>
     </item>
     
     <item>
@@ -1119,7 +1151,7 @@ fn main() {  // 在定义时就标明数据类型为 i32 的 Vec  let v1: Vec&am
       
       <guid>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</guid>
       <description>将博客放在自己的VPS上，免不了配置 nginx 及 https，如果不配置 https，浏览器上**不安全**那三个字，实在是太刺眼。所以这篇博客，将记录整个折腾过程。
- nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名  接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
+nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名 接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
 域名解析的配置 首先要先自己的域名解析到自己的 VPS，需要配置两条A记录，一条是 @，一条是 www，都是指向自己的 VPS IP。
 安装 nginx apt install nginx 申请 ssl 证书 这里，我们使用腾讯云免费的证书，访问 https://console.qcloud.com/ssl，然后点击页面上的 申请免费证书，然后填写信息，注意在域名身份认证时，选择 手动DNS验证，然后点击确认申请，根据给出的提示，在自己的域名上配置TXT解析，等待一段时间，解析成功后，下载证书。
 下载下来的是一个压缩包，里面有一个 Nginx 目录，这个目录里有两个文件，xxx.crt 和 xxx.key。需要将这两个文件上传到自己的 VPS。放在 /etc/nginx/ssl 这个目录下，如果 ssl 这个目录不存在，就使用命令 mkdir /etc/nginx/ssl 创建目录。
@@ -1145,10 +1177,12 @@ fn main() {  // 在定义时就标明数据类型为 i32 的 Vec  let v1: Vec&am
       <guid>https://blog.moeif.com/posts/rust-syntax-summary-04/</guid>
       <description>在有类的编程语言中，组织数据的方式可以定义一个类，而在 Rust 中，组织数据的方式，使用 struct。struct 可以定义三种不同的类型，一种是带有字段名字的结构体，一种是没有字段名字的元组结构体，一种是没有任何字段的单元结构体。
 定义 struct 带有字段名字的结构体
-#[derive(Debug)] struct User {  username: String,  email: String,  active: bool, }  fn main() {  let user1 = User {  username: String::from(&amp;#34;fred&amp;#34;),  email: String::from(&amp;#34;fred@outlook.com&amp;#34;),  active: false,  };   println!(&amp;#34;{:?}&amp;#34;, user1); }  注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
- 上面的代码中定义了一个 User 结构体，里面的每一个字段，前面是字段名，后面是字段的数据类型。在 main 函数中的代码，是创建一个 User 实例。
+#[derive(Debug)] struct User { username: String, email: String, active: bool, } fn main() { let user1 = User { username: String::from(&amp;#34;fred&amp;#34;), email: String::from(&amp;#34;fred@outlook.com&amp;#34;), active: false, }; println!(&amp;#34;{:?}&amp;#34;, user1); } 注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
+上面的代码中定义了一个 User 结构体，里面的每一个字段，前面是字段名，后面是字段的数据类型。在 main 函数中的代码，是创建一个 User 实例。
 元组结构体
-#[derive(Debug)] struct Color(u8, u8, u8, u8);  fn main() {  let color = Color(255,255,255,255);  println!</description>
+#[derive(Debug)] struct Color(u8, u8, u8, u8); fn main() { let color = Color(255,255,255,255); println!(&amp;#34;{:?}&amp;#34;, color); } 上面的代码中，定义了一个元组结构体，用来存储颜色值。
+单元结构体
+#[derive(Debug)] struct Unit; fn main() { let unit = Unit; println!</description>
     </item>
     
     <item>
@@ -1159,8 +1193,8 @@ fn main() {  // 在定义时就标明数据类型为 i32 的 Vec  let v1: Vec&am
       <guid>https://blog.moeif.com/posts/rust-syntax-summary-03/</guid>
       <description>在阅读Rust官方教程时，会看到两个词，引用和借用，也就是 References and Borrowing。这里很容易让人混乱，如果了解C/C++这类有指针的语言，则引用很容易理解，但是 Rust 中的借用这个词是什么意思呢？我觉得，在初学 Rust 时，可以忽略这个词，或者就简单理解为，它所涉及到的东西，就是引用，就是一个指针，就可以了，避免陷入进去。所以，接下来我就就聊一聊引用。
 什么是引用 简单来说，引用就是一个指针，这个指针指向了某个内存地址。在说所有权时，我们知道，当把一个 String 当作参数传到函数时，它的所有权也就会被移动到函数的参数上，如果在调用完函数时，我们依旧想使用这个 String，则需要将所有权再返回，这样就很麻烦，所以用引用，会方便很多，因为引用，并不会获得这个 String 的所有权。看下面的代码
-fn main() {  let s1 = String::from(&amp;#34;Hello&amp;#34;);  print_name(s1);   // 下面这一句再访问 s1 就会编译出错，因为 s1 的所有权已经没了  //println!(&amp;#34;s1 again: {}&amp;#34;, s1); }  fn print_string(s: String) {  println!(&amp;#34;{}&amp;#34;, s); } 下面是用引用作为参数
-fn main() {  let s1 = String::from(&amp;#34;Hello&amp;#34;);  print_name(s1);  println!(&amp;#34;s1 again: {}&amp;#34;, s1); }  fn print_name(s: &amp;amp;String) {  println!</description>
+fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); // 下面这一句再访问 s1 就会编译出错，因为 s1 的所有权已经没了 //println!(&amp;#34;s1 again: {}&amp;#34;, s1); } fn print_string(s: String) { println!(&amp;#34;{}&amp;#34;, s); } 下面是用引用作为参数
+fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); println!(&amp;#34;s1 again: {}&amp;#34;, s1); } fn print_name(s: &amp;amp;String) { println!(&amp;#34;{}&amp;#34;, s); } 在上面的代码中，我们将参数从 String 改为 &amp;amp;String，这样函数的参数需要的就不是 String 的所有权，而是 String 的引用，所以在函数 print_name 结束时，main 函数中依然可以使用 name。下图是使用引用时的数据状态。</description>
     </item>
     
     <item>
@@ -1172,8 +1206,9 @@ fn main() {  let s1 = String::from(&amp;#34;Hello&amp;#34;);  print_name(s1);  p
       <description>什么是所有权 Rust 的所有权，是 Rust 语言的一个核心概念。可以简单理解为，一种内存管理的方式。用现实中的东西举例，当你从图书管借了一本书时，这本书的所有权暂时归你所有，而当你把书给你的朋友时，此刻，书的所有权归你的朋友所有，而当你的朋友把书归还图书馆时，此时没有人拥有书的所有权，相当于内存释放。
 在使用有自动垃圾回收(GC)的编程语言时，我们并不需要考虑内存的释放问题，因为GC会帮我们释放。Rust是无GC的语言，一个变量占用的内存什么时候释放，由它的所有权决定，简单来说，当所有权所在的作用域结束时，内存将被释放。
 什么是作用域 Rust 的作用域和其他编程语言中的作用域概念是一样的，我们使用下面的代码说明
-// 整个 main 函数是一个作用域 fn main() {  let a = 10;   // 下面的花括号内，也是一个作用域  {  let s = &amp;#34;hello&amp;#34;;  println!(&amp;#34;{}&amp;#34;, s);  }  // 下面这句再次打印s，会编译出错，因为s所在的作用域已经结束，s 被释放掉了  //println!(&amp;#34;s again: {}&amp;#34;, s); } 关于堆内存和栈内存 我们知道，内存分为堆和栈。存在栈上的数据，必须是已知固定大小的数据。而存在堆上的数据，都是在编译时不知道大小的数据，例如用户自己输入的数据。栈比堆的访问快很多，这是因为栈的存取结构，都是操作栈顶，不需要去内存中找数据。而要将数据存在堆上，则需要向操作系统申请，由操作系统在内容中找到一块能够容纳你要存的数据大小的内存空间，然后将内存空间的指针返回给你。访问堆内存上的数据，都是要通过指针，找到指向的内存，然后再读取内存中的数据。
-哪些数据是存在栈上，哪些是存在堆上 let x = 10; let y = &amp;#34;hello&amp;#34;; let c = &amp;#39;A&amp;#39;; let x2 = x; 像上面这些简单的数据类型，都是存在于栈上，对于 Rust 而言，整型，浮点型，布尔型，字符型等，都是存在于栈上。而对于Rust的 String，这种可变大小的数据类型，是存在于堆上的。看下面的代码</description>
+// 整个 main 函数是一个作用域 fn main() { let a = 10; // 下面的花括号内，也是一个作用域 { let s = &amp;#34;hello&amp;#34;; println!(&amp;#34;{}&amp;#34;, s); } // 下面这句再次打印s，会编译出错，因为s所在的作用域已经结束，s 被释放掉了 //println!(&amp;#34;s again: {}&amp;#34;, s); } 关于堆内存和栈内存 我们知道，内存分为堆和栈。存在栈上的数据，必须是已知固定大小的数据。而存在堆上的数据，都是在编译时不知道大小的数据，例如用户自己输入的数据。栈比堆的访问快很多，这是因为栈的存取结构，都是操作栈顶，不需要去内存中找数据。而要将数据存在堆上，则需要向操作系统申请，由操作系统在内容中找到一块能够容纳你要存的数据大小的内存空间，然后将内存空间的指针返回给你。访问堆内存上的数据，都是要通过指针，找到指向的内存，然后再读取内存中的数据。
+哪些数据是存在栈上，哪些是存在堆上 let x = 10; let y = &amp;#34;hello&amp;#34;; let c = &amp;#39;A&amp;#39;; let x2 = x; 像上面这些简单的数据类型，都是存在于栈上，对于 Rust 而言，整型，浮点型，布尔型，字符型等，都是存在于栈上。而对于Rust的 String，这种可变大小的数据类型，是存在于堆上的。看下面的代码
+let s1 = String::from(&amp;#34;hello&amp;#34;); let s2 = &amp;#34;hello&amp;#34;.to_string(); 上面的代码 from 就是从 &amp;amp;str 创建一个 String 类型，两行代码是两种方式实现同样的效果。一个 String 在内存中的形式如下图</description>
     </item>
     
     <item>
@@ -1188,7 +1223,7 @@ let mut x = 10; x = 11; 用 let 先定义一个变量，再次用 let 定义一�
 let x = 10; let x = &amp;#34;Hello&amp;#34;; 常量的定义使用 const，常量是永远不会变的量，常量必须在定义的时候注明数据类型
 const MAX_SCORE: i32 = 10000; 2. 标量数据类型 Rust 数据类型可以分为标量类型和复合类型，标量类型有四种 整型，浮点型，布尔型，字符型。而整型分为 8位、16位、32位、64位、128位，动态长度这几种，每一种又分为有符号型，无符号型。浮点数分为 32位、64位。
 关键字： 整型有符号型: i8 i16 i32 i64 i128 isize 整型无符号型: u8 u16 u32 u64 u128 usize
- 整型默认类型为 i32。注意 isize usize 的长度是动态的，如果运行程序的计算机是32位的，则为32位，如果计算机为64位的，则为64位。另外，在Rust中遍历集合时，常用 isize 和 usize。</description>
+整型默认类型为 i32。注意 isize usize 的长度是动态的，如果运行程序的计算机是32位的，则为32位，如果计算机为64位的，则为64位。另外，在Rust中遍历集合时，常用 isize 和 usize。</description>
     </item>
     
     <item>
@@ -1222,7 +1257,7 @@ Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * 
 这一篇博客，接下来我们将在Shader中实现一下漫反射。实现漫反射，可以在顶点函数中，这叫做逐顶点光照。也可以在片元函数中实现，这叫做逐片元光照。在顶点函数中实现，也就是对每一个顶点都进行一次光照的计算，而在片元函数中也就是对每一像素执行光照计算，所以，在片元函数中实现相对来说要更耗费一点性能。
 在顶点函数中实现漫反射 漫反射的计算公式是 最终颜色=直射光颜色 * max(0, dot(光线，法线))，也就是使用 Directional Light 的颜色 乘 光线发射方向 与顶点法线方向的夹角，dot函数就是点乘，结果就是夹角。有一点要注意的是，dot中的 光线 和 法线 都是单位向量，也就是我们要对其进行标准化。max函数是取最大值，也就是说，如果dot计算出来的结果小于0，那就取0。
 看下面的代码，注意看注释，从上往下每一个注释都要看
-Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; {  SubShader {  Pass {  // 要使用光照，首先要定义一下LightMode，这里我们使用ForwardBase，  // 这里先不用管意思，只要照着写上就行  Tags {  &amp;#34;LightMode&amp;#34; = &amp;#34;ForwardBase&amp;#34;  }    CGPROGRAM  // 这里我们将 Unity 一些预定义的Shader代码包含进来，  // 里面有我们需要的东西，场景中第一个Directional Light的信息（后面用来做计算）  #include &amp;#34;Lighting.cginc&amp;#34;  #pragma vertex vert  #pragma fragment frag   // 根据共识，要计算最终顶点的颜色，需要法线数据，所以这里将法线从Application传到顶点处理函数中  struct a2v {  float4 vertex: POSITION;  float3 normal: NORMAL; // NORMAL就是法线语义，之前的文章说过  };   struct v2f {  float4 position: SV_POSITION;  fixed3 color : COLOR; // 这个颜色就是在顶点函数中计算完的顶点的漫反射颜色，传到片元函数中  };   // 把光照的计算放在顶点函数中，所以叫做顶点光照  v2f vert(a2v v) {  // 定义一个数据传送结构体（传送到片元函数中）  v2f f;   f.</description>
+Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要使用光照，首先要定义一下LightMode，这里我们使用ForwardBase， // 这里先不用管意思，只要照着写上就行 Tags { &amp;#34;LightMode&amp;#34; = &amp;#34;ForwardBase&amp;#34; } CGPROGRAM // 这里我们将 Unity 一些预定义的Shader代码包含进来， // 里面有我们需要的东西，场景中第一个Directional Light的信息（后面用来做计算） #include &amp;#34;Lighting.cginc&amp;#34; #pragma vertex vert #pragma fragment frag // 根据共识，要计算最终顶点的颜色，需要法线数据，所以这里将法线从Application传到顶点处理函数中 struct a2v { float4 vertex: POSITION; float3 normal: NORMAL; // NORMAL就是法线语义，之前的文章说过 }; struct v2f { float4 position: SV_POSITION; fixed3 color : COLOR; // 这个颜色就是在顶点函数中计算完的顶点的漫反射颜色，传到片元函数中 }; // 把光照的计算放在顶点函数中，所以叫做顶点光照 v2f vert(a2v v) { // 定义一个数据传送结构体（传送到片元函数中） v2f f; f.</description>
     </item>
     
     <item>
@@ -1244,7 +1279,7 @@ Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; {  SubShader {  Pass {  // �
 Shader的基本理解 简单来说，Shader 决定了一个模型最终呈现在屏幕上的样子。一个模型由很多顶点构成，而每一个顶点，都会经过 Shader 中的顶点处理函数，这个过程，就是从应用将数据传递到顶点处理函数，顶点函数需要将顶点从模型空间转换到屏幕空间，或者说是裁剪空间，也可以简单理解为从 3 维空间转换到屏幕上的 2 维空间。在这个过程中，还可以做一些其他对顶点的操作。
 顶点数据经过顶点处理函数处理后，接下来就返回，然后传给片元处理函数，到了这一步，面对的，就是像素，也就是每一个像素的颜色值。在这里，可以根据自己的需求，对每一个像素做处理，例如做高斯模糊，RGB通道分离，等等，各种各样的效果。
 向 Shader 传递更多的数据 在之前的博客文章中，我们只是将顶点的坐标传给了Shader，但是我们还需要其他的数据，例如法线，例如切线，纹理坐标等等。接下来，我们将使用结构体来存储要传递的数据，看下面的代码
-Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; {  Properties {  _MainColor(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  }   SubShader {  Pass {   CGPROGRAM  float4 _MainColor;   #pragma vertex vert  #pragma fragment frag   // 这里定义一个结构体，封装需要从应用传到顶点函数的数据  struct a2v {  float4 vertex : POSITION; // 顶点坐标  float3 normal : NORMAL; // 顶点法线  float4 textcoord : TEXCOORD0; // 第一套纹理坐标(可以有多套)  };   // 这里定义另一个结构体，封装从顶点函数传到片元函数的数据  struct v2f {  float4 position : SV_POSITION;  float3 temp : COLOR0;  };   // 顶点处理函数，传入的是a2v结构体，返回的是要传到片元函数的v2f结构体  v2f vert(a2v v){  v2f result;  result.</description>
+Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) } SubShader { Pass { CGPROGRAM float4 _MainColor; #pragma vertex vert #pragma fragment frag // 这里定义一个结构体，封装需要从应用传到顶点函数的数据 struct a2v { float4 vertex : POSITION; // 顶点坐标 float3 normal : NORMAL; // 顶点法线 float4 textcoord : TEXCOORD0; // 第一套纹理坐标(可以有多套) }; // 这里定义另一个结构体，封装从顶点函数传到片元函数的数据 struct v2f { float4 position : SV_POSITION; float3 temp : COLOR0; }; // 顶点处理函数，传入的是a2v结构体，返回的是要传到片元函数的v2f结构体 v2f vert(a2v v){ v2f result; result.</description>
     </item>
     
     <item>
@@ -1254,7 +1289,7 @@ Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; {  Properties {  _MainColor(&amp;#34
       
       <guid>https://blog.moeif.com/posts/unity-shader-basis-02/</guid>
       <description>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
-Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字   // 这里定义一些属性，可以显示在UI面板上用于调节  Properties {  // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值  _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4)  _Int(&amp;#34;整型&amp;#34;, Int) = 11111  _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11  _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128  _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{}  _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{}  _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{}  }   // 子 Shader，可以写多个，显卡运行时，  // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个，  // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader  SubShader {   // 至少有一个Pass，相当于一个方法  Pass {  // 在Pass块里写Shader代码   CGPROGRAM  // 使用 CG语言编写Shader  ENDCG  }  }   // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案  Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
+Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11 _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128 _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{} _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{} _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
     </item>
     
     <item>
@@ -1271,8 +1306,8 @@ Shader Shader可以理解为是一种渲染命令，由opengl或DX进行解析�
 GLSL/HLSL/CG shader编程语言，GLSL面向OpenGL，HLSL面向DirectX，CG是Nvidia公司出的，跨平台的shader编程语言。
 ShaderLab 我们在Unitiy中写Shader用的语言是ShaderLab，可以理解为Unity为了方便使用者写Shader而创造的一种新的Shader语言，最后其实都会在底层被翻译成GLSL或HLSL或CG。
 Unity中的Shader分类 Shader的中文名叫做着色器
- 表面着色器，Surface Shader 顶点/片元着色器，Vertex/Fragment Shader 固定功能着色器，Fixed function Shader (在现代硬件上基本已被弃用)  表面着色器可以理解为是对顶点/片元着色器的一种封装，它帮我们处理了很多渲染上比较麻烦的事情。而顶点/片元着色器就相对更灵活一些，也就是说很多东西要自己处理，相对来说要写的代码更多一些。进一步讲，使用顶点/片元着色器能实现的效果，使用表面着色器并不一定能实现，或者说，并不一定那么方便地实现。
-Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字  Properties {  // 这里定义一些属性，可以显示在UI面板上用于调节  }   SubShader {  // 子 Shader，可以写多个，显卡运行时，  // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个，  // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader  }   // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案  Fallback &amp;#34;VertexLit&amp;#34; } Unity Shader 属性类型 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字   // 这里定义一些属性，可以显示在UI面板上用于调节  Properties {  // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值  _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1)  _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4)  _Int(&amp;#34;整型&amp;#34;, Int) = 11111  _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.</description>
+表面着色器，Surface Shader 顶点/片元着色器，Vertex/Fragment Shader 固定功能着色器，Fixed function Shader (在现代硬件上基本已被弃用) 表面着色器可以理解为是对顶点/片元着色器的一种封装，它帮我们处理了很多渲染上比较麻烦的事情。而顶点/片元着色器就相对更灵活一些，也就是说很多东西要自己处理，相对来说要写的代码更多一些。进一步讲，使用顶点/片元着色器能实现的效果，使用表面着色器并不一定能实现，或者说，并不一定那么方便地实现。
+Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 Properties { // 这里定义一些属性，可以显示在UI面板上用于调节 } SubShader { // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } Unity Shader 属性类型 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.</description>
     </item>
     
     <item>
@@ -1285,7 +1320,7 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
 这个过程要用到 sqlite3 的命令行工具，可以在官网下载。找到 Precompiled Binaries for WIndows 中的 sqlite-tools-win32-x86-xxxxxx.zip，点击下载即可，xxxxxx 是指版本号，下载官网上的最新版本即可。
 要在 cmd 中运行，还要将下载并解压后的 sqlite 目录加到环境变量的 Path 中，这样就可以直接在 cmd 中使用 sqlite 命令了。
 下面是解决问题的流程
- 在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db &amp;quot;select * from work_queue&amp;quot; 查看有哪些文件报错 执行命令 sqlite3 wc.db &amp;quot;delete from work_queue&amp;quot; 执行命令 sqlite3 wc.db &amp;quot;delete from wc_lock&amp;quot;  好了，现在工程已经恢复正常。</description>
+在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db &amp;quot;select * from work_queue&amp;quot; 查看有哪些文件报错 执行命令 sqlite3 wc.db &amp;quot;delete from work_queue&amp;quot; 执行命令 sqlite3 wc.db &amp;quot;delete from wc_lock&amp;quot; 好了，现在工程已经恢复正常。</description>
     </item>
     
     <item>
@@ -1295,7 +1330,8 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
       
       <guid>https://blog.moeif.com/posts/python-delete-kindle-pc-content/</guid>
       <description>在使用 Kindle PC 软件看英文电子书时，常常会配合 CopyTranslator 软件做剪切板内容翻译，但是最近发现 Kindle PC 在复制内容时，会在剪切板中自动附加上书籍的内容，就像下面这样
-There’s nothing wrong with pursuing venture funding and attempting to grow fast like eBay  Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&amp;#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 上面的内容，第一行是我要复制的内容，Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 是Kindle PC自动附加的书籍信息内容，这一点很烦人。</description>
+There’s nothing wrong with pursuing venture funding and attempting to grow fast like eBay Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&amp;#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 上面的内容，第一行是我要复制的内容，Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 是Kindle PC自动附加的书籍信息内容，这一点很烦人。
+要解决这个问题其实很简单，只要监控剪切板变化时，将剪切板中的字符串，去掉自动附加的内容，然后将新的字符串替换回剪切板即可。接下来我们使用Python来做这件事情，代码只需要很少几行即可。</description>
     </item>
     
     <item>
@@ -1337,12 +1373,12 @@ There’s nothing wrong with pursuing venture funding and attempting to grow fas
       <guid>https://blog.moeif.com/posts/unity-basis-03-math-curve1/</guid>
       <description>这篇博客是上一篇 使用Unity3D展示Sin函数动画 的续篇，在上一篇的基础上，来实现更复杂的效果。在文章最后会有完整的 C# 代码和 Shader 代码，先来看一下最终的效果图
 由于篇幅太长，所以将分为上下两部分，现在开始第一部分的内容。
- 先将上一节 使用Unity3D展示Sin函数动画 的资源准备好，可以按下面的步骤手动建立，也可以直接导入上一节内容的完整 Unity 资源包，点这里下载
- 使用Unity的Cube做成一个Prefab 新建一个 Shader，命名为 ColoredPoint，Shader 的代码为上一篇博客的 Shader 新建一个材质，命名为 ColoredPoint，并使用第2步中创建的Shader C# 逻辑代码，也使用上一篇博客中的完整代码，在本文中会有很多修改   接下来，我们开始新的内容。
+先将上一节 使用Unity3D展示Sin函数动画 的资源准备好，可以按下面的步骤手动建立，也可以直接导入上一节内容的完整 Unity 资源包，点这里下载
+使用Unity的Cube做成一个Prefab 新建一个 Shader，命名为 ColoredPoint，Shader 的代码为上一篇博客的 Shader 新建一个材质，命名为 ColoredPoint，并使用第2步中创建的Shader C# 逻辑代码，也使用上一篇博客中的完整代码，在本文中会有很多修改 接下来，我们开始新的内容。
 1 在不同的效果函数之间切换 在上一篇博客中我们实现了Sine函数的展示，现在要加入更多函数的展示，为了方便在运行状态可以随时切换到其他函数，我们需要把每一种类型的展示放在独立的函数中。
 1.1 将 Sine 函数的表示放在独立函数中 首先在 Graph 脚本中添加一个新的函数 float SineFunction(float x, float t) {}，这个函数将用于展示 $f(x,t) = sin(π(x + t))$。然后我们需要将函数体的内容填写进去，代码如下
-float SineFunction(float x, float t) {  Mathf.Sin(Mathf.PI * (x + t)); } 然后把 Update 函数里的代码改为调用我们新添加的函数
-void Update () {  for (int i = 0; i &amp;lt; points.</description>
+float SineFunction(float x, float t) { Mathf.Sin(Mathf.PI * (x + t)); } 然后把 Update 函数里的代码改为调用我们新添加的函数
+void Update () { for (int i = 0; i &amp;lt; points.</description>
     </item>
     
     <item>
@@ -1357,8 +1393,8 @@ void Update () {  for (int i = 0; i &amp;lt; points.</description>
 哈希表的实现 在哈希表的内部，可以用数组来存储数据，当我们添加一个 Key-Vale 时，首先会使用哈希函数将 Key 转换成索引，然后将 Value 存储在数组中，而位置就是刚才计算出来的索引。哈希表通常有一个默认容量大小，而哈希函数计算出来的索引，通常会和当前的哈希表容量进行取模计算，然后得到最终的索引，这样能保证不管计算出来的索引有多大，永远不会超界。而当哈希表快要满时，则会进行自动扩容，通常扩为当前容量的2倍，而扩容后，当前哈希表中的所有数据，会重新计算位置。
 举一个例子，假设当前哈希表的容量为 10，我们要将 jack 作为 Key 存放在哈希表中，那索引是什么呢。我们这里使用一个简单哈希函数将Jack转为数据，使用每一个字母的Ascii值之和，也就是 106 + 97 + 99 + 107，最后的结果是 409，然后用 409 % 10，也就是对当前的容量取模，最后得到的索引就是 9，所以数据最终放在数据中索引为9的位置。
 而从哈希表中取数据，也是通过Key来取的，内部也是先把Key计算成索引，然后取数据。
- 有时，哈希表部分结构也会使用树的形式来存储数据，也有可能在不同容量时，线性存储和树形存储会互相转换
- 哈希碰撞 哈希函数在计算索引时，有时候同一个 Key 得到的索引是一样的，这种情况称为哈希碰撞，通常的解决方案是，哈希表内部的数组不直接存储数据，而是存储一个数据的指针，当有碰撞时，会以链表的形式将数据挂到索引所对应的数据指针上，这种处理碰撞的方法，也叫做拉链法。看一下下面的图，就会很容易明白。
+有时，哈希表部分结构也会使用树的形式来存储数据，也有可能在不同容量时，线性存储和树形存储会互相转换
+哈希碰撞 哈希函数在计算索引时，有时候同一个 Key 得到的索引是一样的，这种情况称为哈希碰撞，通常的解决方案是，哈希表内部的数组不直接存储数据，而是存储一个数据的指针，当有碰撞时，会以链表的形式将数据挂到索引所对应的数据指针上，这种处理碰撞的方法，也叫做拉链法。看一下下面的图，就会很容易明白。
 总结 哈希表的实现要考虑很多情况，例如哈希函数是否均匀、处理冲突的方法、哈希表的载荷因子等等，这些细节直接决定了哈希表增删改查数据的效率。通常情况下我们直接使用编程语言已经实现好的哈希表结构即可，没有必要自己实现。
 更多资料 维基百科 哈希表 Hashing data structure</description>
     </item>
@@ -1401,12 +1437,12 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
 如果要简单点记忆，那就是这棵树上的值按层来看，如果是从小到大，那就是最小堆，如果是从大到小，那就是最大堆。
 接下来我们就开始说二叉堆的细节，插入节点，删除节点。
 插入节点 插入节点，其实也就是构建二叉堆的过程，语言描述流程如下。
- 找到要插入的位置，这个位置就是当前这棵完全二叉树，最后一个位置 (不太好理解)。如果用代码流程来描述的话，就是按层遍历当前的树，如果遇到一个节点，左子树为空，或者又子树为空，或者左右子树都为空，那么，这个点就是要插入节点的父节点，而要插入的节点，将作为这个节点的左子树或右子树。看下面的图  假设我们要在上面的堆中插入一个节点，按照上面代码流程中描述的，可以找到要插入节点的父节点，是11。
-找到了要插入节点的父节点，还要判断这个父节点是左子树为空，还是右子树为空，还是都为空，如果左子树为空，则新点作为左子树，如果左子树不为空，则新点作为右子树。插入后的图如下(假设要插入的数值为3)  节点插入后，当前的树并不满足二叉堆的规则，所以还需要将新插入的点向上浮动。如果当前节点值小于父节点的值，则交换当前节点和父节点的值。然后再次判断，直到当前值不再小于父节点值，或者父节点值为空了，则位置调整完毕，整个插入流程也就结束了。看下面的流程图  上图中，首先用 3 和 11 比较，因为 3 小于 11，所以交换两个节点的值
+找到要插入的位置，这个位置就是当前这棵完全二叉树，最后一个位置 (不太好理解)。如果用代码流程来描述的话，就是按层遍历当前的树，如果遇到一个节点，左子树为空，或者又子树为空，或者左右子树都为空，那么，这个点就是要插入节点的父节点，而要插入的节点，将作为这个节点的左子树或右子树。看下面的图 假设我们要在上面的堆中插入一个节点，按照上面代码流程中描述的，可以找到要插入节点的父节点，是11。
+找到了要插入节点的父节点，还要判断这个父节点是左子树为空，还是右子树为空，还是都为空，如果左子树为空，则新点作为左子树，如果左子树不为空，则新点作为右子树。插入后的图如下(假设要插入的数值为3) 节点插入后，当前的树并不满足二叉堆的规则，所以还需要将新插入的点向上浮动。如果当前节点值小于父节点的值，则交换当前节点和父节点的值。然后再次判断，直到当前值不再小于父节点值，或者父节点值为空了，则位置调整完毕，整个插入流程也就结束了。看下面的流程图 上图中，首先用 3 和 11 比较，因为 3 小于 11，所以交换两个节点的值
 上图中，再次用 3 和父节点 5 比较，因为 3 小于 5，所以再次交换两个节点的值
 上图中，再次用 3 和父节点 1 比较，咦，3 不小于 1，所以不交换，节点调整结束。此时的树满足二叉堆的规则。
 以上就是整个插入节点的流程，下面我们用代码去实现一下。代码中的 TreeAlgo 类是我们为了方便写的一个帮助类，实现了层序打印和查找的一些方法。
-// 定义节点的结构 public class Node {  public int data;  public Node parent = null;  public Node left = null;  public Node right = null;   public Node(int data){  this.</description>
+// 定义节点的结构 public class Node { public int data; public Node parent = null; public Node left = null; public Node right = null; public Node(int data){ this.data = data; } } // 定义二叉堆操作类 using System; public class BinaryHeap { public Node root; public void Insert(int data){ Node lastParentNode = TreeAlgo.</description>
     </item>
     
     <item>
@@ -1420,7 +1456,7 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
 假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
 例如上面的数组，第一次循环，当前数字为10，我们从1~10之间，随机选择一个数，与10交换，这样第9个索引位就算洗完了，接下来就是第8个索引位，也就是数字为9，我们从第1个索引位与第8个索引位之间，选择一个数，第9交换，这样第8个索引位也就洗完了&amp;hellip;。这个算法之所以公平，是因为保证了每一个元素出现在每一个位置上的概率，都是一样的。
 代码实现
-using System; using System.Collections.Generic;  class Program {  static void Main(string[] args)  {  List&amp;lt;int&amp;gt; songList = new List&amp;lt;int&amp;gt;();  songList.Add(1);  songList.Add(2);  songList.Add(3);  songList.Add(4);  songList.Add(5);  songList.Add(6);  songList.Add(7);  songList.Add(8);  songList.Add(9);  songList.Add(10);   Random rand = new Random();   // 开始洗牌算法  int last = songList.</description>
+using System; using System.Collections.Generic; class Program { static void Main(string[] args) { List&amp;lt;int&amp;gt; songList = new List&amp;lt;int&amp;gt;(); songList.Add(1); songList.Add(2); songList.Add(3); songList.Add(4); songList.Add(5); songList.Add(6); songList.Add(7); songList.Add(8); songList.Add(9); songList.Add(10); Random rand = new Random(); // 开始洗牌算法 int last = songList.Count - 1; for (int i = last; i &amp;gt;= 0; --i) { // 从当0~当前索引位之间，选择一个数 int selection = rand.</description>
     </item>
     
     <item>
@@ -1435,9 +1471,9 @@ using System; using System.Collections.Generic;  class Program {  static void Ma
 整棵树中，任何一个点下面的子树，都满足上面提到的两条规则。你现在是不是对Binary Search Tree已经有一个大概的形象概念了。
 为什么叫做 Binary Search Tree呢？ 因为在BST中搜索一个值是非常简单和高效的。
 看上面的树，假设要搜索7这个节点。首先从Root节点出发，我们知道7大于3，所以会走到右子树6，然后因为7也大于6，所以会继续往右子树走，到了9，因为7小于9，所以会向左子树走，走到7，发现7等于7，所以找到要搜索的节点。
-二叉树的一些性质  将任何一个点看作Root节点，则这个点的左子树也是 Binary Search Tree 将任何一个点看作Root节点，则这个点的右子树也是 Binary Search Tree Binary Search Tree中的最小节点，一定是整棵树中最左下的叶子节点(从Root开始一直顺着左子树往下走，直到某一个点没有左子节点，则这个点就是最小的) Binary Search Tree中的最大节点，一定是整棵树中最右下的叶子节点(从Root开始一直顺着右子树往下走，直到某一个点没有右子节点，则这个点就是最大的)  怎样构建和插入节点 向BST中插入一个节点，也是一个构建的过程，和上面的搜索思路基本一样。首先从Root开始，如果Root点为空，则直接构建Root点。如果Root点不为空，则要判断要插入的值，比Root点的值大还是小，如果小，则往左子树走，如果大，则往右子树走。直到走到某一个点，我们称为点X，发现要插入的值，小于那个点X的值，并且点X没有左子树，则要插入的点作为X的左子节点。或者，要插入的点大于X，并且X没有右子树，则要插入的点作为X的右子节点。
+二叉树的一些性质 将任何一个点看作Root节点，则这个点的左子树也是 Binary Search Tree 将任何一个点看作Root节点，则这个点的右子树也是 Binary Search Tree Binary Search Tree中的最小节点，一定是整棵树中最左下的叶子节点(从Root开始一直顺着左子树往下走，直到某一个点没有左子节点，则这个点就是最小的) Binary Search Tree中的最大节点，一定是整棵树中最右下的叶子节点(从Root开始一直顺着右子树往下走，直到某一个点没有右子节点，则这个点就是最大的) 怎样构建和插入节点 向BST中插入一个节点，也是一个构建的过程，和上面的搜索思路基本一样。首先从Root开始，如果Root点为空，则直接构建Root点。如果Root点不为空，则要判断要插入的值，比Root点的值大还是小，如果小，则往左子树走，如果大，则往右子树走。直到走到某一个点，我们称为点X，发现要插入的值，小于那个点X的值，并且点X没有左子树，则要插入的点作为X的左子节点。或者，要插入的点大于X，并且X没有右子树，则要插入的点作为X的右子节点。
 下面是代码实现（为了方便后面的删除逻辑，我们每一个点，包含了指向左子树，右子树，以及父节点的引用）
-// 这里先定义出节点的结构 class Node {  public int data;  public Node parent;  public Node left;  public Node right;   public Node(int _data)  {  this.data = _data;  } } // 定义二叉搜索树结构 class BST {  private Node root;   // 这个函数是 private 的，递归调用，插入节点  private Node RecursionInsert(Node node, int data)  {  if (node == null)  {  return new Node(data);  }   if (data &amp;lt; node.</description>
+// 这里先定义出节点的结构 class Node { public int data; public Node parent; public Node left; public Node right; public Node(int _data) { this.data = _data; } } // 定义二叉搜索树结构 class BST { private Node root; // 这个函数是 private 的，递归调用，插入节点 private Node RecursionInsert(Node node, int data) { if (node == null) { return new Node(data); } if (data &amp;lt; node.</description>
     </item>
     
     <item>
@@ -1461,12 +1497,13 @@ using System; using System.Collections.Generic;  class Program {  static void Ma
 而第二个图，不是完全二叉树。首先第一个条件就不满足。其实，最后一层的节点也不是尽可能地往左靠。什么叫尽可能得往左靠呢，如果 B 节点作为 A 节点的左子树，那就叫做尽可能地往左靠了。
 二叉树的遍历方式 树的遍历(不限于二叉树)，有广度优先遍历，和深度优先遍历。而深度优先遍历，分为前序遍历，中序遍历，后序遍历。
 我们以下面这张图为例子，分别说一下这几种遍历方式。
-  广度优先遍历：
+广度优先遍历：
 广度优先遍历，其实就是一层一层地遍历，所以又可以称为层次遍历，会先访问离根节点最近的节点。按照广度优先遍历，上面的树中节点访问顺序是这样的。
 8，4，12，2，6，10，14，1，3，5，7，9，11，13，15
-  深度优先索索 深度优先搜索，通常采用递归的形式来进行。这里我们用简单的代码去描述，会比文字描述更直观。
-  前序遍历 前序遍历的顺序是先访问根节点，然后再访问子树。
-void pre_order_traversal(Node root) {  // TODO：操作当前节点   // 如果左子树不为空，则递归处理左子树  if(root.left != null){  pre_order_traversal(root.left);  }   // 如果右子树不为空，则递归处理右子树  if(root.right != null){  pre_order_traversal(root.right);  } }   中序遍历 中序遍历的顺序是先访问左（右）子树，然后访问根，然后访问右（左）子树。</description>
+深度优先索索 深度优先搜索，通常采用递归的形式来进行。这里我们用简单的代码去描述，会比文字描述更直观。
+前序遍历 前序遍历的顺序是先访问根节点，然后再访问子树。
+void pre_order_traversal(Node root) { // TODO：操作当前节点 // 如果左子树不为空，则递归处理左子树 if(root.left != null){ pre_order_traversal(root.left); } // 如果右子树不为空，则递归处理右子树 if(root.right != null){ pre_order_traversal(root.right); } } 中序遍历 中序遍历的顺序是先访问左（右）子树，然后访问根，然后访问右（左）子树。
+void in_order_traversal(Node root) { // 如果左子树不为空，则递归处理左子树 if(root.left != null){ in_order_traversal(root.left); } // TODO: 处理当前节点 // 如果右子树不为空，则递归处理右子树 if(root.</description>
     </item>
     
     <item>
@@ -1480,7 +1517,7 @@ void pre_order_traversal(Node root) {  // TODO：操作当前节点   // 如果�
 拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
 队列 队列，是一种先进先出的结构(First in first out)，也就是在队尾进行插入操作，在队头进行删除操作。队列可以用链表来实现，也可以用数组来实现，要根据实际需求来决定。
 队列的操作有入列、出列、判断是否为空、判断是否已满等操作。下面将用C#来实现列表结构，看代码
-public class Node {  public int data;  public Node next;   public Node(int data)  {  this.data = data;  } }  public class LinkedListQueue {  public Node head;  public Node tail;   // 插入一个元素  public void Enqueue(int data)  {  Node newNode = new Node(data);  if (head == null)  {  head = newNode;  tail = newNode;  }  else  {  tail.</description>
+public class Node { public int data; public Node next; public Node(int data) { this.data = data; } } public class LinkedListQueue { public Node head; public Node tail; // 插入一个元素 public void Enqueue(int data) { Node newNode = new Node(data); if (head == null) { head = newNode; tail = newNode; } else { tail.next = newNode; tail = newNode; } } // 删除一个元素 public int Dequeue() { if (IsEmpty()) { Debug.</description>
     </item>
     
     <item>
@@ -1518,7 +1555,7 @@ public class Node {  public int data;  public Node next;   public Node(int data)
       
       <guid>https://blog.moeif.com/posts/immers-learning-english/</guid>
       <description>翻译自 English Immersion Reading: A Powerful and Effective Way to Learn
- 你觉得英文阅读很无聊吗？你是否一直在寻找一种能让阅读更有趣，更高效地方式？
+你觉得英文阅读很无聊吗？你是否一直在寻找一种能让阅读更有趣，更高效地方式？
 接着往下看，你将会爱上 沉浸式阅读
 我们通过阅读和听力掌握一种语言，而不是通过单纯地学习语法和记忆单词。我们可以很熟练地说一种语言是因为我们听的多，读的多，而不是因为我们记住很多正确的语法规则。
 通过尽可能多的读英文，听英文，去学习新单词和语句，去理解书面英语和口语，是一种高效的方式。
@@ -1574,7 +1611,7 @@ TED 也是一个很好的素材。网易公开课的TED模块
 后面要学到的树的遍历，深度优先搜索，也是用堆栈来实现的。
 总之呢，记住一句话，先进后出(Fist in last out) 或者 后进先出(Last in first out) 就可以完美诠释堆栈这种数据结构。
 自己动手实现一下 很多编程语言已经实现了堆栈(Stack)结构，但是呢，我们这里自己实现一下，加深理解。代码使用 C#，以链表的形式来实现。(C# 语言本身已经拥有了Stack，在实际使用中，不需要自己实现)
- class Node {  public int data;  public Node next;   public Node(int data){  this.data = data;  }  }   class Stack {  public Node topNode = null;   // 将一个数据压入堆栈中  public void Push(int data){  Node newNode = new Node(data);  newNode.</description>
+class Node { public int data; public Node next; public Node(int data){ this.data = data; } } class Stack { public Node topNode = null; // 将一个数据压入堆栈中 public void Push(int data){ Node newNode = new Node(data); newNode.next = topNode; topNode = newNode; } // 将一个栈顶数据从堆栈中弹出 public int Pop() { if (!</description>
     </item>
     
     <item>
@@ -1588,7 +1625,7 @@ TED 也是一个很好的素材。网易公开课的TED模块
 而链表，正好弥补了数组的缺点，链表是动态内存，不需要事先分配固定大小的空间，添加和删除元素，也只需要改变指针即可，不需要移动很多元素。
 链表的缺点 当然，链表也有弊端。无法像数组一样随机访问，例如要访问第5个元素，是没办法直接访问的，只能遍历。每一个节点，需要额外的内存空间用来存储指向下一节点的指针。对缓存不友好，因为链表的内存空间并不一定是连续的。
 链表怎样用代码表示，以及插入、删除、遍历操作 下面我们使用C#来描述一下链表
-/// &amp;lt;summary&amp;gt; /// 链表中的节点结构 /// &amp;lt;/summary&amp;gt; public class Node {  public int data;  public Node next;   public Node (int data)  {  this.data = data;  } }  public class Linkedlist {  public Node head;  public Node tail;   /// &amp;lt;summary&amp;gt;  /// 插入一个节点  /// &amp;lt;/summary&amp;gt;  /// &amp;lt;param name=&amp;#34;data&amp;#34;&amp;gt;&amp;lt;/param&amp;gt;  public void InsertNode(int data)  {  Node newNode = new Node(data);  if(head == null)  {  head = newNode;  tail = newNode;  }  else  {  tail.</description>
+/// &amp;lt;summary&amp;gt; /// 链表中的节点结构 /// &amp;lt;/summary&amp;gt; public class Node { public int data; public Node next; public Node (int data) { this.data = data; } } public class Linkedlist { public Node head; public Node tail; /// &amp;lt;summary&amp;gt; /// 插入一个节点 /// &amp;lt;/summary&amp;gt; /// &amp;lt;param name=&amp;#34;data&amp;#34;&amp;gt;&amp;lt;/param&amp;gt; public void InsertNode(int data) { Node newNode = new Node(data); if(head == null) { head = newNode; tail = newNode; } else { tail.</description>
     </item>
     
     <item>
@@ -1707,11 +1744,11 @@ TED 也是一个很好的素材。网易公开课的TED模块
 TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，在OnDestroy时会卸载所有的Dll，我们自己去管理Dll的加载和卸载，就可以做到停止Play时，卸载掉所有的Dll，这样就可以在不关闭Unity的情况下，替换Dll。
 要做到这个，就不能用 PInvoke 去调用，而是用类似的方式，达到相同的目的。
 完整的工程代码在 Github。但是我们只需要一个文件就可以 NativePluginLoader.cs
-如何使用:   将 NativePluginLoader.cs 放到你的工程中
-  在场景中新建一个GameObject，然后挂载 NativePluginLoader.cs
-  定义一个类，用于声明所有的插件方法，例如命名为 FooPlugin，然后给这个类赋予 PluginAttr 属性
-  给 delegate 添加 PluginFunctionAttr 属性，示例代码如下
-// C# 代码 [PluginAttr(&amp;#34;my_cool_plugin&amp;#34;)] public static class FooPlugin { [PluginFunctionAttr(&amp;#34;sum&amp;#34;)]  public static Sum sum = null;  public delegate float Sum(float a, float b); // 原生方法的 delegate }  void CoolFunc() {  float s = FooPlugin.</description>
+如何使用: 将 NativePluginLoader.cs 放到你的工程中
+在场景中新建一个GameObject，然后挂载 NativePluginLoader.cs
+定义一个类，用于声明所有的插件方法，例如命名为 FooPlugin，然后给这个类赋予 PluginAttr 属性
+给 delegate 添加 PluginFunctionAttr 属性，示例代码如下
+// C# 代码 [PluginAttr(&amp;#34;my_cool_plugin&amp;#34;)] public static class FooPlugin { [PluginFunctionAttr(&amp;#34;sum&amp;#34;)] public static Sum sum = null; public delegate float Sum(float a, float b); // 原生方法的 delegate } void CoolFunc() { float s = FooPlugin.sum(1.0, 2.0); } // 这里是原生C代码中的接口, 最后打成Dll给Unity调用 // my_cool_plugin.h extern &amp;#34;C&amp;#34; { __declspec(dllexport) float sum(float a, float b); } 关于 PInvoke 调用原生插件的常规方法是通过 PInvoke</description>
     </item>
     
     <item>
@@ -1725,18 +1762,19 @@ TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，�
 音频文件由做音频的同学使用CriWare的软件去制作，最终导出的文件是以acb或awb为扩展名的文件。如果采用的是Memory的形式，则导出的acb文件。
 对于开发来说，首先要知道两个东西，一个是CueSheet，一个是CueName。在音频制作的时候，多个音频可以打成一个组，每一个音频的名字，就是CueName，而这个组，就是CueSheet。我们要播放一个声音，首先要知道声音的名字，就是CueName，还要知道它所在的组，因为要加载到内存中。即使要播放组中的一个音频，也是要把整个组加载到内存中的。
 所以在制作时，音频那边的同学要规划好，哪些音频要在同一个组，哪些音频要在另外的组。当然，可以一个音频一个组，但是打成组可以做很多事情，这个等我请教一个音频那边的同学再补充。
-先将声音播放出来   首先把CriWare插件导入到Unity中
-  将做好的声音ACB文件放入StreamingAssets目录中
-  新建一个空物体，然后挂载CriAtom组件如下图
+先将声音播放出来 首先把CriWare插件导入到Unity中
+将做好的声音ACB文件放入StreamingAssets目录中
+新建一个空物体，然后挂载CriAtom组件如下图
 CriAtom 用于管理CueSheet，只有将CueSheet加入到CriAtom中，才能播放其中的某一个音频。将CueSheet加入到CriAtom中，意味着这个CueSheet会被加载到内存中，移除CueSheet，则会从内存中卸载。
 上图中每点击 Add CueSheet，就可以填入一个新的CueSheet，Name字段就是ACB文件的名字(不带扩展名)，ACB File字段填写ACB文件名字(带扩展名)。例如上图中我已经填了一个示例。
-  新建一个空物体，然后挂载 CriAtomSource 组件。这个组件，可以理解为Unity的AudioSource，就是用来播声音的。
+新建一个空物体，然后挂载 CriAtomSource 组件。这个组件，可以理解为Unity的AudioSource，就是用来播声音的。
 上图中，CueSheet字段，填写要播放的音源，所在的CueSheet名(不带扩展名)，而CueName，就填写要播放的声音的名字。这些名字，都是做音频的同学定好的。勾选上 Play On Start，然后运行Unity，就可以听到声音。
-   上面只是实现了声音能够播出来，要在真正的项目中使用，还需要管理声音，下面将说一下大概的思路。
- 声音管理器 基本思路是这样的，首先有一个声音管理器我们称为AudioManager，提供接口播放声音，停止声音，暂停声音，恢复声音，播放完毕，CueSheet加载卸载。外面模块调用AudioManager去控制声音。
+上面只是实现了声音能够播出来，要在真正的项目中使用，还需要管理声音，下面将说一下大概的思路。
+声音管理器 基本思路是这样的，首先有一个声音管理器我们称为AudioManager，提供接口播放声音，停止声音，暂停声音，恢复声音，播放完毕，CueSheet加载卸载。外面模块调用AudioManager去控制声音。
 调用 AudioManager 播放声音的接口时，会生成一个新的对象, GameObject，挂载一个脚本，我们称为 AudioPlayer，这个 AudioPlayer 中会动态的挂载 CriAudioSource，然后将我们要播放的CueSheet，CueName这些值通过AudioManager传进去，设置 CriAudioSource 参数，然后调用 CriAudioSource的 Play 函数。
 当调用 AudioManager 的播放声音接口时，AudioManager 会动态记录这个 CueSheet 是否已经添加到 CriAtom 中，如果没有，则会添加，这时，CriAtom会去加载声音文件到内存中。
-AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 AudioManager 的播放完毕接口，用于计数。这个计数，是为了让 AudioManager 知道一个CueSheet中，是否还有声音在播放，如果没有了，则要动态将 CueSheet 从 CriAtom 中移除掉，释放内存。</description>
+AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 AudioManager 的播放完毕接口，用于计数。这个计数，是为了让 AudioManager 知道一个CueSheet中，是否还有声音在播放，如果没有了，则要动态将 CueSheet 从 CriAtom 中移除掉，释放内存。
+具体代码我还没写，请等待我有时间再补充~。</description>
     </item>
     
     <item>
@@ -1746,22 +1784,25 @@ AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 
       
       <guid>https://blog.moeif.com/posts/computer-graphics-math/</guid>
       <description>这一篇博客会比较长，目前还没写完，处于不断更新中&amp;hellip;
- 这一节会用一些通俗的语言去解释一些数学上的概念，有一些解释可能并不是严谨，我们更多地是把焦点放在理解这些概念是什么，为后面的应用做铺垫。如果有一些点不能理解，也没关系，只要知道有这样一个东西就行，等真正用到的时候，有点印象，这样就会有解决问题的方向，再回来查相关的知识就可以。单纯记住一些知识是没有太多意义的，只有会应用了，才有意义。
+这一节会用一些通俗的语言去解释一些数学上的概念，有一些解释可能并不是严谨，我们更多地是把焦点放在理解这些概念是什么，为后面的应用做铺垫。如果有一些点不能理解，也没关系，只要知道有这样一个东西就行，等真正用到的时候，有点印象，这样就会有解决问题的方向，再回来查相关的知识就可以。单纯记住一些知识是没有太多意义的，只有会应用了，才有意义。
 集合 (Sets) 一堆东西，就是一个集合。例如桌子上有一堆苹果，就可以说，这是一个苹果的集合。旁边放了一堆干果，就可以说，那是一个干果的集合。这里有100个数字，都是整数，那这就是一个整数集合。
 下面是一些常用的集合
-  ℝ 实数集合 实数包含有理数 和无理数，有理数包括整数和分数，无理数就是无限不循环小数
-  ℝ+ 非负实数集合 理解了实数集，这个非负实数集合就好理解了，就是把把负数去掉
-  ℝ2 有序对，像二维的坐标，就属于一个有限对，(x,y)
-  ℝn 在n维笛卡尔空间中的点
-  ℤ 整数集合
-  S2 在单位球面上的3D点
-  上面的这些常用的集合，大概了解一下就好了，不用详细的去探究，只要大概知道是什么，有这个名词的印象就OK，等用到的时候自然就了解了。
+ℝ 实数集合 实数包含有理数 和无理数，有理数包括整数和分数，无理数就是无限不循环小数
+ℝ+ 非负实数集合 理解了实数集，这个非负实数集合就好理解了，就是把把负数去掉
+ℝ2 有序对，像二维的坐标，就属于一个有限对，(x,y)
+ℝn 在n维笛卡尔空间中的点
+ℤ 整数集合
+S2 在单位球面上的3D点
+上面的这些常用的集合，大概了解一下就好了，不用详细的去探究，只要大概知道是什么，有这个名词的印象就OK，等用到的时候自然就了解了。
 映射 (Mappings) 映射和编程上的函数很类似，输入参数，输出结果，或者说，给函数一个A，函数进行运算后，会返回给你一个B。而映射，类似，就是将一个东西从A变成B。
 f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个函数呢，接收一个输入，这个输入是ℝ，也就是上面说到的实数类型的数，注意，这里是输入一个实数，而不是输入实数集合，这里的ℝ可以理解成编程函数中的数据类型。然后呢输出一个整数类型的数。基本上可以当作编程语言中的函数调用。
 映射，是将一个集合中的元素，映射成另一个集合中的元素。可以说，你从A集合中找一个元素，扔进映射函数里，那么映射函数会从B集合中找一个元素，再扔给你。
 逆映射 (Inverse Mappings) 通俗来讲，逆映射就是映射反过来，你从B集后找一个元素扔进映射函数，映射函数会从A集合中根据映射规则找一个元素还给你。映射中，有一个名词，叫做 双射，就是说，对于A集合中的任何一个元素，都能在B集后中找到唯一一个与它一一对应的元素，并且，对于B集后中的任何一个元素，也都在能A集合找到唯一一个与它一一对应的元素。这种情况，就叫做双射。
 区间 (Intervals) 区间可以理解为一个数值范围，这个范围内的元素放在一起，也就是我们前面学到的集合。例如一周有7天，数值范围就是从星期一到星期日，某幼儿园小朋友的身高范围是80cm到140cm之间的，这些都是区间。我们从整数集合上定义一个区间，例如[1, 15]，意思就是从1到15这15个数。用中括号[] 表示的区间叫做闭区间，用小括号()表示的区间叫做开区间，还可以混合使用，例如 (] 或者 [)，这种分别叫做半开区间和半闭区间。那它们有什么区别呢？中括号，表示区间范围包含起始或结束数值，小括号表示区间范围不包含起始或结束数值。
- [1, 10] 表示区间范围是从 1到10 (1, 10) 表示区间范围是从 2到9 (1, 10] 表示区间范围是从 2到10 [1, 10) 表示区间范围是从 1到9  并集: 给定两个集合A，B，把他们所有的元素合并在一起组成的集合，叫做集合A与集合B的 并集，记作A∪B，读作A并B。</description>
+[1, 10] 表示区间范围是从 1到10 (1, 10) 表示区间范围是从 2到9 (1, 10] 表示区间范围是从 2到10 [1, 10) 表示区间范围是从 1到9 并集: 给定两个集合A，B，把他们所有的元素合并在一起组成的集合，叫做集合A与集合B的 并集，记作A∪B，读作A并B。
+交集: 给定两个集合A，B，把所有即属于A，又属于B的元素拿出来，组成一个新的集合，这个集合，就叫做A与B的 交集，记作A∩B。
+区间可以做减法操作，A-B，表示的是，从区间A中，去掉属于属于区间B中的元素。
+对数 (Logarithms) 我们先来看一个简单的计算 $3^{4} = 3 * 3 * 3 * 3 = 81$ 这个是不是很简单？3的4次方就是4个3连续相乘，最后结果是81。这叫做幂运算。</description>
     </item>
     
     <item>
@@ -1793,7 +1834,7 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
 二叉树，每一个节点，最多能分两叉，也就是，每一个节点，最多拥有两个直接子节点，也可能有一个，也可能没有。其实，二叉树的实现，很多也是用链表来做的。这个后面的博客再详细介绍，嘿嘿~
 应用: 树型结构在计算机中也有很多应用，例如我们很熟悉的文件浏览器。一个目录下，可以有多个目录，子目录下，又可以有多个文件，然后还可以再分叉继续往下深入。不过，真正的文件系统并不一定用的是二叉树，也可能是n叉树，具体的我还不是很清楚，尴尬ing&amp;hellip;
 二叉查找树 [Binary Search Tree] 二叉查找树，简称 BST，是在二叉树的基础上，增加了额外的规则。首先，我们给每一个节点赋予一个权重，这个权重，可以用任何东西代替，例如小朋友的分数，例如冰激凌的价格等等。然后，每一个节点，满足下面的规则
- 如果一个节点左子树不为空，则整个左子树上的所有节点，权重都要小于当前节点 如果一个节点右子树不为空，则整个右子树上的所有节点，权重都要大于当前节点 左右子树，也都是二叉查找树，也就是说，子树，也要满足上面也条规则  应用: 二叉查找树常常应用一些需要数据保持有序状态，但是又经常需要插入和删除某些数据的场景。例如电商平台中的商品数据组织，可能就经常用到二叉查找树。</description>
+如果一个节点左子树不为空，则整个左子树上的所有节点，权重都要小于当前节点 如果一个节点右子树不为空，则整个右子树上的所有节点，权重都要大于当前节点 左右子树，也都是二叉查找树，也就是说，子树，也要满足上面也条规则 应用: 二叉查找树常常应用一些需要数据保持有序状态，但是又经常需要插入和删除某些数据的场景。例如电商平台中的商品数据组织，可能就经常用到二叉查找树。</description>
     </item>
     
     <item>
@@ -1818,7 +1859,7 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
       <guid>https://blog.moeif.com/mygames/</guid>
       <description>下面是我作为独立开发者以来做过的项目。踩过了许多坑，现在还没有赚到什么钱，新的项目也还在开发中，我还可以走的更远一点。
 技术层面，客户端使用Unity，涉及到的服务器部分，例如排行榜，匹配之类的，是用 Rust 写的。
-&amp;laquo; 游戏码农：那些打工的日子 &amp;raquo;  状态：开发中  &amp;laquo; 音乐与僵尸：Zombie Rhythm &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 音乐与僵尸是一个以丧尸为元素的音乐游戏。 &amp;laquo; 诗仙与诗魔 &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 诗仙与诗魔是一个以诗词挑战为主题的休闲游戏，融合单人练习，冲榜，匹配等玩法模式。 &amp;laquo; 百变罪犯 &amp;raquo; 下载试玩 &amp;raquo; GooglePlay | TapTap | 试玩视频 百变罪犯是一款快节奏寻物、像素风格的休闲游戏。 </description>
+&amp;laquo; 游戏码农：那些打工的日子 &amp;raquo; 状态：开发中 &amp;laquo; 音乐与僵尸：Zombie Rhythm &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 音乐与僵尸是一个以丧尸为元素的音乐游戏。 &amp;laquo; 诗仙与诗魔 &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 诗仙与诗魔是一个以诗词挑战为主题的休闲游戏，融合单人练习，冲榜，匹配等玩法模式。 &amp;laquo; 百变罪犯 &amp;raquo; 下载试玩 &amp;raquo; GooglePlay | TapTap | 试玩视频 百变罪犯是一款快节奏寻物、像素风格的休闲游戏。 </description>
     </item>
     
     <item>
@@ -1834,8 +1875,8 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
 2022-04-03 周日 这周《无量：钓海》添加了物品获得UI的逻辑，重构了一些数据结构，重了钓鱼的逻辑，增加了循环垂钓和杀进程恢复逻辑。目前整个钓鱼逻辑及表现已经完成。下周把剧情事件做完。
 2022-03-27 周日 这周《无量：钓海》游戏主要进行了对接的工作，功能模块本周只加了一个物品详情界面，其他的逻辑决定等正式数据出来一部分后，再开始做。另外，这个周上了一个新游戏《公主坚持住》，这个游戏资源是在资源商店购买了，增加了广告，然后上架了。另外一个小游戏这周也完成了玩法逻辑，下周加一下音效，再微调一下动效，就可以上架了，这个打算做海外版本收费下载，国内还是广告的模式。
 2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下
- 主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层  2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
- xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等  </description>
+主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
+xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等 </description>
     </item>
     
   </channel>

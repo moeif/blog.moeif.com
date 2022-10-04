@@ -20,7 +20,7 @@
 这个过程要用到 sqlite3 的命令行工具，可以在官网下载。找到 Precompiled Binaries for WIndows 中的 sqlite-tools-win32-x86-xxxxxx.zip，点击下载即可，xxxxxx 是指版本号，下载官网上的最新版本即可。
 要在 cmd 中运行，还要将下载并解压后的 sqlite 目录加到环境变量的 Path 中，这样就可以直接在 cmd 中使用 sqlite 命令了。
 下面是解决问题的流程
- 在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db &amp;quot;select * from work_queue&amp;quot; 查看有哪些文件报错 执行命令 sqlite3 wc.db &amp;quot;delete from work_queue&amp;quot; 执行命令 sqlite3 wc.db &amp;quot;delete from wc_lock&amp;quot;  好了，现在工程已经恢复正常。</description>
+在 cmd 中通过 cd 命令进入到 svn 工程中的 .svn 目录中 执行命令 sqlite3 wc.db &amp;quot;select * from work_queue&amp;quot; 查看有哪些文件报错 执行命令 sqlite3 wc.db &amp;quot;delete from work_queue&amp;quot; 执行命令 sqlite3 wc.db &amp;quot;delete from wc_lock&amp;quot; 好了，现在工程已经恢复正常。</description>
     </item>
     
   </channel>

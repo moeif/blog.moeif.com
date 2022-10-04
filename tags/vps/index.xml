@@ -18,7 +18,7 @@
       <guid>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</guid>
       <description>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
 域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
-HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名  Nginx 配置  执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server {  listen 80;  listen [::]:80;  server_name imoegirl.</description>
+HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名 Nginx 配置 执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl.com$request_uri; } server { listen 443 ssl http2; server_name imoegirl.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@ HTTPS 证书申请  Ping 一下自己的域名，确定域名已经被解析到�
       
       <guid>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</guid>
       <description>将博客放在自己的VPS上，免不了配置 nginx 及 https，如果不配置 https，浏览器上**不安全**那三个字，实在是太刺眼。所以这篇博客，将记录整个折腾过程。
- nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名  接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
+nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名 接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
 域名解析的配置 首先要先自己的域名解析到自己的 VPS，需要配置两条A记录，一条是 @，一条是 www，都是指向自己的 VPS IP。
 安装 nginx apt install nginx 申请 ssl 证书 这里，我们使用腾讯云免费的证书，访问 https://console.qcloud.com/ssl，然后点击页面上的 申请免费证书，然后填写信息，注意在域名身份认证时，选择 手动DNS验证，然后点击确认申请，根据给出的提示，在自己的域名上配置TXT解析，等待一段时间，解析成功后，下载证书。
 下载下来的是一个压缩包，里面有一个 Nginx 目录，这个目录里有两个文件，xxx.crt 和 xxx.key。需要将这两个文件上传到自己的 VPS。放在 /etc/nginx/ssl 这个目录下，如果 ssl 这个目录不存在，就使用命令 mkdir /etc/nginx/ssl 创建目录。
