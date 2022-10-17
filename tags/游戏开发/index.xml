@@ -9,7 +9,23 @@
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 04 Oct 2022 14:09:29 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Oct 2022 09:09:29 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>异能觉醒，新游预约</title>
+      <link>https://blog.moeif.com/posts/new-game-to-reservation/</link>
+      <pubDate>Mon, 17 Oct 2022 09:09:29 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/new-game-to-reservation/</guid>
+      <description>4508年，因核泄露污染水域从而造成人类大灭绝，并造成了全球生物变异，但少数人类适应了污染，造成了细胞全面进化，使生命层次进化觉醒异能。
+自从污染事件已来，整个世界变得异常的诡异，一些【奇奇怪怪】的东西，开始出现，什么鸡坤，什么篮球，杀伤力不强，但是让人异常头晕。在这个少数人的世界，开始一段令人哇塞的旅程。收集各种各样的物品，打造各种奇怪的装备，战斗各种让人费解的敌人。还可以养宠物，升级宠物，带着宠物去打怪……
+一旦你开始玩这个游戏，奇怪的事情，就开始发生了……
+是的，我又开发新游戏了，已经新建好文件夹，不过还没有开始写下第一行逻辑代码。
+开发者的话 大家好，我是练习时长，好多年的，游戏开发者，因为技术太差，找不到工作，赚不到钱，只能白天送外卖，晚上开发游戏。我平时什么也不喜欢干，就喜欢打代码，做游戏。这个游戏，是我做的众多辣鸡，噢不，好玩的游戏之一。游戏正在开发中，预计下个月可以做完上线（如果我平时少摸点鱼的话），嗯，不管怎么样，点一下预约，点一下关注，你就是我爱的人~
+虽然游戏还没有做完，但依然可以加入QQ号瞎聊【异能觉醒 - 1群】：134032407
+游戏假图 游戏预约 在 TapTap 上预约：https://www.taptap.com/app/242377
+在 好游快曝 上预约：https://www.3839.com/a/147738.htm</description>
+    </item>
+    
     <item>
       <title>通过作用域最小化来避免屎一样的代码</title>
       <link>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
