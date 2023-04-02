@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI on 萌一小栈</title>
+    <link>https://blog.moeif.com/tags/ai/</link>
+    <description>Recent content in AI on 萌一小栈</description>
+    <image>
+      <title>萌一小栈</title>
+      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于 ChatGPT、GPT、GPT-3、OpenAI</title>
+      <link>https://blog.moeif.com/posts/about-chatgpt/</link>
+      <pubDate>Wed, 29 Mar 2023 20:45:19 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/about-chatgpt/</guid>
+      <description>2015年12月，一群聪明的人为了一个共同的目标走到了一起：以有利于整个人类的方式促进和发展友好的人工智能。 萨姆-奥特曼、伊隆-马斯克、格雷格-布罗克曼、里德-霍夫曼、杰西卡-利文斯顿、彼得-泰尔、亚马逊网络服务（AWS）、Infosys和YC Research宣布成立OpenAI，并向该企业认捐了超过10亿美元。该组织表示，它将通过向公众开放其专利和研究，与其他机构和研究人员进行 &amp;ldquo;自由合作&amp;rdquo;。
+OpenAI的总部设在旧金山Mission区的Pioneer大厦。2016年4月，OpenAI发布了其强化学习研究平台 &amp;ldquo;OpenAI Gym &amp;ldquo;的公开测试版。2016年12月，OpenAI发布了 &amp;ldquo;Universe6&amp;rdquo;，这是一个软件平台，用于衡量和训练人工智能的通用智能，跨越世界上的游戏、网站和其他应用程序的供应。
+2018年，埃隆-马斯克辞去了他的董事会席位，理由是与特斯拉自动驾驶汽车的人工智能开发存在 &amp;ldquo;潜在的未来利益冲突&amp;rdquo;，但他仍然是一个捐赠者。2019年，OpenAI从非营利性过渡到上限营利性，利润上限设定为任何投资的100倍。该公司向员工分配股权，并与微软合作，后者宣布向该公司投资10亿美元的一揽子计划。随后，OpenAI宣布打算对其技术进行商业化授权。
+2020年，OpenAI宣布了GPT-3，这是一个根据互联网上的数万亿词汇训练的语言模型。它还宣布，一个相关的API，简单地命名为 &amp;ldquo;API&amp;rdquo;，将构成其第一个商业产品的核心。GPT-3的目标是自然语言回答问题，但它也可以在语言之间进行翻译，并连贯地生成即兴文本。2021年，OpenAI推出了DALL-E，这是一个深度学习模型，可以从自然语言描述中生成数字图像。 快进到2022年12月，OpenAI在推出ChatGPT的免费预览版后收到了广泛的媒体报道。据OpenAI称，该预览版在前五天内收到了超过一百万的注册用户。根据路透社在2022年12月援引的匿名消息，OpenAI预计2023年的收入为2亿美元，2024年为10亿美元。截至2023年1月，它正在进行融资谈判，该公司的价值将达到290亿美元。 这就是OpenAI的故事，它是一个人工智能研究实验室，由营利性公司OpenAI LP及其母公司、非营利性公司OpenAI Inc.组成。
+在该公司发布流行的ChatGPT之前，大多数人都不知道OpenAI。 ChatGPT的主要目的是模仿人类行为，与人进行自然对话。然而，这个聊天机器人能够根据它与不同用户的对话来学习和教导自己。这个人工智能具有对话能力，可以编写教程和代码，谱写音乐，并执行其他任务。ChatGPT的用例相当多样化，可以说是无穷无尽；用户已经证明了这一点。有些用例是创造性的（如写一首说唱歌曲），有些是恶意的（如生成恶意代码或命令），还有一些是面向商业的（如搜索引擎优化、内容营销、电子邮件营销、冷处理电子邮件和商业生产力）。 ChatGPT只是代表生成性预训练转化器，是建立在OpenAI的GPT-3系列大型语言模型之上的。聊天机器人是用监督和强化学习技术进行微调的。
+GPT-3是ChatGPT的基础。ChatGPT只是一个利用GPT-3的项目，并增加了一个网络界面、内存和更多的用户友好功能。读完本指南后，你将能够建立自己的聊天机器人，可能比ChatGPT更好，因为你可以根据自己的具体需要进行定制。
+其他使用GPT-3的项目有：
+GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码进行了微调） Copy.ai7和Jasper.ai8（用于营销目的的内容生成） 德雷塞尔大学（检测阿尔茨海默病的早期症状） Algolia（增强其搜索引擎能力） 你肯定听说过GPT-4。GPT-4是GPT-3的继任者，也是由OpenAI创建的一个未发布的神经网络。 你可能已经看到了比较两个版本的GPT的图表，显示了GPT-3（1750亿）和GPT-4（100万亿）的参数数量。
+当被问及这幅病毒性插图时，奥特曼称其为 &amp;ldquo;完全是胡说八道&amp;rdquo;。&amp;ldquo;GPT-4的谣言是一个荒谬的事情。我不知道这一切从何而来。人们在乞求失望，他们会失望的。炒作就像&amp;hellip; 我们没有一个真正的AGI，这也算是对我们的期望吧&amp;rdquo;。</description>
+    </item>
+    
+    <item>
+      <title>搭建自己的AI图片生成器</title>
+      <link>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</link>
+      <pubDate>Mon, 27 Mar 2023 14:41:51 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</guid>
+      <description>最近一段时间，使用 Stable Diffusion 等工具生成图片的资讯充斥着整个互联网，但是很多在线的 AI 图片生成工具，要么根本访问不了（需要科学上网），要么就是需要付费，而且还巨慢。作为一个常年混迹于互联网的技术流玩家，我觉得有必要在自己本机搭一下无限制的 AI 图片生成工具。
+本地搭建这东西我觉得还是很有用的，对于我来说，写博客，公众号的一些配图，完全可以用这东西生成。还有最重要的，我是想用在独立游戏开发中，让我做的那些垃圾文字游戏，可以多一点图片，增加哪怕一点点美感和吸引力。
+我们用的工具是 Stable Diffusion。由于我的机器是 Mac M1 芯片的，所以教程也就是在此配置上去搭建，其他平台类似。
+1. 确认 Python 环境 首先确保自己机器上的 Python3 版本是 3.10 以上，使用命令 python3 --version 可以查看。如果还没有安装 Python3 则使用命令 brew install python3 来安装。如果版本比 3.10 低，则使用 brew upgrade python3 来升级到最新版本
+2. 下载 Stable Diffusion 的 Web 工程 使用命令 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui 来克隆 Stable Diffusion 的 web 工程，这个工程可以让我们在浏览器中使用 Stable Diffusion。 注意，这个过程可能会异常的慢，甚至可以失败，如果失败了，那就重新执行命令，或者采取一些科学的网络方式对其进行下速，反正相办法下载下来就行。
+3. 下载模型文件，模型文件，可以理解为官方或其他人已经训练好的一些参数集合，有了这个，生成工具才知道怎么去生成一张图片。 先下载官方的基础 Model，这里使用的是 1.5 版本的，2.0 版本的不在此博客的讨论范围内，因为我也没用过。
+点击这里下载 v1-5-pruned.ckpt
+下载完成后，将这个文件放入 stable-diffusion-webui/models/Stable-diffusion 目录下</description>
+    </item>
+    
+    <item>
+      <title>使用 OpenAI 的最佳实践</title>
+      <link>https://blog.moeif.com/posts/best-practice-openai-prompt/</link>
+      <pubDate>Thu, 23 Mar 2023 13:54:08 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/best-practice-openai-prompt/</guid>
+      <description>如何向GPT-3和Codex提供清晰有效的指令。
+Prompt 是怎样工作的 由于指令跟随模型的训练方式或它们所接受的数据，有特定的提示格式可以很好地配合当前任务并可靠地发挥作用。以下是我们发现可靠有效的一些提示格式，但请随意尝试不同格式，以找到最适合您任务的格式。
+经验法则和示例 注意：&amp;quot;{text input here}&amp;ldquo;是实际文本/上下文的占位符
+1. 使用最新模型 为了获得最佳结果，我们通常建议使用最新、功能最强大的模型。截至2022年11月，生成文本的最佳选项是“text-davinci-003”模型，生成代码的最佳选项是“code-davinci-002”模型。
+2. 在提示的开头放置说明，并使用###或&amp;rdquo;&amp;ldquo;&amp;ldquo;分隔指令和上下文 低效方式
+Summarize the text below as a bullet point list of the most important points. {text input here} 高效方式
+Summarize the text below as a bullet point list of the most important points. Text: &amp;#34;&amp;#34;&amp;#34; {text input here} &amp;#34;&amp;#34;&amp;#34; 3. 请尽可能具体、描述性和详细地说明所需的上下文、结果、长度、格式、风格等。 请具体说明上下文、结果、长度、格式和风格等。
+低效方式
+Write a poem about OpenAI. 高效方式
+Write a short inspiring poem about OpenAI, focusing on the recent DALL-E product launch (DALL-E is a text to image ML model) in the style of a {famous poet} 4.</description>
+    </item>
+    
+  </channel>
+</rss>

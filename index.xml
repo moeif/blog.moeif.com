@@ -5,11 +5,108 @@
     <link>https://blog.moeif.com/</link>
     <description>Recent content on 萌一小栈</description>
     <image>
+      <title>萌一小栈</title>
       <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 17 Oct 2022 09:09:29 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于 ChatGPT、GPT、GPT-3、OpenAI</title>
+      <link>https://blog.moeif.com/posts/about-chatgpt/</link>
+      <pubDate>Wed, 29 Mar 2023 20:45:19 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/about-chatgpt/</guid>
+      <description>2015年12月，一群聪明的人为了一个共同的目标走到了一起：以有利于整个人类的方式促进和发展友好的人工智能。 萨姆-奥特曼、伊隆-马斯克、格雷格-布罗克曼、里德-霍夫曼、杰西卡-利文斯顿、彼得-泰尔、亚马逊网络服务（AWS）、Infosys和YC Research宣布成立OpenAI，并向该企业认捐了超过10亿美元。该组织表示，它将通过向公众开放其专利和研究，与其他机构和研究人员进行 &amp;ldquo;自由合作&amp;rdquo;。
+OpenAI的总部设在旧金山Mission区的Pioneer大厦。2016年4月，OpenAI发布了其强化学习研究平台 &amp;ldquo;OpenAI Gym &amp;ldquo;的公开测试版。2016年12月，OpenAI发布了 &amp;ldquo;Universe6&amp;rdquo;，这是一个软件平台，用于衡量和训练人工智能的通用智能，跨越世界上的游戏、网站和其他应用程序的供应。
+2018年，埃隆-马斯克辞去了他的董事会席位，理由是与特斯拉自动驾驶汽车的人工智能开发存在 &amp;ldquo;潜在的未来利益冲突&amp;rdquo;，但他仍然是一个捐赠者。2019年，OpenAI从非营利性过渡到上限营利性，利润上限设定为任何投资的100倍。该公司向员工分配股权，并与微软合作，后者宣布向该公司投资10亿美元的一揽子计划。随后，OpenAI宣布打算对其技术进行商业化授权。
+2020年，OpenAI宣布了GPT-3，这是一个根据互联网上的数万亿词汇训练的语言模型。它还宣布，一个相关的API，简单地命名为 &amp;ldquo;API&amp;rdquo;，将构成其第一个商业产品的核心。GPT-3的目标是自然语言回答问题，但它也可以在语言之间进行翻译，并连贯地生成即兴文本。2021年，OpenAI推出了DALL-E，这是一个深度学习模型，可以从自然语言描述中生成数字图像。 快进到2022年12月，OpenAI在推出ChatGPT的免费预览版后收到了广泛的媒体报道。据OpenAI称，该预览版在前五天内收到了超过一百万的注册用户。根据路透社在2022年12月援引的匿名消息，OpenAI预计2023年的收入为2亿美元，2024年为10亿美元。截至2023年1月，它正在进行融资谈判，该公司的价值将达到290亿美元。 这就是OpenAI的故事，它是一个人工智能研究实验室，由营利性公司OpenAI LP及其母公司、非营利性公司OpenAI Inc.组成。
+在该公司发布流行的ChatGPT之前，大多数人都不知道OpenAI。 ChatGPT的主要目的是模仿人类行为，与人进行自然对话。然而，这个聊天机器人能够根据它与不同用户的对话来学习和教导自己。这个人工智能具有对话能力，可以编写教程和代码，谱写音乐，并执行其他任务。ChatGPT的用例相当多样化，可以说是无穷无尽；用户已经证明了这一点。有些用例是创造性的（如写一首说唱歌曲），有些是恶意的（如生成恶意代码或命令），还有一些是面向商业的（如搜索引擎优化、内容营销、电子邮件营销、冷处理电子邮件和商业生产力）。 ChatGPT只是代表生成性预训练转化器，是建立在OpenAI的GPT-3系列大型语言模型之上的。聊天机器人是用监督和强化学习技术进行微调的。
+GPT-3是ChatGPT的基础。ChatGPT只是一个利用GPT-3的项目，并增加了一个网络界面、内存和更多的用户友好功能。读完本指南后，你将能够建立自己的聊天机器人，可能比ChatGPT更好，因为你可以根据自己的具体需要进行定制。
+其他使用GPT-3的项目有：
+GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码进行了微调） Copy.ai7和Jasper.ai8（用于营销目的的内容生成） 德雷塞尔大学（检测阿尔茨海默病的早期症状） Algolia（增强其搜索引擎能力） 你肯定听说过GPT-4。GPT-4是GPT-3的继任者，也是由OpenAI创建的一个未发布的神经网络。 你可能已经看到了比较两个版本的GPT的图表，显示了GPT-3（1750亿）和GPT-4（100万亿）的参数数量。
+当被问及这幅病毒性插图时，奥特曼称其为 &amp;ldquo;完全是胡说八道&amp;rdquo;。&amp;ldquo;GPT-4的谣言是一个荒谬的事情。我不知道这一切从何而来。人们在乞求失望，他们会失望的。炒作就像&amp;hellip; 我们没有一个真正的AGI，这也算是对我们的期望吧&amp;rdquo;。</description>
+    </item>
+    
+    <item>
+      <title>搭建自己的AI图片生成器</title>
+      <link>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</link>
+      <pubDate>Mon, 27 Mar 2023 14:41:51 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</guid>
+      <description>最近一段时间，使用 Stable Diffusion 等工具生成图片的资讯充斥着整个互联网，但是很多在线的 AI 图片生成工具，要么根本访问不了（需要科学上网），要么就是需要付费，而且还巨慢。作为一个常年混迹于互联网的技术流玩家，我觉得有必要在自己本机搭一下无限制的 AI 图片生成工具。
+本地搭建这东西我觉得还是很有用的，对于我来说，写博客，公众号的一些配图，完全可以用这东西生成。还有最重要的，我是想用在独立游戏开发中，让我做的那些垃圾文字游戏，可以多一点图片，增加哪怕一点点美感和吸引力。
+我们用的工具是 Stable Diffusion。由于我的机器是 Mac M1 芯片的，所以教程也就是在此配置上去搭建，其他平台类似。
+1. 确认 Python 环境 首先确保自己机器上的 Python3 版本是 3.10 以上，使用命令 python3 --version 可以查看。如果还没有安装 Python3 则使用命令 brew install python3 来安装。如果版本比 3.10 低，则使用 brew upgrade python3 来升级到最新版本
+2. 下载 Stable Diffusion 的 Web 工程 使用命令 git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui 来克隆 Stable Diffusion 的 web 工程，这个工程可以让我们在浏览器中使用 Stable Diffusion。 注意，这个过程可能会异常的慢，甚至可以失败，如果失败了，那就重新执行命令，或者采取一些科学的网络方式对其进行下速，反正相办法下载下来就行。
+3. 下载模型文件，模型文件，可以理解为官方或其他人已经训练好的一些参数集合，有了这个，生成工具才知道怎么去生成一张图片。 先下载官方的基础 Model，这里使用的是 1.5 版本的，2.0 版本的不在此博客的讨论范围内，因为我也没用过。
+点击这里下载 v1-5-pruned.ckpt
+下载完成后，将这个文件放入 stable-diffusion-webui/models/Stable-diffusion 目录下</description>
+    </item>
+    
+    <item>
+      <title>角色扮演游戏设计艺术笔记</title>
+      <link>https://blog.moeif.com/posts/rpg-game-design-note/</link>
+      <pubDate>Sun, 26 Mar 2023 15:44:52 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/rpg-game-design-note/</guid>
+      <description>玩家需要感受到他们的交互效果，他们希望自己对游戏的经历起重要作用并通过他们交互对世界、故事或其他游戏元素产生某种程度上的辨认效果。
+奖励 玩家在完成一次胜利，或特定的时候，给予一定的奖励，以此激励他们继续奋战。
+保险性 确保玩家可以在游戏中通过某些途径获得物品，技巧等，以完成对于障碍的挑战。
+确认 游戏规则不会确认，游戏的公平性保证
+技巧 通过经历获得技巧。还需要明确地说明目标，让玩家知道为何而战。
+铁杆（氪金）玩家需要 非常高级别的挑战 提供数小时扩展的游戏 某种程度的重玩结构 高度的细节和内存逻辑环境 使用字符、对象、符咒以及游戏设计的任何其他数字驱动等信息 普通玩家的需要 简单、简单、简单 短的学习曲线，游戏的界面和游戏的基本控制应该可以在短时间内掌握 非常快的升级速度以及频繁的奖励 以外观和感觉为中心的设计 清楚地提供游戏目标 短时间内应该能完成的游戏 破坏者的需要（特殊） 主要通过战斗解决游戏的目标 主要关注角色的战斗能力 探宝家式的玩家需要 频繁分布有价值的物品 具有找到便宜商品并且可以进行精明买卖的灵活的游戏经济系统 具有可以更多了解物品的组织属性和机制清单的系统 在模拟的经济系统中，有一些玩家会因为宝物的价值，或者艺术美而收集他们（收集癖好）。有一些物品不但非常有价值，而且可以帮助完成完成一些关键任务。玩家收集的许多材料的唯一的目标就是必须用它来做某些事情
+旅行者的需要 可以探索的足够大的世界 很多交互细节 能够显示玩家到过和未到过的游戏地图 Q： 想办法处理冗长的背包物品列表，来找到需要的物品
+随机性 随机性=冒险=危险=感情投入 游戏中的任何一部，都要让玩家明白有失败的可能性，任何一步都不能是100%确定的 例如攻击力，可以不用绝对攻击力，而使用范围。例如，攻击17~67
+关于技能与角色特点（职业） 在网络游戏Ultima中，如果玩家一段时间没有使用某种技能的话，那么玩家的这种技能水平就会下降。使用这种方式，可以让玩家自己确定到底要保留哪些类型的技能。
+还有一种方式，就是完全舍弃独立的技能系统，将所有的技能的载体放在物品（装备）上，例如一双靴子，有了这个，就拥有了垂直走路的能力。另一方面，因为这个能力的存在，所以这个靴子会占据较大的空间，或者让此物品很重，让玩家不能同时携带多于两个这类物品。
+这种方案的有点是强制每个角色有不同的表现，并根据他们自己口袋装着的物品形成不同的角色。
+经典RPG游戏中的重要因素 探险 让玩家处于一个令人难忘，错综复杂，但是具有内在致性的世界中。玩家在游戏中遇到的每个角色和每一件事情都应尽量真实，而还是为了迎合剧情发展。 故事 无论游戏中为玩家角色设计了什么大型剧情，我们一定要让玩家感受到游戏需要他们参与才能解决出现的那些问题。 战斗 令人兴奋、直觉、快节奏的战斗界面对游戏的成功是很重要的。 临时任务 拯救世界需要花费很多时间。要实现游戏的高度可重玩性，根据玩家角色的不同行为而提供不同的临时任务是一种好方法，这会让玩家们不断地重新开始。 搜寻财宝 玩家对于他们可以在盒子桶、板条箱，或者书箱里发现的东西非常好奇。任何看起来有可能包含报备的容器都会引起玩家的注意力，而正是我们游戏者决定他们过去会找到什么东西。我们可以为玩家提供武器、弹药、具有魔力的物品、珠宝，甚至是一件新衣服。不论提供什么，在玩家以后的游戏经历中，这些驼绒裤可以预约可以派上用场。要注意尽量避免创建无用的占是占据背包的物品。 资源管理 资源管理是RPG游戏的主要部分，通常会要求玩家管理一些琐碎的事务，比如保证角色具有足够吃的，保证足够的睡眠，保证武器处于战斗状态。由于某些物品的稀少或者难以获得，玩家还需要考虑使用情况，例如电池、子弹、血瓶等。RPG游戏通常也会让玩家自己去考虑如何花手头的钱，是去购买更好的装备，还是用来贿赂城堡卫兵。 解决问题 玩家在游戏过程中要面临多种类别的挑战，在战斗中随着遇到更厉害的怪物，玩家需要不断掌握新的策略。偶尔也会在黑暗的地下城和狂人住宅中遇到考验智力的难题和陷阱。 RPG游戏的持久力量在于超越了平凡的能力，可以将玩家带入兴奋和有趣的新设计，以家庭、城市、王国或者银河系的形式为玩家创造不同的机会。游戏中的每个人都有很重要的影响力。
+游戏构思的可能选择 兴趣爱好 文化底蕴，探险 哲学、精神领域 历史事件 假定分析、推断 身边不断变化中的事情 公众会议、社会组织 自然规律 生命中出现的任何不寻常现象 军事训练准则 科技设备，中世纪武器，服装 玩家究竟是什么 一个玩家应当要做出选择 一个玩家应当要获得报酬 一个角色扮演游戏总是需要一些反对的力量去积极地对抗玩家。没有反对就没有斗争，而没有斗争你所拥有的就不是游戏了。 游戏规则 在一个RPG游戏中，你的任务就是去创建一套有着内在联系的规则，就像是棋子一样。你必须定义出玩家与他们的化身，与环境、目标，还有其他玩家及怪物相交互的所有方式。这当中有的规则是直接指出解决特定情况的方法，像是确定当当玩家试着踢到一扇门时将会发生什么情况。其他的规则都是普遍应用的一般性设计原则，它们可以帮助玩家了解游戏世界是怎样运行的。所有的这些想法必须平稳地结合在一起，从而创建出一个没有扣动、逻辑缜密的程序体，也就是人们所知道的规则体系。</description>
+    </item>
+    
+    <item>
+      <title>使用 OpenAI 的最佳实践</title>
+      <link>https://blog.moeif.com/posts/best-practice-openai-prompt/</link>
+      <pubDate>Thu, 23 Mar 2023 13:54:08 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/best-practice-openai-prompt/</guid>
+      <description>如何向GPT-3和Codex提供清晰有效的指令。
+Prompt 是怎样工作的 由于指令跟随模型的训练方式或它们所接受的数据，有特定的提示格式可以很好地配合当前任务并可靠地发挥作用。以下是我们发现可靠有效的一些提示格式，但请随意尝试不同格式，以找到最适合您任务的格式。
+经验法则和示例 注意：&amp;quot;{text input here}&amp;ldquo;是实际文本/上下文的占位符
+1. 使用最新模型 为了获得最佳结果，我们通常建议使用最新、功能最强大的模型。截至2022年11月，生成文本的最佳选项是“text-davinci-003”模型，生成代码的最佳选项是“code-davinci-002”模型。
+2. 在提示的开头放置说明，并使用###或&amp;rdquo;&amp;ldquo;&amp;ldquo;分隔指令和上下文 低效方式
+Summarize the text below as a bullet point list of the most important points. {text input here} 高效方式
+Summarize the text below as a bullet point list of the most important points. Text: &amp;#34;&amp;#34;&amp;#34; {text input here} &amp;#34;&amp;#34;&amp;#34; 3. 请尽可能具体、描述性和详细地说明所需的上下文、结果、长度、格式、风格等。 请具体说明上下文、结果、长度、格式和风格等。
+低效方式
+Write a poem about OpenAI. 高效方式
+Write a short inspiring poem about OpenAI, focusing on the recent DALL-E product launch (DALL-E is a text to image ML model) in the style of a {famous poet} 4.</description>
+    </item>
+    
+    <item>
+      <title>Unity 内存管理的专业提示</title>
+      <link>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</link>
+      <pubDate>Tue, 01 Nov 2022 10:04:23 +0800</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</guid>
+      <description>优化是游戏开发中很重要的一部分，涉及的方面主要有 CPU，GPU，内存，网络等。
+在这篇博客中，主要会写关于内存相关的优化，Unity 是如何管理内存的，以及怎样才能使游戏更高效地运行。
+在深入到 Unity 之前，我们先来看一下内存是如何工作的。
+操作系统会在物理内存的基础上，创建一个虚拟内存，用于程序运行。在这个抽象中，会有一些虚拟地址空间（VAS）
+在内存优化上，主要考虑两部分，也就是栈（Stack）和堆（Heap）。在理解栈和堆之前，首先要理解在 Unity 中，数据的类型，可分为值类型，和引用类型。对于值类型的数值，会直接存储在栈上，并且是可以直接复制的。例如，int, float, bool, struct, Color Vector3 等。
+而引用类型的数据，则是存储在堆上，但是，指向这个数据的指针，是存储在栈上的。
+栈（Stack） 存储值类型 存储引用类型的指针 由 CPU 自动管理，无须程序员关心。在函数调用时，参数将自动申请内存放入栈中，当函数结束时，这些参数又会从栈取出，释放内存，这一切操作都是自动的。 栈比堆的速度快 栈的容量有限，如果超过上限，则会出现栈溢出。 栈的运行方式是 Last in first out。也就是后进先出，或者说先进后出。 堆（Heap） 可以存储引用类型和值类型的数据 由程序员手动管理 内存空间不一定是连续的 比栈速度慢 可以扩展空间大小 接下来，我们来理解什么是 “垃圾”，以及什么是 “垃圾回收”。
+垃圾 存储在栈上的一个指向堆数据的指针结束时（释放时），堆上的数据没有用了，对于这样的对象，可以理解为 “垃圾”。
+垃圾回收 为了解决垃圾内存的问题，.Net 有对应的垃圾回收系统。
+在初始化一个新的进程时，语言运行时会为该进程保留一个连续的地址空间区域。这个保留的地址空间称为托管堆。托管堆维持指向堆中下一个对象的地址指针。
+从托管堆中分配内存，比非托管堆中分配内存要快。
+垃圾回收系统会创建一个包含从根可访问的所有对相的图。当一个对象不在这个图中，也就是无法从根节点访问时，垃圾回收系统会将这部分内存视为垃圾，并在合适的时机释放为其分配的内存。
+Unity 的内存管理系统 Unity 的内存管理分为三部分。
+托管内存 托管内存使用托管堆以及垃圾回收系统自动分配和释放内存，而提供这个功能的是 Mono 或 IL2CPP。在 Unity 中我们大部分时候使用的都是托管内存，所以 New 对象时，都不考虑释放，垃圾回收系统会帮我们处理掉。
+C# 非托管内存 C＃非托管内存层使你可以在编写C＃代码的方便下访问本机内存层以微调存储器分配。
+您可以在Unity Core API中使用Unity.CollectionsNamespace（包括NativeArray），以及Unity Collections软件包中的数据结构来访问C＃非托管的内存。如果您使用Unity的 Job System 或 Brust，则必须使用C＃非托管内存。</description>
+    </item>
+    
     <item>
       <title>异能觉醒，新游预约</title>
       <link>https://blog.moeif.com/posts/new-game-to-reservation/</link>
@@ -1854,12 +1951,122 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     </item>
     
     <item>
+      <title>2023.03.15</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.15/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.15/</guid>
+      <description>生活 今天终于看完了《黑暗荣耀》第一季，女主牛B，人生中的每一个重要选择，都是心中那个复仇目标为导向。
+工作 《异能失控》项目今天把工程整理了一下，整理了一下Lua层的启动代码，比起上个项目来清晰了许多。使用ChatGPT生成了几十个怪物的名称和描述，以及单个技能，更想细的信息还需要再做一下。
+学习 学习了Rust多线程并发编程相关的东西，Mutex，Condvar，信号量什么的，不过还是模模糊糊，看来还是得具体项目实践才能彻底熟练。</description>
+    </item>
+    
+    <item>
+      <title>2023.03.16</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.16/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.16/</guid>
+      <description>生活 又炖了鸡腿肉。今天在博客里加上了 Tid 页面，用来简要地的记录每天的生活、工作、学习相关的东西。
+工作 异能失控游戏开场界面搞完了，确定了基本的背景颜色，按钮颜色，输入框颜色，修改了几个界面的字体。开场的文本使用 ChatGPT 生成然后人工进行了一定的修改。背景音乐也找到了。
+学习 准备系统地学习一下伯克利的CS相关的课程。Crash Course Computer Science 看了一点。学习了Rust多线程相关的 Atomic 和 Send、Sync 相关的东西。</description>
+    </item>
+    
+    <item>
+      <title>2023.03.17</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.17/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.17/</guid>
+      <description>生活 今天一整天都在下雨，起床比较晚。中午的时候点了麻辣香锅，可是不是很好吃，还不如我买包料自己做，再也不点这一家了。今天还试了一下把 ChatGPT 跟微信连起来，但是不是很好用，很慢，而且一旦电脑上登录了微信，这个服务就直接停了。
+工作 今天使用 ChatGPT 生成了地图的区域名字。把地图界面搭建了一下，大概的逻辑也有方向了。
+学习 学了一点点Rust。继续阅读《剑与电-角色扮演游戏设计艺术》</description>
+    </item>
+    
+    <item>
+      <title>2023.03.18</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.18/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.18/</guid>
+      <description>生活 今天干了啥，忘记了。找了一部动漫在看，末日曙光。
+工作 今天尝试了一下在Mac下使用 Stable Diffusion，还是不太好用，麻烦。没有写代码，但是跟一个玩家聊了一下异能这个游戏，找到了一些新的方向，开发路线逐渐清晰了。
+学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
+    </item>
+    
+    <item>
+      <title>2023.03.19</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.19/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.19/</guid>
+      <description>生活 今天的天气不怎么样啊，阴天，早晨睡到自然醒，很疲惫，可能是昨晚睡的比较晚。
+工作 今天考虑了一下账号系统，还是得改一下原来的存档工程，这次使用手机号作为存档的标识，不再使用设备码了。
+学习 今天没有时间学习……</description>
+    </item>
+    
+    <item>
+      <title>2023.03.20</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.20/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.20/</guid>
+      <description>生活 看三体。
+工作 今天把账号系统的服务器部分调试通了，整理了一下上个项目的工程代码，删掉了一些没用的。
+学习 </description>
+    </item>
+    
+    <item>
+      <title>2023.03.21</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.21/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.21/</guid>
+      <description>生活 看三体，做了三黄鸡，不太好吃，下次不要再做了，还是直接做口水鸡吧，调料用买的。
+工作 继续调整客户端的工程代码，改了部们UI，今天把登录系统客户端和服务器连通起来。 今天把 Stable Diffusion 搞定了，可以在 Mac 上用了，虽然速度不是很快。试了几个模型，能用，但是要精确描述自己想要的东西，还是有一定难度，也需要花费一点时间，但是，有这个东西， 比没有是好的。
+学习 Rust 异步编程部分</description>
+    </item>
+    
+    <item>
+      <title>2023.03.22</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.22/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.22/</guid>
+      <description>生活 今天拿到了上海的居住证，又向前走了一步
+工作 今天又是一行代码都没写
+学习 阅读《剑与电-角色扮演游戏设计艺术》</description>
+    </item>
+    
+    <item>
+      <title>2023.03.23</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.23/</guid>
+      <description>生活 今天上海的天气还是很不好，下雨，所以也没出门。继续看三体
+工作 这两天工程上的工作先暂停一下，要先搞明白具体要做一个怎样的游戏
+学习 继续阅读《剑与电-角色扮演游戏设计艺术》，这两天要把这本书读完，里面阐述了很多关于游戏设计的思路，我觉得很有用，可以让游戏的可玩性增加很多。</description>
+    </item>
+    
+    <item>
+      <title>2023.03.25</title>
+      <link>https://blog.moeif.com/posts/tids/2023.03.25/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.moeif.com/posts/tids/2023.03.25/</guid>
+      <description>生活 今天出去多走了一会，长久不运动，身体难收的很
+工作 今天把善恶启示录更新了一下，虽然只是更新了剧情，而且剧情还是玩家提供的。
+学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
+    </item>
+    
+    <item>
       <title>About</title>
       <link>https://blog.moeif.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.moeif.com/about/</guid>
-      <description>欢迎来到这里 Hi，我是 Fred，目前是一名独立开发者，技术方向主要是 Unity 和 Rust。目前做了几个独立游戏，在线上跑着，盈利情况一般，目前还无法与打工时的工资持平，还有待努力。
+      <description>欢迎来到这里 Hi，我是 Fred，目前是一名独立开发者，主要的产品方向是文字类游戏。技术方向主要是 Unity 和 Rust。
 我（们）做过的游戏：https://moeif.com
 我的微信号: ifloop
 我的 Email: moeif@outlook.com
@@ -1879,20 +2086,12 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     </item>
     
     <item>
-      <title>Weekly</title>
-      <link>https://blog.moeif.com/weekly/</link>
+      <title>TID</title>
+      <link>https://blog.moeif.com/tid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/weekly/</guid>
-      <description>这里将记录每周做过的事情，目前主要以开发任务为主 2022-04-30 周六 今天是 4 月份的最后一天了，本周《无量：钓海》在 TapTap、好游快爆、4399 三个平台提交了预约，目前都已审核通过，处于可预约状态。本来想五一前提交个版本，后面通过热更新添加功能，但是有点仓促，这周在内容上又修改和添加了一些新的玩法系统，所以就推迟到五一假期结束后再提交第一个版本。本周完成了经验升级逻辑、广告 SDK 改成了 Gromore，对广告和统计，防沉迷相关的 SDK 做了统一的整理。增加了鱼竿和钓技相关的逻辑和UI。
-2022-04-24 周日 这周还是主要做《无量：钓海》项目的开发。这周完成了 NPC 相关的UI模块及逻辑，功法相关的界面及逻辑，添加了 BGM。
-2022-04-17 周日 这周添加新的剧情数据和新的剧情逻辑，完成了成就模块的 UI、逻辑，数据等，目前还有测试，成就模块与其他模块的连接，也需要等其他相关模块做完后才能关联起来，现在只是留了统一的接口。NPC 的文档这周也发过来了，今天大概搭建了一下 NPC 的界面，下周继续 NPC 模块相关的其他界面及逻辑和数据。
-2022-04-10 周日 又到一个周的最后一天了，时间过的好快啊，上海还是处理隔离状态。这周完成了剧情UI和逻辑，完善了一下道具信息UI及逻辑，完成了锻造UI及逻辑，添加了通用中心消息提示UI。添加了经验配置数据。
-2022-04-03 周日 这周《无量：钓海》添加了物品获得UI的逻辑，重构了一些数据结构，重了钓鱼的逻辑，增加了循环垂钓和杀进程恢复逻辑。目前整个钓鱼逻辑及表现已经完成。下周把剧情事件做完。
-2022-03-27 周日 这周《无量：钓海》游戏主要进行了对接的工作，功能模块本周只加了一个物品详情界面，其他的逻辑决定等正式数据出来一部分后，再开始做。另外，这个周上了一个新游戏《公主坚持住》，这个游戏资源是在资源商店购买了，增加了广告，然后上架了。另外一个小游戏这周也完成了玩法逻辑，下周加一下音效，再微调一下动效，就可以上架了，这个打算做海外版本收费下载，国内还是广告的模式。
-2022-03-20 周日 本周开始写《无量：钓海》的游戏逻辑了，由于是文字对接，效率有点慢，理清对方设计的东西，需要时间。不过也还好，打算下周开始采用语音的形式进行对接。本周完成事情如下
-主界面UI及逻辑 包裹模块UI及逻辑 数据层逻辑 广告，统计等逻辑接入Lua层 2022-03-12 周六 本周主要在搭建《无量：钓海》游戏的框架，这周的效率还可以，完成了下面的事情。
-xLua 已经跑起来了 完成了整个热更新的逻辑 完成了Lua层配置表加载 完成了Lua层UI的加载及数据传递 基本完成了游戏的启动流程，版本更新，公告，隐私协议等 </description>
+      <guid>https://blog.moeif.com/tid/</guid>
+      <description>Tid 用于简要地记录今天做了什么，包括生活、工作、学习等相关内容。 </description>
     </item>
     
   </channel>

@@ -2,19 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://blog.moeif.com/tags/ai/</loc>
+    <lastmod>2023-03-29T20:45:19+08:00</lastmod>
+  </url><url>
     <loc>https://blog.moeif.com/posts/</loc>
-    <lastmod>2022-10-17T09:09:29+08:00</lastmod>
+    <lastmod>2023-03-29T20:45:19+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/tags/</loc>
-    <lastmod>2022-10-17T09:09:29+08:00</lastmod>
+    <lastmod>2023-03-29T20:45:19+08:00</lastmod>
   </url><url>
-    <loc>https://blog.moeif.com/posts/new-game-to-reservation/</loc>
-    <lastmod>2022-10-17T09:09:29+08:00</lastmod>
-  </url><url>
-    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2022-10-17T09:09:29+08:00</lastmod>
+    <loc>https://blog.moeif.com/posts/about-chatgpt/</loc>
+    <lastmod>2023-03-29T20:45:19+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/</loc>
+    <lastmod>2023-03-29T20:45:19+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</loc>
+    <lastmod>2023-03-27T14:41:51+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2023-03-26T15:44:52+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/rpg-game-design-note/</loc>
+    <lastmod>2023-03-26T15:44:52+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/tags/%E9%98%85%E8%AF%BB/</loc>
+    <lastmod>2023-03-26T15:44:52+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/best-practice-openai-prompt/</loc>
+    <lastmod>2023-03-23T13:54:08+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</loc>
+    <lastmod>2022-11-01T10:04:23+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/new-game-to-reservation/</loc>
     <lastmod>2022-10-17T09:09:29+08:00</lastmod>
   </url><url>
     <loc>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</loc>
@@ -455,6 +476,26 @@
     <loc>https://blog.moeif.com/posts/data-structure-00-introduction/</loc>
     <lastmod>2019-11-17T13:15:27+08:00</lastmod>
   </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.15/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.16/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.17/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.18/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.19/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.20/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.21/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.22/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.23/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/posts/tids/2023.03.25/</loc>
+  </url><url>
     <loc>https://blog.moeif.com/about/</loc>
   </url><url>
     <loc>https://blog.moeif.com/archives/</loc>
@@ -463,6 +504,8 @@
   </url><url>
     <loc>https://blog.moeif.com/mygames/</loc>
   </url><url>
-    <loc>https://blog.moeif.com/weekly/</loc>
+    <loc>https://blog.moeif.com/tags/tid/</loc>
+  </url><url>
+    <loc>https://blog.moeif.com/tid/</loc>
   </url>
 </urlset>
