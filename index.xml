@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>萌一小栈</title>
+    <title>Meowsay</title>
     <link>https://blog.moeif.com/</link>
-    <description>Recent content on 萌一小栈</description>
+    <description>Recent content on Meowsay</description>
     <image>
-      <title>萌一小栈</title>
+      <title>Meowsay</title>
       <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
@@ -2066,11 +2066,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.moeif.com/about/</guid>
-      <description>欢迎来到这里 Hi，我是 Fred，目前是一名独立开发者，主要的产品方向是文字类游戏。技术方向主要是 Unity 和 Rust。
+      <description>欢迎来到这里 Hi，我是猫猫，目前是一名独立开发者，主要的产品方向是文字类游戏。技术方向主要是 Unity 和 Rust。
 我（们）做过的游戏：https://moeif.com
 我的微信号: ifloop
-我的 Email: moeif@outlook.com
-微信公众号：萌一小栈 (博客文章同步推送)</description>
+我的 Email: moeif@outlook.com</description>
     </item>
     
     
