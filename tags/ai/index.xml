@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>AI on Meowsay</title>
-    <link>https://blog.moeif.com/tags/ai/</link>
+    <link>https://blog.meowsay.com/tags/ai/</link>
     <description>Recent content in AI on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于 ChatGPT、GPT、GPT-3、OpenAI</title>
-      <link>https://blog.moeif.com/posts/about-chatgpt/</link>
+      <link>https://blog.meowsay.com/posts/about-chatgpt/</link>
       <pubDate>Wed, 29 Mar 2023 20:45:19 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/about-chatgpt/</guid>
+      <guid>https://blog.meowsay.com/posts/about-chatgpt/</guid>
       <description>2015年12月，一群聪明的人为了一个共同的目标走到了一起：以有利于整个人类的方式促进和发展友好的人工智能。 萨姆-奥特曼、伊隆-马斯克、格雷格-布罗克曼、里德-霍夫曼、杰西卡-利文斯顿、彼得-泰尔、亚马逊网络服务（AWS）、Infosys和YC Research宣布成立OpenAI，并向该企业认捐了超过10亿美元。该组织表示，它将通过向公众开放其专利和研究，与其他机构和研究人员进行 &amp;ldquo;自由合作&amp;rdquo;。
 OpenAI的总部设在旧金山Mission区的Pioneer大厦。2016年4月，OpenAI发布了其强化学习研究平台 &amp;ldquo;OpenAI Gym &amp;ldquo;的公开测试版。2016年12月，OpenAI发布了 &amp;ldquo;Universe6&amp;rdquo;，这是一个软件平台，用于衡量和训练人工智能的通用智能，跨越世界上的游戏、网站和其他应用程序的供应。
 2018年，埃隆-马斯克辞去了他的董事会席位，理由是与特斯拉自动驾驶汽车的人工智能开发存在 &amp;ldquo;潜在的未来利益冲突&amp;rdquo;，但他仍然是一个捐赠者。2019年，OpenAI从非营利性过渡到上限营利性，利润上限设定为任何投资的100倍。该公司向员工分配股权，并与微软合作，后者宣布向该公司投资10亿美元的一揽子计划。随后，OpenAI宣布打算对其技术进行商业化授权。
@@ -30,10 +30,10 @@ GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码�
     
     <item>
       <title>搭建自己的AI图片生成器</title>
-      <link>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</link>
+      <link>https://blog.meowsay.com/posts/create-your-own-ai-image-generator/</link>
       <pubDate>Mon, 27 Mar 2023 14:41:51 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</guid>
+      <guid>https://blog.meowsay.com/posts/create-your-own-ai-image-generator/</guid>
       <description>最近一段时间，使用 Stable Diffusion 等工具生成图片的资讯充斥着整个互联网，但是很多在线的 AI 图片生成工具，要么根本访问不了（需要科学上网），要么就是需要付费，而且还巨慢。作为一个常年混迹于互联网的技术流玩家，我觉得有必要在自己本机搭一下无限制的 AI 图片生成工具。
 本地搭建这东西我觉得还是很有用的，对于我来说，写博客，公众号的一些配图，完全可以用这东西生成。还有最重要的，我是想用在独立游戏开发中，让我做的那些垃圾文字游戏，可以多一点图片，增加哪怕一点点美感和吸引力。
 我们用的工具是 Stable Diffusion。由于我的机器是 Mac M1 芯片的，所以教程也就是在此配置上去搭建，其他平台类似。
@@ -46,10 +46,10 @@ GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码�
     
     <item>
       <title>使用 OpenAI 的最佳实践</title>
-      <link>https://blog.moeif.com/posts/best-practice-openai-prompt/</link>
+      <link>https://blog.meowsay.com/posts/best-practice-openai-prompt/</link>
       <pubDate>Thu, 23 Mar 2023 13:54:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/best-practice-openai-prompt/</guid>
+      <guid>https://blog.meowsay.com/posts/best-practice-openai-prompt/</guid>
       <description>如何向GPT-3和Codex提供清晰有效的指令。
 Prompt 是怎样工作的 由于指令跟随模型的训练方式或它们所接受的数据，有特定的提示格式可以很好地配合当前任务并可靠地发挥作用。以下是我们发现可靠有效的一些提示格式，但请随意尝试不同格式，以找到最适合您任务的格式。
 经验法则和示例 注意：&amp;quot;{text input here}&amp;ldquo;是实际文本/上下文的占位符

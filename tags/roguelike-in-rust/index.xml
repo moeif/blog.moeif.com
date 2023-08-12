@@ -2,42 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Roguelike In Rust on Meowsay</title>
-    <link>https://blog.moeif.com/tags/roguelike-in-rust/</link>
+    <link>https://blog.meowsay.com/tags/roguelike-in-rust/</link>
     <description>Recent content in Roguelike In Rust on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 Feb 2022 13:00:42 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/roguelike-in-rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Feb 2022 13:00:42 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/roguelike-in-rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Roguelike In Rust 05: 生成地牢</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-05-make-dungeon/</link>
       <pubDate>Tue, 22 Feb 2022 13:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-05-make-dungeon/</guid>
       <description>&lt;p&gt;这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Roguelike In Rust 04: 地图与行走</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-04-walking-map/</link>
       <pubDate>Tue, 08 Feb 2022 11:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-04-walking-map/</guid>
       <description>&lt;p&gt;接着上一节的内容，这一节将创建地图，然后玩家可以在地图中行走。地图分为可行走区域和不可行走区域。我们可以认为地图是由一个一个的格子组成。&lt;/p&gt;
 &lt;p&gt;先看一下最终的效果&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.moeif.com/postimages/roguelike-rs/0401.gif&#34; alt=&#34;&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.meowsay.com/postimages/roguelike-rs/0401.gif&#34; alt=&#34;&#34;  /&gt;
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Roguelike In Rust 03: 实体和组件</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-03-entities-and-components/</link>
       <pubDate>Thu, 03 Feb 2022 05:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-03-entities-and-components/</guid>
       <description>对于游戏开发者，可能或多或少听说过或者使用过 ECS 的结构。现在大多数游戏使用的还是面向对象的模式，面向对象编程并没有什么问题，但是在游戏开发过程中，当游戏不断的超出原有的设计时，从整个工程的扩展来说，ECS 拥有更好的扩展性。
 下面是一个面向对象的例子
 BaseEntity Monster MeleeMob OrcWarrior ArcherMob OrcArcher BaseEntity 是一个基类，包含了基本的数据和代码，用于表示地图上的一个实体。Monster 是一个怪物，MeleeMob 是一个近战单位，它会发现近处的目标，然后干掉它。ArcherMob 是一个可以远程攻击的单位。完成这样一个实体逻辑，可能首先需要按照不同的单位，将逻辑分开，并且抽出共同的逻辑，放到基类中。如果这时增加了一个兽人的逻辑，它即可以近战，又可以远程，并且在完成某些任务时，会变得更友好，怎么办？那就改逻辑呗，继续抽象，分离和整理代码。有很多已经上线的游戏是这样做的。但是，如果使用 ECS，这样的扩展会变得更加容易。
@@ -53,10 +53,10 @@ Cargo.toml</description>
     
     <item>
       <title>Roguelike In Rust 02: Hello Rust</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-02-hellorust/</link>
       <pubDate>Wed, 02 Feb 2022 17:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-02-hellorust/</guid>
       <description>Rust 算是一个新兴的语言，近两年非常火了，但是他首次出现是在 2010 年。Rust 有非常好用的工具 cargo 和 rustup。
 如果要学习 Rust 这门编程语言，也有很多优秀的教程。
 The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers Rust 编辑器可以使用 VSCode
@@ -69,10 +69,10 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
     
     <item>
       <title>Roguelike In Rust 01: 前言</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-01-introduction/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-01-introduction/</link>
       <pubDate>Wed, 02 Feb 2022 14:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-01-introduction/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-01-introduction/</guid>
       <description>这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -&amp;gt; rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。

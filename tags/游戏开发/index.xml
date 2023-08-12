@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>游戏开发 on Meowsay</title>
-    <link>https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+    <link>https://blog.meowsay.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
     <description>Recent content in 游戏开发 on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Mar 2023 15:44:52 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Mar 2023 15:44:52 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>角色扮演游戏设计艺术笔记</title>
-      <link>https://blog.moeif.com/posts/rpg-game-design-note/</link>
+      <link>https://blog.meowsay.com/posts/rpg-game-design-note/</link>
       <pubDate>Sun, 26 Mar 2023 15:44:52 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rpg-game-design-note/</guid>
+      <guid>https://blog.meowsay.com/posts/rpg-game-design-note/</guid>
       <description>玩家需要感受到他们的交互效果，他们希望自己对游戏的经历起重要作用并通过他们交互对世界、故事或其他游戏元素产生某种程度上的辨认效果。
 奖励 玩家在完成一次胜利，或特定的时候，给予一定的奖励，以此激励他们继续奋战。
 保险性 确保玩家可以在游戏中通过某些途径获得物品，技巧等，以完成对于障碍的挑战。
@@ -34,10 +34,10 @@
     
     <item>
       <title>Unity 内存管理的专业提示</title>
-      <link>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</link>
+      <link>https://blog.meowsay.com/posts/unity-memory-management-with-pro-tips/</link>
       <pubDate>Tue, 01 Nov 2022 10:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-memory-management-with-pro-tips/</guid>
       <description>优化是游戏开发中很重要的一部分，涉及的方面主要有 CPU，GPU，内存，网络等。
 在这篇博客中，主要会写关于内存相关的优化，Unity 是如何管理内存的，以及怎样才能使游戏更高效地运行。
 在深入到 Unity 之前，我们先来看一下内存是如何工作的。
@@ -58,10 +58,10 @@ C# 非托管内存 C＃非托管内存层使你可以在编写C＃代码的方�
     
     <item>
       <title>异能觉醒，新游预约</title>
-      <link>https://blog.moeif.com/posts/new-game-to-reservation/</link>
+      <link>https://blog.meowsay.com/posts/new-game-to-reservation/</link>
       <pubDate>Mon, 17 Oct 2022 09:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/new-game-to-reservation/</guid>
+      <guid>https://blog.meowsay.com/posts/new-game-to-reservation/</guid>
       <description>4508年，因核泄露污染水域从而造成人类大灭绝，并造成了全球生物变异，但少数人类适应了污染，造成了细胞全面进化，使生命层次进化觉醒异能。
 自从污染事件已来，整个世界变得异常的诡异，一些【奇奇怪怪】的东西，开始出现，什么鸡坤，什么篮球，杀伤力不强，但是让人异常头晕。在这个少数人的世界，开始一段令人哇塞的旅程。收集各种各样的物品，打造各种奇怪的装备，战斗各种让人费解的敌人。还可以养宠物，升级宠物，带着宠物去打怪……
 一旦你开始玩这个游戏，奇怪的事情，就开始发生了……
@@ -74,10 +74,10 @@ C# 非托管内存 C＃非托管内存层使你可以在编写C＃代码的方�
     
     <item>
       <title>通过作用域最小化来避免屎一样的代码</title>
-      <link>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
+      <link>https://blog.meowsay.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
       <pubDate>Tue, 04 Oct 2022 14:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</guid>
+      <guid>https://blog.meowsay.com/posts/avoid-spaghetti-code-with-scope-minimization/</guid>
       <description>面条式代码，是软件工程中反面模式的一种，也就是源代码的控制流程复杂，混乱难以理解，见到来说，就是屎一样的代码。
 最小化变量的作用域，是避免产生面条式代码的一种有效方式。
 作用域最小化是一种构建代码的方式，操作起来很容易
@@ -102,10 +102,10 @@ R3. 在接近变量用途的地方声明变量 尽可能地在靠近将使用这
     
     <item>
       <title>噪声函数与地图生成</title>
-      <link>https://blog.moeif.com/posts/noise-function-and-map-generation/</link>
+      <link>https://blog.meowsay.com/posts/noise-function-and-map-generation/</link>
       <pubDate>Sun, 25 Sep 2022 23:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/noise-function-and-map-generation/</guid>
+      <guid>https://blog.meowsay.com/posts/noise-function-and-map-generation/</guid>
       <description>在我学习声音信号处理的时候，我的大脑很自然地联想到了地图生成。这篇博客记录了关于信号处理的一些概念与地图生成相关的东西。这些知识点不是一些新的东西，但对我来说，是以前从未接触过的，所以我想记录一下，并且分享给大家。这篇博客会覆盖一些简单的主题，频率、振幅、噪声的种类、噪声的应用等。涉及到的数学部分，基本上只有正弦波形。
 这里会从简单的概念开始，然后逐渐深入。
 注意：下面涉及的代码，虽然是以 Python 来描述的（简单直观），但文章的目的是为了解释原理，使用任何语言都可以的。
@@ -121,10 +121,10 @@ def gen(): map = [0] * 20 pos = random.</description>
     
     <item>
       <title>Unity 游戏启动前显示隐私协议</title>
-      <link>https://blog.moeif.com/posts/show-privacy-before-unity/</link>
+      <link>https://blog.meowsay.com/posts/show-privacy-before-unity/</link>
       <pubDate>Sun, 17 Jul 2022 06:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/show-privacy-before-unity/</guid>
+      <guid>https://blog.meowsay.com/posts/show-privacy-before-unity/</guid>
       <description>使用 Unity 开发的游戏，在上架某些平台时，比如 TapTap，由于政策的原因，需要在收集用户信息，或使用某些权限时，先弹出隐私协议，用户同意之后，才能操作。但是如果直接在 Unity 里做这件事情，哪怕是用一个空场景来做，Unity 本身就会在隐私协议前收集一些信息，所以，我们需要使用原生代码，来操作这一块逻辑。这里只说 Android。
 首先要做的就是在 Assets/Plugins/Android 新建一个 java 文件，用来作为启动 Activity，在这个 Activity 中，先展示隐私协议，当玩家点击同意后，再去调用 Unity 的 Activity。
 package com.moeif.moeifgames; import android.app.Activity; import android.app.AlertDialog; import android.content.DialogInterface; import android.content.Intent; import android.content.SharedPreferences; import android.os.Bundle; import com.unity3d.player.UnityPlayerActivity; public class MoeNativeActivity extends Activity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); if (!isTaskRoot()) { Intent intent = getIntent(); String action = intent.getAction(); if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) &amp;amp;&amp;amp; action != null &amp;amp;&amp;amp; action.equals(Intent.ACTION_MAIN)) { finish(); return; } } Boolean anInt = false; // 隐私协议相关 SharedPreferences base = getSharedPreferences(&amp;#34;base&amp;#34;,MODE_PRIVATE); anInt = base.</description>
@@ -132,10 +132,10 @@ package com.moeif.moeifgames; import android.app.Activity; import android.app.Al
     
     <item>
       <title>一个独立游戏的开发总结</title>
-      <link>https://blog.moeif.com/posts/a-indie-game-dev-summary/</link>
+      <link>https://blog.meowsay.com/posts/a-indie-game-dev-summary/</link>
       <pubDate>Sun, 10 Jul 2022 11:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/a-indie-game-dev-summary/</guid>
+      <guid>https://blog.meowsay.com/posts/a-indie-game-dev-summary/</guid>
       <description>从2021年4月开始，我作为一名独立开发者，开始了自己的瞎折腾之路。一年多没有做出什么赚钱的项目。不过现在，终于做出了一个对于我自己来说，算是成功的项目。
 我现在上线的这款游戏是一个文字游戏，画风稀碎，也没有什么具体的游戏类型，一切都是野路子，只要觉某个玩法好玩，就会添加这个玩法。这个游戏就是《无量：钓海》，目前已经上线了 TapTap、好游快爆、AppStore、光环助手、4399 平台。在没有版号的情况下，国内也就这些平台可以上了。
 《无量钓海》TapTap 链接: https://www.taptap.com/app/234065
@@ -156,10 +156,10 @@ package com.moeif.moeifgames; import android.app.Activity; import android.app.Al
     
     <item>
       <title>让 Unity Shader 不受 Time.timeScale 的影响</title>
-      <link>https://blog.moeif.com/posts/unity-shader-unscaledtime/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-unscaledtime/</link>
       <pubDate>Sat, 25 Jun 2022 11:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-unscaledtime/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-unscaledtime/</guid>
       <description>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
 但是，有时候希望即使将 TimeScale 设置为 0，有些东西也能继续运行，比如在写 Shader 时，经常会用到 _Time 属性，但是它会受到 Time.timeScale 的影响。不过有以下几种方式可以做到不受影响。
 方法一 private void Update() { material.SetFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
@@ -172,20 +172,20 @@ using System; using System.Collections.Generic; using System.Linq; using UnityEn
     
     <item>
       <title>Lua 带权重随机</title>
-      <link>https://blog.moeif.com/posts/lua-randon-with-weight/</link>
+      <link>https://blog.meowsay.com/posts/lua-randon-with-weight/</link>
       <pubDate>Fri, 03 Jun 2022 10:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/lua-randon-with-weight/</guid>
+      <guid>https://blog.meowsay.com/posts/lua-randon-with-weight/</guid>
       <description>t 是数据数组，weights 是权重数组，两个数组长度是一致的。
 function RandomWithWeight(t, weights) local sum = 0 for i = 1, #weights do sum = sum + weights[i] end local compareWeight = math.random(1, sum) local weightIndex = 1 while sum &amp;gt; 0 do sum = sum - weights[weightIndex] if sum &amp;lt; compareWeight then return t[weightIndex], weightIndex end weightIndex = weightIndex + 1 end return nil, nil end </description>
     </item>
     
     <item>
       <title>理解 Entity Component System</title>
-      <link>https://blog.moeif.com/posts/entity-component-system/</link>
+      <link>https://blog.meowsay.com/posts/entity-component-system/</link>
       <pubDate>Sun, 03 Apr 2022 15:23:39 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/entity-component-system/</guid>
+      <guid>https://blog.meowsay.com/posts/entity-component-system/</guid>
       <description>Entity-Component-System (ECS) 是一种架构模式。这种模式广泛地应用在游戏开发中。ECS 使用组合原则，因此这种模式使程序具有更好的灵活性和扩展性。游戏场景中的所有对象都被视为一个实体 (Entity)。这种模式在默认情况下也具有更高的性能。
 Entity-Component-System 有三个部分组成
 Entity (实体) Component (组件) System (系统) 什么是 Entity Entity 可以理解为一个对象的标识，它没有任何具体的数据和行为，只是标识一个东西。在实现上，通常可以用一个 Struct 来实现。而组件，为其提供数据。
@@ -199,10 +199,10 @@ ECS 的优势 降低代码量以及复杂度 对于逻辑扩展拥有很高的�
     
     <item>
       <title>Unity 完整的热更新方案和流程</title>
-      <link>https://blog.moeif.com/posts/unity-hot-update/</link>
+      <link>https://blog.meowsay.com/posts/unity-hot-update/</link>
       <pubDate>Sun, 20 Mar 2022 12:30:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-hot-update/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-hot-update/</guid>
       <description>在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
 这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
 整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
@@ -213,10 +213,10 @@ LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在�
     
     <item>
       <title>一个游戏兑换码生成及验证方案</title>
-      <link>https://blog.moeif.com/posts/exchange-code/</link>
+      <link>https://blog.meowsay.com/posts/exchange-code/</link>
       <pubDate>Tue, 01 Mar 2022 13:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/exchange-code/</guid>
+      <guid>https://blog.meowsay.com/posts/exchange-code/</guid>
       <description>在开发独立游戏《小镇危机：来自丧尸的问候》时，需要设计一个兑换码的功能，但是在网络上也没有找到合适的方案，所以这里就自己考虑了一种。这里会说明思路，具体的实现，可以按照自己的方式去定制。
 我们的游戏中有两种资源可以兑换，一种是星星，一种是钻石。所以就需要在兑换码中通过某种方式表示出来。本质上就是将自己想兑换的数据，通过某种方式的变换，隐藏在兑换码中，然后服务器是知道解码方式的，通过解码，即可还原出玩家兑换的是什么，然后将兑换物品回给玩家。
 我们的游戏兑换码为14位的，里面包含的信息有兑换类型，兑换数量，这两个信息，例如 LMA60XV7380QBH。
@@ -229,10 +229,10 @@ DLDWVEQ WM8YB8M MNUP5RR 3RG7X8D VUBPD8J J3L3ZR1 1Y1ALB3 R6PRATR 然后表示出�
     
     <item>
       <title>我的独立游戏下载量和广告收入情况</title>
-      <link>https://blog.moeif.com/posts/coder-game-ad/</link>
+      <link>https://blog.meowsay.com/posts/coder-game-ad/</link>
       <pubDate>Sun, 06 Feb 2022 17:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/coder-game-ad/</guid>
+      <guid>https://blog.meowsay.com/posts/coder-game-ad/</guid>
       <description>经过了几个月的开发，我的游戏终于上线了。这篇博客来聊一下目前这个游戏的下载量和广告收入情况。
 《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
 目前已经上线 AppStore，TapTap，好游快爆等平台。
@@ -247,10 +247,10 @@ TapTap: https://www.taptap.com/app/230651
     
     <item>
       <title>游戏码农：那些打工的日子</title>
-      <link>https://blog.moeif.com/posts/coder-game/</link>
+      <link>https://blog.meowsay.com/posts/coder-game/</link>
       <pubDate>Fri, 04 Feb 2022 23:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/coder-game/</guid>
+      <guid>https://blog.meowsay.com/posts/coder-game/</guid>
       <description>经过了几个月的开发，我的游戏终于上线了。
 《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
 目前已经上线 AppStore，TapTap，好游快爆等平台。
@@ -272,10 +272,10 @@ TapTap: https://www.taptap.com/app/230651
     
     <item>
       <title>Gameplay 02 游戏中的跳跃</title>
-      <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
+      <link>https://blog.meowsay.com/posts/gameplay-02-jump/</link>
       <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gameplay-02-jump/</guid>
+      <guid>https://blog.meowsay.com/posts/gameplay-02-jump/</guid>
       <description>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
 自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
 我们的目标是求出跳跃的速度。
@@ -288,10 +288,10 @@ TapTap: https://www.taptap.com/app/230651
     
     <item>
       <title>Gameplay 01 游戏开发中的平滑移动</title>
-      <link>https://blog.moeif.com/posts/gamedev-smooth-move/</link>
+      <link>https://blog.meowsay.com/posts/gamedev-smooth-move/</link>
       <pubDate>Thu, 06 Jan 2022 20:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gamedev-smooth-move/</guid>
+      <guid>https://blog.meowsay.com/posts/gamedev-smooth-move/</guid>
       <description>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
 一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
@@ -302,37 +302,37 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>编译 Apple Silicon 版本 Aseprite</title>
-      <link>https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/</link>
+      <link>https://blog.meowsay.com/posts/compile-aseprite-for-apple-m1/</link>
       <pubDate>Wed, 01 Dec 2021 21:12:47 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/</guid>
+      <guid>https://blog.meowsay.com/posts/compile-aseprite-for-apple-m1/</guid>
       <description>&lt;p&gt;编译苹果 M1 芯片版本的 Aseprite，步骤如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《音乐与僵尸：Zombie Rhythm》开发日志</title>
-      <link>https://blog.moeif.com/posts/zombie-rhythm-devlog/</link>
+      <link>https://blog.meowsay.com/posts/zombie-rhythm-devlog/</link>
       <pubDate>Tue, 12 Oct 2021 12:43:47 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/zombie-rhythm-devlog/</guid>
+      <guid>https://blog.meowsay.com/posts/zombie-rhythm-devlog/</guid>
       <description>&lt;p&gt;《音乐与僵尸：Zombie Rhythm》经过了一个多月的开发，终于上线了。这是一个融合了丧尸和音乐节奏的休闲游戏。这篇文章就聊一下这个游戏的整个开发过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《我在美国学游戏设计》笔记</title>
-      <link>https://blog.moeif.com/posts/game-design-note/</link>
+      <link>https://blog.meowsay.com/posts/game-design-note/</link>
       <pubDate>Mon, 27 Sep 2021 15:35:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/game-design-note/</guid>
+      <guid>https://blog.meowsay.com/posts/game-design-note/</guid>
       <description>&lt;p&gt;从情感体验出发，探索出最合适的机制来表达情感。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何开发一个问答类游戏</title>
-      <link>https://blog.moeif.com/posts/how-to-make-a-quiz-game/</link>
+      <link>https://blog.meowsay.com/posts/how-to-make-a-quiz-game/</link>
       <pubDate>Sun, 29 Aug 2021 12:19:40 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/how-to-make-a-quiz-game/</guid>
+      <guid>https://blog.meowsay.com/posts/how-to-make-a-quiz-game/</guid>
       <description>问答类游戏，在开发过程中还算是比较简单的一个分类，核心的内容就是问题与答案。抽象来讲，问题可能是文字，也可以是图片，也可以是声音等等，而对应玩家可以选择的答案，也可以不同的表现形式。例如看电影海报猜电影名字，听音乐片段猜歌曲等等
 【诗仙与诗魔】，是一个诗词挑战类游戏，本质上也算是一个答类游戏，问题变成了某一首诗中的某一句，而答案就是从给定的类似诗句中选择正确的那一句。接下来我将从技术有角度来解析一下这个游戏的整个开发过程。
 这个游戏现在可以直接从商店下载体验，在 AppStore 或 TapTap 搜索 诗仙与诗魔 即可找到。
@@ -355,55 +355,55 @@ Android 下载连接: https://www.taptap.com/app/222178
     
     <item>
       <title>Unity 2D 游戏背景适配</title>
-      <link>https://blog.moeif.com/posts/unity-2d-bg-adaptive/</link>
+      <link>https://blog.meowsay.com/posts/unity-2d-bg-adaptive/</link>
       <pubDate>Sun, 22 Aug 2021 20:57:04 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-2d-bg-adaptive/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-2d-bg-adaptive/</guid>
       <description>&lt;p&gt;在开发2D游戏的时候，不同的设备分辨率下，经常需要将背景以高或以宽来适配。如果以高适配，即背景图的高度填充整个屏幕，然后去缩放宽度。最终效果图如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity Sprites Full-Rect 和 Tight 设置</title>
-      <link>https://blog.moeif.com/posts/unity-sprite-full-rect-tight/</link>
+      <link>https://blog.meowsay.com/posts/unity-sprite-full-rect-tight/</link>
       <pubDate>Sat, 21 Aug 2021 15:27:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-sprite-full-rect-tight/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-sprite-full-rect-tight/</guid>
       <description>&lt;p&gt;在开发2D游戏的时候，对于图片的 Mesh Type 设置我们应该选择 &lt;strong&gt;Full Rect&lt;/strong&gt; 还是 &lt;strong&gt;Tight&lt;/strong&gt; 呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity 接入 Topon 报错解决</title>
-      <link>https://blog.moeif.com/posts/solve-topon-ad-build-error/</link>
+      <link>https://blog.meowsay.com/posts/solve-topon-ad-build-error/</link>
       <pubDate>Sun, 25 Apr 2021 20:16:59 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/solve-topon-ad-build-error/</guid>
+      <guid>https://blog.meowsay.com/posts/solve-topon-ad-build-error/</guid>
       <description>&lt;p&gt;最近在接入Topon广告聚合SDK是，导出XCode工程后，编译报了一堆错误，搞了好久，这里记录一下解决过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity XCode 自动设置签名</title>
-      <link>https://blog.moeif.com/posts/unity-xcode-auto-signing/</link>
+      <link>https://blog.meowsay.com/posts/unity-xcode-auto-signing/</link>
       <pubDate>Fri, 12 Mar 2021 19:01:01 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-xcode-auto-signing/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-xcode-auto-signing/</guid>
       <description>&lt;p&gt;Unity ios导出XCode工程后，通常需要手动设置签名，就像下图中的样子。只要简单的两部设置，就可以自动选择我们想要的签名。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity 接入 Sigmob SDK</title>
-      <link>https://blog.moeif.com/posts/sigmob-sdk-for-unity/</link>
+      <link>https://blog.meowsay.com/posts/sigmob-sdk-for-unity/</link>
       <pubDate>Wed, 06 Jan 2021 22:03:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/sigmob-sdk-for-unity/</guid>
+      <guid>https://blog.meowsay.com/posts/sigmob-sdk-for-unity/</guid>
       <description>&lt;p&gt;在 Unity 项目中接入Sigmob 时，遇到很多问题，他们的文档写的也不是很清楚，特别是对于 Android 开发没有很深入了解的情况，读起来很困难，这篇博客记录了详细的 Sigmob 广告 sdk 接入过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解 Boids</title>
-      <link>https://blog.moeif.com/posts/understanding-boids/</link>
+      <link>https://blog.meowsay.com/posts/understanding-boids/</link>
       <pubDate>Mon, 30 Nov 2020 18:01:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/understanding-boids/</guid>
+      <guid>https://blog.meowsay.com/posts/understanding-boids/</guid>
       <description>Boids 可以理解为类似鸟群的东西，就是多个个体之间的相互作用。在游戏开发中经常会用到。例如 RTS 游戏，控制一个坦克战队，如何保持行进方向的一致性，以及坦克之间互相有一定有间隔，又不会间隔太大，这里就可以使用 Boids 相关的理论来实现。
 在众多这方面的文章中，基本上会涉及到三个方面，跟随、分离、聚合。跟随，就是说整个群体有一个行进的大方向。分离，则是个体与个体之间有一定的间隔，不至于发生碰撞。而聚合，就是个体不能离群体太远，不能脱离群体。
 对于上面提到的三个方面，简单来说，就是一个力的叠加。
@@ -418,19 +418,19 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>Apk 上架前的签名操作</title>
-      <link>https://blog.moeif.com/posts/apk-signature/</link>
+      <link>https://blog.meowsay.com/posts/apk-signature/</link>
       <pubDate>Thu, 05 Nov 2020 14:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/apk-signature/</guid>
+      <guid>https://blog.meowsay.com/posts/apk-signature/</guid>
       <description>&lt;p&gt;在 APK 包上传到一些应用市场时，通常要求开发者对 APK 进行签名，下面记录一下签名步骤。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity 接入友盟SDK</title>
-      <link>https://blog.moeif.com/posts/unity-umeng-sdk/</link>
+      <link>https://blog.meowsay.com/posts/unity-umeng-sdk/</link>
       <pubDate>Sun, 16 Aug 2020 10:56:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-umeng-sdk/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-umeng-sdk/</guid>
       <description>友盟游戏统计 SDK 可以很方便的统计一些游戏数据。使用他们的自定义事件，来统计自己项目关心的数据。现在接入 SDK 已经比以前方便了很多，不需要再导出 Android 工程去修改 Java。下面将一步一步详细说明。
 要使用友盟 SDK，一共有以下几步
 在友盟后面新建应用 在友盟后面建立自定义事件 下载并导入 SDK 调用 SDK 1. 在友盟后面新建应用 首先注册账号，然后进入友盟工作台。↓ https://www.umeng.com/
@@ -451,10 +451,10 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>游戏项目资源管理</title>
-      <link>https://blog.moeif.com/posts/u3d-game-resources-managemant/</link>
+      <link>https://blog.meowsay.com/posts/u3d-game-resources-managemant/</link>
       <pubDate>Sat, 25 Apr 2020 18:57:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/u3d-game-resources-managemant/</guid>
+      <guid>https://blog.meowsay.com/posts/u3d-game-resources-managemant/</guid>
       <description>在游戏开发的过程中，整个项目的资源管理是很重要的一部分。涉及到与美术、策划等同事的协作，以及资源的打包，和后续运行时资源的更新，加载，卸载，内存管理等方面。规划好资源的的各个目录存放，以及资源的分类，会为后续的开发工作节省不少时间。这一篇博客主要来聊一下到资源的存放问题，而 AssetBundle 打包，以及运行时的更新和资源管理，将在后面的博客中详细说明。
 资源类型 一个游戏项目，涉及到的资源主要有 配置数据、图片、模型、材质、Shader、字体、音频、视频、动画Clip、Prefab、Animator Controller、Timeline、场景文件、Lua脚本 等。
 关于协作 首先说一下协作问题。在游戏开发的过程中，美术的同学需要将资源直接提交到建立好的项目中的指定目录中，一般来说，提交到哪个目录，是由程序的同学来决定，具体哪个目录，要根据后续的资源打包以及管理等方面决定。美术的同学提交的资源一般就是模型、动画、贴图等。
@@ -470,10 +470,10 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>Unity Shader | 半兰伯特、高光反射、BlinnPhone</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-05/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-05/</link>
       <pubDate>Thu, 19 Mar 2020 21:50:16 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-05/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-05/</guid>
       <description>写 Shader，到底是在做什么？Shader 就像一个拥有魔法的黑箱，我们最终从它那里得到的，是像素的颜色。而得到的是什么样的像素颜色，则取决于我们丢进黑箱里的是什么东西，以及使用的魔法咒语是什么。丢进同样的东西，使用不同的魔法咒语，得到的像素颜色也是不一样的。输入顶点的坐标，光线方向，以及自定义的颜色，使用不同的计算方式，得到的像素颜色是不一样的。使用同样的计算方式，丢进一个纯色颜色值，和丢进一张纹理，得到的像素，也是不一样的。
 如果把整个 Shader 比作一个函数，那么顶点位置，自定义的颜色值，纹理，灯光等这些就相当于函数的输入参数，而 Shader 中写的各种计算，用的各种算法，都是对输入的那些参数进行操作，而最终生成的，就是颜色值，也就是相当于函数的返回值。把 Shader 想的简单一点，就是输入需要的东西，进行计算，得到像素值。
 这篇博客，还是关于光照模型的，接下来我们首先总结一下常用的光照模型。
@@ -489,10 +489,10 @@ Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * 
     
     <item>
       <title>Unity Shader | 光照模型和漫反射</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-04/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-04/</link>
       <pubDate>Sun, 15 Mar 2020 11:54:30 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-04/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-04/</guid>
       <description>在之前的文章中写的Shader，呈现出来的物体样子是一个平面2D的状态，即使物体是3D的，那是因为，我们还没有将灯光加入到Shader的运算中。现在，我们将介绍灯光相关的东西，最后呈现出和 Unity Diffuse Shader 一样的效果。
 什么是光照模型 光照模型，简单理解就是一种运算，或者说一个公式，计算的结果，决定了一个点受到光照时，所表现出来的效果。例如，光照在木板上，和照在一面镜子上，我们所看到的效果是不一样的，照在镜子上，很大一部分光会被镜子反射，而木板，却不会反射那么多光。
 进入摄相机的光线分类 在游戏中，我们可以将进入摄相机的光分为 高光反射、漫反射、自发光等。像上面说的镜子反射了大部分光，就是高光反射，现实中比较光滑的表面，受到光照时，都会产生这种效果，很亮。而光线照在木头上，就是漫反射，其实是木头先吸收了光，然后向周围散射出去，这个就不会很亮。而自发光，就是字面意思，自身是一个发光体。这里大概知道这些词是什么就可以，不必深究里面的原理。
@@ -504,19 +504,19 @@ Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要�
     
     <item>
       <title>Unity UGUI RGB通道分离抖动</title>
-      <link>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</link>
+      <link>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</link>
       <pubDate>Sun, 08 Mar 2020 22:18:03 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</guid>
       <description>&lt;p&gt;今天我们要在 UGUI 上实现图片RGB通道分离抖动效果，先看最终效果图&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity Shader | 使用Struct传递数据</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-03/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-03/</link>
       <pubDate>Sat, 07 Mar 2020 14:02:26 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-03/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-03/</guid>
       <description>上一篇博客 说了在 CGPROGRAM 中写代码、顶点处理函数、片元处理函数、以及在两个函数之间传递简单的数据、从 ShaderLab 属性到CG数据类型之间的联系等。这一篇博将稍详细一点说一下 Shader 的基本知识，以及在顶点和片元函数之间传递更多的数据。
 Shader的基本理解 简单来说，Shader 决定了一个模型最终呈现在屏幕上的样子。一个模型由很多顶点构成，而每一个顶点，都会经过 Shader 中的顶点处理函数，这个过程，就是从应用将数据传递到顶点处理函数，顶点函数需要将顶点从模型空间转换到屏幕空间，或者说是裁剪空间，也可以简单理解为从 3 维空间转换到屏幕上的 2 维空间。在这个过程中，还可以做一些其他对顶点的操作。
 顶点数据经过顶点处理函数处理后，接下来就返回，然后传给片元处理函数，到了这一步，面对的，就是像素，也就是每一个像素的颜色值。在这里，可以根据自己的需求，对每一个像素做处理，例如做高斯模糊，RGB通道分离，等等，各种各样的效果。
@@ -526,20 +526,20 @@ Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;�
     
     <item>
       <title>Unity Shader |  属性、顶点与片元函数</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-02/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-02/</link>
       <pubDate>Mon, 02 Mar 2020 22:46:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-02/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-02/</guid>
       <description>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11 _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128 _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{} _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{} _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
     </item>
     
     <item>
       <title>Unity Shader | 基础</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-01/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-01/</link>
       <pubDate>Mon, 24 Feb 2020 22:14:04 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-01/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-01/</guid>
       <description>MeshFilter 存储一个Mesh（网格，模型的网格，模型的三角面顶点信息）
 MeshRenderer 用于渲染一个物体的外观，数据来源于MeshFilter
 Material 材质包含两部分，贴图和Shader
@@ -554,10 +554,10 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
     
     <item>
       <title>使用 Unity 实现漂亮的数学曲面(下)</title>
-      <link>https://blog.moeif.com/posts/unity-basis-03-math-curve2/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-03-math-curve2/</link>
       <pubDate>Thu, 16 Jan 2020 15:51:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-03-math-curve2/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-03-math-curve2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://imoegirl.com/2020/01/10/unity-basis-03-math-curve1/&#34;&gt;上一篇博客&lt;/a&gt;我们实现了一些简单的数学曲面，这一节我们将继续更复杂的数学曲面展示，所有资源完全承接上一篇内容。&lt;/p&gt;
 &lt;h2 id=&#34;25-创建一个涟漪效果&#34;&gt;2.5 创建一个涟漪效果&lt;/h2&gt;
 &lt;p&gt;先来看一下最终要实现的效果图&lt;/p&gt;
@@ -567,10 +567,10 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
     
     <item>
       <title>使用 Unity 实现漂亮的数学曲面(上)</title>
-      <link>https://blog.moeif.com/posts/unity-basis-03-math-curve1/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-03-math-curve1/</link>
       <pubDate>Fri, 10 Jan 2020 10:51:45 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-03-math-curve1/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-03-math-curve1/</guid>
       <description>这篇博客是上一篇 使用Unity3D展示Sin函数动画 的续篇，在上一篇的基础上，来实现更复杂的效果。在文章最后会有完整的 C# 代码和 Shader 代码，先来看一下最终的效果图
 由于篇幅太长，所以将分为上下两部分，现在开始第一部分的内容。
 先将上一节 使用Unity3D展示Sin函数动画 的资源准备好，可以按下面的步骤手动建立，也可以直接导入上一节内容的完整 Unity 资源包，点这里下载
@@ -583,19 +583,19 @@ void Update () { for (int i = 0; i &amp;lt; points.</description>
     
     <item>
       <title>使用Unity3D展示Sin函数动画</title>
-      <link>https://blog.moeif.com/posts/unity-sine-visualization/</link>
+      <link>https://blog.meowsay.com/posts/unity-sine-visualization/</link>
       <pubDate>Mon, 06 Jan 2020 13:05:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-sine-visualization/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-sine-visualization/</guid>
       <description>&lt;p&gt;今天我们要实现的东西，就是下面这个动图的效果。使用代码控制方块的坐标，来展示 &lt;code&gt;Sin&lt;/code&gt; 函数。方块的颜色变化，是随着坐标变化而动态改变的，我们会写一个超简单的 &lt;code&gt;Shader&lt;/code&gt; 来实现。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>制作一个会动的时钟</title>
-      <link>https://blog.moeif.com/posts/unity-basis-01-clock/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-01-clock/</link>
       <pubDate>Mon, 06 Jan 2020 11:02:32 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-01-clock/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-01-clock/</guid>
       <description>这是 Unity 基础系列教程的第一篇博客。我们将由浅入深，一步一步学习Unity及游戏开发相关的东西。整个系列教程所使用的Unity版本为 2018.4 及以上就可以，如果要使用特殊版本，则会在文中指出。
 今天要做的是一个能够实时显示当前时间的时钟，就是下面这个东东。
 1 首先建立一个新工程 首先打开Unity，创建一个新工程，名字自己定，例如 Clock 就可以。默认打开后，Unity 默认布局是下面图的样子。
@@ -609,10 +609,10 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
     
     <item>
       <title>梦开始的地方</title>
-      <link>https://blog.moeif.com/posts/a-game-project-0-start/</link>
+      <link>https://blog.meowsay.com/posts/a-game-project-0-start/</link>
       <pubDate>Sun, 08 Dec 2019 14:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/a-game-project-0-start/</guid>
+      <guid>https://blog.meowsay.com/posts/a-game-project-0-start/</guid>
       <description>经历过很多项目，遇到和解决过很多问题，但是没有没有以文字的形式总结过。所以这个系列，我打算从客户端的视角，去总结一个游戏项目从开始到上线，整个过程中的一些事情，人员之间的配合，客户端一些重要模块的实现，开发过程中遇到的问题等等。
 一个项目的开始，可能始于某一个人的某一个微小的想法，经过一段时间的构思，然后到达公司层面，在经过很多人的会议讨论，市场调研，等等，觉得方案可行，然后就是立项，准备进入开发阶段。这个过程不是一两天完成的，可能经历了很长时间。这个阶段，也会大概预计项目周期，项目成本，什么时候上线，盈利情况预估等等。
 一旦确认了项目开发，策划方面会先行，进行项目的具体设计，开会讨论，确定方案等等。
@@ -627,19 +627,19 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
     
     <item>
       <title>浅谈Unity3D音频可视化效果原理</title>
-      <link>https://blog.moeif.com/posts/unity-audio-visualization/</link>
+      <link>https://blog.meowsay.com/posts/unity-audio-visualization/</link>
       <pubDate>Wed, 04 Dec 2019 16:08:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-audio-visualization/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-audio-visualization/</guid>
       <description>&lt;p&gt;在游戏开发中，你是否也想将音乐旋律变为漂亮的图形显示？就像这样的效果。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>怎样在Unity中Reload原生插件</title>
-      <link>https://blog.moeif.com/posts/reload-native-unity-plugins/</link>
+      <link>https://blog.meowsay.com/posts/reload-native-unity-plugins/</link>
       <pubDate>Sun, 01 Dec 2019 01:05:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/reload-native-unity-plugins/</guid>
+      <guid>https://blog.meowsay.com/posts/reload-native-unity-plugins/</guid>
       <description>这是一篇翻译文章，原文来自 how-to-reload-native-plugins-in-unity
 在Unity编辑器使用原生插件，Dll之类的，经常会遇到一个问题，替换插件时，Unity会提示正在使用，无法替换，这是因为Unity一旦点了Play，加载了Dll，就不会去卸载。
 要解决这个问题也很简单，那就是先关掉Unity，然后替换Dll，然后再打开Unity。对于插件的使用者，倒不是什么大问题，但是如果你是插件的开发者，需要频繁的修改和测试插件，那就有点悲惨了。
@@ -656,10 +656,10 @@ TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，�
     
     <item>
       <title>浅谈在Unity3D中使用CriWare播放声音</title>
-      <link>https://blog.moeif.com/posts/unity-criware/</link>
+      <link>https://blog.meowsay.com/posts/unity-criware/</link>
       <pubDate>Sat, 30 Nov 2019 19:17:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-criware/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-criware/</guid>
       <description>在游戏开发中的音频解决方案，CriWare 是不错的选择，很多游戏大作也在使用。为什么使用CriWare呢？对于游戏运行时，可以显著提高加载速度和减小包体大小。而对于音频制作上，可以很方便地做更多的效果，例如多音源的避让等。
 今天我们就来浅浅地聊一下在 Unity3D 中使用 CriWare 播放声音，以及声音的管理等问题。
 音频文件由做音频的同学使用CriWare的软件去制作，最终导出的文件是以acb或awb为扩展名的文件。如果采用的是Memory的形式，则导出的acb文件。

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Shader on Meowsay</title>
-    <link>https://blog.moeif.com/tags/shader/</link>
+    <link>https://blog.meowsay.com/tags/shader/</link>
     <description>Recent content in Shader on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 19 Mar 2020 21:50:16 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/shader/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Mar 2020 21:50:16 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/shader/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unity Shader | 半兰伯特、高光反射、BlinnPhone</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-05/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-05/</link>
       <pubDate>Thu, 19 Mar 2020 21:50:16 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-05/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-05/</guid>
       <description>写 Shader，到底是在做什么？Shader 就像一个拥有魔法的黑箱，我们最终从它那里得到的，是像素的颜色。而得到的是什么样的像素颜色，则取决于我们丢进黑箱里的是什么东西，以及使用的魔法咒语是什么。丢进同样的东西，使用不同的魔法咒语，得到的像素颜色也是不一样的。输入顶点的坐标，光线方向，以及自定义的颜色，使用不同的计算方式，得到的像素颜色是不一样的。使用同样的计算方式，丢进一个纯色颜色值，和丢进一张纹理，得到的像素，也是不一样的。
 如果把整个 Shader 比作一个函数，那么顶点位置，自定义的颜色值，纹理，灯光等这些就相当于函数的输入参数，而 Shader 中写的各种计算，用的各种算法，都是对输入的那些参数进行操作，而最终生成的，就是颜色值，也就是相当于函数的返回值。把 Shader 想的简单一点，就是输入需要的东西，进行计算，得到像素值。
 这篇博客，还是关于光照模型的，接下来我们首先总结一下常用的光照模型。
@@ -32,10 +32,10 @@ Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * 
     
     <item>
       <title>Unity Shader | 光照模型和漫反射</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-04/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-04/</link>
       <pubDate>Sun, 15 Mar 2020 11:54:30 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-04/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-04/</guid>
       <description>在之前的文章中写的Shader，呈现出来的物体样子是一个平面2D的状态，即使物体是3D的，那是因为，我们还没有将灯光加入到Shader的运算中。现在，我们将介绍灯光相关的东西，最后呈现出和 Unity Diffuse Shader 一样的效果。
 什么是光照模型 光照模型，简单理解就是一种运算，或者说一个公式，计算的结果，决定了一个点受到光照时，所表现出来的效果。例如，光照在木板上，和照在一面镜子上，我们所看到的效果是不一样的，照在镜子上，很大一部分光会被镜子反射，而木板，却不会反射那么多光。
 进入摄相机的光线分类 在游戏中，我们可以将进入摄相机的光分为 高光反射、漫反射、自发光等。像上面说的镜子反射了大部分光，就是高光反射，现实中比较光滑的表面，受到光照时，都会产生这种效果，很亮。而光线照在木头上，就是漫反射，其实是木头先吸收了光，然后向周围散射出去，这个就不会很亮。而自发光，就是字面意思，自身是一个发光体。这里大概知道这些词是什么就可以，不必深究里面的原理。
@@ -47,19 +47,19 @@ Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要�
     
     <item>
       <title>Unity UGUI RGB通道分离抖动</title>
-      <link>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</link>
+      <link>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</link>
       <pubDate>Sun, 08 Mar 2020 22:18:03 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</guid>
       <description>&lt;p&gt;今天我们要在 UGUI 上实现图片RGB通道分离抖动效果，先看最终效果图&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity Shader | 使用Struct传递数据</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-03/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-03/</link>
       <pubDate>Sat, 07 Mar 2020 14:02:26 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-03/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-03/</guid>
       <description>上一篇博客 说了在 CGPROGRAM 中写代码、顶点处理函数、片元处理函数、以及在两个函数之间传递简单的数据、从 ShaderLab 属性到CG数据类型之间的联系等。这一篇博将稍详细一点说一下 Shader 的基本知识，以及在顶点和片元函数之间传递更多的数据。
 Shader的基本理解 简单来说，Shader 决定了一个模型最终呈现在屏幕上的样子。一个模型由很多顶点构成，而每一个顶点，都会经过 Shader 中的顶点处理函数，这个过程，就是从应用将数据传递到顶点处理函数，顶点函数需要将顶点从模型空间转换到屏幕空间，或者说是裁剪空间，也可以简单理解为从 3 维空间转换到屏幕上的 2 维空间。在这个过程中，还可以做一些其他对顶点的操作。
 顶点数据经过顶点处理函数处理后，接下来就返回，然后传给片元处理函数，到了这一步，面对的，就是像素，也就是每一个像素的颜色值。在这里，可以根据自己的需求，对每一个像素做处理，例如做高斯模糊，RGB通道分离，等等，各种各样的效果。
@@ -69,20 +69,20 @@ Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;�
     
     <item>
       <title>Unity Shader |  属性、顶点与片元函数</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-02/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-02/</link>
       <pubDate>Mon, 02 Mar 2020 22:46:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-02/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-02/</guid>
       <description>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11 _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128 _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{} _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{} _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
     </item>
     
     <item>
       <title>Unity Shader | 基础</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-01/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-01/</link>
       <pubDate>Mon, 24 Feb 2020 22:14:04 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-01/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-01/</guid>
       <description>MeshFilter 存储一个Mesh（网格，模型的网格，模型的三角面顶点信息）
 MeshRenderer 用于渲染一个物体的外观，数据来源于MeshFilter
 Material 材质包含两部分，贴图和Shader

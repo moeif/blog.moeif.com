@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Rust on Meowsay</title>
-    <link>https://blog.moeif.com/tags/rust/</link>
+    <link>https://blog.meowsay.com/tags/rust/</link>
     <description>Recent content in Rust on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Apr 2020 19:38:35 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Apr 2020 19:38:35 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>对比 Rust 和 Python 图片缩放速度</title>
-      <link>https://blog.moeif.com/posts/compare-rust-and-python-resize-image/</link>
+      <link>https://blog.meowsay.com/posts/compare-rust-and-python-resize-image/</link>
       <pubDate>Sun, 26 Apr 2020 19:38:35 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/compare-rust-and-python-resize-image/</guid>
+      <guid>https://blog.meowsay.com/posts/compare-rust-and-python-resize-image/</guid>
       <description>写博客时经常会用到 tinypng 这个网站进行图片压缩，所以今天就想用 Rust 试一下关于图片处理的东西。首先对比了一个 Rust 和 Python 的缩放速度，Rust 使用了 image-rs，Python 使用了 Image 中的 PIL，速度结果如下图。
 原图是一张 2.9M，4800x2500 的图片，缩小为 500x260。电脑CPU型号是 Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz。使用 release 编译。
 &amp;gt; 点击这里查看大图
@@ -28,10 +28,10 @@
     
     <item>
       <title>Rust 基础 | 常用集合数据类型</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-06/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-06/</link>
       <pubDate>Sun, 12 Apr 2020 23:51:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-06/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-06/</guid>
       <description>之前用到的 String 类型，并没有那么简单，接下来会聊一下关于 String 更多的一些应用。在说 String 前，需要先学习一下 Vec 这种数据类型，类似于一个动态的数组。然后是 HashMap，一个键对值的数据类型，与其他编程语言中的字典很类似。
 Vec Vec&amp;lt;T&amp;gt; 和数组一样，用于存储一系列相同类型的值。但是 Vec 可以动态地插入，删除。首先，是创建一个 Vec，可以使用 Vec::new()，或者使用宏 vec!。要注意的是，只有使用 mut，才能使 Vec 可变，也就是可以插入和删除值。
 fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;lt;i32&amp;gt; = Vec::new(); // 在定义时不标明类型，而在首次插入值时，由Rust自动推断 let mut v2 = Vec::new(); // 这里插入了一个 i32 的值，所以Rust推断 v2 为存放 i32 的 Vec v2.push(2); let v3 = vec![1,2,3,4,5]; let v4 = vec![&amp;#34;hello&amp;#34;, &amp;#34;rust&amp;#34;]; let mut v5: Vec&amp;lt;String&amp;gt; = vec![&amp;#34;hello&amp;#34;.to_string(), &amp;#34;rust&amp;#34;.to_string()]; } 向 Vec 有两个操作函数，一个是 push，往里插入值，一个是 pop，往外弹出值，Pop返回的是最后插入的值。看下面的代码</description>
@@ -39,19 +39,19 @@ fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;
     
     <item>
       <title>Rust 基础 | 枚举、匹配</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-05/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-05/</link>
       <pubDate>Sun, 05 Apr 2020 22:29:14 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-05/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-05/</guid>
       <description>&lt;p&gt;这篇博客涉及到的知识点有 &lt;strong&gt;枚举的定义&lt;/strong&gt;、&lt;strong&gt;Option 枚举&lt;/strong&gt;、&lt;strong&gt;match 语法&lt;/strong&gt;、&lt;strong&gt;if let 语法&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 基础 | 结构体</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-04/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-04/</link>
       <pubDate>Thu, 02 Apr 2020 17:26:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-04/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-04/</guid>
       <description>在有类的编程语言中，组织数据的方式可以定义一个类，而在 Rust 中，组织数据的方式，使用 struct。struct 可以定义三种不同的类型，一种是带有字段名字的结构体，一种是没有字段名字的元组结构体，一种是没有任何字段的单元结构体。
 定义 struct 带有字段名字的结构体
 #[derive(Debug)] struct User { username: String, email: String, active: bool, } fn main() { let user1 = User { username: String::from(&amp;#34;fred&amp;#34;), email: String::from(&amp;#34;fred@outlook.com&amp;#34;), active: false, }; println!(&amp;#34;{:?}&amp;#34;, user1); } 注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
@@ -64,10 +64,10 @@ fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;
     
     <item>
       <title>Rust 基础 | 引用、切片</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-03/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-03/</link>
       <pubDate>Wed, 01 Apr 2020 12:13:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-03/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-03/</guid>
       <description>在阅读Rust官方教程时，会看到两个词，引用和借用，也就是 References and Borrowing。这里很容易让人混乱，如果了解C/C++这类有指针的语言，则引用很容易理解，但是 Rust 中的借用这个词是什么意思呢？我觉得，在初学 Rust 时，可以忽略这个词，或者就简单理解为，它所涉及到的东西，就是引用，就是一个指针，就可以了，避免陷入进去。所以，接下来我就就聊一聊引用。
 什么是引用 简单来说，引用就是一个指针，这个指针指向了某个内存地址。在说所有权时，我们知道，当把一个 String 当作参数传到函数时，它的所有权也就会被移动到函数的参数上，如果在调用完函数时，我们依旧想使用这个 String，则需要将所有权再返回，这样就很麻烦，所以用引用，会方便很多，因为引用，并不会获得这个 String 的所有权。看下面的代码
 fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); // 下面这一句再访问 s1 就会编译出错，因为 s1 的所有权已经没了 //println!(&amp;#34;s1 again: {}&amp;#34;, s1); } fn print_string(s: String) { println!(&amp;#34;{}&amp;#34;, s); } 下面是用引用作为参数
@@ -76,10 +76,10 @@ fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); prin
     
     <item>
       <title>Rust 基础 | 所有权</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-02/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-02/</link>
       <pubDate>Sun, 29 Mar 2020 20:38:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-02/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-02/</guid>
       <description>什么是所有权 Rust 的所有权，是 Rust 语言的一个核心概念。可以简单理解为，一种内存管理的方式。用现实中的东西举例，当你从图书管借了一本书时，这本书的所有权暂时归你所有，而当你把书给你的朋友时，此刻，书的所有权归你的朋友所有，而当你的朋友把书归还图书馆时，此时没有人拥有书的所有权，相当于内存释放。
 在使用有自动垃圾回收(GC)的编程语言时，我们并不需要考虑内存的释放问题，因为GC会帮我们释放。Rust是无GC的语言，一个变量占用的内存什么时候释放，由它的所有权决定，简单来说，当所有权所在的作用域结束时，内存将被释放。
 什么是作用域 Rust 的作用域和其他编程语言中的作用域概念是一样的，我们使用下面的代码说明
@@ -90,10 +90,10 @@ let s1 = String::from(&amp;#34;hello&amp;#34;); let s2 = &amp;#34;hello&amp;#34;
     
     <item>
       <title>Rust 基础 | 基本语法</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-01/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-01/</link>
       <pubDate>Sat, 28 Mar 2020 22:45:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-01/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-01/</guid>
       <description>1. 变量和可变性 Rust 定义一个变量默认是不可变的，这一点与其他编程语言不同。
 let x = 10; x = 11; // 这里会编译出错， 如果要定义可变量，需要使用 mut
 let mut x = 10; x = 11; 用 let 先定义一个变量，再次用 let 定义一个变量，会将之前的变量覆盖，虽然同名，但也不是原来的变量了，这叫做 Shadowing

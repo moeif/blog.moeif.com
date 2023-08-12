@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>数据结构与算法 on Meowsay</title>
-    <link>https://blog.moeif.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+    <link>https://blog.meowsay.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
     <description>Recent content in 数据结构与算法 on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 08 Jan 2020 12:35:13 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jan 2020 12:35:13 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>哈希</title>
-      <link>https://blog.moeif.com/posts/data-structure-08-hash/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-08-hash/</link>
       <pubDate>Wed, 08 Jan 2020 12:35:13 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-08-hash/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-08-hash/</guid>
       <description>今天我们来聊一下哈希(Hashing)，有时候也被称为散列。简单来说，哈希是一个唯一标识，用于标识一个东西。例如，一个人的身份证号就可以称为一个哈希，通过一个身份证号，可以定位到某一个人的信息。一个人的名字，也可以用作哈希，不过这个可能会产生重复，因为有很多人重名，这样导致的问题就是，通过名字，可能定位到多个人的信息，这种情况叫做哈希碰撞。
 哈希表(Hash Table) 哈希表是一种存储结构，也称为散列表，是一种 Key-Value 的存储结构。通过 Key 可以直接访问在内存存储位置的数据(Value)。例如 C# 中的 Dictionary 数据结构就是一种哈希表，还有一些编程语言中的 Tuple，也可以用哈希表实现。
 哈希函数/散列函数 哈希函数也可以称为散列函数，是在哈希表内部，用于将我们之前提到的 Key，转为哈希表用于直接访问数据的索引。
@@ -31,10 +31,10 @@
     
     <item>
       <title>二叉堆</title>
-      <link>https://blog.moeif.com/posts/data-structure-07-binary-heap/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-07-binary-heap/</link>
       <pubDate>Mon, 30 Dec 2019 18:01:45 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-07-binary-heap/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-07-binary-heap/</guid>
       <description>今天我们来说一下二叉堆(BinaryHeap)。堆是很有用的数据结构，例如后面会学到的优先队列，堆排序等，都和堆有关。操作系统中很多调度，也和堆有关。
 还记得我们之前学过的完全二叉树吗？如果不记得了，就需要先回去复习一下，因为二叉堆，首先是一棵完全二叉树，或者近似完全二叉树。
 再来说一下二叉堆的特性。二叉堆分为最小堆和最大堆。如果是最小堆，那么父节点的值，总是小于或等于任何一个子节点的值，通俗点就是把一棵树从上往下看，值在变大，下面的大于等于上面的。如果是最大堆，则是反过来，父节点的值，总是大于或等于任何一个子节点的值。
@@ -51,10 +51,10 @@
     
     <item>
       <title>一个公平的洗牌算法 | Knuth-Shuffle</title>
-      <link>https://blog.moeif.com/posts/algo-knuth-shuffle/</link>
+      <link>https://blog.meowsay.com/posts/algo-knuth-shuffle/</link>
       <pubDate>Mon, 30 Dec 2019 11:59:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/algo-knuth-shuffle/</guid>
+      <guid>https://blog.meowsay.com/posts/algo-knuth-shuffle/</guid>
       <description>洗牌(随机)算法有很多应用，例如我们平时用的音乐播放器随机播放，棋牌游戏中的洗牌，扫雷游戏中雷的位置随机等等，都会用到洗牌算法。
 今天来介绍一个简单，公平，时间复杂度为O(n)的洗牌算法。什么是洗牌算法呢？其实就是将一些数据以公平随机的方式打乱顺序。这个算法，是由Knuth(高纳德)，也就是计算机程序设计艺术的作者发明的。下面我们直接进入正题。
 假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
@@ -65,10 +65,10 @@ using System; using System.Collections.Generic; class Program { static void Main
     
     <item>
       <title>二叉查找树</title>
-      <link>https://blog.moeif.com/posts/data-structure-06-binary-search-tree/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-06-binary-search-tree/</link>
       <pubDate>Thu, 26 Dec 2019 13:18:06 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-06-binary-search-tree/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-06-binary-search-tree/</guid>
       <description>二叉查找树（Binary Search Tree），简写BST，是满足某些条件的特殊二叉树。任何一个节点的左子树上的点，都必须小于当前节点。任何一个节点的右子树上的点，都必须大于当前节点。任何一棵子树，也都满足上面两个条件。另外二叉查找树中，是不存在重复节点的。
 上图中的二叉查找树，我们从Root节点3开始看，它的左子树（1，2） 和右子树（6，4，9，7）分别满足条件，左子树上的点，都小于当前节点，右子树上的点，都大于当前节点。
 继续，我们以6作为起点，来看一下这棵子树，6的左子树（4），右子树（9，7）也满足上面两条规则。
@@ -82,10 +82,10 @@ using System; using System.Collections.Generic; class Program { static void Main
     
     <item>
       <title>二叉树</title>
-      <link>https://blog.moeif.com/posts/data-structure-05-binary-tree/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-05-binary-tree/</link>
       <pubDate>Sat, 21 Dec 2019 16:22:10 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-05-binary-tree/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-05-binary-tree/</guid>
       <description>这篇博客来聊一下二叉树。呆萌数据结构系列，终于开始了树型结构的部分。这篇文章你能够学到的内容有 树，有哪些应用，二叉树的结构，什么是满二叉树，什么是完全二叉树，二叉树的遍历方式，二叉树的构建。二叉树是很基本的结构，在此基本上，会有很多很多变种，变成各种各样的树，理解了二叉树，对于后面学习其他更复杂的树型结构，会有很大的帮助。
 这篇文章首先理解文字上的内容，不要管代码，对二叉树的结构，操作，理解原理，最后再看代码。
 好了，下面开始吧。
@@ -112,10 +112,10 @@ void in_order_traversal(Node root) { // 如果左子树不为空，则递归处�
     
     <item>
       <title>队列</title>
-      <link>https://blog.moeif.com/posts/data-structure-04-queue/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-04-queue/</link>
       <pubDate>Wed, 18 Dec 2019 13:53:31 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-04-queue/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-04-queue/</guid>
       <description>生活中的一些排队行为，基本上都是队列的形式。这篇博客涉及的概念有 队列，循环队列，优先队列，双端队列。
 很多编程语言已经内置了队列结构，在实际项目中可以直接使用。这篇文章里的代码实现，主要用做原理理解。
 拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
@@ -126,10 +126,10 @@ public class Node { public int data; public Node next; public Node(int data) { t
     
     <item>
       <title>堆栈</title>
-      <link>https://blog.moeif.com/posts/data-structure-03-stack/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-03-stack/</link>
       <pubDate>Thu, 12 Dec 2019 17:31:12 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-03-stack/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-03-stack/</guid>
       <description>有一堆书，一本叠一本地放入箱子里，最后放入的，一定是在最上面，对不对。取书的时候，规定只能从上面一本一本地取，如果要拿最先放入箱子里的那本书，也就是最下面的那本书，只能先把上面的拿出来。
 什么是堆栈(Stack) 上面说的就是我们今天要讲的堆栈，也可以简单叫做栈。堆栈是很常用很基础的数据结构。堆栈涉及到的概念如果下。
 栈顶，就是最上面的一个元素。
@@ -145,10 +145,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>链表</title>
-      <link>https://blog.moeif.com/posts/data-structure-02-linkedlist/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-02-linkedlist/</link>
       <pubDate>Wed, 11 Dec 2019 10:43:51 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-02-linkedlist/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-02-linkedlist/</guid>
       <description>什么是链表 链表和数组一样，是一种线性的数据结构，由一个一个节点构成，节点中存放着数据，以及指向下一个或上一个节点的指针，通过指针，将节点链接在一起，构成整个链表结构。不同于数组，链表在内存中并不是连续的存储空间。
 为什么要用链表？或者说链表有哪些优点 我们知道，数组是很方便的数据结构，但是数组有一些局限性。必须事先知道要分配多少内存空间。插入和移除是很耗费性能的操作，因为需要移动不止一个元素。
 而链表，正好弥补了数组的缺点，链表是动态内存，不需要事先分配固定大小的空间，添加和删除元素，也只需要改变指针即可，不需要移动很多元素。
@@ -159,10 +159,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>数组</title>
-      <link>https://blog.moeif.com/posts/data-structure-01-array/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-01-array/</link>
       <pubDate>Tue, 10 Dec 2019 11:06:57 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-01-array/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-01-array/</guid>
       <description>数组，在数据结构中，是很基础，也很常用的一个，在很多很多业务中，都能看到它的身影。数组很简单，在不同的编程语言中，操作方式，也几乎都是类似的。
 那数组是什么呢？简单来说，就是在内存中分配一块连续的空间，用来存储相同类型的元素。使用索引，可以直接访问某一个元素的数据。大多数编程语言，数组的索引是从0开始的。
 数组也分为一维数组，和多维数组。就像excel中的表格，一行数据，就可以看做是一个一维数组，而多行数据，就可以看做是一个多维数组。
@@ -175,10 +175,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>数据结构概述</title>
-      <link>https://blog.moeif.com/posts/data-structure-00-introduction/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-00-introduction/</link>
       <pubDate>Sun, 17 Nov 2019 13:15:27 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-00-introduction/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-00-introduction/</guid>
       <description>经常有小伙伴想系统地学习一下数据结构，但很难找到适合自己的教程。好吧，其实说的是我自己。那今天就来聊一聊这个问题。
 我们先把一些常用的数据结构列表出，大概讲一下他们的结构及应用，后面分篇细细讲解。在分篇讲解时，我们的关注点是某个数据结构是什么，怎样用代码描述出来。而更多涉及到这个数据结构的一些算法，将在后面的算法系列中详细讲解。
 这个系列的博客，是面向那些和我差不多，大概了解数一些数据结构(知道一些名字，不太了解内部详细实现)，又想系统地巩固一下，深入一下的小朋友们~

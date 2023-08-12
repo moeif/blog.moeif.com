@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Gameplay on Meowsay</title>
-    <link>https://blog.moeif.com/tags/gameplay/</link>
+    <link>https://blog.meowsay.com/tags/gameplay/</link>
     <description>Recent content in Gameplay on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/gameplay/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jan 2022 20:50:49 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/gameplay/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Gameplay 02 游戏中的跳跃</title>
-      <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
+      <link>https://blog.meowsay.com/posts/gameplay-02-jump/</link>
       <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gameplay-02-jump/</guid>
+      <guid>https://blog.meowsay.com/posts/gameplay-02-jump/</guid>
       <description>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
 自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
 我们的目标是求出跳跃的速度。
@@ -29,10 +29,10 @@
     
     <item>
       <title>Gameplay 01 游戏开发中的平滑移动</title>
-      <link>https://blog.moeif.com/posts/gamedev-smooth-move/</link>
+      <link>https://blog.meowsay.com/posts/gamedev-smooth-move/</link>
       <pubDate>Thu, 06 Jan 2022 20:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gamedev-smooth-move/</guid>
+      <guid>https://blog.meowsay.com/posts/gamedev-smooth-move/</guid>
       <description>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
 一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。

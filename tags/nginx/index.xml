@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Nginx on Meowsay</title>
-    <link>https://blog.moeif.com/tags/nginx/</link>
+    <link>https://blog.meowsay.com/tags/nginx/</link>
     <description>Recent content in Nginx on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 11 Jul 2020 12:36:46 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Jul 2020 12:36:46 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Letsencrypt Nginx HTTPS 配置</title>
-      <link>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</link>
+      <link>https://blog.meowsay.com/posts/nginx-https-config-and-redirect/</link>
       <pubDate>Sat, 11 Jul 2020 12:36:46 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</guid>
+      <guid>https://blog.meowsay.com/posts/nginx-https-config-and-redirect/</guid>
       <description>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
 域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
 HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名 Nginx 配置 执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl.com$request_uri; } server { listen 443 ssl http2; server_name imoegirl.</description>
@@ -24,10 +24,10 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
     
     <item>
       <title>nginx 配置 https 及重定向</title>
-      <link>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</link>
+      <link>https://blog.meowsay.com/posts/configure-nginx-https-and-redirect/</link>
       <pubDate>Sun, 12 Apr 2020 18:49:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</guid>
+      <guid>https://blog.meowsay.com/posts/configure-nginx-https-and-redirect/</guid>
       <description>将博客放在自己的VPS上，免不了配置 nginx 及 https，如果不配置 https，浏览器上**不安全**那三个字，实在是太刺眼。所以这篇博客，将记录整个折腾过程。
 nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名 接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
 域名解析的配置 首先要先自己的域名解析到自己的 VPS，需要配置两条A记录，一条是 @，一条是 www，都是指向自己的 VPS IP。

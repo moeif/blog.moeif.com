@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>想到什么写什么 on Meowsay</title>
-    <link>https://blog.moeif.com/tags/%E6%83%B3%E5%88%B0%E4%BB%80%E4%B9%88%E5%86%99%E4%BB%80%E4%B9%88/</link>
+    <link>https://blog.meowsay.com/tags/%E6%83%B3%E5%88%B0%E4%BB%80%E4%B9%88%E5%86%99%E4%BB%80%E4%B9%88/</link>
     <description>Recent content in 想到什么写什么 on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 07 Dec 2019 14:19:38 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E6%83%B3%E5%88%B0%E4%BB%80%E4%B9%88%E5%86%99%E4%BB%80%E4%B9%88/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Dec 2019 14:19:38 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/%E6%83%B3%E5%88%B0%E4%BB%80%E4%B9%88%E5%86%99%E4%BB%80%E4%B9%88/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个游戏是怎样被做出来的</title>
-      <link>https://blog.moeif.com/posts/how-a-game-is-made/</link>
+      <link>https://blog.meowsay.com/posts/how-a-game-is-made/</link>
       <pubDate>Sat, 07 Dec 2019 14:19:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/how-a-game-is-made/</guid>
+      <guid>https://blog.meowsay.com/posts/how-a-game-is-made/</guid>
       <description>一个游戏是怎样被做出来的呢，当我开始写这篇文章的时候，才意识到，这个题目写的有点大，单纯的一篇文章，真的很难让大部分人了解一个游戏到底是怎样被做出来的，因为这里面涉及到了太多太多的细节。所以，我就来从宏观的角度来聊一聊一个游戏的开发过程是怎样的。
 每一个游戏，可能都始于一个很小的想法，或者故事，然后像种子一样，慢慢成长，最后形成一个完善的体系化的设计。就像写一个故事，最开始，可能只有一个大概的方向，然后会构思里面的人物，性格，故事的发生地点，角色之间的关系，等等，有了宏观方向上的故事线，就有了大概的骨架，在不偏离故事线的情况下，去完善细节，让整个故事更有灵魂。一个游戏的构思，我觉得也是有类似之处。
 首先，简单介绍一下一个游戏公司的人员，大概都分为哪些部分。从宏观上来分，大概分为策划，美术，程序，测试，音频，运营。在这里，暂时不详细地介绍每一个职位的细分以及工作的内容，等我写一篇文章专门介绍这个。
@@ -39,10 +39,10 @@
     
     <item>
       <title>在游戏公司工作是什么体验呢？</title>
-      <link>https://blog.moeif.com/posts/experience-at-game-company/</link>
+      <link>https://blog.meowsay.com/posts/experience-at-game-company/</link>
       <pubDate>Fri, 06 Dec 2019 12:43:44 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/experience-at-game-company/</guid>
+      <guid>https://blog.meowsay.com/posts/experience-at-game-company/</guid>
       <description>不知道大家对于一线城市的游戏公司，或者IT公司，是什么印象。亲身经历过，才知道，其实并没有都市爱情电视剧中演的那么高端(😂)。
 经历过好几家游戏公司，有十几人的小公司，也有几十人，上百人，多项目组的公司，基本上，除了做的东西内容不一样之外，在其他方面有很多交集。
 上班时间一般是9点~10点之间，有的公司弹性制，早上如果晚到了一会，晚上晚点走即可，只要事情保证质量地完成。有的公司严格按照打卡时间来，晚到1秒种也是迟到。第一种心理上会更轻松一点，工作与生活融合，但是也难免有可能出现很多人晚到，做事情拖延的情况。第二种气氛紧张，工作就是工作。说不上哪种更好，各有利弊，主要看公司的文化，以及员工的整体素质更适合哪一种。很荣幸，我现在所在的公司，就是第一种。

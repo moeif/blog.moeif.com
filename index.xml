@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Meowsay</title>
-    <link>https://blog.moeif.com/</link>
+    <link>https://blog.meowsay.com/</link>
     <description>Recent content on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于 ChatGPT、GPT、GPT-3、OpenAI</title>
-      <link>https://blog.moeif.com/posts/about-chatgpt/</link>
+      <link>https://blog.meowsay.com/posts/about-chatgpt/</link>
       <pubDate>Wed, 29 Mar 2023 20:45:19 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/about-chatgpt/</guid>
+      <guid>https://blog.meowsay.com/posts/about-chatgpt/</guid>
       <description>2015年12月，一群聪明的人为了一个共同的目标走到了一起：以有利于整个人类的方式促进和发展友好的人工智能。 萨姆-奥特曼、伊隆-马斯克、格雷格-布罗克曼、里德-霍夫曼、杰西卡-利文斯顿、彼得-泰尔、亚马逊网络服务（AWS）、Infosys和YC Research宣布成立OpenAI，并向该企业认捐了超过10亿美元。该组织表示，它将通过向公众开放其专利和研究，与其他机构和研究人员进行 &amp;ldquo;自由合作&amp;rdquo;。
 OpenAI的总部设在旧金山Mission区的Pioneer大厦。2016年4月，OpenAI发布了其强化学习研究平台 &amp;ldquo;OpenAI Gym &amp;ldquo;的公开测试版。2016年12月，OpenAI发布了 &amp;ldquo;Universe6&amp;rdquo;，这是一个软件平台，用于衡量和训练人工智能的通用智能，跨越世界上的游戏、网站和其他应用程序的供应。
 2018年，埃隆-马斯克辞去了他的董事会席位，理由是与特斯拉自动驾驶汽车的人工智能开发存在 &amp;ldquo;潜在的未来利益冲突&amp;rdquo;，但他仍然是一个捐赠者。2019年，OpenAI从非营利性过渡到上限营利性，利润上限设定为任何投资的100倍。该公司向员工分配股权，并与微软合作，后者宣布向该公司投资10亿美元的一揽子计划。随后，OpenAI宣布打算对其技术进行商业化授权。
@@ -30,10 +30,10 @@ GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码�
     
     <item>
       <title>搭建自己的AI图片生成器</title>
-      <link>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</link>
+      <link>https://blog.meowsay.com/posts/create-your-own-ai-image-generator/</link>
       <pubDate>Mon, 27 Mar 2023 14:41:51 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/create-your-own-ai-image-generator/</guid>
+      <guid>https://blog.meowsay.com/posts/create-your-own-ai-image-generator/</guid>
       <description>最近一段时间，使用 Stable Diffusion 等工具生成图片的资讯充斥着整个互联网，但是很多在线的 AI 图片生成工具，要么根本访问不了（需要科学上网），要么就是需要付费，而且还巨慢。作为一个常年混迹于互联网的技术流玩家，我觉得有必要在自己本机搭一下无限制的 AI 图片生成工具。
 本地搭建这东西我觉得还是很有用的，对于我来说，写博客，公众号的一些配图，完全可以用这东西生成。还有最重要的，我是想用在独立游戏开发中，让我做的那些垃圾文字游戏，可以多一点图片，增加哪怕一点点美感和吸引力。
 我们用的工具是 Stable Diffusion。由于我的机器是 Mac M1 芯片的，所以教程也就是在此配置上去搭建，其他平台类似。
@@ -46,10 +46,10 @@ GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码�
     
     <item>
       <title>角色扮演游戏设计艺术笔记</title>
-      <link>https://blog.moeif.com/posts/rpg-game-design-note/</link>
+      <link>https://blog.meowsay.com/posts/rpg-game-design-note/</link>
       <pubDate>Sun, 26 Mar 2023 15:44:52 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rpg-game-design-note/</guid>
+      <guid>https://blog.meowsay.com/posts/rpg-game-design-note/</guid>
       <description>玩家需要感受到他们的交互效果，他们希望自己对游戏的经历起重要作用并通过他们交互对世界、故事或其他游戏元素产生某种程度上的辨认效果。
 奖励 玩家在完成一次胜利，或特定的时候，给予一定的奖励，以此激励他们继续奋战。
 保险性 确保玩家可以在游戏中通过某些途径获得物品，技巧等，以完成对于障碍的挑战。
@@ -67,10 +67,10 @@ GitHub Copilot（使用OpenAI Codex模型，是GPT-3的后裔，为生成代码�
     
     <item>
       <title>使用 OpenAI 的最佳实践</title>
-      <link>https://blog.moeif.com/posts/best-practice-openai-prompt/</link>
+      <link>https://blog.meowsay.com/posts/best-practice-openai-prompt/</link>
       <pubDate>Thu, 23 Mar 2023 13:54:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/best-practice-openai-prompt/</guid>
+      <guid>https://blog.meowsay.com/posts/best-practice-openai-prompt/</guid>
       <description>如何向GPT-3和Codex提供清晰有效的指令。
 Prompt 是怎样工作的 由于指令跟随模型的训练方式或它们所接受的数据，有特定的提示格式可以很好地配合当前任务并可靠地发挥作用。以下是我们发现可靠有效的一些提示格式，但请随意尝试不同格式，以找到最适合您任务的格式。
 经验法则和示例 注意：&amp;quot;{text input here}&amp;ldquo;是实际文本/上下文的占位符
@@ -85,10 +85,10 @@ Write a short inspiring poem about OpenAI, focusing on the recent DALL-E product
     
     <item>
       <title>Unity 内存管理的专业提示</title>
-      <link>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</link>
+      <link>https://blog.meowsay.com/posts/unity-memory-management-with-pro-tips/</link>
       <pubDate>Tue, 01 Nov 2022 10:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-memory-management-with-pro-tips/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-memory-management-with-pro-tips/</guid>
       <description>优化是游戏开发中很重要的一部分，涉及的方面主要有 CPU，GPU，内存，网络等。
 在这篇博客中，主要会写关于内存相关的优化，Unity 是如何管理内存的，以及怎样才能使游戏更高效地运行。
 在深入到 Unity 之前，我们先来看一下内存是如何工作的。
@@ -109,10 +109,10 @@ C# 非托管内存 C＃非托管内存层使你可以在编写C＃代码的方�
     
     <item>
       <title>异能觉醒，新游预约</title>
-      <link>https://blog.moeif.com/posts/new-game-to-reservation/</link>
+      <link>https://blog.meowsay.com/posts/new-game-to-reservation/</link>
       <pubDate>Mon, 17 Oct 2022 09:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/new-game-to-reservation/</guid>
+      <guid>https://blog.meowsay.com/posts/new-game-to-reservation/</guid>
       <description>4508年，因核泄露污染水域从而造成人类大灭绝，并造成了全球生物变异，但少数人类适应了污染，造成了细胞全面进化，使生命层次进化觉醒异能。
 自从污染事件已来，整个世界变得异常的诡异，一些【奇奇怪怪】的东西，开始出现，什么鸡坤，什么篮球，杀伤力不强，但是让人异常头晕。在这个少数人的世界，开始一段令人哇塞的旅程。收集各种各样的物品，打造各种奇怪的装备，战斗各种让人费解的敌人。还可以养宠物，升级宠物，带着宠物去打怪……
 一旦你开始玩这个游戏，奇怪的事情，就开始发生了……
@@ -125,10 +125,10 @@ C# 非托管内存 C＃非托管内存层使你可以在编写C＃代码的方�
     
     <item>
       <title>通过作用域最小化来避免屎一样的代码</title>
-      <link>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
+      <link>https://blog.meowsay.com/posts/avoid-spaghetti-code-with-scope-minimization/</link>
       <pubDate>Tue, 04 Oct 2022 14:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/avoid-spaghetti-code-with-scope-minimization/</guid>
+      <guid>https://blog.meowsay.com/posts/avoid-spaghetti-code-with-scope-minimization/</guid>
       <description>面条式代码，是软件工程中反面模式的一种，也就是源代码的控制流程复杂，混乱难以理解，见到来说，就是屎一样的代码。
 最小化变量的作用域，是避免产生面条式代码的一种有效方式。
 作用域最小化是一种构建代码的方式，操作起来很容易
@@ -153,10 +153,10 @@ R3. 在接近变量用途的地方声明变量 尽可能地在靠近将使用这
     
     <item>
       <title>噪声函数与地图生成</title>
-      <link>https://blog.moeif.com/posts/noise-function-and-map-generation/</link>
+      <link>https://blog.meowsay.com/posts/noise-function-and-map-generation/</link>
       <pubDate>Sun, 25 Sep 2022 23:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/noise-function-and-map-generation/</guid>
+      <guid>https://blog.meowsay.com/posts/noise-function-and-map-generation/</guid>
       <description>在我学习声音信号处理的时候，我的大脑很自然地联想到了地图生成。这篇博客记录了关于信号处理的一些概念与地图生成相关的东西。这些知识点不是一些新的东西，但对我来说，是以前从未接触过的，所以我想记录一下，并且分享给大家。这篇博客会覆盖一些简单的主题，频率、振幅、噪声的种类、噪声的应用等。涉及到的数学部分，基本上只有正弦波形。
 这里会从简单的概念开始，然后逐渐深入。
 注意：下面涉及的代码，虽然是以 Python 来描述的（简单直观），但文章的目的是为了解释原理，使用任何语言都可以的。
@@ -172,10 +172,10 @@ def gen(): map = [0] * 20 pos = random.</description>
     
     <item>
       <title>Unity 游戏启动前显示隐私协议</title>
-      <link>https://blog.moeif.com/posts/show-privacy-before-unity/</link>
+      <link>https://blog.meowsay.com/posts/show-privacy-before-unity/</link>
       <pubDate>Sun, 17 Jul 2022 06:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/show-privacy-before-unity/</guid>
+      <guid>https://blog.meowsay.com/posts/show-privacy-before-unity/</guid>
       <description>使用 Unity 开发的游戏，在上架某些平台时，比如 TapTap，由于政策的原因，需要在收集用户信息，或使用某些权限时，先弹出隐私协议，用户同意之后，才能操作。但是如果直接在 Unity 里做这件事情，哪怕是用一个空场景来做，Unity 本身就会在隐私协议前收集一些信息，所以，我们需要使用原生代码，来操作这一块逻辑。这里只说 Android。
 首先要做的就是在 Assets/Plugins/Android 新建一个 java 文件，用来作为启动 Activity，在这个 Activity 中，先展示隐私协议，当玩家点击同意后，再去调用 Unity 的 Activity。
 package com.moeif.moeifgames; import android.app.Activity; import android.app.AlertDialog; import android.content.DialogInterface; import android.content.Intent; import android.content.SharedPreferences; import android.os.Bundle; import com.unity3d.player.UnityPlayerActivity; public class MoeNativeActivity extends Activity { @Override protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); if (!isTaskRoot()) { Intent intent = getIntent(); String action = intent.getAction(); if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) &amp;amp;&amp;amp; action != null &amp;amp;&amp;amp; action.equals(Intent.ACTION_MAIN)) { finish(); return; } } Boolean anInt = false; // 隐私协议相关 SharedPreferences base = getSharedPreferences(&amp;#34;base&amp;#34;,MODE_PRIVATE); anInt = base.</description>
@@ -183,10 +183,10 @@ package com.moeif.moeifgames; import android.app.Activity; import android.app.Al
     
     <item>
       <title>一个独立游戏的开发总结</title>
-      <link>https://blog.moeif.com/posts/a-indie-game-dev-summary/</link>
+      <link>https://blog.meowsay.com/posts/a-indie-game-dev-summary/</link>
       <pubDate>Sun, 10 Jul 2022 11:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/a-indie-game-dev-summary/</guid>
+      <guid>https://blog.meowsay.com/posts/a-indie-game-dev-summary/</guid>
       <description>从2021年4月开始，我作为一名独立开发者，开始了自己的瞎折腾之路。一年多没有做出什么赚钱的项目。不过现在，终于做出了一个对于我自己来说，算是成功的项目。
 我现在上线的这款游戏是一个文字游戏，画风稀碎，也没有什么具体的游戏类型，一切都是野路子，只要觉某个玩法好玩，就会添加这个玩法。这个游戏就是《无量：钓海》，目前已经上线了 TapTap、好游快爆、AppStore、光环助手、4399 平台。在没有版号的情况下，国内也就这些平台可以上了。
 《无量钓海》TapTap 链接: https://www.taptap.com/app/234065
@@ -207,10 +207,10 @@ package com.moeif.moeifgames; import android.app.Activity; import android.app.Al
     
     <item>
       <title>让 Unity Shader 不受 Time.timeScale 的影响</title>
-      <link>https://blog.moeif.com/posts/unity-shader-unscaledtime/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-unscaledtime/</link>
       <pubDate>Sat, 25 Jun 2022 11:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-unscaledtime/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-unscaledtime/</guid>
       <description>Time.timeScale 是 Unity 的时间缩放变量。如果将此设置为0，那么 Time.time 将停止，并且 Physics 和 Animator 在默认情况下也将停止。所以，将 Time.timeScale 设置为0，通常为了做暂停相关的东西。
 但是，有时候希望即使将 TimeScale 设置为 0，有些东西也能继续运行，比如在写 Shader 时，经常会用到 _Time 属性，但是它会受到 Time.timeScale 的影响。不过有以下几种方式可以做到不受影响。
 方法一 private void Update() { material.SetFloat(&amp;#34;_UnscaledTime&amp;#34;, Time.unscaledTime); } 这种方式比较直接，但是也有弊端，如果要设置的 Shader 很多，会增加很多 MonoBehaviour。
@@ -223,20 +223,20 @@ using System; using System.Collections.Generic; using System.Linq; using UnityEn
     
     <item>
       <title>Lua 带权重随机</title>
-      <link>https://blog.moeif.com/posts/lua-randon-with-weight/</link>
+      <link>https://blog.meowsay.com/posts/lua-randon-with-weight/</link>
       <pubDate>Fri, 03 Jun 2022 10:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/lua-randon-with-weight/</guid>
+      <guid>https://blog.meowsay.com/posts/lua-randon-with-weight/</guid>
       <description>t 是数据数组，weights 是权重数组，两个数组长度是一致的。
 function RandomWithWeight(t, weights) local sum = 0 for i = 1, #weights do sum = sum + weights[i] end local compareWeight = math.random(1, sum) local weightIndex = 1 while sum &amp;gt; 0 do sum = sum - weights[weightIndex] if sum &amp;lt; compareWeight then return t[weightIndex], weightIndex end weightIndex = weightIndex + 1 end return nil, nil end </description>
     </item>
     
     <item>
       <title>理解 Entity Component System</title>
-      <link>https://blog.moeif.com/posts/entity-component-system/</link>
+      <link>https://blog.meowsay.com/posts/entity-component-system/</link>
       <pubDate>Sun, 03 Apr 2022 15:23:39 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/entity-component-system/</guid>
+      <guid>https://blog.meowsay.com/posts/entity-component-system/</guid>
       <description>Entity-Component-System (ECS) 是一种架构模式。这种模式广泛地应用在游戏开发中。ECS 使用组合原则，因此这种模式使程序具有更好的灵活性和扩展性。游戏场景中的所有对象都被视为一个实体 (Entity)。这种模式在默认情况下也具有更高的性能。
 Entity-Component-System 有三个部分组成
 Entity (实体) Component (组件) System (系统) 什么是 Entity Entity 可以理解为一个对象的标识，它没有任何具体的数据和行为，只是标识一个东西。在实现上，通常可以用一个 Struct 来实现。而组件，为其提供数据。
@@ -250,10 +250,10 @@ ECS 的优势 降低代码量以及复杂度 对于逻辑扩展拥有很高的�
     
     <item>
       <title>Unity 完整的热更新方案和流程</title>
-      <link>https://blog.moeif.com/posts/unity-hot-update/</link>
+      <link>https://blog.meowsay.com/posts/unity-hot-update/</link>
       <pubDate>Sun, 20 Mar 2022 12:30:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-hot-update/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-hot-update/</guid>
       <description>在开发商业游戏时，热更新是一个很重要的模块，这里讲的热更新不是指仅仅修复Bug，而是进行游戏功能的更新。简单来讲，就是启动游戏后，跑个条，下载资源和代码，然后再进入游戏。本篇博客所写的内容并不是最优的解，只是完成了热更新这个事情而已，具体使用还需要使用者根据自己的项目来具体来看。
 这里采用的方案是使用 AssetBundle 和 xLua。使用 AssetBundle 是为了资源的完全自主控制。而整个游戏的逻辑部分，则使用 xLua 来实现。当然，C# 的代码不可能一点没有，只是一些核心的功能模块，一般写好后就不会改变的东西，或者对性能要求很高的东西，放在 C# 就可以。
 整个功能分为编辑器部分，和运行时部分。编辑器部分就是编 Bundle，生成版本文件等。而运行时部分就是从 CDN 下载版本文件，对比版本号及本地资源是否有要更新的，如果有，则更新，更新完后进入游戏。没有，则直接进入游戏。
@@ -264,10 +264,10 @@ LuaScripts 目录在开发时会放在 Assets 目录外面，与其同级，在�
     
     <item>
       <title>一个游戏兑换码生成及验证方案</title>
-      <link>https://blog.moeif.com/posts/exchange-code/</link>
+      <link>https://blog.meowsay.com/posts/exchange-code/</link>
       <pubDate>Tue, 01 Mar 2022 13:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/exchange-code/</guid>
+      <guid>https://blog.meowsay.com/posts/exchange-code/</guid>
       <description>在开发独立游戏《小镇危机：来自丧尸的问候》时，需要设计一个兑换码的功能，但是在网络上也没有找到合适的方案，所以这里就自己考虑了一种。这里会说明思路，具体的实现，可以按照自己的方式去定制。
 我们的游戏中有两种资源可以兑换，一种是星星，一种是钻石。所以就需要在兑换码中通过某种方式表示出来。本质上就是将自己想兑换的数据，通过某种方式的变换，隐藏在兑换码中，然后服务器是知道解码方式的，通过解码，即可还原出玩家兑换的是什么，然后将兑换物品回给玩家。
 我们的游戏兑换码为14位的，里面包含的信息有兑换类型，兑换数量，这两个信息，例如 LMA60XV7380QBH。
@@ -280,10 +280,10 @@ DLDWVEQ WM8YB8M MNUP5RR 3RG7X8D VUBPD8J J3L3ZR1 1Y1ALB3 R6PRATR 然后表示出�
     
     <item>
       <title>在过去的一个月里</title>
-      <link>https://blog.moeif.com/posts/in-the-past-month/</link>
+      <link>https://blog.meowsay.com/posts/in-the-past-month/</link>
       <pubDate>Mon, 28 Feb 2022 21:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/in-the-past-month/</guid>
+      <guid>https://blog.meowsay.com/posts/in-the-past-month/</guid>
       <description>已经一个多月没有写 This Week In Moeif 的周记了，在过去的一个月里，发生了很多事情。年前我们早早的回家了，不过游戏开发的工作依然在不断进行着。年后也过了正月十五才回的上海。
 从做独立开发者开始，生活就没有了假期与工作日的明显界限，因为时间都是自己的，做的事情也是自己想做的，并且所做的一切，也都是自己的积累。有时候也会忙到很晚，但是明显没有打工时的那种身心疲惫。
 1. 游戏码农：那些打工的日子 在过去的一个月里，首先我们上线了《游戏码农：那些打工的日子》这个游戏。并且这个游戏已经有了广告收入，虽然不多，但是已经开始有了。2月份的收入如下图
@@ -301,31 +301,31 @@ TapTap: https://www.taptap.com/app/231533
     
     <item>
       <title>Roguelike In Rust 05: 生成地牢</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-05-make-dungeon/</link>
       <pubDate>Tue, 22 Feb 2022 13:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-05-make-dungeon/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-05-make-dungeon/</guid>
       <description>&lt;p&gt;这一节我们将会创建一个地牢，地牢由不同的房间组成，房间与房间之间是联通的，玩家可以行走。下面是最终运行效果图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Roguelike In Rust 04: 地图与行走</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-04-walking-map/</link>
       <pubDate>Tue, 08 Feb 2022 11:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-04-walking-map/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-04-walking-map/</guid>
       <description>&lt;p&gt;接着上一节的内容，这一节将创建地图，然后玩家可以在地图中行走。地图分为可行走区域和不可行走区域。我们可以认为地图是由一个一个的格子组成。&lt;/p&gt;
 &lt;p&gt;先看一下最终的效果&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.moeif.com/postimages/roguelike-rs/0401.gif&#34; alt=&#34;&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.meowsay.com/postimages/roguelike-rs/0401.gif&#34; alt=&#34;&#34;  /&gt;
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>我的独立游戏下载量和广告收入情况</title>
-      <link>https://blog.moeif.com/posts/coder-game-ad/</link>
+      <link>https://blog.meowsay.com/posts/coder-game-ad/</link>
       <pubDate>Sun, 06 Feb 2022 17:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/coder-game-ad/</guid>
+      <guid>https://blog.meowsay.com/posts/coder-game-ad/</guid>
       <description>经过了几个月的开发，我的游戏终于上线了。这篇博客来聊一下目前这个游戏的下载量和广告收入情况。
 《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
 目前已经上线 AppStore，TapTap，好游快爆等平台。
@@ -340,10 +340,10 @@ TapTap: https://www.taptap.com/app/230651
     
     <item>
       <title>游戏码农：那些打工的日子</title>
-      <link>https://blog.moeif.com/posts/coder-game/</link>
+      <link>https://blog.meowsay.com/posts/coder-game/</link>
       <pubDate>Fri, 04 Feb 2022 23:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/coder-game/</guid>
+      <guid>https://blog.meowsay.com/posts/coder-game/</guid>
       <description>经过了几个月的开发，我的游戏终于上线了。
 《游戏码农：那些打工的日子》是一个轻松的模拟经营文字游戏，游戏的主角是一个普普通通的小码农，刚刚来到一线城市，开始自己的职业打工生涯。游戏拥有丰富的玩法，轻松的升级体验，多种不同的赚钱方式，实现财富自由，指日可待。
 目前已经上线 AppStore，TapTap，好游快爆等平台。
@@ -365,10 +365,10 @@ TapTap: https://www.taptap.com/app/230651
     
     <item>
       <title>Roguelike In Rust 03: 实体和组件</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-03-entities-and-components/</link>
       <pubDate>Thu, 03 Feb 2022 05:00:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-03-entities-and-components/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-03-entities-and-components/</guid>
       <description>对于游戏开发者，可能或多或少听说过或者使用过 ECS 的结构。现在大多数游戏使用的还是面向对象的模式，面向对象编程并没有什么问题，但是在游戏开发过程中，当游戏不断的超出原有的设计时，从整个工程的扩展来说，ECS 拥有更好的扩展性。
 下面是一个面向对象的例子
 BaseEntity Monster MeleeMob OrcWarrior ArcherMob OrcArcher BaseEntity 是一个基类，包含了基本的数据和代码，用于表示地图上的一个实体。Monster 是一个怪物，MeleeMob 是一个近战单位，它会发现近处的目标，然后干掉它。ArcherMob 是一个可以远程攻击的单位。完成这样一个实体逻辑，可能首先需要按照不同的单位，将逻辑分开，并且抽出共同的逻辑，放到基类中。如果这时增加了一个兽人的逻辑，它即可以近战，又可以远程，并且在完成某些任务时，会变得更友好，怎么办？那就改逻辑呗，继续抽象，分离和整理代码。有很多已经上线的游戏是这样做的。但是，如果使用 ECS，这样的扩展会变得更加容易。
@@ -384,10 +384,10 @@ Cargo.toml</description>
     
     <item>
       <title>Roguelike In Rust 02: Hello Rust</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-02-hellorust/</link>
       <pubDate>Wed, 02 Feb 2022 17:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-02-hellorust/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-02-hellorust/</guid>
       <description>Rust 算是一个新兴的语言，近两年非常火了，但是他首次出现是在 2010 年。Rust 有非常好用的工具 cargo 和 rustup。
 如果要学习 Rust 这门编程语言，也有很多优秀的教程。
 The Rust Programming Language Book Learn Rust by Example 24 Days of Rust Rust&amp;rsquo;s Ownership Model for Javascript Developers Rust 编辑器可以使用 VSCode
@@ -400,10 +400,10 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
     
     <item>
       <title>Roguelike In Rust 01: 前言</title>
-      <link>https://blog.moeif.com/posts/roguelike-rs-01-introduction/</link>
+      <link>https://blog.meowsay.com/posts/roguelike-rs-01-introduction/</link>
       <pubDate>Wed, 02 Feb 2022 14:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/roguelike-rs-01-introduction/</guid>
+      <guid>https://blog.meowsay.com/posts/roguelike-rs-01-introduction/</guid>
       <description>这个教程是免费和开源的，所有的代码都使用 MIT 协议，可以无限制的免费使用。希望这个系列的教程可以帮助大家做出更优秀的游戏。
 每一年，有一些大神都会在 r/roguelikedev 上启动一个周二教程系列，以此来鼓励更多的程序员加入 Roguelike 游戏开发者行列中。大多数的编程语言已经被使用过了，所以在今年，我决定使用 Rust。我不是很想用默认的引擎 libtcod，所以我自己写了一个，名为 RLTK。刚开始的时候并不是很好，但是也让我学到了很多，如果你有兴趣，代码在此 -&amp;gt; rustyroguelike
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
@@ -414,10 +414,10 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
     
     <item>
       <title>Gameplay 02 游戏中的跳跃</title>
-      <link>https://blog.moeif.com/posts/gameplay-02-jump/</link>
+      <link>https://blog.meowsay.com/posts/gameplay-02-jump/</link>
       <pubDate>Sat, 22 Jan 2022 20:50:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gameplay-02-jump/</guid>
+      <guid>https://blog.meowsay.com/posts/gameplay-02-jump/</guid>
       <description>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
 自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
 我们的目标是求出跳跃的速度。
@@ -430,20 +430,20 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
     
     <item>
       <title>This Week In Moeif 30</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-30/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-30/</link>
       <pubDate>Sun, 16 Jan 2022 23:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-30/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-30/</guid>
       <description>&lt;p&gt;下个周计划去做个小手术，把额头上的小脂肪瘤干掉，应该可以直接在门诊做。上海的医保也可以直接用了。&lt;/p&gt;
 &lt;p&gt;从下一期开始，我要考虑一下改变一下周记的模板，看看如何改成内容叠加式，这样最后就知道这一年干了什么。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 29</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-29/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-29/</link>
       <pubDate>Sun, 09 Jan 2022 23:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-29/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-29/</guid>
       <description>这周主要在加速开发码农游戏，其他的事情都暂缓了。
 这周注册了一个新的域名，国内的，这样可以备案，可是域名拼错了&amp;hellip;，不过也无所谓，反正不对外，只是在代码中使用。似乎找到了一个国内和国内访问腾讯云都很快的方法，就是国内直连，国外使用 Cloudflare 加速，等后面有了服务器的逻辑可以测一下。
 考虑了一下下一个项目的事情，准备下一个项目海外版增加内购，国内还是暂时以广告为主，暂时这样计划着。
@@ -454,10 +454,10 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
     
     <item>
       <title>Gameplay 01 游戏开发中的平滑移动</title>
-      <link>https://blog.moeif.com/posts/gamedev-smooth-move/</link>
+      <link>https://blog.meowsay.com/posts/gamedev-smooth-move/</link>
       <pubDate>Thu, 06 Jan 2022 20:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/gamedev-smooth-move/</guid>
+      <guid>https://blog.meowsay.com/posts/gamedev-smooth-move/</guid>
       <description>这篇博客，聊一聊在游戏开发中，控制角色或者其他物体的平滑移动。现实中，一个物体，从静止加速到匀速运动状态，或者从匀速运动状态变为静止状态，都会有一个过程。就像人走路，或者汽车开动。
 一个物体在运动状态下，会有一个速度变量，也就是我们期望的速度。而从静止到运动状态的过程，会有一个加速度。
 而游戏开发中，要做到一个物体平滑的运动，也就是模拟出这个从静止，通过加速度，达到期望速度的过程。
@@ -468,10 +468,10 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>This Week In Moeif 28</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-28/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-28/</link>
       <pubDate>Sun, 02 Jan 2022 23:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-28/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-28/</guid>
       <description>现在已经 2022 年了，本来想跨年夜去外滩，看了一下新闻，好像也没什么活动，就在家里待着了。这个周又开始运动了，跑步加跳绳，保持健康。这周是单调的一周。这周还把博客使用 Cloudflare 加速了，能明显感觉也访问速度的提升。
 项目进度 游戏码农：那些打工的日子 这周完成了外卖和自己做饭界面的UI及逻辑，下周开始添加学习内容的模块。这周的内容比较单调，好像也没做什么特别的事情。软件著作权还没有下来，这次真是好慢。
 本周电影 寂静之海 고요의 바다 (2021) 本周书籍 《愿你迷路到我身旁》（阅读中） 下周初步计划 继续逻辑编写 </description>
@@ -479,28 +479,28 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>This Week In Moeif 27</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-27/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-27/</link>
       <pubDate>Sun, 26 Dec 2021 23:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-27/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-27/</guid>
       <description>&lt;p&gt;又是一周结束了，时间过的好快啊。这周在焦虑和烦躁中度过。上海也开启了冬天模式，很冷，还没有取暖设备，买了一个取暖器，也做不到整屋加热，不过还好距离过年也就剩一个多月了，可以回北方了。好像已经两个周没有出去跑步了&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 26</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-26/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-26/</link>
       <pubDate>Mon, 20 Dec 2021 21:11:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-26/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-26/</guid>
       <description>&lt;p&gt;对于下一个游戏产品，有了一点点的方向，还没有深入去考虑。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 25</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-25/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-25/</link>
       <pubDate>Sun, 12 Dec 2021 19:47:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-25/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-25/</guid>
       <description>这周开始学习画像素画了，还不是很熟练，不过每天会多少画几分钟，使用数位板。以前使用数位板不太习惯，慢慢的对于它的控制会越来越顺手。
 另外，这周完成了 Ray Tracing in One Weekend 系列的博客Rust重实现。接下来就要开始第二篇章了。
 今天上海下雨了，下个周的温度，可能会冷很多。
@@ -510,10 +510,10 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>Rust 光线追踪 14: 最终汇总效果</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-14/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-14/</link>
       <pubDate>Sat, 11 Dec 2021 20:40:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-14/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-14/</guid>
       <description>这一节没有新的知识，只是将之前知识汇总起来，然后生成一张最终的图，最终生成的图如下
 首先，将创建世界及添加物体的代码从 main 函数中删除，然后抽象成一个函数 random_scene，在这个函数中，会随机生成一些球体，并且根据规则，随机使用我们的已有的三个材质。
 // src/main.rs fn random_scene() -&amp;gt; HittableList { let mut world = HittableList::new(); let ground_material = Lambertian::new(Color::new(0.5, 0.5, 0.5)); world.add(Box::new(Sphere::new( Vec3::new(0.0, -1000.0, 0.0), 1000.0, ground_material, ))); let mut rng = rand::thread_rng(); // 生成一些小球 for a in -11..11 { for b in -11..11 { let choose_mat: f64 = rng.gen(); let x_offset: f64 = rng.gen(); let z_offset: f64 = rng.gen(); let center = Vec3::new(a as f64 + 0.9 * x_offset, 0.</description>
@@ -521,19 +521,19 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>Rust 光线追踪 13: 散焦模糊</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-13/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-13/</link>
       <pubDate>Fri, 10 Dec 2021 20:19:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-13/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-13/</guid>
       <description>&lt;p&gt;散焦模糊，通俗来讲就是在聚焦区域外的东西，都是模糊的。通常这种效果被称为 Depth Of Field（DOF)，也就是景深。最终效果如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 12: 正交相机</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-12/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-12/</link>
       <pubDate>Wed, 08 Dec 2021 23:01:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-12/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-12/</guid>
       <description>正交相机所看到的东西大小，与远近无关，只与正交相机的视野（FOV）有关。FOV越大，能看到的世界范围就大，也就是能看到更多的东西，而FOV越小，能看到的世界范围就越小，也就是只能看到较少的东西。
 由于FOV越小，看到的范围就越小，从而，相机的上下界，所发出的射线，所能覆盖的范围，就小。也就是相当于所有的射线，都集中在世界中一个小范围，从这个小范围中取得颜色，填充画布（最后渲染的图片），所以看到的东西就大。而如果FOV很大，射线所能覆盖的世界范围就大，用这个大范围来填充画布，自然同一个物体就会看起来小。
 可以想象一个两个盒子，一个大的，假设口径是50厘米，扣在一把键盘上，可以扣住整个键盘，相当于摄像机看到了整个键盘。而将一个1厘米口径的盒子，扣在键盘上，可能只能覆盖其中一个键，也就是相机只能看到这一个键范围的东西。但最后都会将扣到的东西填充到画布上，所以，就相当于FOV越小，看到的东西就越大。
@@ -544,10 +544,10 @@ using System.Collections; using System.Collections.Generic; using UnityEngine; p
     
     <item>
       <title>Rust 光线追踪 11: 折射</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-11/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-11/</link>
       <pubDate>Tue, 07 Dec 2021 15:01:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-11/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-11/</guid>
       <description>关于折射的实现，可以使用斯涅尔定律。当光波从一种介质传播到另一种介质时，如果两种介质拥有不同的折射率，那么光线就会发生折射现象。例如光线从空气中进入水中，或者从空气中进入玻璃中。
 下面涉及到的公式，也可以不用理解推导过程，只要拿来用就行。
 斯涅尔定律 斯涅尔定律表明，当光波从介质1传播到介质2时，假若两种介质的折射率不同，则会发生折射现象，其入射光和折射光都处于同一平面，称为“入射平面”，并且与界面法线的夹角满足如下关系：
@@ -566,10 +566,10 @@ $ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + (-入射向量 \cdot 法向�
     
     <item>
       <title>This Week In Moeif 24</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-24/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-24/</link>
       <pubDate>Sun, 05 Dec 2021 23:00:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-24/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-24/</guid>
       <description>这周跑步了四天，还可以，下周继续。我发现跑步的时候可以捋清一些事情，这周主要跑 2.5 公里，然后走 2.5 公里，整体感觉还是挺舒适的，下个周看看是否可以加大一点跑步里程。
 这周输出了4篇博客和公众号，Rust光线追踪系列以及后续的博客，会同步到掘金这个平台上。
 这周把产品页面也搭建好了，更新了 moeif.com 这个域名。
@@ -579,31 +579,31 @@ $ 垂直向量 = \frac{n_{1}}{n_{2}}(入射向量 + (-入射向量 \cdot 法向�
     
     <item>
       <title>Rust 光线追踪 10: 材质</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-10/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-10/</link>
       <pubDate>Sat, 04 Dec 2021 12:44:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-10/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-10/</guid>
       <description>&lt;p&gt;在前面的文章中，我们渲染出来的图片使用的是漫反射的材质。不同的材质，可以简单理解为对于光线的影响不同，这里的影响包括如何吸收，如何散射等。在这一节，我们将加入另一种材质，金属材质。&lt;/p&gt;
 &lt;p&gt;最终的渲染图如下&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.moeif.com/postimages/rtiowrs/1001.png&#34; alt=&#34;&#34;  /&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.meowsay.com/postimages/rtiowrs/1001.png&#34; alt=&#34;&#34;  /&gt;
 &lt;/p&gt;</description>
     </item>
     
     <item>
       <title>编译 Apple Silicon 版本 Aseprite</title>
-      <link>https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/</link>
+      <link>https://blog.meowsay.com/posts/compile-aseprite-for-apple-m1/</link>
       <pubDate>Wed, 01 Dec 2021 21:12:47 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/compile-aseprite-for-apple-m1/</guid>
+      <guid>https://blog.meowsay.com/posts/compile-aseprite-for-apple-m1/</guid>
       <description>&lt;p&gt;编译苹果 M1 芯片版本的 Aseprite，步骤如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 09: 理想散射</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-09/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-09/</link>
       <pubDate>Wed, 01 Dec 2021 13:26:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-09/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-09/</guid>
       <description>上一节生成的图看起来很暗，有一个问题是因为有些物体反射的光线，会在 t = 0 时再次击中自己，而由于浮点数精度的问题，这些值可能是 0.00000001 或 -0.0000001 之类的任意接近0的浮点数，所以我们 hit 函数的 t_min 参数，需要忽略掉 0 附近的一小部分范围，防止物体发出的光线再次与自己相交。这样也就避免了阴影痤疮（Shadow ance）的产生。
 修改 main.rs 中 ray_color 函数中的 word.hit()，改为 if let Some(hit_record) = world.hit(r, 0.001, f64::INFINITY)，也就是 t_min 参数传值 0.001。
 cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
@@ -615,55 +615,55 @@ cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
     
     <item>
       <title>Rust 光线追踪 08: 漫反射和伽马校正</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-08/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-08/</link>
       <pubDate>Tue, 30 Nov 2021 13:50:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-08/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-08/</guid>
       <description>&lt;p&gt;漫反射的通俗理解是，当一个光线打到某一个物体的某一个点上，这条光线一部分会被吸收，一部分会被随机的反射出去，而反射出去的光线，又可能会打到另一个物体面上的一个点，然后又会被吸收，以及随机的反射出去。现实中的光线可能会无限递归下去，但是我们在程序中实现，不可能无限递归，会设置一个反射次数，达到了那个次数，就停止。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 23</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-23/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-23/</link>
       <pubDate>Sun, 28 Nov 2021 23:55:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-23/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-23/</guid>
       <description>&lt;p&gt;这个周主要在做夜莺号的记忆这个项目，30号要交付一个版本，到今天为止，所有的逻辑已经搞完了，明天修一下问题基本上就可以了。这个周继续输出了三篇关于Rust及光线追踪的博客以及公众号和知乎，关注和阅读的人也在增加，下个周继续。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 07: 抗锯齿和相机抽象</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-07/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-07/</link>
       <pubDate>Wed, 24 Nov 2021 20:50:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-07/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-07/</guid>
       <description>&lt;p&gt;将上一节生成的图放大来看，可以看到球体的边缘与存在着很明显的锯齿，这一节我们首先将相机的代码进行抽象，写在一个 Camera 结构体里，然后加入抗锯齿的逻辑。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 06: 代码抽象</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-06/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-06/</link>
       <pubDate>Tue, 23 Nov 2021 20:15:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-06/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-06/</guid>
       <description>&lt;p&gt;这一节的内容修改的比较多，我们会把前面的逻辑重新整理一下，将可光线可交互的世界物体，抽象成一个 &lt;code&gt;Hittable Object&lt;/code&gt;，然后可以在场景中添加多个物体。也使用了 Rust 的 Trait，Vec 等。最终效果图如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 05: 简化 hit_sphere 函数</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-05/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-05/</link>
       <pubDate>Mon, 22 Nov 2021 22:06:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-05/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-05/</guid>
       <description>&lt;p&gt;这一节比较简单，就是将上一节的 &lt;code&gt;hit_sphere&lt;/code&gt; 函数进行一定的简化，直接看代码。代码中简化之前的已经注释，可以直接对比一下，不同的计算方式，最终算出来的值都是一样的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 22</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-22/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-22/</link>
       <pubDate>Sun, 21 Nov 2021 19:55:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-22/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-22/</guid>
       <description>11月马上快要结束了，时间过的真快，有一点点的焦虑，但是也还好。这周开始了不断输出博客内容，可能是因为和Rust有关，阅读数量和关注数量增长了很多，后面可以考虑在每一篇文章最后加上游戏的宣传链接。看起来写博客这件事情可以长期写下去，可能前期没什么，后期积累到一定程度，不确定会发生什么。
 这周上海的温度还可以，但是今天下雨了，未来两天温度下降的很多。
 项目进度 游戏码农：那些打工的日子 这周主要做的事情还是各个模块的数据配置，以及界面元素的考虑，具体的UI还没有仔细考虑。专业技能相关配置、厨艺配置、外卖配置、找工作和面试相关配置、通勤配置、行为配置。
@@ -673,19 +673,19 @@ cargo run --release &amp;gt; diffuse_random_in_sphere.ppm 生成图如下
     
     <item>
       <title>Rust 光线追踪 04: 显示球体的法线</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-04/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-04/</link>
       <pubDate>Sun, 21 Nov 2021 15:01:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-04/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-04/</guid>
       <description>&lt;p&gt;法线的定义是垂直于面的向量。对于一个球体来说，法线的向量，就是球上某个点，减去球心坐标，所得到的向量。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 03: 渲染一个圆</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-03/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-03/</link>
       <pubDate>Sat, 20 Nov 2021 22:10:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-03/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-03/</guid>
       <description>下面的公式有点多，只是把原教程中的公式详细展开了，一步一步来，很简单，相信我。
 给定一个点，判断一个点是否在一个半径为 $R$ 的圆或者圆外、圆内，我们可以使用下面的公式来判断。这里假设圆心在 $(0，0，0)$ 点，半径为 $R$
 如果一个点 $(x, y, z)$ 在圆上，则 $x^2 + y^2 + z^2 = R^2$
@@ -698,127 +698,127 @@ $(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2$
     
     <item>
       <title>Rust 光线追踪 02: 使用光线生成渐变图</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-02/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-02/</link>
       <pubDate>Sat, 20 Nov 2021 11:58:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-02/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-02/</guid>
       <description>&lt;p&gt;这个小节的目标是添加光线相光内容，根据光线打在屏幕上不同的位置，生成一张蓝白渐变图。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 光线追踪 01: 输出PPM</title>
-      <link>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-01/</link>
+      <link>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-01/</link>
       <pubDate>Thu, 18 Nov 2021 17:30:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ray-tracing-in-one-week-rs-01/</guid>
+      <guid>https://blog.meowsay.com/posts/ray-tracing-in-one-week-rs-01/</guid>
       <description>&lt;p&gt;这个系列的博客是使用 Rust 来实现 《Ray Tracing in One Weekend》相关的内容，我们把整本书拆开，来分篇实现，这们可以进一步降低难度。PPM是一个简单的图片格式，它将RGB的颜色使用 ASCII 的形式记录在文件中。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 21</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-21/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-21/</link>
       <pubDate>Mon, 15 Nov 2021 20:06:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-21/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-21/</guid>
       <description>&lt;p&gt;这周的周记，拖到了周一才写。昨天周日，一天没干活，晚上的时候把博客从Hexo迁移到了Hugo，因为Hugo有更像样的主题。这个周小Q回家了，我一个人在上海，还是按原来的节奏开发，还在继续推进游戏码农项目，但是推的有点吃力，感觉好多东西没有想明白。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 20</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-20/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-20/</link>
       <pubDate>Sun, 07 Nov 2021 16:06:49 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-20/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-20/</guid>
       <description>&lt;p&gt;今天上海的天气开始大幅度降温了，现在外面开始下雨了，刚刚看完了一部电影《幸福终点站》，一开始想从里面寻找一下关于时间线的灵感，但是看着看着，就沉浸到剧情里了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 19</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-19/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-19/</link>
       <pubDate>Sun, 31 Oct 2021 20:37:17 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-19/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-19/</guid>
       <description>&lt;p&gt;这周买了滑板，现在每天下午 4:00 左右会出去跑步或玩会滑板。下午出去运动，没有以前晚上出去时那种任务的负重感，更像是放松一下。现在的状态还好，时间上算是比较自由，唯一的问题是还没有什么收入。之前一直关注的一个虚拟货币 GEEKCASH 这个月上线了，但是没有奇迹出现，这个慢慢等吧，只要不归0，就还有希望。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 18</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-18/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-18/</link>
       <pubDate>Sun, 24 Oct 2021 19:16:52 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-18/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-18/</guid>
       <description>&lt;p&gt;这周使用 plexmediaserver 把下载的电影给整理了一下，方便观看，本来想使用树莓派搞，可是服务启动总是失败，也不知道为什么，没找到解决方案，就放弃了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 17</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-17/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-17/</link>
       <pubDate>Mon, 18 Oct 2021 10:10:48 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-17/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-17/</guid>
       <description>&lt;p&gt;这周搞了一个新的Logo，当然是付费的。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《音乐与僵尸：Zombie Rhythm》开发日志</title>
-      <link>https://blog.moeif.com/posts/zombie-rhythm-devlog/</link>
+      <link>https://blog.meowsay.com/posts/zombie-rhythm-devlog/</link>
       <pubDate>Tue, 12 Oct 2021 12:43:47 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/zombie-rhythm-devlog/</guid>
+      <guid>https://blog.meowsay.com/posts/zombie-rhythm-devlog/</guid>
       <description>&lt;p&gt;《音乐与僵尸：Zombie Rhythm》经过了一个多月的开发，终于上线了。这是一个融合了丧尸和音乐节奏的休闲游戏。这篇文章就聊一下这个游戏的整个开发过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 16</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-16/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-16/</link>
       <pubDate>Mon, 11 Oct 2021 12:43:45 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-16/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-16/</guid>
       <description>&lt;p&gt;今天晚上下雨了，上海的气温终于要凉快一点了。这周搞好了社保，直接从公司账户交，似乎一切都在向着正确的方向推进。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 15</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-15/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-15/</link>
       <pubDate>Sun, 03 Oct 2021 19:37:28 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-15/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-15/</guid>
       <description>&lt;p&gt;这周比较轻松，没有做太多的事情，改了一下界面的设计及逻辑，然后改了一下服务器。国庆也没出去玩，假期和工作日现在并没有那么明显的界限了。打算下个周去一个偏远点的地方，例如滴水湖。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>《我在美国学游戏设计》笔记</title>
-      <link>https://blog.moeif.com/posts/game-design-note/</link>
+      <link>https://blog.meowsay.com/posts/game-design-note/</link>
       <pubDate>Mon, 27 Sep 2021 15:35:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/game-design-note/</guid>
+      <guid>https://blog.meowsay.com/posts/game-design-note/</guid>
       <description>&lt;p&gt;从情感体验出发，探索出最合适的机制来表达情感。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 14</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-14/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-14/</link>
       <pubDate>Mon, 27 Sep 2021 15:23:11 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-14/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-14/</guid>
       <description>&lt;p&gt;这周中秋，回老家了，没有做太多事情，只是把服务器排行榜，用户数据，膜拜等功能写完了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>为什么没有大公司推动 P2P 文件分享</title>
-      <link>https://blog.moeif.com/posts/sharing-files-without-tc/</link>
+      <link>https://blog.meowsay.com/posts/sharing-files-without-tc/</link>
       <pubDate>Sun, 26 Sep 2021 09:40:55 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/sharing-files-without-tc/</guid>
+      <guid>https://blog.meowsay.com/posts/sharing-files-without-tc/</guid>
       <description>&lt;p&gt;现在已经是2021年了，如果你拍摄了100张度假的照片，想分享给我，如何分享？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 13</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-13/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-13/</link>
       <pubDate>Sun, 19 Sep 2021 19:25:01 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-13/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-13/</guid>
       <description>这周主要在学习使用Rust和Rocket Web框架写Web逻辑。这将用于ZombieDash以及其他游戏的排行榜，以前只是把功能堆起来，这一次重新看这些内容，清晰了许多，至于不至于头痛了。看文档也有点头绪了，目前用户部分的逻辑已经写完了，接下来就是把分数逻辑加上就可以了，下周应该可以搞完，顺别把UI重构一下，争取这个月底能够提交到AppStore并且审核通过。还有两周，时间还是挺紧的。
 这周还收到了诗仙与诗魔游戏的软著证书，但是发现并没有什么太大的用处，要上架国内的一些Android平台，还得接入各个平台的SDK，一个免费游戏，真是醉了&amp;hellip;
 中秋了，明天回家&amp;hellip;
@@ -830,10 +830,10 @@ pinmaker 横盘中&amp;hellip;
     
     <item>
       <title>This Week In Moeif 12</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-12/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-12/</link>
       <pubDate>Sun, 12 Sep 2021 20:50:21 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-12/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-12/</guid>
       <description>这周开始看一书关于游戏设计，游戏节奏方面的书籍和相关资料，觉得有必要系统地科学得去学习一下游戏设计，学习一下前辈们积累的丰富经验。玩游戏是一会事，做游戏，把握好游戏的节奏，明白某个点为什么要那样设计，就是另一会事了。单纯参考（抄）其他游戏的设计，总觉得云里雾里的，无法做到极致。
 项目进度 诗仙与诗魔 这周收到软件著作权的证书，国内的几个商店提交了一下，目前正在审核中。作为独立开发者，感觉国内的市场环境还是有点难。
 音乐与僵尸（ZombieDash） 这周把核心的流程跑通了，Node的位置也改变了一下，放到了两边，临时的UI也加了进去，录了Demo视频上传到了B站和Youtube。下周开始调整节奏，以及看一下UI怎么布局，怎么设计。
@@ -844,10 +844,10 @@ pinmaker 重新调整了一下程序，目前一共有3W的本金在跑，上个
     
     <item>
       <title>This Week In Moeif 11</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-11/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-11/</link>
       <pubDate>Sun, 05 Sep 2021 20:38:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-11/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-11/</guid>
       <description>这周把原来的台式机各个部件挂闲鱼卖了，还有 2015 年的 MacBook Pro 也卖了，然后换成了一台 Macmini M1 和一个 Philips 的4K显示器。整体的体验，比原来的PC好了很多。家里工作的位置也换了一下，换到了靠近窗边的位置，感觉整体效率提高了许多。所以这周就没怎么写逻辑，配置了一下环境。
 项目进度 诗仙与诗魔 软著的审核终于有动静了，现在处于待发放的状态，预计下周可以收到。这样可以把国内各大Android 市场上一下。
 音乐与僵尸 这周加入了僵尸的资源，修改了歌曲的难度逻辑。开始搭建基本的 UI 界面。
@@ -857,19 +857,19 @@ pinmaker 重新调整了一下程序，目前一共有3W的本金在跑，上个
     
     <item>
       <title>This Week In Moeif 10</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-10/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-10/</link>
       <pubDate>Sun, 29 Aug 2021 21:25:59 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-10/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-10/</guid>
       <description>&lt;p&gt;这周的整体进度还可以，首先新的苹果账号已经可以用了，诗仙与诗魔也上架了AppStore，审核通过居然只用了一天。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>如何开发一个问答类游戏</title>
-      <link>https://blog.moeif.com/posts/how-to-make-a-quiz-game/</link>
+      <link>https://blog.meowsay.com/posts/how-to-make-a-quiz-game/</link>
       <pubDate>Sun, 29 Aug 2021 12:19:40 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/how-to-make-a-quiz-game/</guid>
+      <guid>https://blog.meowsay.com/posts/how-to-make-a-quiz-game/</guid>
       <description>问答类游戏，在开发过程中还算是比较简单的一个分类，核心的内容就是问题与答案。抽象来讲，问题可能是文字，也可以是图片，也可以是声音等等，而对应玩家可以选择的答案，也可以不同的表现形式。例如看电影海报猜电影名字，听音乐片段猜歌曲等等
 【诗仙与诗魔】，是一个诗词挑战类游戏，本质上也算是一个答类游戏，问题变成了某一首诗中的某一句，而答案就是从给定的类似诗句中选择正确的那一句。接下来我将从技术有角度来解析一下这个游戏的整个开发过程。
 这个游戏现在可以直接从商店下载体验，在 AppStore 或 TapTap 搜索 诗仙与诗魔 即可找到。
@@ -892,19 +892,19 @@ Android 下载连接: https://www.taptap.com/app/222178
     
     <item>
       <title>Unity 2D 游戏背景适配</title>
-      <link>https://blog.moeif.com/posts/unity-2d-bg-adaptive/</link>
+      <link>https://blog.meowsay.com/posts/unity-2d-bg-adaptive/</link>
       <pubDate>Sun, 22 Aug 2021 20:57:04 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-2d-bg-adaptive/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-2d-bg-adaptive/</guid>
       <description>&lt;p&gt;在开发2D游戏的时候，不同的设备分辨率下，经常需要将背景以高或以宽来适配。如果以高适配，即背景图的高度填充整个屏幕，然后去缩放宽度。最终效果图如下&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 9</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-9/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-9/</link>
       <pubDate>Sun, 22 Aug 2021 20:49:12 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-9/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-9/</guid>
       <description>这周上架了诗仙与诗魔项目，不过没有多少玩家，国内只上架了TapTap，其他的Android商店等待著作权下来。这周有了一个新的项目构思，一个模拟养成的游戏，具体还在构思中，细节比较多。音乐与僵尸游戏进入了Demo阶段的开发流程。
 这周还整理了一下博客，换了一下主题，回到了以内容为中心的模式。后面会慢慢提高写作输入的频率。
 项目进度 诗仙与诗魔 国内已上架了TapTap，国外上架了GooglePlay，以及一些其他的商店，像华为，三星，小米，APKPure等。国内其他的Android商店等待著作权。
@@ -915,19 +915,19 @@ Android 下载连接: https://www.taptap.com/app/222178
     
     <item>
       <title>Unity Sprites Full-Rect 和 Tight 设置</title>
-      <link>https://blog.moeif.com/posts/unity-sprite-full-rect-tight/</link>
+      <link>https://blog.meowsay.com/posts/unity-sprite-full-rect-tight/</link>
       <pubDate>Sat, 21 Aug 2021 15:27:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-sprite-full-rect-tight/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-sprite-full-rect-tight/</guid>
       <description>&lt;p&gt;在开发2D游戏的时候，对于图片的 Mesh Type 设置我们应该选择 &lt;strong&gt;Full Rect&lt;/strong&gt; 还是 &lt;strong&gt;Tight&lt;/strong&gt; 呢？&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 8</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-8/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-8/</link>
       <pubDate>Sun, 15 Aug 2021 17:33:36 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-8/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-8/</guid>
       <description>这周发生了令人很不愉快的事情，苹果把我的开发者账号封了，之前上架的物时和百变罪犯也被下架了。我不觉得我有做错什么，但是苹果认为我违反了3.2，申诉也不行。面对强硬的巨头，普通的开发者一点办法都没有，甚至没有任何辩解的机会。
 项目进度 诗仙与诗魔 这个项目算是开发完了，目前提交了 GooglePlay 和 TapTap，两个平台都还在审核中。软件著作权还没有下来，国内其他的应用商店还上不去，只能等等看。
 动物旅行 这周整理了一下数据结构，然后今天搞了一下部分游戏数据的配置表，整理了一下基础代码的逻辑。
@@ -937,10 +937,10 @@ Android 下载连接: https://www.taptap.com/app/222178
     
     <item>
       <title>This Week In Moeif 7</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-7/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-7/</link>
       <pubDate>Sun, 08 Aug 2021 22:53:59 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-7/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-7/</guid>
       <description>这周总算把诗仙与诗魔服务器的逻辑全都写完了。
 今天一整天都在客户端和服务器联调，与AWS的数据交互部分应该没有什么大问题了。放在自己服务器的匹配逻辑，今天晚上调了一下，改了几个比较大的问题，协议都通了，明天还需要再看一下数据的准确性。
 项目进度 pinmaker 第40天，DOTUSDT 目前收益 119.19 USDT，上行的挂单已经全部卖出，目前无法再继续交易了，只能等待价格下跌。
@@ -954,10 +954,10 @@ pinmakerhuobi 第11天，HTUSDT 目前收益 80.06 USDT, 增加了一次本金�
     
     <item>
       <title>This Week In Moeif 6</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-6/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-6/</link>
       <pubDate>Sun, 01 Aug 2021 22:23:44 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-6/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-6/</guid>
       <description>今天已经是8月份了，好快啊，从开始到现在，已经4个月了。
 这周没有做客户端的事情，几乎都在看服务器相关的东西，今天终于把排行榜的逻辑写完了，因为使用的是 Rust，所以写的过程中遇到很多问题，不断的查，不断地改，基本上是一边学一边改。昨天想过放弃使用 Rust，直接使用 Nodejs 推起来，但是后来考虑了一下，觉得那样没有任何积累，就还是继续学习使用 Rust 来写了。
 不过这周将 HTUSDT 的交易对也开始了网格交易。火币的API调了好一会才调通，主要是文档写的不清楚。
@@ -971,37 +971,37 @@ pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上�
     
     <item>
       <title>This Week In Moeif 5</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-5/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-5/</link>
       <pubDate>Sun, 25 Jul 2021 20:57:13 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-5/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-5/</guid>
       <description>&lt;p&gt;这周去参加了亚马逊云科技的全球峰会，了解了一些东西，不过目前我还用不上，他们游戏部分的东西倒是可以看一下。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 4</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-4/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-4/</link>
       <pubDate>Sun, 18 Jul 2021 20:57:06 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-4/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-4/</guid>
       <description>&lt;p&gt;这周主要的工作都在搞诗仙与诗魔项目。今天写了一篇文章发在了Indiehackers，看看能不能帮助国外的独立开发者上架中国市场。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>我做了一个无法上架的彩票App</title>
-      <link>https://blog.moeif.com/posts/unlisted-lottery-project/</link>
+      <link>https://blog.meowsay.com/posts/unlisted-lottery-project/</link>
       <pubDate>Sun, 11 Jul 2021 22:33:28 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unlisted-lottery-project/</guid>
+      <guid>https://blog.meowsay.com/posts/unlisted-lottery-project/</guid>
       <description>&lt;p&gt;前两个月做了一个项目，彩票玩家，但是因为政策问题，无法上架。那就从技术的角度来聊一下这个产品。彩票玩家的规划是一个可以查看开奖信息，可以管理自己想要的彩票号码，可以查看历史开奖信息的App。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 3</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-3/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-3/</link>
       <pubDate>Sun, 11 Jul 2021 20:56:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-3/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-3/</guid>
       <description>项目进度 pinmaker 目前 pinmaker 已经赚了37.9 USDT，在写这篇总结的此刻，没有待成交的交易对，现在正处于纯粹盈利 37.9 的状态。这周好像调整过一次上涨部分的网格大小。
 诗词项目 这个项目的名字已经确定了，还是用了之前想的那个名字，诗仙与诗魔。这周完成了界面的设计，这次使用了 Figma，总体来说还挺好用的。今天打印邮寄了著作权申请的资料。
 音乐游戏 音乐游戏暂时先放一下，从工作量已经实现上来说，有一些点工作量有点大，先做诗词项目。
@@ -1011,10 +1011,10 @@ pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上�
     
     <item>
       <title>This Week In Moeif 2</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-2/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-2/</link>
       <pubDate>Sat, 03 Jul 2021 20:56:47 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-2/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-2/</guid>
       <description>这是 The Week In Moeif 的第二周。对于 Moeif 未来的规划还是有点迷茫，到底做什么，目前来看，对于学习App开发是没有太大的兴趣，这一点可以确定。对于游戏开发，兴趣度挺好的，另外，对于Web，还没有一个明确的方向，做什么，但是相对于App开发来说，兴趣度高一点，有一些小想法想做成Web产品，例如 This Week In X。而对于后端，一方面是写一些纯后端的东西，例如程序化交易，或者后面的量化交易，再就是服务于游戏或App产品，这一块目前可以确定的是一定是用Rust来写。
 所以目前看来的方向有下面四个
 游戏 Web 服务器 程序化/量化交易 项目进度 pinmaker pinmaker这周已经跑起来了，从6.30开始，到今天的7.4号晚上，一共收益了8 USDT了，中间调整了一次网格，由15个网格调整为了10个，交易数量每网格2个DOT调整为了3个DOT。这个项目先跑跑看，目前看来是能赚点小钱。计划再阅读或者学习一点自动化交易相关的东西，然后再加来看这个项目。
@@ -1024,28 +1024,28 @@ pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上�
     
     <item>
       <title>从万亿美元的市场赚点小钱</title>
-      <link>https://blog.moeif.com/posts/grid-trading/</link>
+      <link>https://blog.meowsay.com/posts/grid-trading/</link>
       <pubDate>Thu, 01 Jul 2021 15:16:44 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/grid-trading/</guid>
+      <guid>https://blog.meowsay.com/posts/grid-trading/</guid>
       <description>&lt;p&gt;今天要说的内容是对于程序化网格交易的简单理解，目标是通过简单的代码逻辑，实现自己的网格交易程序。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>This Week In Moeif 1</title>
-      <link>https://blog.moeif.com/posts/this-week-in-moeif-1/</link>
+      <link>https://blog.meowsay.com/posts/this-week-in-moeif-1/</link>
       <pubDate>Sat, 26 Jun 2021 20:56:28 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/this-week-in-moeif-1/</guid>
+      <guid>https://blog.meowsay.com/posts/this-week-in-moeif-1/</guid>
       <description>&lt;p&gt;从这周开始，总结每一周做了哪些事情，这是 This Week In Moeif 的第一周。每周的总结将从项目的进度，学习了哪些东西，下周的计划，或者一些想法进行记录。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>自己动手申请软件著作权（软著）</title>
-      <link>https://blog.moeif.com/posts/apply-for-software-copyright/</link>
+      <link>https://blog.meowsay.com/posts/apply-for-software-copyright/</link>
       <pubDate>Fri, 18 Jun 2021 15:09:05 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/apply-for-software-copyright/</guid>
+      <guid>https://blog.meowsay.com/posts/apply-for-software-copyright/</guid>
       <description>对于Android端的应用，要上线国内各大应用市场，很多都需要软件著作权。申请软著很简单，只要在中国版权保护中心注册并提交资料，然后邮寄资料就可以了。从版权中心接收到资料算起，到申请下来，正常情况一般要一个月左右，也可能更久，这个是无法控制的。当然，如果想更快，或者更省事，也可以某宝找代理申请，一般正常速度也就300块，如果要加急，那会贵很多。
 申请著作权主要有以下几个步骤：
 在中国版权保护中心注册账号 准备好Android应用的说明文档 准备好Android应用的代码文档 在线填写申请信息 打印资料和申请表并邮寄到北京版权保护中心 应用不必等到都开发完才申请，开发的差不多了，能运行，有界面可以截图了，或者模拟一些假数据能在真机上截图，就可以开始申请著作权了。
@@ -1063,10 +1063,10 @@ pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上�
     
     <item>
       <title>独立开发者注册企业资质</title>
-      <link>https://blog.moeif.com/posts/company-qualification-for-indie-developers/</link>
+      <link>https://blog.meowsay.com/posts/company-qualification-for-indie-developers/</link>
       <pubDate>Tue, 08 Jun 2021 23:01:57 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/company-qualification-for-indie-developers/</guid>
+      <guid>https://blog.meowsay.com/posts/company-qualification-for-indie-developers/</guid>
       <description>作为一名独立开发者，许多地方会用到企业资质，例如接入广告，产品上架应用市场等。虽然个人也可以，但是有企业资质会更方便一些。今天就来聊聊怎样以最低的成本注册及维护企业资质。
 整个过程主要分为三个部分，注册公司，办理对公账户，记账报税。因为不同地区有不同的要求，所以整个流程只能作为参考，这里以上海地区为例。
 注册公司 注册公司，首先面临的问题就是注册什么类型的公司，有个人独资企业，有限责任公司，一人有限责任公司，等。个体户就不要考虑了。
@@ -1092,46 +1092,46 @@ pinmakerhuobi 火币的 HTUSDT 交易对，这个只是在 pinmaker的基础上�
     
     <item>
       <title>Unity 接入 Topon 报错解决</title>
-      <link>https://blog.moeif.com/posts/solve-topon-ad-build-error/</link>
+      <link>https://blog.meowsay.com/posts/solve-topon-ad-build-error/</link>
       <pubDate>Sun, 25 Apr 2021 20:16:59 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/solve-topon-ad-build-error/</guid>
+      <guid>https://blog.meowsay.com/posts/solve-topon-ad-build-error/</guid>
       <description>&lt;p&gt;最近在接入Topon广告聚合SDK是，导出XCode工程后，编译报了一堆错误，搞了好久，这里记录一下解决过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>独立开发者，使用 Unity 开发 App</title>
-      <link>https://blog.moeif.com/posts/app-dev-with-unity/</link>
+      <link>https://blog.meowsay.com/posts/app-dev-with-unity/</link>
       <pubDate>Sat, 24 Apr 2021 23:44:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/app-dev-with-unity/</guid>
+      <guid>https://blog.meowsay.com/posts/app-dev-with-unity/</guid>
       <description>&lt;p&gt;我终于成为了一名独立开发者&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity XCode 自动设置签名</title>
-      <link>https://blog.moeif.com/posts/unity-xcode-auto-signing/</link>
+      <link>https://blog.meowsay.com/posts/unity-xcode-auto-signing/</link>
       <pubDate>Fri, 12 Mar 2021 19:01:01 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-xcode-auto-signing/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-xcode-auto-signing/</guid>
       <description>&lt;p&gt;Unity ios导出XCode工程后，通常需要手动设置签名，就像下图中的样子。只要简单的两部设置，就可以自动选择我们想要的签名。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity 接入 Sigmob SDK</title>
-      <link>https://blog.moeif.com/posts/sigmob-sdk-for-unity/</link>
+      <link>https://blog.meowsay.com/posts/sigmob-sdk-for-unity/</link>
       <pubDate>Wed, 06 Jan 2021 22:03:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/sigmob-sdk-for-unity/</guid>
+      <guid>https://blog.meowsay.com/posts/sigmob-sdk-for-unity/</guid>
       <description>&lt;p&gt;在 Unity 项目中接入Sigmob 时，遇到很多问题，他们的文档写的也不是很清楚，特别是对于 Android 开发没有很深入了解的情况，读起来很困难，这篇博客记录了详细的 Sigmob 广告 sdk 接入过程。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>理解 Boids</title>
-      <link>https://blog.moeif.com/posts/understanding-boids/</link>
+      <link>https://blog.meowsay.com/posts/understanding-boids/</link>
       <pubDate>Mon, 30 Nov 2020 18:01:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/understanding-boids/</guid>
+      <guid>https://blog.meowsay.com/posts/understanding-boids/</guid>
       <description>Boids 可以理解为类似鸟群的东西，就是多个个体之间的相互作用。在游戏开发中经常会用到。例如 RTS 游戏，控制一个坦克战队，如何保持行进方向的一致性，以及坦克之间互相有一定有间隔，又不会间隔太大，这里就可以使用 Boids 相关的理论来实现。
 在众多这方面的文章中，基本上会涉及到三个方面，跟随、分离、聚合。跟随，就是说整个群体有一个行进的大方向。分离，则是个体与个体之间有一定的间隔，不至于发生碰撞。而聚合，就是个体不能离群体太远，不能脱离群体。
 对于上面提到的三个方面，简单来说，就是一个力的叠加。
@@ -1146,10 +1146,10 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>使用 frp 的远程桌面方案</title>
-      <link>https://blog.moeif.com/posts/frp-for-remote-desktop/</link>
+      <link>https://blog.meowsay.com/posts/frp-for-remote-desktop/</link>
       <pubDate>Sat, 14 Nov 2020 13:50:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/frp-for-remote-desktop/</guid>
+      <guid>https://blog.meowsay.com/posts/frp-for-remote-desktop/</guid>
       <description>当我们想使用 Windows 自带的 mstsc 远程桌面连接远程电脑时，常见的情况由于远程电脑没有公网IP而连接失败，这时就需要一个拥有公网 IP 的 VPS 来做代理，实现内网穿透，也就是相当于一个桥梁，将目标内网的机器与我们当前机器连起来。像花生壳，Teamviewer 等这类软件都可以实现，远程桌面，但是要么费用比较高，要么免费版体验很差，所以这里我们购买一台廉价的 VPS，使用 frp 来做这个代理功能，更方便，更好用。
 1. 在VPS和目标机器上分别下载 frp frp Github: https://github.com/fatedier/frp，通常下载最新的 Release 版本就可以。
 2. 在VPS上配置服务器端 在服务器端，用的是 frps.exe，配置文件是 frps.ini，配置内容如下即可。
@@ -1161,19 +1161,19 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>Apk 上架前的签名操作</title>
-      <link>https://blog.moeif.com/posts/apk-signature/</link>
+      <link>https://blog.meowsay.com/posts/apk-signature/</link>
       <pubDate>Thu, 05 Nov 2020 14:09:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/apk-signature/</guid>
+      <guid>https://blog.meowsay.com/posts/apk-signature/</guid>
       <description>&lt;p&gt;在 APK 包上传到一些应用市场时，通常要求开发者对 APK 进行签名，下面记录一下签名步骤。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity 接入友盟SDK</title>
-      <link>https://blog.moeif.com/posts/unity-umeng-sdk/</link>
+      <link>https://blog.meowsay.com/posts/unity-umeng-sdk/</link>
       <pubDate>Sun, 16 Aug 2020 10:56:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-umeng-sdk/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-umeng-sdk/</guid>
       <description>友盟游戏统计 SDK 可以很方便的统计一些游戏数据。使用他们的自定义事件，来统计自己项目关心的数据。现在接入 SDK 已经比以前方便了很多，不需要再导出 Android 工程去修改 Java。下面将一步一步详细说明。
 要使用友盟 SDK，一共有以下几步
 在友盟后面新建应用 在友盟后面建立自定义事件 下载并导入 SDK 调用 SDK 1. 在友盟后面新建应用 首先注册账号，然后进入友盟工作台。↓ https://www.umeng.com/
@@ -1194,19 +1194,19 @@ using UnityEngine; using System.Collections.Generic; using System.Collections; p
     
     <item>
       <title>简单理解光线追踪</title>
-      <link>https://blog.moeif.com/posts/simple-understanding-of-ray-tracing/</link>
+      <link>https://blog.meowsay.com/posts/simple-understanding-of-ray-tracing/</link>
       <pubDate>Sat, 11 Jul 2020 15:16:29 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/simple-understanding-of-ray-tracing/</guid>
+      <guid>https://blog.meowsay.com/posts/simple-understanding-of-ray-tracing/</guid>
       <description>&lt;p&gt;在过去的一个周，读完了&lt;a href=&#34;https://raytracing.github.io/books/RayTracingInOneWeekend.html&#34;&gt;《Ray Tracing in One Weekend》&lt;/a&gt;并且用Rust完整地实现了文章中的效果。对于经典的光线追踪逻辑，也有了宏观上的理解。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Letsencrypt Nginx HTTPS 配置</title>
-      <link>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</link>
+      <link>https://blog.meowsay.com/posts/nginx-https-config-and-redirect/</link>
       <pubDate>Sat, 11 Jul 2020 12:36:46 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/nginx-https-config-and-redirect/</guid>
+      <guid>https://blog.meowsay.com/posts/nginx-https-config-and-redirect/</guid>
       <description>买了一个域名，一个 VPS，安装好 Nginx，配置了一个博客，或者一个Web服务。在Chrome中访问后，地址栏 不安全 三个字，很是让人不舒服。今天这篇博客，就记录一下如何配置 Nginx 的 HTTPS 重定向。整个过程很简单，一共有三步，域名配置，HTTPS 证书申请，配置 Nginx，下面将详细说明。
 域名配置 首先，将自己的域名配置A记录，指向自己的服务器。并且在服务器上装好 Nginx。 安装 Nginx 使用命令 apt-get install nginx
 HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到自己的VPS。 执行命令 apt-get install letsencrypt 安装 letsencrypt 执行命令 service nginx stop 先将 Nginx 停掉 执行命令 letsencrypt certonly --standalone 进行获取证书流程，根据提示，输入信息，域名，邮箱等 获取证书流程结束后，会生成两个文件，在接下来的的 Nginx 配置中会用到 /etc/letsencrypt/live/imoegirl.com/fullchain.pem /etc/letsencrypt/live/imoegirl.com/privkey.pem 上面的 imoegirl.com 只是举例，这里是你输入的域名 Nginx 配置 执行命令 cd /etc/nginx/conf.d 使用你喜欢的编辑器创建并编辑文件 my.conf (命名无所谓，只要扩展名是.conf) 输入以下内容 server { listen 80; listen [::]:80; server_name imoegirl.com; return 301 https://imoegirl.com$request_uri; } server { listen 443 ssl http2; server_name imoegirl.</description>
@@ -1214,10 +1214,10 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
     
     <item>
       <title>对比 Rust 和 Python 图片缩放速度</title>
-      <link>https://blog.moeif.com/posts/compare-rust-and-python-resize-image/</link>
+      <link>https://blog.meowsay.com/posts/compare-rust-and-python-resize-image/</link>
       <pubDate>Sun, 26 Apr 2020 19:38:35 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/compare-rust-and-python-resize-image/</guid>
+      <guid>https://blog.meowsay.com/posts/compare-rust-and-python-resize-image/</guid>
       <description>写博客时经常会用到 tinypng 这个网站进行图片压缩，所以今天就想用 Rust 试一下关于图片处理的东西。首先对比了一个 Rust 和 Python 的缩放速度，Rust 使用了 image-rs，Python 使用了 Image 中的 PIL，速度结果如下图。
 原图是一张 2.9M，4800x2500 的图片，缩小为 500x260。电脑CPU型号是 Intel(R) Core(TM) i5-6500 CPU @ 3.20GHz。使用 release 编译。
 &amp;gt; 点击这里查看大图
@@ -1229,10 +1229,10 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
     
     <item>
       <title>游戏项目资源管理</title>
-      <link>https://blog.moeif.com/posts/u3d-game-resources-managemant/</link>
+      <link>https://blog.meowsay.com/posts/u3d-game-resources-managemant/</link>
       <pubDate>Sat, 25 Apr 2020 18:57:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/u3d-game-resources-managemant/</guid>
+      <guid>https://blog.meowsay.com/posts/u3d-game-resources-managemant/</guid>
       <description>在游戏开发的过程中，整个项目的资源管理是很重要的一部分。涉及到与美术、策划等同事的协作，以及资源的打包，和后续运行时资源的更新，加载，卸载，内存管理等方面。规划好资源的的各个目录存放，以及资源的分类，会为后续的开发工作节省不少时间。这一篇博客主要来聊一下到资源的存放问题，而 AssetBundle 打包，以及运行时的更新和资源管理，将在后面的博客中详细说明。
 资源类型 一个游戏项目，涉及到的资源主要有 配置数据、图片、模型、材质、Shader、字体、音频、视频、动画Clip、Prefab、Animator Controller、Timeline、场景文件、Lua脚本 等。
 关于协作 首先说一下协作问题。在游戏开发的过程中，美术的同学需要将资源直接提交到建立好的项目中的指定目录中，一般来说，提交到哪个目录，是由程序的同学来决定，具体哪个目录，要根据后续的资源打包以及管理等方面决定。美术的同学提交的资源一般就是模型、动画、贴图等。
@@ -1248,10 +1248,10 @@ HTTPS 证书申请 Ping 一下自己的域名，确定域名已经被解析到�
     
     <item>
       <title>Rust 基础 | 常用集合数据类型</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-06/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-06/</link>
       <pubDate>Sun, 12 Apr 2020 23:51:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-06/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-06/</guid>
       <description>之前用到的 String 类型，并没有那么简单，接下来会聊一下关于 String 更多的一些应用。在说 String 前，需要先学习一下 Vec 这种数据类型，类似于一个动态的数组。然后是 HashMap，一个键对值的数据类型，与其他编程语言中的字典很类似。
 Vec Vec&amp;lt;T&amp;gt; 和数组一样，用于存储一系列相同类型的值。但是 Vec 可以动态地插入，删除。首先，是创建一个 Vec，可以使用 Vec::new()，或者使用宏 vec!。要注意的是，只有使用 mut，才能使 Vec 可变，也就是可以插入和删除值。
 fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;lt;i32&amp;gt; = Vec::new(); // 在定义时不标明类型，而在首次插入值时，由Rust自动推断 let mut v2 = Vec::new(); // 这里插入了一个 i32 的值，所以Rust推断 v2 为存放 i32 的 Vec v2.push(2); let v3 = vec![1,2,3,4,5]; let v4 = vec![&amp;#34;hello&amp;#34;, &amp;#34;rust&amp;#34;]; let mut v5: Vec&amp;lt;String&amp;gt; = vec![&amp;#34;hello&amp;#34;.to_string(), &amp;#34;rust&amp;#34;.to_string()]; } 向 Vec 有两个操作函数，一个是 push，往里插入值，一个是 pop，往外弹出值，Pop返回的是最后插入的值。看下面的代码</description>
@@ -1259,10 +1259,10 @@ fn main() { // 在定义时就标明数据类型为 i32 的 Vec let v1: Vec&amp;
     
     <item>
       <title>nginx 配置 https 及重定向</title>
-      <link>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</link>
+      <link>https://blog.meowsay.com/posts/configure-nginx-https-and-redirect/</link>
       <pubDate>Sun, 12 Apr 2020 18:49:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/configure-nginx-https-and-redirect/</guid>
+      <guid>https://blog.meowsay.com/posts/configure-nginx-https-and-redirect/</guid>
       <description>将博客放在自己的VPS上，免不了配置 nginx 及 https，如果不配置 https，浏览器上**不安全**那三个字，实在是太刺眼。所以这篇博客，将记录整个折腾过程。
 nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到非不带 www 的域名 接下来的操作，都是在 Ubuntu 18.04 版本上进行的。
 域名解析的配置 首先要先自己的域名解析到自己的 VPS，需要配置两条A记录，一条是 @，一条是 www，都是指向自己的 VPS IP。
@@ -1275,19 +1275,19 @@ nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到�
     
     <item>
       <title>Rust 基础 | 枚举、匹配</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-05/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-05/</link>
       <pubDate>Sun, 05 Apr 2020 22:29:14 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-05/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-05/</guid>
       <description>&lt;p&gt;这篇博客涉及到的知识点有 &lt;strong&gt;枚举的定义&lt;/strong&gt;、&lt;strong&gt;Option 枚举&lt;/strong&gt;、&lt;strong&gt;match 语法&lt;/strong&gt;、&lt;strong&gt;if let 语法&lt;/strong&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Rust 基础 | 结构体</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-04/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-04/</link>
       <pubDate>Thu, 02 Apr 2020 17:26:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-04/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-04/</guid>
       <description>在有类的编程语言中，组织数据的方式可以定义一个类，而在 Rust 中，组织数据的方式，使用 struct。struct 可以定义三种不同的类型，一种是带有字段名字的结构体，一种是没有字段名字的元组结构体，一种是没有任何字段的单元结构体。
 定义 struct 带有字段名字的结构体
 #[derive(Debug)] struct User { username: String, email: String, active: bool, } fn main() { let user1 = User { username: String::from(&amp;#34;fred&amp;#34;), email: String::from(&amp;#34;fred@outlook.com&amp;#34;), active: false, }; println!(&amp;#34;{:?}&amp;#34;, user1); } 注意上面的代码中 #[derive(Debug)]，简单理解就是加上这个，可以给我们自定义的结构体添加上可打印的功能，后面就可以使用 println! 来打印出结构体。
@@ -1300,10 +1300,10 @@ nginx 的安装 https 的证书配置 http 重定向到 https www 重定向到�
     
     <item>
       <title>Rust 基础 | 引用、切片</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-03/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-03/</link>
       <pubDate>Wed, 01 Apr 2020 12:13:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-03/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-03/</guid>
       <description>在阅读Rust官方教程时，会看到两个词，引用和借用，也就是 References and Borrowing。这里很容易让人混乱，如果了解C/C++这类有指针的语言，则引用很容易理解，但是 Rust 中的借用这个词是什么意思呢？我觉得，在初学 Rust 时，可以忽略这个词，或者就简单理解为，它所涉及到的东西，就是引用，就是一个指针，就可以了，避免陷入进去。所以，接下来我就就聊一聊引用。
 什么是引用 简单来说，引用就是一个指针，这个指针指向了某个内存地址。在说所有权时，我们知道，当把一个 String 当作参数传到函数时，它的所有权也就会被移动到函数的参数上，如果在调用完函数时，我们依旧想使用这个 String，则需要将所有权再返回，这样就很麻烦，所以用引用，会方便很多，因为引用，并不会获得这个 String 的所有权。看下面的代码
 fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); // 下面这一句再访问 s1 就会编译出错，因为 s1 的所有权已经没了 //println!(&amp;#34;s1 again: {}&amp;#34;, s1); } fn print_string(s: String) { println!(&amp;#34;{}&amp;#34;, s); } 下面是用引用作为参数
@@ -1312,10 +1312,10 @@ fn main() { let s1 = String::from(&amp;#34;Hello&amp;#34;); print_name(s1); prin
     
     <item>
       <title>Rust 基础 | 所有权</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-02/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-02/</link>
       <pubDate>Sun, 29 Mar 2020 20:38:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-02/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-02/</guid>
       <description>什么是所有权 Rust 的所有权，是 Rust 语言的一个核心概念。可以简单理解为，一种内存管理的方式。用现实中的东西举例，当你从图书管借了一本书时，这本书的所有权暂时归你所有，而当你把书给你的朋友时，此刻，书的所有权归你的朋友所有，而当你的朋友把书归还图书馆时，此时没有人拥有书的所有权，相当于内存释放。
 在使用有自动垃圾回收(GC)的编程语言时，我们并不需要考虑内存的释放问题，因为GC会帮我们释放。Rust是无GC的语言，一个变量占用的内存什么时候释放，由它的所有权决定，简单来说，当所有权所在的作用域结束时，内存将被释放。
 什么是作用域 Rust 的作用域和其他编程语言中的作用域概念是一样的，我们使用下面的代码说明
@@ -1326,10 +1326,10 @@ let s1 = String::from(&amp;#34;hello&amp;#34;); let s2 = &amp;#34;hello&amp;#34;
     
     <item>
       <title>Rust 基础 | 基本语法</title>
-      <link>https://blog.moeif.com/posts/rust-syntax-summary-01/</link>
+      <link>https://blog.meowsay.com/posts/rust-syntax-summary-01/</link>
       <pubDate>Sat, 28 Mar 2020 22:45:24 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rust-syntax-summary-01/</guid>
+      <guid>https://blog.meowsay.com/posts/rust-syntax-summary-01/</guid>
       <description>1. 变量和可变性 Rust 定义一个变量默认是不可变的，这一点与其他编程语言不同。
 let x = 10; x = 11; // 这里会编译出错， 如果要定义可变量，需要使用 mut
 let mut x = 10; x = 11; 用 let 先定义一个变量，再次用 let 定义一个变量，会将之前的变量覆盖，虽然同名，但也不是原来的变量了，这叫做 Shadowing
@@ -1341,10 +1341,10 @@ const MAX_SCORE: i32 = 10000; 2. 标量数据类型 Rust 数据类型可以分�
     
     <item>
       <title>Unity Shader | 半兰伯特、高光反射、BlinnPhone</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-05/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-05/</link>
       <pubDate>Thu, 19 Mar 2020 21:50:16 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-05/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-05/</guid>
       <description>写 Shader，到底是在做什么？Shader 就像一个拥有魔法的黑箱，我们最终从它那里得到的，是像素的颜色。而得到的是什么样的像素颜色，则取决于我们丢进黑箱里的是什么东西，以及使用的魔法咒语是什么。丢进同样的东西，使用不同的魔法咒语，得到的像素颜色也是不一样的。输入顶点的坐标，光线方向，以及自定义的颜色，使用不同的计算方式，得到的像素颜色是不一样的。使用同样的计算方式，丢进一个纯色颜色值，和丢进一张纹理，得到的像素，也是不一样的。
 如果把整个 Shader 比作一个函数，那么顶点位置，自定义的颜色值，纹理，灯光等这些就相当于函数的输入参数，而 Shader 中写的各种计算，用的各种算法，都是对输入的那些参数进行操作，而最终生成的，就是颜色值，也就是相当于函数的返回值。把 Shader 想的简单一点，就是输入需要的东西，进行计算，得到像素值。
 这篇博客，还是关于光照模型的，接下来我们首先总结一下常用的光照模型。
@@ -1360,10 +1360,10 @@ Specular 光照模型公式: 最终颜色 = 直射光颜色 * 反射光颜色 * 
     
     <item>
       <title>Unity Shader | 光照模型和漫反射</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-04/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-04/</link>
       <pubDate>Sun, 15 Mar 2020 11:54:30 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-04/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-04/</guid>
       <description>在之前的文章中写的Shader，呈现出来的物体样子是一个平面2D的状态，即使物体是3D的，那是因为，我们还没有将灯光加入到Shader的运算中。现在，我们将介绍灯光相关的东西，最后呈现出和 Unity Diffuse Shader 一样的效果。
 什么是光照模型 光照模型，简单理解就是一种运算，或者说一个公式，计算的结果，决定了一个点受到光照时，所表现出来的效果。例如，光照在木板上，和照在一面镜子上，我们所看到的效果是不一样的，照在镜子上，很大一部分光会被镜子反射，而木板，却不会反射那么多光。
 进入摄相机的光线分类 在游戏中，我们可以将进入摄相机的光分为 高光反射、漫反射、自发光等。像上面说的镜子反射了大部分光，就是高光反射，现实中比较光滑的表面，受到光照时，都会产生这种效果，很亮。而光线照在木头上，就是漫反射，其实是木头先吸收了光，然后向周围散射出去，这个就不会很亮。而自发光，就是字面意思，自身是一个发光体。这里大概知道这些词是什么就可以，不必深究里面的原理。
@@ -1375,19 +1375,19 @@ Shader &amp;#34;iMoeGirl/04-DiffuseVertex&amp;#34; { SubShader { Pass { // 要�
     
     <item>
       <title>Unity UGUI RGB通道分离抖动</title>
-      <link>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</link>
+      <link>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</link>
       <pubDate>Sun, 08 Mar 2020 22:18:03 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-ugui-tiktok-effect/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-ugui-tiktok-effect/</guid>
       <description>&lt;p&gt;今天我们要在 UGUI 上实现图片RGB通道分离抖动效果，先看最终效果图&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Unity Shader | 使用Struct传递数据</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-03/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-03/</link>
       <pubDate>Sat, 07 Mar 2020 14:02:26 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-03/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-03/</guid>
       <description>上一篇博客 说了在 CGPROGRAM 中写代码、顶点处理函数、片元处理函数、以及在两个函数之间传递简单的数据、从 ShaderLab 属性到CG数据类型之间的联系等。这一篇博将稍详细一点说一下 Shader 的基本知识，以及在顶点和片元函数之间传递更多的数据。
 Shader的基本理解 简单来说，Shader 决定了一个模型最终呈现在屏幕上的样子。一个模型由很多顶点构成，而每一个顶点，都会经过 Shader 中的顶点处理函数，这个过程，就是从应用将数据传递到顶点处理函数，顶点函数需要将顶点从模型空间转换到屏幕空间，或者说是裁剪空间，也可以简单理解为从 3 维空间转换到屏幕上的 2 维空间。在这个过程中，还可以做一些其他对顶点的操作。
 顶点数据经过顶点处理函数处理后，接下来就返回，然后传给片元处理函数，到了这一步，面对的，就是像素，也就是每一个像素的颜色值。在这里，可以根据自己的需求，对每一个像素做处理，例如做高斯模糊，RGB通道分离，等等，各种各样的效果。
@@ -1397,20 +1397,20 @@ Shader &amp;#34;iMoeGirl/03-Shader&amp;#34; { Properties { _MainColor(&amp;#34;�
     
     <item>
       <title>Unity Shader |  属性、顶点与片元函数</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-02/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-02/</link>
       <pubDate>Mon, 02 Mar 2020 22:46:56 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-02/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-02/</guid>
       <description>上一篇博客 介绍了Shader的基本结构，这里我们继续来说Shader的编写，也就是要在 CGPROGRAM 中写代码。首先我们把之前的Shader结构代码复制过来。
 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名字 // 这里定义一些属性，可以显示在UI面板上用于调节 Properties { // 属性名(&amp;#34;Inspector面板上显示出来的属性名&amp;#34;, 属性类型) = 默认值 _Color(&amp;#34;颜色类型&amp;#34;, Color) = (1,1,1,1) _Vector(&amp;#34;向量类型&amp;#34;, Vector) = (1, 2, 3, 4) _Int(&amp;#34;整型&amp;#34;, Int) = 11111 _Float(&amp;#34;浮点型&amp;#34;, Float) = 12.11 _Range(&amp;#34;范围类型&amp;#34;, Range(100, 1000)) = 128 _Tex2D(&amp;#34;贴图类型&amp;#34;, 2D) = &amp;#34;white&amp;#34;{} _Cube(&amp;#34;立方体贴图类型&amp;#34;, Cube) = &amp;#34;white&amp;#34;{} _Tex3D(&amp;#34;3D纹理&amp;#34;, 3D) = &amp;#34;white&amp;#34;{} } // 子 Shader，可以写多个，显卡运行时， // 从第一个SubShader开始，如果第一个里面的效果都支持，则使用第一个， // 如果发现这个SubShader里面某些效果不支持，则自动运行下一个SubShader SubShader { // 至少有一个Pass，相当于一个方法 Pass { // 在Pass块里写Shader代码 CGPROGRAM // 使用 CG语言编写Shader ENDCG } } // 如果发现所有的SubShader都不支持，则使用Fallback，相当于后备方案 Fallback &amp;#34;VertexLit&amp;#34; } 怎样使用 Properties 中定义的属性 Unity3D定义Shader属性所使用的语法，和CG所使用的说法是不一样的，所以我们要在一个Pass中使用Properties中定义的属性，需要在Pass中再以CG的语法再写一遍，其实就是变量名相同，而数据类型不同，在Shader在编译的时候，就会自动将两个变量关联起来。看下面的代码</description>
     </item>
     
     <item>
       <title>Unity Shader | 基础</title>
-      <link>https://blog.moeif.com/posts/unity-shader-basis-01/</link>
+      <link>https://blog.meowsay.com/posts/unity-shader-basis-01/</link>
       <pubDate>Mon, 24 Feb 2020 22:14:04 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-shader-basis-01/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-shader-basis-01/</guid>
       <description>MeshFilter 存储一个Mesh（网格，模型的网格，模型的三角面顶点信息）
 MeshRenderer 用于渲染一个物体的外观，数据来源于MeshFilter
 Material 材质包含两部分，贴图和Shader
@@ -1425,10 +1425,10 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
     
     <item>
       <title>SVN Cleanup错误 Faild to run the wc db work queue associated with</title>
-      <link>https://blog.moeif.com/posts/solve-svn-clean-up-error/</link>
+      <link>https://blog.meowsay.com/posts/solve-svn-clean-up-error/</link>
       <pubDate>Thu, 13 Feb 2020 14:51:31 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/solve-svn-clean-up-error/</guid>
+      <guid>https://blog.meowsay.com/posts/solve-svn-clean-up-error/</guid>
       <description>今天svn更新时，因为一个文件问题，导致了 Faild to run the wc db work queue associated with.... 的错误，无法 Cleanup，也无法 Update，无法 Revert，现在记录一下解决方法，很简单，只需要三个 sqlite 命令即可。
 这个过程要用到 sqlite3 的命令行工具，可以在官网下载。找到 Precompiled Binaries for WIndows 中的 sqlite-tools-win32-x86-xxxxxx.zip，点击下载即可，xxxxxx 是指版本号，下载官网上的最新版本即可。
 要在 cmd 中运行，还要将下载并解压后的 sqlite 目录加到环境变量的 Path 中，这样就可以直接在 cmd 中使用 sqlite 命令了。
@@ -1438,10 +1438,10 @@ Unity Shader 结构 Shader &amp;#34;iMoeGirl/MyShader&amp;#34; { // Shader 名�
     
     <item>
       <title>使用 Python 去掉 Kindle PC 复制时自动添加的内容</title>
-      <link>https://blog.moeif.com/posts/python-delete-kindle-pc-content/</link>
+      <link>https://blog.meowsay.com/posts/python-delete-kindle-pc-content/</link>
       <pubDate>Tue, 11 Feb 2020 20:16:39 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/python-delete-kindle-pc-content/</guid>
+      <guid>https://blog.meowsay.com/posts/python-delete-kindle-pc-content/</guid>
       <description>在使用 Kindle PC 软件看英文电子书时，常常会配合 CopyTranslator 软件做剪切板内容翻译，但是最近发现 Kindle PC 在复制内容时，会在剪切板中自动附加上书籍的内容，就像下面这样
 There’s nothing wrong with pursuing venture funding and attempting to grow fast like eBay Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&amp;#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 上面的内容，第一行是我要复制的内容，Walling, Rob; Taber, Mike. Start Small, Stay Small: A Developer&#39;s Guide to Launching a Startup (Kindle位置28). The Numa Group, LLC. Kindle 版本. 是Kindle PC自动附加的书籍信息内容，这一点很烦人。
 要解决这个问题其实很简单，只要监控剪切板变化时，将剪切板中的字符串，去掉自动附加的内容，然后将新的字符串替换回剪切板即可。接下来我们使用Python来做这件事情，代码只需要很少几行即可。</description>
@@ -1449,28 +1449,28 @@ There’s nothing wrong with pursuing venture funding and attempting to grow fas
     
     <item>
       <title>在Ubuntu上开启Swap</title>
-      <link>https://blog.moeif.com/posts/open-swap-on-ubuntu/</link>
+      <link>https://blog.meowsay.com/posts/open-swap-on-ubuntu/</link>
       <pubDate>Sun, 09 Feb 2020 12:15:40 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/open-swap-on-ubuntu/</guid>
+      <guid>https://blog.meowsay.com/posts/open-swap-on-ubuntu/</guid>
       <description>&lt;p&gt;在内存不够大时，需要开启Swap，使用一部分硬盘，作为虚拟内存，解决内存容量不足的情况。这篇博客是以 Ubuntu 基础来操作的，其他 Linux 系统基本类似。很简单，跟着下面的步骤，一步一步来操作即可。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用外部工具登录Google VPS</title>
-      <link>https://blog.moeif.com/posts/ligin-google-vps/</link>
+      <link>https://blog.meowsay.com/posts/ligin-google-vps/</link>
       <pubDate>Sun, 09 Feb 2020 10:04:23 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/ligin-google-vps/</guid>
+      <guid>https://blog.meowsay.com/posts/ligin-google-vps/</guid>
       <description>&lt;p&gt;Google的VPS创建好后，默认是无法通过外部的工具ssh登录的，要使用外部SSH工具登录，需要修改ssh的配置。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用 Unity 实现漂亮的数学曲面(下)</title>
-      <link>https://blog.moeif.com/posts/unity-basis-03-math-curve2/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-03-math-curve2/</link>
       <pubDate>Thu, 16 Jan 2020 15:51:00 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-03-math-curve2/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-03-math-curve2/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://imoegirl.com/2020/01/10/unity-basis-03-math-curve1/&#34;&gt;上一篇博客&lt;/a&gt;我们实现了一些简单的数学曲面，这一节我们将继续更复杂的数学曲面展示，所有资源完全承接上一篇内容。&lt;/p&gt;
 &lt;h2 id=&#34;25-创建一个涟漪效果&#34;&gt;2.5 创建一个涟漪效果&lt;/h2&gt;
 &lt;p&gt;先来看一下最终要实现的效果图&lt;/p&gt;
@@ -1480,10 +1480,10 @@ There’s nothing wrong with pursuing venture funding and attempting to grow fas
     
     <item>
       <title>使用 Unity 实现漂亮的数学曲面(上)</title>
-      <link>https://blog.moeif.com/posts/unity-basis-03-math-curve1/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-03-math-curve1/</link>
       <pubDate>Fri, 10 Jan 2020 10:51:45 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-03-math-curve1/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-03-math-curve1/</guid>
       <description>这篇博客是上一篇 使用Unity3D展示Sin函数动画 的续篇，在上一篇的基础上，来实现更复杂的效果。在文章最后会有完整的 C# 代码和 Shader 代码，先来看一下最终的效果图
 由于篇幅太长，所以将分为上下两部分，现在开始第一部分的内容。
 先将上一节 使用Unity3D展示Sin函数动画 的资源准备好，可以按下面的步骤手动建立，也可以直接导入上一节内容的完整 Unity 资源包，点这里下载
@@ -1496,10 +1496,10 @@ void Update () { for (int i = 0; i &amp;lt; points.</description>
     
     <item>
       <title>哈希</title>
-      <link>https://blog.moeif.com/posts/data-structure-08-hash/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-08-hash/</link>
       <pubDate>Wed, 08 Jan 2020 12:35:13 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-08-hash/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-08-hash/</guid>
       <description>今天我们来聊一下哈希(Hashing)，有时候也被称为散列。简单来说，哈希是一个唯一标识，用于标识一个东西。例如，一个人的身份证号就可以称为一个哈希，通过一个身份证号，可以定位到某一个人的信息。一个人的名字，也可以用作哈希，不过这个可能会产生重复，因为有很多人重名，这样导致的问题就是，通过名字，可能定位到多个人的信息，这种情况叫做哈希碰撞。
 哈希表(Hash Table) 哈希表是一种存储结构，也称为散列表，是一种 Key-Value 的存储结构。通过 Key 可以直接访问在内存存储位置的数据(Value)。例如 C# 中的 Dictionary 数据结构就是一种哈希表，还有一些编程语言中的 Tuple，也可以用哈希表实现。
 哈希函数/散列函数 哈希函数也可以称为散列函数，是在哈希表内部，用于将我们之前提到的 Key，转为哈希表用于直接访问数据的索引。
@@ -1514,19 +1514,19 @@ void Update () { for (int i = 0; i &amp;lt; points.</description>
     
     <item>
       <title>使用Unity3D展示Sin函数动画</title>
-      <link>https://blog.moeif.com/posts/unity-sine-visualization/</link>
+      <link>https://blog.meowsay.com/posts/unity-sine-visualization/</link>
       <pubDate>Mon, 06 Jan 2020 13:05:08 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-sine-visualization/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-sine-visualization/</guid>
       <description>&lt;p&gt;今天我们要实现的东西，就是下面这个动图的效果。使用代码控制方块的坐标，来展示 &lt;code&gt;Sin&lt;/code&gt; 函数。方块的颜色变化，是随着坐标变化而动态改变的，我们会写一个超简单的 &lt;code&gt;Shader&lt;/code&gt; 来实现。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>制作一个会动的时钟</title>
-      <link>https://blog.moeif.com/posts/unity-basis-01-clock/</link>
+      <link>https://blog.meowsay.com/posts/unity-basis-01-clock/</link>
       <pubDate>Mon, 06 Jan 2020 11:02:32 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-basis-01-clock/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-basis-01-clock/</guid>
       <description>这是 Unity 基础系列教程的第一篇博客。我们将由浅入深，一步一步学习Unity及游戏开发相关的东西。整个系列教程所使用的Unity版本为 2018.4 及以上就可以，如果要使用特殊版本，则会在文中指出。
 今天要做的是一个能够实时显示当前时间的时钟，就是下面这个东东。
 1 首先建立一个新工程 首先打开Unity，创建一个新工程，名字自己定，例如 Clock 就可以。默认打开后，Unity 默认布局是下面图的样子。
@@ -1540,10 +1540,10 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
     
     <item>
       <title>二叉堆</title>
-      <link>https://blog.moeif.com/posts/data-structure-07-binary-heap/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-07-binary-heap/</link>
       <pubDate>Mon, 30 Dec 2019 18:01:45 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-07-binary-heap/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-07-binary-heap/</guid>
       <description>今天我们来说一下二叉堆(BinaryHeap)。堆是很有用的数据结构，例如后面会学到的优先队列，堆排序等，都和堆有关。操作系统中很多调度，也和堆有关。
 还记得我们之前学过的完全二叉树吗？如果不记得了，就需要先回去复习一下，因为二叉堆，首先是一棵完全二叉树，或者近似完全二叉树。
 再来说一下二叉堆的特性。二叉堆分为最小堆和最大堆。如果是最小堆，那么父节点的值，总是小于或等于任何一个子节点的值，通俗点就是把一棵树从上往下看，值在变大，下面的大于等于上面的。如果是最大堆，则是反过来，父节点的值，总是大于或等于任何一个子节点的值。
@@ -1560,10 +1560,10 @@ Cylinder 默认已经有了很多组件，Mesh Filter、Capsule Collider、MeshR
     
     <item>
       <title>一个公平的洗牌算法 | Knuth-Shuffle</title>
-      <link>https://blog.moeif.com/posts/algo-knuth-shuffle/</link>
+      <link>https://blog.meowsay.com/posts/algo-knuth-shuffle/</link>
       <pubDate>Mon, 30 Dec 2019 11:59:15 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/algo-knuth-shuffle/</guid>
+      <guid>https://blog.meowsay.com/posts/algo-knuth-shuffle/</guid>
       <description>洗牌(随机)算法有很多应用，例如我们平时用的音乐播放器随机播放，棋牌游戏中的洗牌，扫雷游戏中雷的位置随机等等，都会用到洗牌算法。
 今天来介绍一个简单，公平，时间复杂度为O(n)的洗牌算法。什么是洗牌算法呢？其实就是将一些数据以公平随机的方式打乱顺序。这个算法，是由Knuth(高纳德)，也就是计算机程序设计艺术的作者发明的。下面我们直接进入正题。
 假设有这样一个数组 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]，我们使用Knuth-Shuffle算法将数据打乱。基本流程是这样的，从最后一个数开始，往前遍历，每一次，从当前数和第1个数之间，随机选择一个数，与当前数字进行交换（这里的随机选择就直接使用程序语言中的Random随机一个索引即可）。
@@ -1574,10 +1574,10 @@ using System; using System.Collections.Generic; class Program { static void Main
     
     <item>
       <title>二叉查找树</title>
-      <link>https://blog.moeif.com/posts/data-structure-06-binary-search-tree/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-06-binary-search-tree/</link>
       <pubDate>Thu, 26 Dec 2019 13:18:06 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-06-binary-search-tree/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-06-binary-search-tree/</guid>
       <description>二叉查找树（Binary Search Tree），简写BST，是满足某些条件的特殊二叉树。任何一个节点的左子树上的点，都必须小于当前节点。任何一个节点的右子树上的点，都必须大于当前节点。任何一棵子树，也都满足上面两个条件。另外二叉查找树中，是不存在重复节点的。
 上图中的二叉查找树，我们从Root节点3开始看，它的左子树（1，2） 和右子树（6，4，9，7）分别满足条件，左子树上的点，都小于当前节点，右子树上的点，都大于当前节点。
 继续，我们以6作为起点，来看一下这棵子树，6的左子树（4），右子树（9，7）也满足上面两条规则。
@@ -1591,10 +1591,10 @@ using System; using System.Collections.Generic; class Program { static void Main
     
     <item>
       <title>二叉树</title>
-      <link>https://blog.moeif.com/posts/data-structure-05-binary-tree/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-05-binary-tree/</link>
       <pubDate>Sat, 21 Dec 2019 16:22:10 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-05-binary-tree/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-05-binary-tree/</guid>
       <description>这篇博客来聊一下二叉树。呆萌数据结构系列，终于开始了树型结构的部分。这篇文章你能够学到的内容有 树，有哪些应用，二叉树的结构，什么是满二叉树，什么是完全二叉树，二叉树的遍历方式，二叉树的构建。二叉树是很基本的结构，在此基本上，会有很多很多变种，变成各种各样的树，理解了二叉树，对于后面学习其他更复杂的树型结构，会有很大的帮助。
 这篇文章首先理解文字上的内容，不要管代码，对二叉树的结构，操作，理解原理，最后再看代码。
 好了，下面开始吧。
@@ -1621,10 +1621,10 @@ void in_order_traversal(Node root) { // 如果左子树不为空，则递归处�
     
     <item>
       <title>队列</title>
-      <link>https://blog.moeif.com/posts/data-structure-04-queue/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-04-queue/</link>
       <pubDate>Wed, 18 Dec 2019 13:53:31 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-04-queue/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-04-queue/</guid>
       <description>生活中的一些排队行为，基本上都是队列的形式。这篇博客涉及的概念有 队列，循环队列，优先队列，双端队列。
 很多编程语言已经内置了队列结构，在实际项目中可以直接使用。这篇文章里的代码实现，主要用做原理理解。
 拿超市买单为例，买完东西，一般会找一个结账台排队，等待结账。如果前面已经有人在排队，那你肯定是排在当前队伍的最后面，如果再来人，肯定是排在你的后面，依次往后排。每当有一个顾客买完单，那后面的顾客就会往前走，直到整个买单队伍没有人排队。这就是队列结构。是不是很简单~
@@ -1635,10 +1635,10 @@ public class Node { public int data; public Node next; public Node(int data) { t
     
     <item>
       <title>通过阅读儿童图书快速提高你的英语水平</title>
-      <link>https://blog.moeif.com/posts/improvement-english-through-reading/</link>
+      <link>https://blog.meowsay.com/posts/improvement-english-through-reading/</link>
       <pubDate>Sat, 14 Dec 2019 21:51:22 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/improvement-english-through-reading/</guid>
+      <guid>https://blog.meowsay.com/posts/improvement-english-through-reading/</guid>
       <description>翻译自 Improve Your English by Reading Children’s Book Series
 如果我告诉你，阅读英文不需要很难，不需要再为此头痛。如果我告诉你，可以通过你感兴趣的方式阅读，来学习新的英文单词，来提高你的听说能力。你是否会认为我很 Crazy?
 这篇文章，看到最后，我保证你会开始阅读，爱上阅读。
@@ -1663,10 +1663,10 @@ public class Node { public int data; public Node next; public Node(int data) { t
     
     <item>
       <title>一个不用背单词的高效英文学习法</title>
-      <link>https://blog.moeif.com/posts/immers-learning-english/</link>
+      <link>https://blog.meowsay.com/posts/immers-learning-english/</link>
       <pubDate>Sat, 14 Dec 2019 13:42:02 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/immers-learning-english/</guid>
+      <guid>https://blog.meowsay.com/posts/immers-learning-english/</guid>
       <description>翻译自 English Immersion Reading: A Powerful and Effective Way to Learn
 你觉得英文阅读很无聊吗？你是否一直在寻找一种能让阅读更有趣，更高效地方式？
 接着往下看，你将会爱上 沉浸式阅读
@@ -1710,10 +1710,10 @@ TED 也是一个很好的素材。网易公开课的TED模块
     
     <item>
       <title>堆栈</title>
-      <link>https://blog.moeif.com/posts/data-structure-03-stack/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-03-stack/</link>
       <pubDate>Thu, 12 Dec 2019 17:31:12 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-03-stack/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-03-stack/</guid>
       <description>有一堆书，一本叠一本地放入箱子里，最后放入的，一定是在最上面，对不对。取书的时候，规定只能从上面一本一本地取，如果要拿最先放入箱子里的那本书，也就是最下面的那本书，只能先把上面的拿出来。
 什么是堆栈(Stack) 上面说的就是我们今天要讲的堆栈，也可以简单叫做栈。堆栈是很常用很基础的数据结构。堆栈涉及到的概念如果下。
 栈顶，就是最上面的一个元素。
@@ -1729,10 +1729,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>链表</title>
-      <link>https://blog.moeif.com/posts/data-structure-02-linkedlist/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-02-linkedlist/</link>
       <pubDate>Wed, 11 Dec 2019 10:43:51 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-02-linkedlist/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-02-linkedlist/</guid>
       <description>什么是链表 链表和数组一样，是一种线性的数据结构，由一个一个节点构成，节点中存放着数据，以及指向下一个或上一个节点的指针，通过指针，将节点链接在一起，构成整个链表结构。不同于数组，链表在内存中并不是连续的存储空间。
 为什么要用链表？或者说链表有哪些优点 我们知道，数组是很方便的数据结构，但是数组有一些局限性。必须事先知道要分配多少内存空间。插入和移除是很耗费性能的操作，因为需要移动不止一个元素。
 而链表，正好弥补了数组的缺点，链表是动态内存，不需要事先分配固定大小的空间，添加和删除元素，也只需要改变指针即可，不需要移动很多元素。
@@ -1743,19 +1743,19 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>超简单的VPS购买和配置教程</title>
-      <link>https://blog.moeif.com/posts/vps-buy-and-setup/</link>
+      <link>https://blog.meowsay.com/posts/vps-buy-and-setup/</link>
       <pubDate>Tue, 10 Dec 2019 15:02:30 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/vps-buy-and-setup/</guid>
+      <guid>https://blog.meowsay.com/posts/vps-buy-and-setup/</guid>
       <description>&lt;p&gt;这篇博客将一步一步教大家学习VPS的购买和配置教程，只需要简单几步，就可以拥有自己的VPS，然后愉快玩耍。可以自己搭一个科学上网代理服务器啦，托管自己的博客啦，等等。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>数组</title>
-      <link>https://blog.moeif.com/posts/data-structure-01-array/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-01-array/</link>
       <pubDate>Tue, 10 Dec 2019 11:06:57 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-01-array/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-01-array/</guid>
       <description>数组，在数据结构中，是很基础，也很常用的一个，在很多很多业务中，都能看到它的身影。数组很简单，在不同的编程语言中，操作方式，也几乎都是类似的。
 那数组是什么呢？简单来说，就是在内存中分配一块连续的空间，用来存储相同类型的元素。使用索引，可以直接访问某一个元素的数据。大多数编程语言，数组的索引是从0开始的。
 数组也分为一维数组，和多维数组。就像excel中的表格，一行数据，就可以看做是一个一维数组，而多行数据，就可以看做是一个多维数组。
@@ -1768,10 +1768,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>梦开始的地方</title>
-      <link>https://blog.moeif.com/posts/a-game-project-0-start/</link>
+      <link>https://blog.meowsay.com/posts/a-game-project-0-start/</link>
       <pubDate>Sun, 08 Dec 2019 14:44:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/a-game-project-0-start/</guid>
+      <guid>https://blog.meowsay.com/posts/a-game-project-0-start/</guid>
       <description>经历过很多项目，遇到和解决过很多问题，但是没有没有以文字的形式总结过。所以这个系列，我打算从客户端的视角，去总结一个游戏项目从开始到上线，整个过程中的一些事情，人员之间的配合，客户端一些重要模块的实现，开发过程中遇到的问题等等。
 一个项目的开始，可能始于某一个人的某一个微小的想法，经过一段时间的构思，然后到达公司层面，在经过很多人的会议讨论，市场调研，等等，觉得方案可行，然后就是立项，准备进入开发阶段。这个过程不是一两天完成的，可能经历了很长时间。这个阶段，也会大概预计项目周期，项目成本，什么时候上线，盈利情况预估等等。
 一旦确认了项目开发，策划方面会先行，进行项目的具体设计，开会讨论，确定方案等等。
@@ -1786,10 +1786,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>一个游戏是怎样被做出来的</title>
-      <link>https://blog.moeif.com/posts/how-a-game-is-made/</link>
+      <link>https://blog.meowsay.com/posts/how-a-game-is-made/</link>
       <pubDate>Sat, 07 Dec 2019 14:19:38 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/how-a-game-is-made/</guid>
+      <guid>https://blog.meowsay.com/posts/how-a-game-is-made/</guid>
       <description>一个游戏是怎样被做出来的呢，当我开始写这篇文章的时候，才意识到，这个题目写的有点大，单纯的一篇文章，真的很难让大部分人了解一个游戏到底是怎样被做出来的，因为这里面涉及到了太多太多的细节。所以，我就来从宏观的角度来聊一聊一个游戏的开发过程是怎样的。
 每一个游戏，可能都始于一个很小的想法，或者故事，然后像种子一样，慢慢成长，最后形成一个完善的体系化的设计。就像写一个故事，最开始，可能只有一个大概的方向，然后会构思里面的人物，性格，故事的发生地点，角色之间的关系，等等，有了宏观方向上的故事线，就有了大概的骨架，在不偏离故事线的情况下，去完善细节，让整个故事更有灵魂。一个游戏的构思，我觉得也是有类似之处。
 首先，简单介绍一下一个游戏公司的人员，大概都分为哪些部分。从宏观上来分，大概分为策划，美术，程序，测试，音频，运营。在这里，暂时不详细地介绍每一个职位的细分以及工作的内容，等我写一篇文章专门介绍这个。
@@ -1812,10 +1812,10 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>在游戏公司工作是什么体验呢？</title>
-      <link>https://blog.moeif.com/posts/experience-at-game-company/</link>
+      <link>https://blog.meowsay.com/posts/experience-at-game-company/</link>
       <pubDate>Fri, 06 Dec 2019 12:43:44 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/experience-at-game-company/</guid>
+      <guid>https://blog.meowsay.com/posts/experience-at-game-company/</guid>
       <description>不知道大家对于一线城市的游戏公司，或者IT公司，是什么印象。亲身经历过，才知道，其实并没有都市爱情电视剧中演的那么高端(😂)。
 经历过好几家游戏公司，有十几人的小公司，也有几十人，上百人，多项目组的公司，基本上，除了做的东西内容不一样之外，在其他方面有很多交集。
 上班时间一般是9点~10点之间，有的公司弹性制，早上如果晚到了一会，晚上晚点走即可，只要事情保证质量地完成。有的公司严格按照打卡时间来，晚到1秒种也是迟到。第一种心理上会更轻松一点，工作与生活融合，但是也难免有可能出现很多人晚到，做事情拖延的情况。第二种气氛紧张，工作就是工作。说不上哪种更好，各有利弊，主要看公司的文化，以及员工的整体素质更适合哪一种。很荣幸，我现在所在的公司，就是第一种。
@@ -1837,19 +1837,19 @@ class Node { public int data; public Node next; public Node(int data){ this.data
     
     <item>
       <title>浅谈Unity3D音频可视化效果原理</title>
-      <link>https://blog.moeif.com/posts/unity-audio-visualization/</link>
+      <link>https://blog.meowsay.com/posts/unity-audio-visualization/</link>
       <pubDate>Wed, 04 Dec 2019 16:08:42 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-audio-visualization/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-audio-visualization/</guid>
       <description>&lt;p&gt;在游戏开发中，你是否也想将音乐旋律变为漂亮的图形显示？就像这样的效果。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>怎样在Unity中Reload原生插件</title>
-      <link>https://blog.moeif.com/posts/reload-native-unity-plugins/</link>
+      <link>https://blog.meowsay.com/posts/reload-native-unity-plugins/</link>
       <pubDate>Sun, 01 Dec 2019 01:05:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/reload-native-unity-plugins/</guid>
+      <guid>https://blog.meowsay.com/posts/reload-native-unity-plugins/</guid>
       <description>这是一篇翻译文章，原文来自 how-to-reload-native-plugins-in-unity
 在Unity编辑器使用原生插件，Dll之类的，经常会遇到一个问题，替换插件时，Unity会提示正在使用，无法替换，这是因为Unity一旦点了Play，加载了Dll，就不会去卸载。
 要解决这个问题也很简单，那就是先关掉Unity，然后替换Dll，然后再打开Unity。对于插件的使用者，倒不是什么大问题，但是如果你是插件的开发者，需要频繁的修改和测试插件，那就有点悲惨了。
@@ -1866,10 +1866,10 @@ TLDR 我写了一个200行的代码，在OnAwake时，会加载所有的Dll，�
     
     <item>
       <title>浅谈在Unity3D中使用CriWare播放声音</title>
-      <link>https://blog.moeif.com/posts/unity-criware/</link>
+      <link>https://blog.meowsay.com/posts/unity-criware/</link>
       <pubDate>Sat, 30 Nov 2019 19:17:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/unity-criware/</guid>
+      <guid>https://blog.meowsay.com/posts/unity-criware/</guid>
       <description>在游戏开发中的音频解决方案，CriWare 是不错的选择，很多游戏大作也在使用。为什么使用CriWare呢？对于游戏运行时，可以显著提高加载速度和减小包体大小。而对于音频制作上，可以很方便地做更多的效果，例如多音源的避让等。
 今天我们就来浅浅地聊一下在 Unity3D 中使用 CriWare 播放声音，以及声音的管理等问题。
 音频文件由做音频的同学使用CriWare的软件去制作，最终导出的文件是以acb或awb为扩展名的文件。如果采用的是Memory的形式，则导出的acb文件。
@@ -1892,10 +1892,10 @@ AudioManager 在声音播放完，或者 GameObject 被销毁时，需要调用 
     
     <item>
       <title>图形学相关的基本数学</title>
-      <link>https://blog.moeif.com/posts/computer-graphics-math/</link>
+      <link>https://blog.meowsay.com/posts/computer-graphics-math/</link>
       <pubDate>Wed, 20 Nov 2019 12:56:25 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/computer-graphics-math/</guid>
+      <guid>https://blog.meowsay.com/posts/computer-graphics-math/</guid>
       <description>这一篇博客会比较长，目前还没写完，处于不断更新中&amp;hellip;
 这一节会用一些通俗的语言去解释一些数学上的概念，有一些解释可能并不是严谨，我们更多地是把焦点放在理解这些概念是什么，为后面的应用做铺垫。如果有一些点不能理解，也没关系，只要知道有这样一个东西就行，等真正用到的时候，有点印象，这样就会有解决问题的方向，再回来查相关的知识就可以。单纯记住一些知识是没有太多意义的，只有会应用了，才有意义。
 集合 (Sets) 一堆东西，就是一个集合。例如桌子上有一堆苹果，就可以说，这是一个苹果的集合。旁边放了一堆干果，就可以说，那是一个干果的集合。这里有100个数字，都是整数，那这就是一个整数集合。
@@ -1920,10 +1920,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>数据结构概述</title>
-      <link>https://blog.moeif.com/posts/data-structure-00-introduction/</link>
+      <link>https://blog.meowsay.com/posts/data-structure-00-introduction/</link>
       <pubDate>Sun, 17 Nov 2019 13:15:27 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/data-structure-00-introduction/</guid>
+      <guid>https://blog.meowsay.com/posts/data-structure-00-introduction/</guid>
       <description>经常有小伙伴想系统地学习一下数据结构，但很难找到适合自己的教程。好吧，其实说的是我自己。那今天就来聊一聊这个问题。
 我们先把一些常用的数据结构列表出，大概讲一下他们的结构及应用，后面分篇细细讲解。在分篇讲解时，我们的关注点是某个数据结构是什么，怎样用代码描述出来。而更多涉及到这个数据结构的一些算法，将在后面的算法系列中详细讲解。
 这个系列的博客，是面向那些和我差不多，大概了解数一些数据结构(知道一些名字，不太了解内部详细实现)，又想系统地巩固一下，深入一下的小朋友们~
@@ -1952,10 +1952,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.15</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.15/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.15/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.15/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.15/</guid>
       <description>生活 今天终于看完了《黑暗荣耀》第一季，女主牛B，人生中的每一个重要选择，都是心中那个复仇目标为导向。
 工作 《异能失控》项目今天把工程整理了一下，整理了一下Lua层的启动代码，比起上个项目来清晰了许多。使用ChatGPT生成了几十个怪物的名称和描述，以及单个技能，更想细的信息还需要再做一下。
 学习 学习了Rust多线程并发编程相关的东西，Mutex，Condvar，信号量什么的，不过还是模模糊糊，看来还是得具体项目实践才能彻底熟练。</description>
@@ -1963,10 +1963,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.16</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.16/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.16/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.16/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.16/</guid>
       <description>生活 又炖了鸡腿肉。今天在博客里加上了 Tid 页面，用来简要地的记录每天的生活、工作、学习相关的东西。
 工作 异能失控游戏开场界面搞完了，确定了基本的背景颜色，按钮颜色，输入框颜色，修改了几个界面的字体。开场的文本使用 ChatGPT 生成然后人工进行了一定的修改。背景音乐也找到了。
 学习 准备系统地学习一下伯克利的CS相关的课程。Crash Course Computer Science 看了一点。学习了Rust多线程相关的 Atomic 和 Send、Sync 相关的东西。</description>
@@ -1974,10 +1974,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.17</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.17/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.17/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.17/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.17/</guid>
       <description>生活 今天一整天都在下雨，起床比较晚。中午的时候点了麻辣香锅，可是不是很好吃，还不如我买包料自己做，再也不点这一家了。今天还试了一下把 ChatGPT 跟微信连起来，但是不是很好用，很慢，而且一旦电脑上登录了微信，这个服务就直接停了。
 工作 今天使用 ChatGPT 生成了地图的区域名字。把地图界面搭建了一下，大概的逻辑也有方向了。
 学习 学了一点点Rust。继续阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -1985,10 +1985,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.18</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.18/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.18/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.18/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.18/</guid>
       <description>生活 今天干了啥，忘记了。找了一部动漫在看，末日曙光。
 工作 今天尝试了一下在Mac下使用 Stable Diffusion，还是不太好用，麻烦。没有写代码，但是跟一个玩家聊了一下异能这个游戏，找到了一些新的方向，开发路线逐渐清晰了。
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -1996,10 +1996,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.19</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.19/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.19/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.19/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.19/</guid>
       <description>生活 今天的天气不怎么样啊，阴天，早晨睡到自然醒，很疲惫，可能是昨晚睡的比较晚。
 工作 今天考虑了一下账号系统，还是得改一下原来的存档工程，这次使用手机号作为存档的标识，不再使用设备码了。
 学习 今天没有时间学习……</description>
@@ -2007,10 +2007,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.20</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.20/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.20/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.20/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.20/</guid>
       <description>生活 看三体。
 工作 今天把账号系统的服务器部分调试通了，整理了一下上个项目的工程代码，删掉了一些没用的。
 学习 </description>
@@ -2018,10 +2018,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.21</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.21/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.21/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.21/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.21/</guid>
       <description>生活 看三体，做了三黄鸡，不太好吃，下次不要再做了，还是直接做口水鸡吧，调料用买的。
 工作 继续调整客户端的工程代码，改了部们UI，今天把登录系统客户端和服务器连通起来。 今天把 Stable Diffusion 搞定了，可以在 Mac 上用了，虽然速度不是很快。试了几个模型，能用，但是要精确描述自己想要的东西，还是有一定难度，也需要花费一点时间，但是，有这个东西， 比没有是好的。
 学习 Rust 异步编程部分</description>
@@ -2029,10 +2029,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.22</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.22/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.22/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.22/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.22/</guid>
       <description>生活 今天拿到了上海的居住证，又向前走了一步
 工作 今天又是一行代码都没写
 学习 阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -2040,10 +2040,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.23</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.23/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.23/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.23/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.23/</guid>
       <description>生活 今天上海的天气还是很不好，下雨，所以也没出门。继续看三体
 工作 这两天工程上的工作先暂停一下，要先搞明白具体要做一个怎样的游戏
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》，这两天要把这本书读完，里面阐述了很多关于游戏设计的思路，我觉得很有用，可以让游戏的可玩性增加很多。</description>
@@ -2051,10 +2051,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>2023.03.25</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.25/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.25/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.25/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.25/</guid>
       <description>生活 今天出去多走了一会，长久不运动，身体难收的很
 工作 今天把善恶启示录更新了一下，虽然只是更新了剧情，而且剧情还是玩家提供的。
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -2062,23 +2062,22 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>About</title>
-      <link>https://blog.moeif.com/about/</link>
+      <link>https://blog.meowsay.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/about/</guid>
+      <guid>https://blog.meowsay.com/about/</guid>
       <description>欢迎来到这里 Hi，我是猫猫，目前是一名独立开发者，主要的产品方向是文字类游戏。技术方向主要是 Unity 和 Rust。
-我（们）做过的游戏：https://moeif.com
-我的微信号: ifloop
-我的 Email: moeif@outlook.com</description>
+我（们）做过的游戏：https://meowsay.com
+Email: moeif@outlook.com</description>
     </item>
     
     
     <item>
       <title>My Games</title>
-      <link>https://blog.moeif.com/mygames/</link>
+      <link>https://blog.meowsay.com/mygames/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/mygames/</guid>
+      <guid>https://blog.meowsay.com/mygames/</guid>
       <description>下面是我作为独立开发者以来做过的项目。踩过了许多坑，现在还没有赚到什么钱，新的项目也还在开发中，我还可以走的更远一点。
 技术层面，客户端使用Unity，涉及到的服务器部分，例如排行榜，匹配之类的，是用 Rust 写的。
 &amp;laquo; 游戏码农：那些打工的日子 &amp;raquo; 状态：开发中 &amp;laquo; 音乐与僵尸：Zombie Rhythm &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 音乐与僵尸是一个以丧尸为元素的音乐游戏。 &amp;laquo; 诗仙与诗魔 &amp;raquo; 下载试玩 &amp;raquo; AppStore | GooglePlay | TapTap | 试玩视频 诗仙与诗魔是一个以诗词挑战为主题的休闲游戏，融合单人练习，冲榜，匹配等玩法模式。 &amp;laquo; 百变罪犯 &amp;raquo; 下载试玩 &amp;raquo; GooglePlay | TapTap | 试玩视频 百变罪犯是一款快节奏寻物、像素风格的休闲游戏。 </description>
@@ -2086,10 +2085,10 @@ f:ℝ↦ℤ 这个东东，可以这样解释，有一个函数叫做f，这个�
     
     <item>
       <title>TID</title>
-      <link>https://blog.moeif.com/tid/</link>
+      <link>https://blog.meowsay.com/tid/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/tid/</guid>
+      <guid>https://blog.meowsay.com/tid/</guid>
       <description>Tid 用于简要地记录今天做了什么，包括生活、工作、学习等相关内容。 </description>
     </item>
     

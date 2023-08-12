@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>阅读 on Meowsay</title>
-    <link>https://blog.moeif.com/tags/%E9%98%85%E8%AF%BB/</link>
+    <link>https://blog.meowsay.com/tags/%E9%98%85%E8%AF%BB/</link>
     <description>Recent content in 阅读 on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 26 Mar 2023 15:44:52 +0800</lastBuildDate><atom:link href="https://blog.moeif.com/tags/%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Mar 2023 15:44:52 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>角色扮演游戏设计艺术笔记</title>
-      <link>https://blog.moeif.com/posts/rpg-game-design-note/</link>
+      <link>https://blog.meowsay.com/posts/rpg-game-design-note/</link>
       <pubDate>Sun, 26 Mar 2023 15:44:52 +0800</pubDate>
       
-      <guid>https://blog.moeif.com/posts/rpg-game-design-note/</guid>
+      <guid>https://blog.meowsay.com/posts/rpg-game-design-note/</guid>
       <description>玩家需要感受到他们的交互效果，他们希望自己对游戏的经历起重要作用并通过他们交互对世界、故事或其他游戏元素产生某种程度上的辨认效果。
 奖励 玩家在完成一次胜利，或特定的时候，给予一定的奖励，以此激励他们继续奋战。
 保险性 确保玩家可以在游戏中通过某些途径获得物品，技巧等，以完成对于障碍的挑战。

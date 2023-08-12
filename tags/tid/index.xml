@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>tid on Meowsay</title>
-    <link>https://blog.moeif.com/tags/tid/</link>
+    <link>https://blog.meowsay.com/tags/tid/</link>
     <description>Recent content in tid on Meowsay</description>
     <image>
       <title>Meowsay</title>
-      <url>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://blog.moeif.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://blog.moeif.com/tags/tid/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://blog.meowsay.com/tags/tid/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2023.03.15</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.15/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.15/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.15/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.15/</guid>
       <description>生活 今天终于看完了《黑暗荣耀》第一季，女主牛B，人生中的每一个重要选择，都是心中那个复仇目标为导向。
 工作 《异能失控》项目今天把工程整理了一下，整理了一下Lua层的启动代码，比起上个项目来清晰了许多。使用ChatGPT生成了几十个怪物的名称和描述，以及单个技能，更想细的信息还需要再做一下。
 学习 学习了Rust多线程并发编程相关的东西，Mutex，Condvar，信号量什么的，不过还是模模糊糊，看来还是得具体项目实践才能彻底熟练。</description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>2023.03.16</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.16/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.16/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.16/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.16/</guid>
       <description>生活 又炖了鸡腿肉。今天在博客里加上了 Tid 页面，用来简要地的记录每天的生活、工作、学习相关的东西。
 工作 异能失控游戏开场界面搞完了，确定了基本的背景颜色，按钮颜色，输入框颜色，修改了几个界面的字体。开场的文本使用 ChatGPT 生成然后人工进行了一定的修改。背景音乐也找到了。
 学习 准备系统地学习一下伯克利的CS相关的课程。Crash Course Computer Science 看了一点。学习了Rust多线程相关的 Atomic 和 Send、Sync 相关的东西。</description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>2023.03.17</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.17/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.17/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.17/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.17/</guid>
       <description>生活 今天一整天都在下雨，起床比较晚。中午的时候点了麻辣香锅，可是不是很好吃，还不如我买包料自己做，再也不点这一家了。今天还试了一下把 ChatGPT 跟微信连起来，但是不是很好用，很慢，而且一旦电脑上登录了微信，这个服务就直接停了。
 工作 今天使用 ChatGPT 生成了地图的区域名字。把地图界面搭建了一下，大概的逻辑也有方向了。
 学习 学了一点点Rust。继续阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -45,10 +45,10 @@
     
     <item>
       <title>2023.03.18</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.18/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.18/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.18/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.18/</guid>
       <description>生活 今天干了啥，忘记了。找了一部动漫在看，末日曙光。
 工作 今天尝试了一下在Mac下使用 Stable Diffusion，还是不太好用，麻烦。没有写代码，但是跟一个玩家聊了一下异能这个游戏，找到了一些新的方向，开发路线逐渐清晰了。
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -56,10 +56,10 @@
     
     <item>
       <title>2023.03.19</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.19/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.19/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.19/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.19/</guid>
       <description>生活 今天的天气不怎么样啊，阴天，早晨睡到自然醒，很疲惫，可能是昨晚睡的比较晚。
 工作 今天考虑了一下账号系统，还是得改一下原来的存档工程，这次使用手机号作为存档的标识，不再使用设备码了。
 学习 今天没有时间学习……</description>
@@ -67,10 +67,10 @@
     
     <item>
       <title>2023.03.20</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.20/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.20/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.20/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.20/</guid>
       <description>生活 看三体。
 工作 今天把账号系统的服务器部分调试通了，整理了一下上个项目的工程代码，删掉了一些没用的。
 学习 </description>
@@ -78,10 +78,10 @@
     
     <item>
       <title>2023.03.21</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.21/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.21/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.21/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.21/</guid>
       <description>生活 看三体，做了三黄鸡，不太好吃，下次不要再做了，还是直接做口水鸡吧，调料用买的。
 工作 继续调整客户端的工程代码，改了部们UI，今天把登录系统客户端和服务器连通起来。 今天把 Stable Diffusion 搞定了，可以在 Mac 上用了，虽然速度不是很快。试了几个模型，能用，但是要精确描述自己想要的东西，还是有一定难度，也需要花费一点时间，但是，有这个东西， 比没有是好的。
 学习 Rust 异步编程部分</description>
@@ -89,10 +89,10 @@
     
     <item>
       <title>2023.03.22</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.22/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.22/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.22/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.22/</guid>
       <description>生活 今天拿到了上海的居住证，又向前走了一步
 工作 今天又是一行代码都没写
 学习 阅读《剑与电-角色扮演游戏设计艺术》</description>
@@ -100,10 +100,10 @@
     
     <item>
       <title>2023.03.23</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.23/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.23/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.23/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.23/</guid>
       <description>生活 今天上海的天气还是很不好，下雨，所以也没出门。继续看三体
 工作 这两天工程上的工作先暂停一下，要先搞明白具体要做一个怎样的游戏
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》，这两天要把这本书读完，里面阐述了很多关于游戏设计的思路，我觉得很有用，可以让游戏的可玩性增加很多。</description>
@@ -111,10 +111,10 @@
     
     <item>
       <title>2023.03.25</title>
-      <link>https://blog.moeif.com/posts/tids/2023.03.25/</link>
+      <link>https://blog.meowsay.com/posts/tids/2023.03.25/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://blog.moeif.com/posts/tids/2023.03.25/</guid>
+      <guid>https://blog.meowsay.com/posts/tids/2023.03.25/</guid>
       <description>生活 今天出去多走了一会，长久不运动，身体难收的很
 工作 今天把善恶启示录更新了一下，虽然只是更新了剧情，而且剧情还是玩家提供的。
 学习 继续阅读《剑与电-角色扮演游戏设计艺术》</description>
