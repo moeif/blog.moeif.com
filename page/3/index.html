@@ -20,7 +20,7 @@ cargo init 初始化一个新的工程 cargo build 会下载所有的依赖库�
 上面的 rustyroguelike 代码是使用 Python 和 libtcod 来实现的。
 我一直很想使用一下 Entity Component System。而 Rust 有一个很好的库 Specs。我已经在之前的游戏中使用过 ECS 的理念，所以再次使用 ECS，一切就很自然了。在 reddit 上，ECS 也是一个一直以来有争议的方向。所以我希望这次的教程可以让大家理解 ECS 的利弊。
 注意：这个系列的教程并不是面向 Rust 0 基础的朋友，至少要有一点 Rust 的语言基础才行。
-萌一小栈 欢迎关注微信公众号 萌一小栈，博客文章同步推送</p></div><footer class=entry-footer><span title='2022-02-02 14:44:42 +0800 CST'>February 2, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;猫猫</footer><a class=entry-link aria-label="post link to Roguelike In Rust 01: 前言" href=https://blog.meowsay.com/posts/roguelike-rs-01-introduction/></a></article><article class=post-entry><header class=entry-header><h2>Gameplay 02 游戏中的跳跃</h2></header><div class=entry-content><p>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
+猫语互动 欢迎关注微信公众号 猫语互动，博客文章同步推送</p></div><footer class=entry-footer><span title='2022-02-02 14:44:42 +0800 CST'>February 2, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;猫猫</footer><a class=entry-link aria-label="post link to Roguelike In Rust 01: 前言" href=https://blog.meowsay.com/posts/roguelike-rs-01-introduction/></a></article><article class=post-entry><header class=entry-header><h2>Gameplay 02 游戏中的跳跃</h2></header><div class=entry-content><p>游戏中的跳跃，就是以某一个速度起跳，克服重力。而以不同的速度，起跳的最高点是不一样的，很难去量化，所以我们可以定义每次起跳的最大高度，然后求出起跳速度，即可做到一切可控。
 自由落体公式 $h = \frac{1}{2}gt^2$。速度 $v = gt$，这个是瞬时速度，但是自由落体的速度是均匀变化的，所以平均速度就是下落高度中间时刻的速度，所以才得出 $h = \frac{1}{2}gt^2$。
 我们的目标是求出跳跃的速度。
 首先，假设我们以一个初始速度 $j$ 来跳跃，这个是一个向上的速度，但是因为重力的存在，所以我们的跳跃速度会因为重力的向下抵消，而逐渐趋向于 0。当 $j$ 慢慢被抵消到 0 时，我们也就达到了以 $j$ 这个速度来跳跃所能到达的最大高度。
