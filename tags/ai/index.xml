@@ -10,7 +10,24 @@
       <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 29 Mar 2023 20:45:19 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Dec 2023 11:59:15 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用AI做东西 - (01) 了解Chat-GPT</title>
+      <link>https://blog.meowsay.com/posts/devapp-with-ai-01-gpt4-and-chatgpt/</link>
+      <pubDate>Tue, 12 Dec 2023 11:59:15 +0800</pubDate>
+      
+      <guid>https://blog.meowsay.com/posts/devapp-with-ai-01-gpt4-and-chatgpt/</guid>
+      <description>OpenAI 通过 GPT 模型创造了出了 Chat-GPT，使人与计算机的交流，可以像人与人之间对话一样简单。GPT-4 和 其他的 GPT 模型都是大语言模型（LLMs），通过海量的数据进行训练，从而达到了能够精确识别与生成人类书写的文本。
+这些 AI 应用的出现，不只是一个语音助手那么简单。通过 OpenAI 的模型，开发者可以通过超强的自然语言处理的能力，来创造曾经只存在科幻小说里的东西。通过现在的 AI 模型，可以做出更优秀的智能助理，智能服务系统。在教育行业，可以完全针对每一人的学习风格，实施对应的教学方案。GPT-4 和 ChatGPT 完全开创了一个新的领域。
+但什么是 GPT-4 和 Chat-GPT 呢？本文旨在深入探讨这些人工智能模型的基础、起源和主要特点。了解了这些模型的基础知识，就可以很轻松的创造出下一代由 LLM 驱动的应用。
+作为 LLM，GPT-4 和 ChatGPT 是 NLP 领域的最新模型类型，而 NLP 本身就是机器学习（ML）和人工智能的一个子领域。在深入研究 GPT-4 和 ChatGPT 之前，有必要先了解一下 NLP 及其相关领域。
+人工智能有不同的定义，但其中一个定义（或多或少是共识）认为，人工智能是指开发能够执行通常需要人类智能才能完成的任务的计算机系统。根据这一定义，许多算法都属于人工智能的范畴。例如，考虑一下 GPS 应用中的交通预测任务或策略游戏中使用的基于规则的系统。在这些例子中，从用户的角度来看，机器似乎需要智能才能完成这些任务。
+ML 是人工智能的一个子集。在 ML 中，我们并不试图直接实现人工智能系统使用的决策规则。相反，我们试图开发一种算法，让系统从实例中自我学习。自 20 世纪 50 年代开始研究 ML 以来，已经有很多 ML 算法被提出。
+其中，深度学习算法的应用比较广泛。深度学习是 ML 的一个分支，主要研究受大脑结构启发的算法。这些算法被称为人工神经网络。它们可以处理大量数据，在图像和语音识别以及 NLP 等任务中表现出色。
+GPT-4 和 ChatGPT 基于一种特殊的深度学习算法，称为 Transformer。Transformer 就像阅读机器。它们会关注句子或文本块的不同部分，以理解其上下文并做出连贯的反应。它们还能理解句子中单词的顺序及其上下文。这使它们在执行语言翻译、问题解答和文本生成等任务时非常有效。
+NLP 是人工智能的一个子领域，侧重于使计算机能够处理、解释和生成人类自然语言。现代 NLP 解决方案基于 ML 算法。NLP 的目标是让计算机能够处理自然语言文本。这一目标涵盖了广泛的任务：</description>
+    </item>
+    
     <item>
       <title>关于 ChatGPT、GPT、GPT-3、OpenAI</title>
       <link>https://blog.meowsay.com/posts/about-chatgpt/</link>
