@@ -3,16 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.meowsay.com/tags/ai/</loc>
-    <lastmod>2023-12-12T11:59:15+08:00</lastmod>
+    <lastmod>2023-12-16T11:59:15+08:00</lastmod>
   </url><url>
     <loc>https://blog.meowsay.com/</loc>
-    <lastmod>2023-12-12T11:59:15+08:00</lastmod>
+    <lastmod>2023-12-16T11:59:15+08:00</lastmod>
   </url><url>
     <loc>https://blog.meowsay.com/posts/</loc>
-    <lastmod>2023-12-12T11:59:15+08:00</lastmod>
+    <lastmod>2023-12-16T11:59:15+08:00</lastmod>
   </url><url>
     <loc>https://blog.meowsay.com/tags/</loc>
-    <lastmod>2023-12-12T11:59:15+08:00</lastmod>
+    <lastmod>2023-12-16T11:59:15+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.meowsay.com/posts/devapp-with-ai-03-token-and-prediction/</loc>
+    <lastmod>2023-12-16T11:59:15+08:00</lastmod>
+  </url><url>
+    <loc>https://blog.meowsay.com/posts/devapp-with-ai-02-transformer-llm/</loc>
+    <lastmod>2023-12-15T11:59:15+08:00</lastmod>
   </url><url>
     <loc>https://blog.meowsay.com/posts/devapp-with-ai-01-gpt4-and-chatgpt/</loc>
     <lastmod>2023-12-12T11:59:15+08:00</lastmod>

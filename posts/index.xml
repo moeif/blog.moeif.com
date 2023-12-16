@@ -10,7 +10,37 @@
       <link>https://blog.meowsay.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 12 Dec 2023 11:59:15 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Dec 2023 11:59:15 +0800</lastBuildDate><atom:link href="https://blog.meowsay.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用AI做东西 - (03) 揭秘GPT模型中的标记和预测逻辑</title>
+      <link>https://blog.meowsay.com/posts/devapp-with-ai-03-token-and-prediction/</link>
+      <pubDate>Sat, 16 Dec 2023 11:59:15 +0800</pubDate>
+      
+      <guid>https://blog.meowsay.com/posts/devapp-with-ai-03-token-and-prediction/</guid>
+      <description>GPT 系列的 LLM 接收提示作为输入，然后生成文本。这个过程被称为文本补全。例如，提示可能是 &amp;ldquo;The weather is nice today, so I decided to&amp;rdquo;，而模型的输出可能是 &amp;ldquo;go for a walk&amp;rdquo;。您可能想知道 LLM 模型是如何根据输入提示构建输出文本的。正如你将看到的，这主要是一个概率问题。
+在向 LLM 发送提示（prompt）时，LLM 会首先将输入内容分割成更小的片段（称为 &amp;ldquo;标记&amp;rdquo;）也就是 token。这些标记（token）代表单个单词、单词的一部分或空格和标点符号。例如，前面的提示可以这样分解： &amp;ldquo;the&amp;rdquo;、&amp;ldquo;wea&amp;rdquo;、&amp;ldquo;ther&amp;rdquo;、&amp;ldquo;is&amp;rdquo;、&amp;ldquo;nice&amp;rdquo;、&amp;ldquo;today&amp;rdquo;、&amp;quot;,&amp;quot;、&amp;ldquo;so&amp;rdquo;、&amp;ldquo;I&amp;rdquo;、&amp;ldquo;de&amp;rdquo;、&amp;ldquo;ci&amp;rdquo;、&amp;ldquo;ded&amp;rdquo;、&amp;ldquo;to&amp;rdquo;。每个语言模型 都有自己的标记符。在撰写本文时，GPT-4 标记符号生成器还不可用，但您可以测试 GPT-3 标记符号生成器。
+从单词长度的角度来理解词块的经验法则是，100 个词块约等于英文文本中的 75 个单词。
+借助前面介绍的注意力原则和 Transformer 架构，LLM 可以处理这些标记，并解释它们之间的关系和提示的整体含义。Transformer 架构允许模型有效识别文本中的关键信息和上下文。
+要创建一个新句子，LLM 会根据提示上下文预测最有可能出现的词组。OpenAI 制作了两个版本的 GPT-4，上下文窗口分别为 8,192 个和 32,768 个。以前的递归模型很难处理长输入序列，与之不同的是，带有注意力机制的 Transformer 架构允许现代 LLM 将上下文作为一个整体来考虑。根据上下文，模型会为每个潜在的后续标记分配一个概率分数。然后，概率最高的标记被选为序列中的下一个标记。在我们的例子中，在 &amp;ldquo;The weather is nice today, so I decided to &amp;ldquo;之后，下一个最佳标记可能是 &amp;ldquo;go&amp;rdquo;。
+然后重复这一过程，但现在的语境变成了 &amp;ldquo;The weather is nice today, so I decided to go&amp;rdquo;，这时先前预测的标记 &amp;ldquo;go&amp;quot;被添加到原始提示中。模型可能预测的第二个标记是 &amp;ldquo;for&amp;rdquo;。这个过程不断重复，直到形成一个完整的句子： &amp;ldquo;go for a walk&amp;rdquo;。这个过程依靠的是 LLM 从海量文本数据中学习下一个最有可能出现的单词的能力。</description>
+    </item>
+    
+    <item>
+      <title>用AI做东西 - (02) 理解Transformer在LLM中的作用</title>
+      <link>https://blog.meowsay.com/posts/devapp-with-ai-02-transformer-llm/</link>
+      <pubDate>Fri, 15 Dec 2023 11:59:15 +0800</pubDate>
+      
+      <guid>https://blog.meowsay.com/posts/devapp-with-ai-02-transformer-llm/</guid>
+      <description>Transformer 架构彻底改变了 NLP，这主要是因为 Transformer 有效地解决了以往 NLP 模型（如 RNN）的一个关键局限性：它们在处理长文本序列和在这些长度的文本序列中保持上下文时所面临的困难。换句话说，RNN 往往会遗忘较长文本序列中的上下文（即臭名昭著的 &amp;ldquo;灾难性遗忘&amp;rdquo;），而 Transformer 则能有效处理和编码上下文。
+这场革命的核心支柱是注意力机制，这是一个简单而强大的理念。该模型不是将文本序列中的所有单词视为同等重要，而是&amp;quot;关注&amp;quot;其任务每一步中最相关的术语。交叉注意和自我注意是基于这种注意机制的两个架构模块，它们经常出现在 LLM 中。Transformer 架构广泛使用了这些交叉注意和自我注意模块。
+交叉关注有助于模型确定输入文本不同部分的相关性，从而准确预测输出文本中的下一个单词。它就像一盏聚光灯，照亮输入文本中的单词或短语。突出显示预测下一个单词所需的相关信息，而忽略不那么重要的细节。
+为了说明这一点，让我们以一个简单的句子翻译任务为例。假设我们有一个输入的英语句子，&amp;ldquo;Alice enjoyed the sunny weather in Brussels&amp;rdquo;，它被翻译成法语，&amp;ldquo;Alice a profité du temps ensoleillé à Bruxelles&amp;rdquo;。在这个例子中，重点生成法语单词 ensoleillé，它的意思是阳光明媚。对于这个预测，交叉注意会更多地考虑英语单词 sunny 和 weather，因为它们都与 ensoleillé 的意思相关。通过关注这两个词，交叉注意可以帮助模型为这部分句子生成准确的翻译。
+自我关注指的是模型关注输入文本不同部分的能力。在 NLP 的语境中，模型可以评估句子中每个单词与其他单词的重要性。这可以让模型更好地理解词语之间的关系，并帮助模型从输入文本中的多个词语中建立新的概念。
+举一个更具体的例子： &amp;ldquo;Alice received praise from her colleagues.&amp;quot;。假设模型正试图理解句子中 &amp;ldquo;her&amp;rdquo; 一词的含义。自我注意机制会给句子中的单词分配不同的权重，在这种情况下突出与 her 相关的单词。在这个例子中，自我注意力会给 Alice 和 colleagues 这两个词更多的权重。自我关注可以帮助模型从这些词语中建立新的概念。在本例中，可能出现的概念之一是 &amp;ldquo;Alice’s colleagues&amp;rdquo;。
+与递归架构不同，Transformer 还具有易于并行化的优势。这意味着 Transformer 架构可以同时而不是按顺序处理输入文本的多个部分。这可以加快计算和训练速度，因为模型的不同部分可以并行工作，而无需等待前面的步骤完成，这与需要顺序处理的递归架构不同。Transformer 模型的并行处理能力与图形处理器（GPU）的架构完美契合，后者旨在同时处理多项计算。因此，GPU 凭借其高度并行性和计算能力，成为训练和运行这些 Transformer 模型的理想选择。这一进步使数据科学家能够在更大的数据集上训练模型，为开发 LLM 铺平了道路。
+谷歌的 Vaswani 等人在 2017 年发表的论文《Attention Is All You Need》中介绍了 Transformer 架构，该架构最初是为机器翻译等序列到序列任务而开发的。标准 Transformer 由两个主要部分组成：编码器和解码器，这两个部分都在很大程度上依赖于注意力机制。编码器的任务是处理输入文本，识别有价值的特征，并生成有意义的文本表示，即嵌入。然后，解码器利用这种嵌入产生输出，如翻译或摘要。该输出可有效解释编码信息。</description>
+    </item>
+    
     <item>
       <title>用AI做东西 - (01) 了解Chat-GPT</title>
       <link>https://blog.meowsay.com/posts/devapp-with-ai-01-gpt4-and-chatgpt/</link>
